@@ -1,0 +1,16 @@
+start project:
+npx create-react-app airbnb-project --template typescript
+
+dependencies:
+npm install bootstrap
+npm install axios
+npm i @reduxjs/toolkit
+npm install lodash 
+npm install react-redux
+npm install node-sass 
+npm install react-router-dom
+npm install sass-loader
+npm i history
+
+tsconfig.json:
+"strict": true,

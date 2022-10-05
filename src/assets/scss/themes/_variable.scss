@@ -1,0 +1,79 @@
+// color-text
+$C-text-primary: #000000;
+$C-text-white: #FFFFFF;
+
+// font 
+    //size 
+    $f-size-m: 12px;
+    $f-size-sm: 14px;
+    $f-size-ssm: 16px;
+    $f-size-sssm: 18px;
+    $f-size-b: 20px;
+    $f-size-sb: 24px;
+    $f-size-ssb: 30px;
+    $f-size-sssb: 40px;
+    //more font-size you want...
+    //weight
+    $f-weight-m: 100;
+    $f-weight-sm: 200;
+    $f-weight-ssm: 300;
+    $f-weight-nomal: 400;
+    $f-weight-b: 500;
+    $f-weight-sb: 600;
+    $f-weight-ssb: 700;
+    $f-weight-lg: 800;
+    $f-weight-slg: 900;
+    // font-family
+    $f-family-primary: 'Segoe UI';
+    $f-family-Second: 'Roboto-Regular';
+
+// background
+$bg-primary: #000000;
+$bg-white: #ffffff;
+$bg-button: #F8F8F8;
+//more background you want...
+
+//@mixin
+    // text
+@mixin text(
+    $f-fam:$f-family-primary,
+    $f-wei:$f-weight-nomal,
+    $f-size:$f-size-b,
+    $line-heig:20px,
+    $color:$C-text-primary,
+    ) 
+    {
+    font-family: $f-fam;
+    font-weight: $f-wei;
+    font-size: $f-size;
+    line-height: $line-heig;
+    color: $color;
+}
+    // button
+@mixin button(
+    $width: 150px,
+    $height: 50px,
+    $backgr:$bg-white,
+    $boder:none,
+    $br-radius:5px,
+    $padding: 10px 20px,
+    $margin:0px
+    ) 
+    {
+    width: $width ;
+    height: $height;
+    background-color: $backgr;
+    border: $boder;
+    border-radius: $br-radius;
+    padding: $padding;
+    margin: $margin;
+    //default
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    &:hover{
+        background-color: gray;
+        border: 3px solid red;
+        
+    }
+}
