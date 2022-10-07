@@ -6,6 +6,9 @@ type Props = {
 
 export default function HeaderPage({title}: Props) {
   return (
-    <div>HeaderPage</div>
+    <div>
+      sdj,fhnsdklhfsdlkfhslk
+    </div>
+    
   )
 }
