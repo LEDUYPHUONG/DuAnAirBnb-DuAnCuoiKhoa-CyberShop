@@ -4,6 +4,8 @@ type Props = {}
 
 export default function RoomComment({}: Props) {
   return (
-    <div>RoomComment</div>
+    <div className='roomComment'>
+        
+    </div>
   )
 }
