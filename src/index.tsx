@@ -11,6 +11,7 @@ import Login from './pages/Login/Login';
 import Demo from './pages/Demo/Demo';
 import Home from './pages/Home/Home';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
+import RoomDetail from './pages/RoomDetail/RoomDetail';
 
 // sao cho nay no k nhac lenh khai
 const root = ReactDOM.createRoot(
@@ -28,6 +29,7 @@ root.render(
           <Route path='detail'>
             <Route path=':id'></Route>
           </Route>
+          <Route path='detailroom' element = {<RoomDetail/>}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
         </Route>
       </Routes>
