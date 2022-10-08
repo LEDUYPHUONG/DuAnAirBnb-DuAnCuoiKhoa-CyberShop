@@ -11,9 +11,9 @@ export default function FooterPage({title}: Props) {
       <div className='footer-left d-flex'>
         © 2022 Airbnb, Inc.
         <NavLink to=""><span className='text-dark'>Quyền riêng tư</span></NavLink>
-        <div className='px-1'><i style={{fontSize:"2px", lineHeight:"23px"}}  className="fa-solid fa-circle"></i></div>
+        <div className='px-1'><i style={{fontSize:"2px", lineHeight:"px"}}  className="fa-solid fa-circle"></i></div>
         <NavLink to=""><span className='text-dark'>Điều khoản</span></NavLink>
-        <div className='px-1'><i style={{fontSize:"2px", lineHeight:"23px"}}  className="fa-solid fa-circle"></i></div>
+        <div className='px-1'><i style={{fontSize:"2px", lineHeight:"px"}}  className="fa-solid fa-circle"></i></div>
         <NavLink to=""><span className='text-dark'>Sơ đồ trang web</span></NavLink>
       </div>
       <div className='footer-right d-flex'>
