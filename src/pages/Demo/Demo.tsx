@@ -6,6 +6,8 @@ type Props = {
 
 export default function Demo({title}: Props) {
   return (
-    <div>Demo</div>
+      <div>
+        <p>Demo</p>
+      </div>
   )
 }

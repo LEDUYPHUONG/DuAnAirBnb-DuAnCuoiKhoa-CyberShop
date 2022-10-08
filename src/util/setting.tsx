@@ -88,16 +88,15 @@ export const http = axios.create({
 // cấu hình request header
 
 http.interceptors.request.use(
-    (config:any)  => {
+    (config:AxiosRequestConfig)  => {
 
         const token = getStore(ACCESS_TOKEN);
-        config.headers  = {
-            ...config.headers,
-            ['Authorization']: `Bearer ${token}`,
-            ['TokenCybersoft']: TOKEN_CYBERSOFT
+        if( config.headers){
+            config.headers  = {
+                ['Authorization']: `Bearer ${token}`,
+                ['TokenCybersoft']: TOKEN_CYBERSOFT
+            }
         }
-        
-        // config.headers['Content-Type'] = 'application/json';
         return config
     },
     error => {
