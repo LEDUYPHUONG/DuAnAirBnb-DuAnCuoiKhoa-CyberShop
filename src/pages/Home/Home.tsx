@@ -6,6 +6,8 @@ type Props = {
 
 export default function Home({title}: Props) {
   return (
-    <div>Home</div>
+    <div className='home_container'>
+        <p>welcome to us!</p>
+    </div>
   )
 }
