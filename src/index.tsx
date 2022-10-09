@@ -10,6 +10,7 @@ import HomeTemplateMobile from './templates/HomeTemplateMobile';
 import Login from './pages/Login/Login';
 import Demo from './pages/Demo/Demo';
 import Home from './pages/Home/Home';
+import Roomlist from './pages/Roomlist/Roomlist';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
 
 // sao cho nay no k nhac lenh khai
@@ -21,13 +22,14 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='' element={<ResponsiveItem Component={HomeTemplate} ComponentMobile={HomeTemplateMobile}/>}>
-          <Route index element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
-          <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
+          <Route index element={<ResponsiveItem Component={Roomlist} ComponentMobile={Roomlist} />}></Route>
+          <Route path='home' element={<ResponsiveItem Component={Roomlist} ComponentMobile={Roomlist} />}></Route>
           <Route path='login' element={<Login/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
           <Route path='detail'>
             <Route path=':id'></Route>
           </Route>
+          <Route path='listRoom' element = {<Roomlist/>}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
         </Route>
       </Routes>
