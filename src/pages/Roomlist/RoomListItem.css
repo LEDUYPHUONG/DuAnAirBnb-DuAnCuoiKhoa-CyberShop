@@ -1,0 +1,44 @@
+.item {
+   margin: 0 10px;
+   position: relative;
+}
+
+.item-img {
+   width: 100%;
+   border-radius: 10px;
+   cursor: pointer;
+}
+
+.item-name {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 10px;
+}
+
+.item-name h3 {
+   font-weight: 600;
+}
+
+.item-des p {
+   color: #746b6b;
+   margin: 5px 0;
+}
+
+.item-price {
+   font-weight: 600;
+   margin-top: 8px;
+}
+
+.item-price span {
+   font-weight: normal;
+}
+
+.icon-left {
+   position: absolute;
+   top: 10px;
+   left: 10px;
+   border-radius: 5px;
+   background-color: #fafafa;
+   padding: 5px;
+}
