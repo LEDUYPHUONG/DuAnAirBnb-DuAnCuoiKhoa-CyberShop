@@ -12,8 +12,8 @@ import Demo from './pages/Demo/Demo';
 import Home from './pages/Home/Home';
 import Roomlist from './pages/Roomlist/RoomListPage';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
+import '../src/assets/scss/style.scss';
 
-// sao cho nay no k nhac lenh khai
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
