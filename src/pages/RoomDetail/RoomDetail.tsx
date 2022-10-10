@@ -8,7 +8,6 @@ export default function RoomDetail({}: Props) {
   return (
     <div>
         <RoomInfo/>
-
     </div>
   )
 }

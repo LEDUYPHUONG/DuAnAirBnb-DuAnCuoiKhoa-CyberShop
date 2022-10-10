@@ -12,6 +12,7 @@ import Demo from './pages/Demo/Demo';
 import Home from './pages/Home/Home';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
+import "./assets/scss/style.scss"
 
 // sao cho nay no k nhac lenh khai
 const root = ReactDOM.createRoot(

@@ -35,19 +35,44 @@ export default function RoomInfo({}: Props) {
       </div>
       <div className="roomPhoto">
         <div className="row" >
-        <div className="col-5 bg-dark">
-          <img src="https://picsum.photos/500/400" alt="roomPhoto" />
+        <div className="bg-dark">
+          <img src="https://picsum.photos/1280/400" alt="roomPhoto" />
         </div>
         </div>
         
       </div>
-      <h4 className="roomDes">Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
-      <div>
+      <div className="roomInfoLeft col-8 ">
+        <div className="infoTop d-flex justify-content-between">
+          <div className="infoTopLeft">
+          <h4>Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
         <span>6 khách - 2 phòng ngủ - 2 giường - 2 phòng tắm</span>
+          </div>
+          <div className="infoTopRight">
+            <img src="https://i.pravatar.cc/50" alt="" />
+          </div>
+        </div>
+        <div className="infoBottom">
+          <div className="moTa">
+            <ul>
+              <li className="d-flex">
+                <i className="fa fa-home"></i>
+                <i className="fa-solid fa-hand-sparkles"></i>
+                <div className="chuMoTa d-flex flex-column">
+                <span>Toàn bộ nhà</span>
+                <span className="tinyText">
+                  Bạn sẽ có chung cư cao cấp cho riêng mình
+                </span>
+                </div>
+                
+              </li>
+            </ul>
+          </div>
+
+        </div>
+    
       </div>
-      <div className="description"></div>
-      <div className="bookingRoom"></div>
-      <div className="convenient"></div>
+      <div className="roomInfoRight"></div>
+      
     </div>
   );
 }
