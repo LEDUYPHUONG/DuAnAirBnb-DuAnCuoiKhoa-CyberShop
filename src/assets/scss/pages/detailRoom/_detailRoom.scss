@@ -1,0 +1,34 @@
+.container {
+  .roomName {
+  }
+  .review {
+    margin-bottom: 30px;
+    .textReview{
+        margin-right: 13px;
+        i {
+            font-size: 12px;
+            padding-right: 2px;
+            margin-right: 3px;
+          }
+      
+          .tinyText {
+            font-size: 14px;
+            color: rgb(142, 144, 146);
+            font-weight: 500;
+          }
+    }
+   
+    .shareButton {
+      a {
+        color: black;
+        i {
+          font-size: 12px;
+          padding-right: 2px;
+        }
+      }
+    }
+  }
+  .roomPhoto{
+
+  }
+}

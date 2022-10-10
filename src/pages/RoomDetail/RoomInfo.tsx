@@ -9,16 +9,19 @@ export default function RoomInfo({}: Props) {
       <h4 className="roomName">Amazing Condotel Relax in Vungtau</h4>
       <div className="review d-flex justify-content-between">
         <div className="d-flex ">
-          <div className="mx-2">
-            <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>4.8
+          <div className="textReview">
+            <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
+            <span className="tinyText">4.8 (10 đánh giá)</span>
           </div>
-          <div className="mx-2">
-            <i className="fa fa-heart" style={{ color: "#ec6e6e" }}></i>Chủ nhà
-            siêu cấp đáng yêu
+          <div className="textReview">
+            <i className="fa fa-heart" style={{ color: "#ec6e6e" }}></i>
+            <span className="tinyText">Chủ nhà siêu cấp</span>
           </div>
-          <div className="mx-2">
+          <div className="textReview">
             <i className="fa fa-map-marker" style={{ color: "#ec6e6e" }}></i>
-            Thành phố Bà Rịa Vũng Tàu - Việt Nam
+            <span className="tinyText">
+              Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN
+            </span>
           </div>
         </div>
 
@@ -34,17 +37,25 @@ export default function RoomInfo({}: Props) {
         </div>
       </div>
       <div className="roomPhoto">
-        <div className="row" >
-        <div className="col-5 bg-dark">
-          <img src="https://picsum.photos/500/400" alt="roomPhoto" />
+        <div className="row">
+          <div className="">
+            <img src="https://picsum.photos/500/400" alt="roomPhoto" />
+          </div>
         </div>
+      </div>
+      <div className="roomDes d-flex col-10">
+        <div className="desLeft">
+          <div className="desTopLeft">
+            <h4>Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
+            <span>6 khách - 2 phòng ngủ - 2 giường - 2 phòng tắm</span>
+          </div>
+          <div className="desTopRight">
+            <img src="https://i.pravatar.cc/50" alt="" />
+          </div>
         </div>
-        
+        <div className="desRight">Nơi chứa lịch</div>
       </div>
-      <h4 className="roomDes">Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
-      <div>
-        <span>6 khách - 2 phòng ngủ - 2 giường - 2 phòng tắm</span>
-      </div>
+
       <div className="description"></div>
       <div className="bookingRoom"></div>
       <div className="convenient"></div>
