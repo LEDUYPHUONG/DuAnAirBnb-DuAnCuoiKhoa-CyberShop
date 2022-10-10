@@ -14,7 +14,7 @@ export default function RoomInfo({}: Props) {
           </div>
           <div className="mx-2">
             <i className="fa fa-heart" style={{ color: "#ec6e6e" }}></i>Chủ nhà
-            siêu cấp đáng yêu
+            siêu cấp
           </div>
           <div className="mx-2">
             <i className="fa fa-map-marker" style={{ color: "#ec6e6e" }}></i>
