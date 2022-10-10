@@ -70,7 +70,7 @@ export default function RoomInfo({}: Props) {
             <span>6 khách - 2 phòng ngủ - 2 giường - 2 phòng tắm</span>
           </div>
           <div>
-            <img src="https://i.pravatar.cc/70" alt="" />
+            <img src="https://i.pravatar.cc" alt="" />
           </div>
             </div>
           </div>
