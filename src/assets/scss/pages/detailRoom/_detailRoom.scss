@@ -1,23 +1,23 @@
 .container {
-  .roomName {
-  }
+//   .roomName {
+//   }
   .review {
     margin-bottom: 30px;
-    .textReview{
-        margin-right: 13px;
-        i {
-            font-size: 12px;
-            padding-right: 2px;
-            margin-right: 3px;
-          }
-      
-          .tinyText {
-            font-size: 14px;
-            color: rgb(142, 144, 146);
-            font-weight: 500;
-          }
+    .textReview {
+      margin-right: 13px;
+      i {
+        font-size: 12px;
+        padding-right: 2px;
+        margin-right: 3px;
+      }
+
+      .tinyText {
+        font-size: 14px;
+        color: rgb(142, 144, 146);
+        font-weight: 500;
+      }
     }
-   
+
     .shareButton {
       a {
         color: black;
@@ -28,7 +28,46 @@
       }
     }
   }
-  .roomPhoto{
+  .roomPhoto {
+    width: 100%;
+    height: 620px;
+    // background: #000;
 
+    .row {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 10px;
+      row-gap: 10px;
+      .item {
+        padding: 0;
+        img {
+          width: 100%;
+          height: 300px;
+          display: block;
+        }
+      }
+      .item1 {
+        padding-right: 0;
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+        // background-color: aqua;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 12px;
+        }
+      }
+      .item3{
+        img {
+            border-top-right-radius: 12px;
+          }
+      }
+      .item5 {
+        img {
+          border-bottom-right-radius: 12px;
+        }
+      }
+    }
   }
 }
