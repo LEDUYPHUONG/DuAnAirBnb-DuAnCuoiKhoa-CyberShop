@@ -1,40 +1,40 @@
-.item {
+.roomlist-item {
    margin: 0 10px;
    position: relative;
 }
 
-.item-img {
+.roomlist-item-img {
    width: 100%;
    border-radius: 10px;
    cursor: pointer;
 }
 
-.item-name {
+.roomlist-item-name {
    display: flex;
    justify-content: space-between;
-   align-items: center;
+   align-roomlist-items: center;
    margin-top: 10px;
 }
 
-.item-name h3 {
+.roomlist-item-name h3 {
    font-weight: 600;
 }
 
-.item-des p {
+.roomlist-item-des p {
    color: #746b6b;
    margin: 5px 0;
 }
 
-.item-price {
+.roomlist-item-price {
    font-weight: 600;
    margin-top: 8px;
 }
 
-.item-price span {
+.roomlist-item-price span {
    font-weight: normal;
 }
 
-.icon-left {
+.roomlist-icon_left {
    position: absolute;
    top: 10px;
    left: 10px;
