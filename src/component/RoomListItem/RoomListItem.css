@@ -3,34 +3,34 @@
    position: relative;
 }
 
-.roomlist-item-img {
+.roomlist-item_img {
    width: 100%;
    border-radius: 10px;
    cursor: pointer;
 }
 
-.roomlist-item-name {
+.roomlist-item_name {
    display: flex;
    justify-content: space-between;
-   align-roomlist-items: center;
+   align-items: center;
    margin-top: 10px;
 }
 
-.roomlist-item-name h3 {
+.roomlist-item_name h3 {
    font-weight: 600;
 }
 
-.roomlist-item-des p {
+.roomlist-item_des p {
    color: #746b6b;
    margin: 5px 0;
 }
 
-.roomlist-item-price {
+.roomlist-item_price {
    font-weight: 600;
    margin-top: 8px;
 }
 
-.roomlist-item-price span {
+.roomlist-item_price span {
    font-weight: normal;
 }
 
