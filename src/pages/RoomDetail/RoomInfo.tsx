@@ -59,24 +59,29 @@ export default function RoomInfo({}: Props) {
             <img src="https://xaydungvincon.com/Content/Images/FileUpload/2020/9/mau-phong-tam-nho-dep0.jpg" alt="roomPhoto" />
           </div>
         </div>
-  
+ 
       </div>
-      {/* <div className="roomDes d-flex col-10">
+      <div className="roomDes d-flex">
         <div className="desLeft">
-          <div className="desTopLeft">
+          <div className="infoRoom">
+            <div className="infoRoomName d-flex justify-content-between">
+            <div>
             <h4>Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
             <span>6 khách - 2 phòng ngủ - 2 giường - 2 phòng tắm</span>
           </div>
-          <div className="desTopRight">
-            <img src="https://i.pravatar.cc/50" alt="" />
+          <div>
+            <img src="https://i.pravatar.cc/70" alt="" />
           </div>
+            </div>
+          </div>
+    
         </div>
         <div className="desRight">Nơi chứa lịch</div>
       </div>
 
       <div className="description"></div>
       <div className="bookingRoom"></div>
-      <div className="convenient"></div> */}
+      <div className="convenient"></div>
     </div>
   );
 }
