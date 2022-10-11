@@ -30,7 +30,7 @@ export default function FooterPage({title}: Props) {
       </div>
       <div className='d-flex justify-content-between' style={{position:"absolute", left:"0px", bottom:"80px", width:"100%",height:"50px"}}>
         <div style={{width:"1px", height:"0px"}}></div>
-        <div className='bg-dark text-white text-center' style={{cursor: "pointer",width:"150px",height:"50px",lineHeight:"50px", border:"none", borderRadius:"50px"}}>Show map  <i className="fa-solid fa-map ps-1"></i></div>
+        <div className='bg-dark text-white text-center' style={{cursor: "pointer",width:"150px",height:"50px",lineHeight:"50px", border:"none", borderRadius:"50px"}}>Hiện bản đồ  <i className="fa-solid fa-map ps-1"></i></div>
         <div style={{width:"1px", height:"0px"}}></div>
       </div>
     </div>
