@@ -1,4 +1,6 @@
 import React from "react";
+import Date from './Date'
+import SelectNumberPassenger from './SelectNumberPassenger'
 import { NavLink } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { Gallery } from "react-grid-gallery";
@@ -299,6 +301,9 @@ export default function RoomInfo({}: Props) {
               </div>
             </div>
             <div className="pick_options">
+              <Date/>
+              <SelectNumberPassenger/>
+          
               
             </div>
             <div className="cashier"></div>

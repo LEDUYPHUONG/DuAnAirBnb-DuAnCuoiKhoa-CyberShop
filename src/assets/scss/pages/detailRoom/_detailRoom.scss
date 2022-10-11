@@ -186,6 +186,43 @@
       border-radius: 7px;
       box-shadow: 0px 5px 10px rgba(139, 137, 137, 0.5);
       background-color: rgb(95, 203, 13);
+
+      .booking_area{
+        .price_and_rating{
+          background-color: #8e9092;
+          .price{
+            .price_text{
+              .textReview {
+                margin-right: 13px;
+                i {
+                  font-size: 12px;
+                  padding-right: 2px;
+                  margin-right: 3px;
+                }
+          
+                .tinyText {
+                  font-size: 14px;
+                  color: rgb(142, 144, 146);
+                  font-weight: 500;
+                  a{
+                    color: #8e9092;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .pick_options{
+          .ant-picker, .ant-picker-range{
+            border-radius: 7px;
+            height: 40px;
+          
+          }
+        }
+    
+
+      }
     }
   }
 }
