@@ -13,7 +13,9 @@ export default function RoomInfo({}: Props) {
         <div className="d-flex ">
           <div className="textReview">
             <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
-            <span className="tinyText">4.8 (10 đánh giá)</span>
+            <span className="tinyText">
+              4.8 (<a href="#">10 đánh giá</a>)
+            </span>
           </div>
           <div className="textReview">
             <i className="fa fa-heart" style={{ color: "#ec6e6e" }}></i>
@@ -22,7 +24,8 @@ export default function RoomInfo({}: Props) {
           <div className="textReview">
             <i className="fa fa-map-marker" style={{ color: "#ec6e6e" }}></i>
             <span className="tinyText">
-              Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN
+              <a href="#">Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN</a>
+              
             </span>
           </div>
         </div>
@@ -169,127 +172,138 @@ export default function RoomInfo({}: Props) {
             <div className="convenience">
               <ul className="d-flex flex-wrap">
                 <div className="col-6">
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-solid fa-kitchen-set"></i>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Bếp</span>
+                      </div>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-solid fa-tv"></i>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>TV và truyền hình cáp tiêu chuẩn</span>
+                      </div>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-regular fa-snowflake"></i>
                     </div>
-                
-                  </div>
-                </li>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Điều hòa nhiệt độ</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-solid fa-temperature-arrow-up"></i>
+                    </div>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Lò sưởi trong nhà</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-solid fa-square-parking"></i>
+                    </div>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Bãi để xe thu phí nằm ngoài khuôn viên</span>
+                      </div>
+                    </div>
+                  </li>
                 </div>
 
                 <div className="col-6">
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-solid fa-wifi"></i>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Wifi</span>
+                      </div>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-solid fa-elevator"></i>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Thang máy</span>
+                      </div>
                     </div>
-                
-                  </div>
-                </li>
-                <li className="d-flex align-items-center">
-                  <div className="convi_icon">
-                  <i className="fa-solid fa-kitchen-set"></i>
-                  </div>
-                  <div className="convi_text">
-                    <div className="textTop">
-                      <span>Bếp</span>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-regular fa-building"></i>
                     </div>
-                
-                  </div>
-                </li>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Sân hoặc ban công</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-solid fa-icicles"></i>
+                    </div>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Tủ lạnh</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <div className="convi_icon">
+                      <i className="fa-regular fa-calendar-days"></i>
+                    </div>
+                    <div className="convi_text">
+                      <div className="textTop">
+                        <span>Cho phép ở dài hạn</span>
+                      </div>
+                    </div>
+                  </li>
                 </div>
-                
-            
               </ul>
+              <button className="col-5 translate_btn d-flex justify-content-center align-items-center">
+                <span>Hiển thị tất cả 24 tiện nghi </span>
+              </button>
             </div>
           </div>
         </div>
-        <div className="desRight">Nơi chứa lịch</div>
+        <div className="desRight">
+          <div className="booking_area">
+            <div className="price_and_rating d-flex">
+              <div className="price">
+                <span className="price_text">$44</span>
+                <span>/đêm</span>
+              </div>
+              <div className="textReview">
+              <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
+            <span className="tinyText">
+              4.8 (<a href="#">10 đánh giá</a>)
+            </span>
+
+              </div>
+            </div>
+            <div className="pick_options">
+              
+            </div>
+            <div className="cashier"></div>
+          </div>
+        </div>
       </div>
 
       <div className="description"></div>

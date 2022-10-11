@@ -1,8 +1,9 @@
 .container {
-//   .roomName {
-//   }
+    .roomName {
+      font-size: 30px;
+    }
   .review {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     .textReview {
       margin-right: 13px;
       i {
@@ -15,6 +16,9 @@
         font-size: 14px;
         color: rgb(142, 144, 146);
         font-weight: 500;
+        a{
+          color: #8e9092;
+        }
       }
     }
 
@@ -58,10 +62,10 @@
           border-top-left-radius: 12px;
         }
       }
-      .item3{
+      .item3 {
         img {
-            border-top-right-radius: 12px;
-          }
+          border-top-right-radius: 12px;
+        }
       }
       .item5 {
         img {
@@ -73,120 +77,115 @@
   .roomDes {
     margin-top: 20px;
     height: 1000px;
-    .desLeft{
-        width: 70%;
-        // background-color: blanchedalmond;
-        .infoRoom{
-            width: 85%;
-            .infoRoomName{
-                height: 80px;
-                border-bottom: 1.5px solid rgba(181, 177, 177, 0.4);
-                h4{
-                  margin-bottom: 0;
-
-                }
-                span {
-                    font-size: 14px;
-                    
-                }
-                img {
-                    border-radius: 100px;
-                    width: 55px;
-                }
-            }
-            .infoRoomFromOwner{
-              padding: 20px 0;
-              .ownerInfoTop{
-                ul{
-                  padding-left: 0;
-                  li{
-                    margin-bottom: 20px;
-                    .infoIcon{
-                      display: inline-block;
-                      margin-right: 15px;
-                      font-size: 20px;
-                     
-
-                    }
-                    .infoText{
-                      .textTop{
-                        font-weight: 500;
-
-                      }
-                      .text_bott{
-                        font-size: 14px;
-                        color: #8e9092;
-                        a{
-                          color: black;
-                          font-weight: 500;
-                        }
-                      }
-
-                    }
-
-
-                  }
-                }
-              }
-              .owner_Translate{
-                padding-bottom: 20px;
-                border-bottom:1.5px solid rgba(181, 177, 177, 0.4);
-              
-                .translate_btn{
-                  padding: 0 40px;
-                  height: 45px;
-                  background-color: #ffffff;
-                  border-radius: 7px;
-                  font-size: 14px;
-                  font-weight: 500;
-                  i {
-                    font-size: 23px;
-                  }
-                }
-                .gioithieu{
-                  margin-top: 20px;
-                  color: #8e9092;
-                  a{
-                    font-weight: 500;
-                    color: black;
-                    display: inline-block;
-                  }
-                  
-                }
-
-              }
-
-            }
-            .convenience{
-              ul{
-                padding-left: 0;
-                li{
-                  margin-bottom: 20px;
-                  .convi_icon{
-                    display: inline-block;
-                    margin-right: 15px;
-                    font-size: 20px;
-                  
-
-                  }
-                  .convi_text{
-                    .textTop{
-                     
-
-                
-
-                    }
-                  }
-
-                }
-              }
-
-            }
+    .desLeft {
+      width: 70%;
+      // background-color: blanchedalmond;
+      .infoRoom {
+        width: 85%;
+        .infoRoomName {
+          height: 80px;
+          border-bottom: 1.5px solid rgba(181, 177, 177, 0.4);
+          h4 {
+            margin-bottom: 0;
+          }
+          span {
+            font-size: 14px;
+          }
+          img {
+            border-radius: 100px;
+            width: 55px;
+          }
         }
+        .infoRoomFromOwner {
+          padding: 20px 0;
+          .ownerInfoTop {
+            ul {
+              padding-left: 0;
+              li {
+                margin-bottom: 20px;
+                .infoIcon {
+                  display: inline-block;
+                  margin-right: 15px;
+                  font-size: 20px;
+                }
+                .infoText {
+                  .textTop {
+                    font-weight: 500;
+                  }
+                  .text_bott {
+                    font-size: 14px;
+                    color: #8e9092;
+                    a {
+                      color: black;
+                      font-weight: 500;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .owner_Translate {
+            padding-bottom: 20px;
+            border-bottom: 1.5px solid rgba(181, 177, 177, 0.4);
+
+            .translate_btn {
+              padding: 0 40px;
+              height: 45px;
+              background-color: #ffffff;
+              border-radius: 7px;
+              font-size: 14px;
+              font-weight: 500;
+              i {
+                font-size: 23px;
+              }
+            }
+            .gioithieu {
+              margin-top: 20px;
+              color: #8e9092;
+              a {
+                font-weight: 500;
+                color: black;
+                display: inline-block;
+              }
+            }
+          }
+        }
+        .convenience {
+          padding-bottom: 20px;
+
+          border-bottom: 1.5px solid rgba(181, 177, 177, 0.4);
+
+          ul {
+            padding-left: 0;
+            li {
+              margin-bottom: 10px;
+              .convi_icon {
+                display: inline-block;
+                margin-right: 15px;
+                font-size: 20px;
+              }
+            }
+          }
+          .translate_btn {
+            padding: 0 40px;
+            height: 45px;
+            background-color: #ffffff;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 500;
+            i {
+              font-size: 23px;
+            }
+          }
+        }
+      }
     }
-    .desRight{
-        width: 30%;
-        background-color: yellow;
+    .desRight {
+      width: 30%;
+      height: 400px;
+      border-radius: 7px;
+      box-shadow: 0px 5px 10px rgba(139, 137, 137, 0.5);
+      background-color: rgb(95, 203, 13);
     }
   }
 }
