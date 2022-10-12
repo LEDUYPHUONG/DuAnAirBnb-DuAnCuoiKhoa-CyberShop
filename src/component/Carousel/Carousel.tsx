@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { arrIconCarousel } from "../../data/api/dataDemo";
-// import "/~slick-carousel/slick/slick.css"; 
-// import "/~slick-carousel/slick/slick-theme.css";
+
 
 export interface ArrIconCarousel  {
   srcId:string,
@@ -26,7 +25,7 @@ function SampleNextArrow(props:any) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block",boxShadow: "0 2px 4px rgba(0,0,0,0.18)", background: "rgba(0,0,0,0.1)", width:"40px", height:"40px", lineHeight:"60px", right: "15px", border:"none", borderRadius:"50%", textAlign:"center", zIndex:10}}
+      style={{ ...style, display: "block",boxShadow: "0 2px 4px rgba(0,0,0,0.18)", backgroundImage: `url("./img/home/nextIcon.png")`, backgroundRepeat: "no-repeat", backgroundSize: "cover", width:"40px", height:"40px", lineHeight:"60px", right: "0", border:"none", borderRadius:"50%", textAlign:"center", zIndex:10,opacity:0.1}}
       onClick={onClick}
     />
   );
@@ -37,7 +36,7 @@ function SamplePrevArrow(props:any) {
   return (
     <div
       className={className}
-      style={{...style, display: "block",boxShadow: "0 2px 4px rgba(0,0,0,0.18)", background: "rgba(0,0,0,0.1)", width:"40px", height:"40px", lineHeight:"60px", left: 0, border:"none", borderRadius:"50%", textAlign:"center",zIndex:10}}
+      style={{...style, display: "block",boxShadow: "0 2px 4px rgba(0,0,0,0.18)",backgroundImage: `url("./img/home/prevIcon.png")`, backgroundRepeat: "no-repeat", backgroundSize: "cover", width:"40px", height:"40px", lineHeight:"60px", left: 0, border:"none", borderRadius:"50%", textAlign:"center",zIndex:10,opacity:0.1}}
       onClick={onClick}
     />
   );

@@ -1,0 +1,25 @@
+.activeBorderBottom{
+    border-bottom: 2px solid #000000;
+    
+}
+.activeHoverOpacity{
+    opacity: 0.5;
+    border-bottom: 2px solid opacify($color: #000000, $amount: 0.11);
+    padding-bottom: 10px;
+}
+button:hover, button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.buttonGradient{
+    background-image: radial-gradient(#e61e4d 50% , #d80766 100%) !important;
+}
+.buttonUserActive{
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.buttonUserHover{
+    &:hover{
+        background: #dddddd !important;
+    }
+}

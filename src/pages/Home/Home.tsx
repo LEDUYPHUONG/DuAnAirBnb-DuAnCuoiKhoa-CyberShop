@@ -4,6 +4,7 @@ import Carousel from '../../component/Carousel/Carousel'
 import FooterPage from '../../component/Footer/FooterPage'
 import HeaderPage from '../../component/Header/HeaderPage'
 import ItemProduct from '../../component/ItemProduct/ItemProduct'
+import ModalHeader from '../../component/Modal/ModalHeader/ModalHeader'
 import { arrIconCarousel } from '../../data/api/dataDemo'
 
 
@@ -48,23 +49,7 @@ export default function Home({title}: Props) {
   return (
     <div>
       <HeaderPage />
-      <div className="modal-container">
-        <div className="modal fade px-0 " id="myModal" role="dialog">
-          <div className="modal-fullscreen-sm-down " >
-            <div className="modal-content border border-0 rounded-0" >
-              <div className="modal-header">
-                <h4 className="modal-title">Modal Header</h4>
-              </div>
-              <div className="modal-body">
-                <p>This is a small modal.</p>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ModalHeader />
       <div className='home-container mx-auto' style={{ position:"fixed", background:"#ffffff",width:"100%", height:`${heightHeader}`,margin:"0 48px", padding:`${heightCarousel} 48px 0`,zIndex:9}}>
         <div>
           <Carousel />
