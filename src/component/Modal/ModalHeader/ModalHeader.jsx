@@ -62,10 +62,10 @@ export default function ModalHeader() {
                                                     <span>Khách</span>
                                                     <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm khách</span>
                                                 </span>
-                                                <button className='btn buttonGradient' style={{border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
+                                                <span className='btn buttonGradient' style={{border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
                                                     <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
                                                     <span className='ps-3'>Tìm kiếm</span>
-                                                </button>
+                                                </span>
                                             </button>
                                             </div>
                                         </div>
