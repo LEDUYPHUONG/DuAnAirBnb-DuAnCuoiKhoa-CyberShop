@@ -52,26 +52,93 @@ export default function ModalHeader() {
                                                 <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Tìm kiếm điểm đến</span>
                                             </button>
                                             <div style={{width:1, height:24, background:"#cccccc"}}></div>
-                                            <button className='btn text-dark d-flex flex-column rounded-pill buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}}>
-                                                <span>Ngày</span>
-                                                <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm ngày</span>
-                                            </button>
-                                            <div style={{width:1, height:24, background:"#cccccc"}}></div>
-                                            <button className='btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover' style={{width:"300px", padding: "6px 5px 6px 25px"}}>
-                                                <span className='text-dark d-flex flex-column align-items-start' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>
-                                                    <span>Khách</span>
-                                                    <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm khách</span>
-                                                </span>
-                                                <span className='btn buttonGradient' style={{border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
-                                                    <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
-                                                    <span className='ps-3'>Tìm kiếm</span>
-                                                </span>
-                                            </button>
+                                                <button className='btn text-dark d-flex flex-column rounded-pill buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}}>
+                                                    <span>Ngày</span>
+                                                    <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm ngày</span>
+                                                </button>
+                                                <div style={{width:1, height:24, background:"#cccccc"}}></div>
+                                                <button className='btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover' style={{width:"300px", padding: "6px 5px 6px 25px"}}>
+                                                    <span className='text-dark d-flex flex-column align-items-start' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>
+                                                        <span>Khách</span>
+                                                        <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm khách</span>
+                                                    </span>
+                                                    <span className='btn buttonGradient' style={{border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
+                                                        <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
+                                                        <span className='ps-3'>Tìm kiếm</span>
+                                                    </span>
+                                                </button>
                                             </div>
                                         </div>
                                     <div style={{paddingLeft:"140px"}}></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="modal-dialog modal-lg  rounded-5 overflow-hidden d-none" id="myModal" role="dialog" style={{zIndex:10, position:"fixed", top: 161, left:'50%', background:'#ffffff', transform: 'translateX(-65%)'}}>
+                        <div>
+                            <div className="location-container">
+                                <div className="location-out">
+                                    <div className="location-inner p-5">
+                                        <p className='ps-2'>Tìm kiếm theo khu vực</p>
+                                        <div className="location-map d-flex flex-wrap">
+                                        <div className="col-4 pt-5">
+                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
+                                                <img width={'100%'} height={'100%'} src="./img/home/map/timKiemLinhHoat.jpg" alt="..." />
+                                            </div>
+                                            <div className="title ps-2 pt-3">
+                                                <p className='mb-0'>Tìm kiếm linh hoạt</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-4 pt-5">
+                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
+                                                <img width={'100%'} height={'100%'} src="./img/home/map/chauAu.jpg" alt="..." />
+                                            </div>
+                                            <div className="title ps-2 pt-3">
+                                                <p className='mb-0'>Châu Âu</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-4 pt-5">
+                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
+                                                <img width={'100%'} height={'100%'} src="./img/home/map/thaiLan.jpg" alt="..." />
+                                            </div>
+                                            <div className="title ps-2 pt-3">
+                                                <p className='mb-0'>Thái Lan</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-4 pt-5">
+                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
+                                                <img width={'100%'} height={'100%'} src="./img/home/map/phap.jpg" alt="..." />
+                                            </div>
+                                            <div className="title ps-2 pt-3">
+                                                <p className='mb-0'>Pháp</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-4 pt-5">
+                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
+                                                <img width={'100%'} height={'100%'} src="./img/home/map/hoaKy.jpg" alt="..." />
+                                            </div>
+                                            <div className="title ps-2 pt-3">
+                                                <p className='mb-0'>Hoa Kỳ</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-4 pt-5">
+                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
+                                                <img width={'100%'} height={'100%'} src="./img/home/map/hanQuoc.jpg" alt="..." />
+                                            </div>
+                                            <div className="title ps-2 pt-3">
+                                                <p className='mb-0'>Hàn Quốc</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='modal-dialog modal-lg  rounded-5 overflow-hidden' id="myModal" role="dialog" style={{zIndex:10, position:"fixed", top: 161, left:'50%', background:'#ffffff', transform: 'translateX(-65%)'}}>
+                        <div className="date-checkIn">
+                        </div>
+                        <div className="date-checkOut">
                         </div>
                     </div>
                 </div>
