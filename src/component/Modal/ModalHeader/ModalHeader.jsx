@@ -1,8 +1,11 @@
 import React from 'react'
-
+import 'antd/dist/antd.css'
+import DatePickerAntd from '../../datePickerAntd/DatePickerAntd'
 
 export default function ModalHeader() {
-    const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89) 0%, rgb(189, 30, 89) 27.5%, rgb(215, 4, 102) 40%, rgb(227, 28, 95) 57.5%, rgb(230, 30, 77) 75%, rgb(255, 56, 92) 100%)'
+
+// style for background of 1 button (button search modal)
+const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89) 0%, rgb(189, 30, 89) 27.5%, rgb(215, 4, 102) 40%, rgb(227, 28, 95) 57.5%, rgb(230, 30, 77) 75%, rgb(255, 56, 92) 100%)'
 
   return (
 
@@ -77,7 +80,7 @@ export default function ModalHeader() {
                             </div>
                         </div>
                     </div>
-                    <div className="modal-dialog modal-lg  rounded-5 overflow-hidden d-none" id="myModal" role="dialog" style={{zIndex:10, position:"fixed", top: 161, left:'50%', background:'#ffffff', transform: 'translateX(-65%)'}}>
+                    <div className="d-none modal-content modal-lg  rounded-5 overflow-hidden" style={{zIndex:10, position:"fixed", top: 161, left:'50%', background:'#ffffff', transform: 'translateX(-58%)'}}>
                         <div>
                             <div className="location-container">
                                 <div className="location-out">
@@ -138,10 +141,9 @@ export default function ModalHeader() {
                             </div>
                         </div>
                     </div>
-                    <div className='modal-dialog modal-lg  rounded-5 overflow-hidden' id="myModal" role="dialog" style={{zIndex:10, position:"fixed", top: 161, left:'50%', background:'#ffffff', transform: 'translateX(-65%)'}}>
-                        <div className="date-checkIn">
-                        </div>
-                        <div className="date-checkOut">
+                    <div className='d-none modal-content'>
+                        <div className="date-picker border-0 rounded-5" style={{width:'900px', height:'500px', textAlign:'center',zIndex:10, position:"fixed", top: 163, left:'50%', background:'#ffffff', transform: 'translateX(-58%)'}}>
+                            <DatePickerAntd />
                         </div>
                     </div>
                 </div>
