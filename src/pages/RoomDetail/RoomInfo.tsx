@@ -300,13 +300,44 @@ export default function RoomInfo({}: Props) {
 
               </div>
             </div>
-            <div className="pick_options">
+            <div className="pick_options d-flex flex-column">
               <Date/>
               <SelectNumberPassenger/>
+              <button className="datphong_btn">
+                Đặt phòng
+              </button>
+            
           
               
             </div>
-            <div className="cashier"></div>
+            <div className="cashier">
+              <span>Bạn vẫn chưa bị trừ tiền</span>
+              <div className="tien_phong d-flex bg-light">
+              <div className="tinh_tien">
+                $44 x 5 đêm
+              </div>
+              <div className="thanh_tien">
+               $221
+              </div>
+              </div>
+              <div className="tien_dich_vu d-flex bg-danger">
+              <div className="tinh_tien">
+                Phí dịch vụ
+              </div>
+              <div className="thanh_tien">
+               $31
+              </div>
+
+              </div>
+              <div className="tong_tien d-flex">
+                <div>
+                  <span>Tổng:</span>
+                </div>
+                <div>$252</div>
+              </div>
+            
+          
+            </div>
           </div>
         </div>
       </div>
