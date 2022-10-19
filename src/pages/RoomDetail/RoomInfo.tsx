@@ -287,7 +287,7 @@ export default function RoomInfo({}: Props) {
         </div>
         <div className="desRight">
           <div className="booking_area">
-            <div className="price_and_rating d-flex">
+            <div className="price_and_rating1 d-flex justify-content-between align-items-center">
               <div className="price">
                 <span className="price_text">$44</span>
                 <span>/đêm</span>
@@ -295,7 +295,7 @@ export default function RoomInfo({}: Props) {
               <div className="textReview">
               <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
             <span className="tinyText">
-              4.8 (<a href="#">10 đánh giá</a>)
+              4.8 <a href="#">(10 đánh giá)</a>
             </span>
 
               </div>
