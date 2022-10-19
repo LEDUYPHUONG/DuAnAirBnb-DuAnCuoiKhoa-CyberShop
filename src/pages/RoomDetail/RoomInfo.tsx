@@ -2,11 +2,11 @@ import React from "react";
 import { Image } from "antd";
 import Date from "./Date";
 import SelectNumberPassenger from "./SelectNumberPassenger";
-import RoomImage from "./RoomImage";
-
+import WriteComment from "./WriteComment";
+import Comment from "./Comment";
 import { NavLink } from "react-router-dom";
 import ReactDOM from "react-dom";
-import { Gallery } from "react-grid-gallery";
+
 
 type Props = {};
 
@@ -317,7 +317,6 @@ export default function RoomInfo({}: Props) {
             <div className="pick_options d-flex flex-column">
               <Date />
               <SelectNumberPassenger />
-
               <button className="datphong_btn">Đặt phòng</button>
               <span className="text-center mt-2">Bạn vẫn chưa bị trừ tiền</span>
             </div>
@@ -344,10 +343,12 @@ export default function RoomInfo({}: Props) {
           </div>
         </div>
       </div>
+      <div className="commentary">
+      <h4 className="roomName">Đánh giá</h4>
+        <Comment/>
+        <WriteComment/>
 
-      <div className="description"></div>
-      <div className="bookingRoom"></div>
-      <div className="convenient"></div>
+      </div>
     </div>
   );
 }

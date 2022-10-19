@@ -77,7 +77,7 @@
   }
   .roomDes {
     margin-top: 20px;
-    height: 1000px;
+    height: 925px;
     .desLeft {
       width: 70%;
       // background-color: blanchedalmond;
@@ -266,6 +266,33 @@
           }
         }
       }
+    }
+  }
+  .commentary {
+    .ant-comment-avatar {
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .ant-comment-content{
+     
+      .ant-comment-content-author{
+        display: flex;
+        flex-direction: column;
+        .ant-comment-content-author-name{
+          font-size: 16px;
+          color: black;
+          font-weight: 500;
+        }
+        .ant-comment-content-author-time{
+          font-size: 14px;
+          font-weight: 400;
+          color:#8e9092
+         
+        }
+      }
+      
     }
   }
 }
