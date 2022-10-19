@@ -1,6 +1,9 @@
 import React from "react";
-import Date from './Date'
-import SelectNumberPassenger from './SelectNumberPassenger'
+import { Image } from "antd";
+import Date from "./Date";
+import SelectNumberPassenger from "./SelectNumberPassenger";
+import RoomImage from "./RoomImage";
+
 import { NavLink } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { Gallery } from "react-grid-gallery";
@@ -27,7 +30,6 @@ export default function RoomInfo({}: Props) {
             <i className="fa fa-map-marker" style={{ color: "#ec6e6e" }}></i>
             <span className="tinyText">
               <a href="#">Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN</a>
-              
             </span>
           </div>
         </div>
@@ -45,36 +47,49 @@ export default function RoomInfo({}: Props) {
       </div>
       <div className="roomPhoto">
         <div className="row">
-          <div className="item1">
-            <img
-              src="http://xuonggooccho.com/wp-content/uploads/2020/10/trang-tri-noi-that-phong-ngu-dep.jpg"
-              alt="roomPhoto"
-            />
-          </div>
-          <div className="item">
-            <img
-              src="https://www.cleanipedia.com/images/5iwkm8ckyw6v/2BFigZgUEMCk0v55yfycxa/e9ae78c9f4ce46f417aa1c1b03f98333/bm9pLXRoYXQtcGhvbmcta2hhY2gtZ29tLW5odW5nLWdpLmpwZWc/990w-660h/n%E1%BB%99i-th%E1%BA%A5t-ph%C3%B2ng-kh%C3%A1ch-g%E1%BB%93m-nh%E1%BB%AFng-g%C3%AC-v%C3%A0-c%C3%A1ch-l%E1%BB%B1a-ch%E1%BB%8Dn-ph%C3%B9-h%E1%BB%A3p.jpg"
-              alt="roomPhoto"
-            />
-          </div>
-          <div className="item item3">
-            <img
-              src="https://ancu.me/images/201810/man-nhan-55-mau-thiet-ke-san-vuon-vuon-hoa-nho-dep-cuc-moi-la/man-nhan-55-mau-thiet-ke-san-vuon-vuon-hoa-nho-dep-cuc-moi-la.jpg"
-              alt="roomPhoto"
-            />
-          </div>
-          <div className="item">
-            <img
-              src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2018/05/the-myst2.png"
-              alt="roomPhoto"
-            />
-          </div>
-          <div className="item item5">
-            <img
-              src="https://xaydungvincon.com/Content/Images/FileUpload/2020/9/mau-phong-tam-nho-dep0.jpg"
-              alt="roomPhoto"
-            />
-          </div>
+          <Image.PreviewGroup>
+            <div className="item1">
+              <Image
+              height={387}
+             
+                src="http://xuonggooccho.com/wp-content/uploads/2020/10/trang-tri-noi-that-phong-ngu-dep.jpg"
+                alt="roomPhoto"
+              />
+            </div>
+            <div className="item">
+              <Image
+                height={191}
+                width={320}
+                src="https://www.cleanipedia.com/images/5iwkm8ckyw6v/2BFigZgUEMCk0v55yfycxa/e9ae78c9f4ce46f417aa1c1b03f98333/bm9pLXRoYXQtcGhvbmcta2hhY2gtZ29tLW5odW5nLWdpLmpwZWc/990w-660h/n%E1%BB%99i-th%E1%BA%A5t-ph%C3%B2ng-kh%C3%A1ch-g%E1%BB%93m-nh%E1%BB%AFng-g%C3%AC-v%C3%A0-c%C3%A1ch-l%E1%BB%B1a-ch%E1%BB%8Dn-ph%C3%B9-h%E1%BB%A3p.jpg"
+                alt="roomPhoto"
+              />
+            </div>
+            <div className="item item3">
+              <Image
+                height={191}
+                width={320}
+                src="https://ancu.me/images/201810/man-nhan-55-mau-thiet-ke-san-vuon-vuon-hoa-nho-dep-cuc-moi-la/man-nhan-55-mau-thiet-ke-san-vuon-vuon-hoa-nho-dep-cuc-moi-la.jpg"
+                alt="roomPhoto"
+              />
+            </div>
+            <div className="item">
+              <Image
+                className="img"
+                height={191}
+                width={320}
+                src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2018/05/the-myst2.png"
+                alt="roomPhoto"
+              />
+            </div>
+            <div className="item item5">
+              <Image
+                height={191}
+                width={320}
+                src="https://xaydungvincon.com/Content/Images/FileUpload/2020/9/mau-phong-tam-nho-dep0.jpg"
+                alt="roomPhoto"
+              />
+            </div>
+          </Image.PreviewGroup>
         </div>
       </div>
       <div className="roomDes d-flex">
@@ -293,50 +308,38 @@ export default function RoomInfo({}: Props) {
                 <span>/đêm</span>
               </div>
               <div className="textReview">
-              <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
-            <span className="tinyText">
-              4.8 <a href="#">(10 đánh giá)</a>
-            </span>
-
+                <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
+                <span className="tinyText">
+                  4.8 <a href="#">(10 đánh giá)</a>
+                </span>
               </div>
             </div>
             <div className="pick_options d-flex flex-column">
-              <Date/>
-              <SelectNumberPassenger/>
-              <button className="datphong_btn">
-                Đặt phòng
-              </button>
-            
-          
-              
+              <Date />
+              <SelectNumberPassenger />
+
+              <button className="datphong_btn">Đặt phòng</button>
+              <span className="text-center mt-2">Bạn vẫn chưa bị trừ tiền</span>
             </div>
             <div className="cashier">
-              <span>Bạn vẫn chưa bị trừ tiền</span>
-              <div className="tien_phong d-flex bg-light">
-              <div className="tinh_tien">
-                $44 x 5 đêm
+              <div className="tien_phong d-flex justify-content-between">
+                <div className="tinh_tien">
+                  <a href="#">$44 x 5 đêm</a>
+                </div>
+                <div className="thanh_tien">$221</div>
               </div>
-              <div className="thanh_tien">
-               $221
+              <div className="tien_dich_vu d-flex justify-content-between">
+                <div className="tinh_tien">
+                  <a href="#"> Phí dịch vụ</a>
+                </div>
+                <div className="thanh_tien">$31</div>
               </div>
-              </div>
-              <div className="tien_dich_vu d-flex bg-danger">
-              <div className="tinh_tien">
-                Phí dịch vụ
-              </div>
-              <div className="thanh_tien">
-               $31
-              </div>
-
-              </div>
-              <div className="tong_tien d-flex">
-                <div>
+              <div className="tong_tien d-flex justify-content-between">
+                <div className="mt-2">
                   <span>Tổng:</span>
                 </div>
-                <div>$252</div>
+                <div className="mt-2">$252</div>
               </div>
-            
-          
             </div>
           </div>
         </div>

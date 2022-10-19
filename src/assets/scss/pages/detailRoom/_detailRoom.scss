@@ -1,7 +1,7 @@
 .container {
-    .roomName {
-      font-size: 30px;
-    }
+  .roomName {
+    font-size: 30px;
+  }
   .review {
     margin-bottom: 25px;
     .textReview {
@@ -16,7 +16,7 @@
         font-size: 14px;
         color: rgb(142, 144, 146);
         font-weight: 500;
-        a{
+        a {
           color: #8e9092;
         }
       }
@@ -44,31 +44,32 @@
       row-gap: 5px;
       .item {
         padding: 0;
-        img {
+        Image {
           width: 100%;
           height: 250px;
           display: block;
+          background-color: blue;
         }
       }
       .item1 {
         padding-right: 0;
         grid-column: 1 / span 2;
         grid-row: 1 / span 2;
-        // background-color: aqua;
-        img {
+        Image {
           width: 100%;
           height: 100%;
           border-bottom-left-radius: 12px;
           border-top-left-radius: 12px;
+          background-color: aqua;
         }
       }
       .item3 {
-        img {
+        Image {
           border-top-right-radius: 12px;
         }
       }
       .item5 {
-        img {
+        Image {
           border-bottom-right-radius: 12px;
         }
       }
@@ -188,15 +189,14 @@
       border: 1px solid rgb(221, 221, 221);
       // background-color: rgb(95, 203, 13);
 
-      .booking_area{
+      .booking_area {
         padding: 20px 20px;
-        .price_and_rating1{
+        .price_and_rating1 {
           // background-color: #0d68c3;
-          .price{
-            .price_text{
-            font-size: 28px;
-            font-weight: 500;
-            
+          .price {
+            .price_text {
+              font-size: 28px;
+              font-weight: 500;
             }
           }
           .textReview {
@@ -206,36 +206,36 @@
               padding-right: 2px;
               margin-right: 3px;
             }
-      
+
             .tinyText {
               font-size: 14px;
               font-weight: 500;
-              a{
+              a {
                 color: #8e9092;
               }
             }
           }
         }
 
-        .pick_options{
+        .pick_options {
           width: 100%;
           margin: 20px 0;
-          .ant-picker, .ant-picker-range{
+          .ant-picker,
+          .ant-picker-range {
             border-radius: 7px;
             height: 40px;
             width: 100%;
             border: 1px solid #8e9092;
             font-size: 12px;
-          
           }
-          .ant-select-selector{
+          .ant-select-selector {
             border: 1px solid #8e9092;
             border-radius: 7px;
             height: 40px;
             align-items: center;
           }
           .datphong_btn {
-            background: #FF385C;
+            background: #ff385c;
             border: none;
             color: #ffffff;
             border-radius: 7px;
@@ -245,8 +245,26 @@
             margin-top: 20px;
           }
         }
-    
 
+        .cashier {
+          .tien_phong,
+          .tien_dich_vu {
+            line-height: 30px;
+            .tinh_tien {
+              a {
+                color: black;
+                text-decoration: underline;
+              }
+            }
+          }
+
+          .tong_tien {
+            margin-top: 10px;
+            border-top: 1.5px solid rgba(181, 177, 177, 0.4);
+            font-size: 17px;
+            font-weight: 600;
+          }
+        }
       }
     }
   }

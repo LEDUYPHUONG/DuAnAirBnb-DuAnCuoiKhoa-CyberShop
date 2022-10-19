@@ -9,8 +9,11 @@ const handleChange = (value: string) => {
 
 const App: React.FC = () => (
   <>
-    <Select defaultValue="1ng" onChange={handleChange}>
-      <Option value="1ng">1 Khách</Option>
+    <Select defaultValue="1 khách" onChange={handleChange}>
+      <Option value="adult">
+        <button className='btn btn-primary'>-</button> 1
+        <button className='btn btn-primary'>+</button>
+        </Option>
       <Option value="2ng">2 Khách</Option>
       <Option value="4ng">4 Khách</Option>
     </Select>
