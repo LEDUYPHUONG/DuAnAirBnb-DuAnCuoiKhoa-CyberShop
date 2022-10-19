@@ -2,7 +2,10 @@ import React from 'react'
 
 
 export default function ModalHeader() {
+    const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89) 0%, rgb(189, 30, 89) 27.5%, rgb(215, 4, 102) 40%, rgb(227, 28, 95) 57.5%, rgb(230, 30, 77) 75%, rgb(255, 56, 92) 100%)'
+
   return (
+
     <>
         <div className="modal-container">
             <div className="modal fade px-0 " id="myModal" role="dialog">
@@ -62,7 +65,7 @@ export default function ModalHeader() {
                                                         <span>Khách</span>
                                                         <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm khách</span>
                                                     </span>
-                                                    <span className='btn buttonGradient' style={{border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
+                                                    <span className='btn d-flex justify-content-center align-items-center' style={{backgroundImage:bgImgBtnSearch, backgroundSize: "200% 200%",border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
                                                         <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
                                                         <span className='ps-3'>Tìm kiếm</span>
                                                     </span>
