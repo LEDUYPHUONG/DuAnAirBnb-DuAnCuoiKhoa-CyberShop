@@ -146,6 +146,54 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                             <DatePickerAntd />
                         </div>
                     </div>
+                    <div className='d-none modal-content'>
+                        <div className="book-amount border-0 rounded-5 p-5" style={{width:'400px', height:'350px', textAlign:'center',zIndex:10, position:"fixed", top: 163, left:'50%', background:'#ffffff'}}>
+                            <div className="item-bookamount d-flex justify-content-between align-items-center border-bottom border-1">
+                                <div className="category text-start">
+                                    <p>Người lớn</p>
+                                    <p>Từ 13 tuổi trở lên</p>
+                                </div>
+                                <div>
+                                    <button className='btn btn-primary'>-</button>
+                                    <span> 1 </span>
+                                    <button className='btn btn-primary'>+</button>
+                                </div>
+                            </div>
+                            <div className="item-bookamount d-flex justify-content-between align-items-center border-bottom border-1">
+                                <div className="category text-start">
+                                    <p>Trẻ em</p>
+                                    <p>Từ 2 đến 12 tuổi</p>
+                                </div>
+                                <div>
+                                    <button className='btn btn-primary'>-</button>
+                                    <span> 1 </span>
+                                    <button className='btn btn-primary'>+</button>
+                                </div>
+                            </div>
+                            <div className="item-bookamount d-flex justify-content-between align-items-center border-bottom border-1">
+                                <div className="category text-start">
+                                    <p>Em bé</p>
+                                    <p>Dưới 2 tuổi</p>
+                                </div>
+                                <div>
+                                    <button className='btn btn-primary'>-</button>
+                                    <span> 1 </span>
+                                    <button className='btn btn-primary'>+</button>
+                                </div>
+                            </div>
+                            <div className="item-bookamount d-flex justify-content-between align-items-center border-bottom border-1">
+                                <div className="category text-start">
+                                    <p>Thú cưng</p>
+                                    <p style={{width:'200px'}}>Bạn sẽ mang theo động vật phục vụ?</p>
+                                </div>
+                                <div>
+                                    <button className='btn btn-primary'>-</button>
+                                    <span> 1 </span>
+                                    <button className='btn btn-primary'>+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
