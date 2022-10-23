@@ -25,7 +25,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                         <img style={{height:"33px", cursor: "pointer"}} src="/img/home/logo-text.png" alt="..." />
                                         </div>
                                     </div>
-                                    <div className="order-bar">
+                                    <div className="order-bar-modal">
                                         <div className="location d-flex justify-content-between align-items-center" style={{padding: "5px 7px"}}>
                                         <div style={{width:1, height:0}}></div>
                                         <button className='btn text-dark' type='button'><span style={{fontFamily: "Roboto-Regular",fontSize: "16px", outline:"none",borderRadius:"0px"}} >Chổ ở</span></button>
@@ -50,23 +50,23 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                             <div className="header-main m-auto">
                                 <div className="header d-flex justify-content-between align-items-center pb-4" >
                                     <div></div>
-                                    <div className="order-bar rounded-pill" style={{ border: "2px solid rgba(204, 204, 204, 0.5)", overflow:"hidden"}}>
+                                    <div className="order-bar-modal rounded-pill" style={{ border: "2px solid rgba(204, 204, 204, 0.5)", overflow:"hidden"}}>
                                         <div className="location d-flex justify-content-between align-items-center" style={{background:"#EBEBEB"}}>
                                             <div style={{width:1, height:0}}></div>
                                             <button className='btn text-dark d-flex flex-column rounded-pill buttonUserActive buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}} type='button'>
                                                 <span>Địa điểm</span>
-                                                <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Tìm kiếm điểm đến</span>
+                                                <input type="text" placeholder='Tìm kiếm điểm đến' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
                                             </button>
                                             <div style={{width:1, height:24, background:"#cccccc"}}></div>
                                                 <button className='btn text-dark d-flex flex-column rounded-pill buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}}>
                                                     <span>Ngày</span>
-                                                    <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm ngày</span>
+                                                    <input className='book-day' type="text" placeholder='Thêm ngày' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
                                                 </button>
                                                 <div style={{width:1, height:24, background:"#cccccc"}}></div>
                                                 <button className='btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover' style={{width:"300px", padding: "6px 5px 6px 25px"}}>
                                                     <span className='text-dark d-flex flex-column align-items-start' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>
                                                         <span>Khách</span>
-                                                        <span style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}>Thêm khách</span>
+                                                        <input className='book-people' type="text" placeholder='Thêm khách' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
                                                     </span>
                                                     <span className='btn d-flex justify-content-center align-items-center' style={{backgroundImage:bgImgBtnSearch, backgroundSize: "200% 200%",border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
                                                         <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
@@ -141,7 +141,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                             </div>
                         </div>
                     </div>
-                    <div className='d-none modal-content'>
+                    <div className='d-none  modal-content'>
                         <div className="date-picker border-0 rounded-5" style={{width:'900px', height:'500px', textAlign:'center',zIndex:10, position:"fixed", top: 163, left:'50%', background:'#ffffff', transform: 'translateX(-58%)'}}>
                             <DatePickerAntd />
                         </div>

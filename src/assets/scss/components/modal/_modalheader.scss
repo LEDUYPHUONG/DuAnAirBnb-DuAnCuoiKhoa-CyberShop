@@ -21,3 +21,13 @@ button:hover, button:focus {
         background: #dddddd !important;
     }
 }
+
+input{
+    border: none;
+    background: transparent;
+    .book-day, .book-people{
+        &:focus-visible{
+            user-select: none;
+        }
+    }
+}

@@ -17,7 +17,7 @@ export default function HeaderPage({title}: Props) {
               <img style={{height:"33px", cursor: "pointer"}} src="/img/home/logo-text.png" alt="..." />
             </div>
           </div>
-          <div className="order-bar rounded-pill" style={{ boxShadow: "0 2px 4px rgba(0,0,0,0.18)", border: "1px solid rgba(204, 204, 204, 0.5)" }}>
+          <div className="order-bar rounded-pill" style={{ boxShadow: "0 2px 4px rgba(0,0,0,0.1)", border: "1px solid rgba(204, 204, 204, 0.5)" }}>
             <div className="location d-flex justify-content-between align-items-center" style={{padding: "5px 7px"}}>
               <div style={{width:1, height:0}}></div>
               <button className='btn text-dark' style={{fontSize: "14px", outline:"none"}} data-toggle="modal" data-target="#myModal" type='button'>Địa điểm bất kì</button>
@@ -33,9 +33,9 @@ export default function HeaderPage({title}: Props) {
           <div className="singin-singout">
             <div className="location d-flex justify-content-between align-items-center">
               <div style={{width:1, height:0}}></div>
-              <button className='btn text-dark p-0' style={{fontSize: "14px", outline:"none"}}>Trở thành chủ nhà</button>
-              <button className='btn text-dark' style={{outline:"none"}}><i className="fa-solid fa-globe"></i></button>
-              <button className='btn rounded-pill d-flex justify-content-between align-items-center' style={{border: "1px solid rgba(204, 204, 204, 0.5)", outline:"none"}}>
+              <button className='btn-BAhost-globe btn rounded-pill text-dark' style={{fontSize: "14px", outline:"none", height:'44px', padding:'0 15px'}}>Trở thành chủ nhà</button>
+              <button className='btn-BAhost-globe btn rounded-pill text-dark' style={{outline:"none",  height:'44px', width:'44px'}}><i className="fa-solid fa-globe" ></i></button>
+              <button className='btn-singin-singout btn rounded-pill d-flex justify-content-between align-items-center ms-2' style={{border: "1px solid rgba(204, 204, 204, 0.5)", outline:"none"}}>
                 <i className="fa-solid fa-bars pe-3 text-dark"></i>
                 <i className="fa-solid fa-circle-user text-dark" style={{width:30, height:30,lineHeight:"30px", fontSize:30}} ></i>
               </button>
