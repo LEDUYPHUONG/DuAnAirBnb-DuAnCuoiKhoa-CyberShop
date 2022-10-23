@@ -1,7 +1,4 @@
-import { DatePicker } from 'antd'
 import React from 'react'
-import DatePickerAntd from '../../component/datePickerAntd/DatePickerAntd'
-import 'antd/dist/antd.css'
 type Props = {
   title?: string
 }
@@ -9,7 +6,7 @@ type Props = {
 export default function Demo({ title }: Props) {
   return (
     <div>
-      <DatePickerAntd />
+              <iframe src="https://sosmap.net" height="700" width="100%" title=""></iframe>
 
     </div>
   )

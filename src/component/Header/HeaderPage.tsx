@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 type Props = {
     title?:string
@@ -9,14 +10,16 @@ export default function HeaderPage({title}: Props) {
     <div className='header-container' style={{position: 'fixed', top:0, left:0, width:"100%", background: "#ffffff", borderBottom:"1px solid #cccccc", zIndex:10}}>
       <div className="header-top m-auto" style={{  height:"80px", padding: "0 48px"}}>
         <div className="header d-flex justify-content-between align-items-center" >
-          <div className="header_logo d-flex justify-content-center align-items-center" style={{height:"80px"}}>
-            <div className="header_logo d-none">
-              <img style={{height:"33px", cursor: "pointer"}} src="/img/home/logo.png" alt="..." />
+          <NavLink to='/'>
+            <div className="header_logo d-flex justify-content-center align-items-center" style={{height:"80px"}}>
+              <div className="header_logo d-none">
+                <img style={{height:"33px", cursor: "pointer"}} src="/img/home/logo.png" alt="..." />
+              </div>
+              <div className="header_logo-text d-block">
+                <img style={{height:"33px", cursor: "pointer"}} src="/img/home/logo-text.png" alt="..." />
+              </div>
             </div>
-            <div className="header_logo-text d-block">
-              <img style={{height:"33px", cursor: "pointer"}} src="/img/home/logo-text.png" alt="..." />
-            </div>
-          </div>
+          </NavLink>
           <div className="order-bar rounded-pill" style={{ boxShadow: "0 2px 4px rgba(0,0,0,0.1)", border: "1px solid rgba(204, 204, 204, 0.5)" }}>
             <div className="location d-flex justify-content-between align-items-center" style={{padding: "5px 7px"}}>
               <div style={{width:1, height:0}}></div>

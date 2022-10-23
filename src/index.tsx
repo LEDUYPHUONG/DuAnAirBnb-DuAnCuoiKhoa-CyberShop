@@ -12,6 +12,7 @@ import Demo from './pages/Demo/Demo';
 import Home from './pages/Home/Home';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
 import '../src/assets/scss/style.scss';
+import MapHome from './component/MapHome/MapHome';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,6 +25,7 @@ root.render(
           <Route index element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='login' element={<Login/>}></Route>
+          <Route path='map' element={<MapHome/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
           <Route path='detail'>
             <Route path=':id'></Route>
