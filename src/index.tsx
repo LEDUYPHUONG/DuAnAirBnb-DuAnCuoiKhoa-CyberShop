@@ -13,6 +13,8 @@ import Home from './pages/Home/Home';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
 import '../src/assets/scss/style.scss';
 import MapHome from './component/MapHome/MapHome';
+import Admin from './pages/Admin/Admin';
+import Profile from './pages/Profile/Profile';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -27,10 +29,12 @@ root.render(
           <Route path='login' element={<Login/>}></Route>
           <Route path='map' element={<MapHome/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
+          <Route path='profile' element={<Profile/>}></Route>
           <Route path='detail'>
             <Route path=':id'></Route>
           </Route>
           <Route path='*' element={<Navigate to='' />}></Route>
+          <Route path='admin' element={<Admin/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
