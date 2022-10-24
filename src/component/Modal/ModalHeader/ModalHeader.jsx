@@ -60,13 +60,13 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                             <div style={{width:1, height:24, background:"#cccccc"}}></div>
                                                 <button className='btn text-dark d-flex flex-column rounded-pill buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}}>
                                                     <span>Ngày</span>
-                                                    <input className='book-day' type="text" placeholder='Thêm ngày' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
+                                                    <input className='book-day' type="text" disabled placeholder='Thêm ngày' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
                                                 </button>
                                                 <div style={{width:1, height:24, background:"#cccccc"}}></div>
                                                 <button className='btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover' style={{width:"300px", padding: "6px 5px 6px 25px"}}>
                                                     <span className='text-dark d-flex flex-column align-items-start' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>
                                                         <span>Khách</span>
-                                                        <input className='book-people' type="text" placeholder='Thêm khách' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
+                                                        <input className='book-people' type="text" disabled placeholder='Thêm khách' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
                                                     </span>
                                                     <span className='btn d-flex justify-content-center align-items-center' style={{backgroundImage:bgImgBtnSearch, backgroundSize: "200% 200%",border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
                                                         <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
@@ -80,19 +80,19 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                             </div>
                         </div>
                     </div>
-                    <div className="d-none modal-content modal-lg  rounded-5 overflow-hidden" style={{zIndex:10, position:"fixed", top: 161, left:'50%', background:'#ffffff', transform: 'translateX(-58%)'}}>
-                        <div>
+                    <div className="modal-content modal-lg  rounded-5 overflow-hidden" style={{width:'600px',zIndex:10, position:"fixed", top: 161, left:'50%', background:'#ffffff', transform: 'translateX(-86%)'}}>
+                        <div >
                             <div className="location-container">
                                 <div className="location-out">
                                     <div className="location-inner p-5">
-                                        <p className='ps-2'>Tìm kiếm theo khu vực</p>
+                                        <p className='ps-2 mb-0'>Tìm kiếm theo khu vực</p>
                                         <div className="location-map d-flex flex-wrap">
                                         <div className="col-4 pt-5">
                                             <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
                                                 <img width={'100%'} height={'100%'} src="./img/home/map/timKiemLinhHoat.jpg" alt="..." />
                                             </div>
                                             <div className="title ps-2 pt-3">
-                                                <p className='mb-0'>Tìm kiếm linh hoạt</p>
+                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Tìm kiếm linh hoạt</p>
                                             </div>
                                         </div>
                                         <div className="col-4 pt-5">
@@ -100,7 +100,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                                 <img width={'100%'} height={'100%'} src="./img/home/map/chauAu.jpg" alt="..." />
                                             </div>
                                             <div className="title ps-2 pt-3">
-                                                <p className='mb-0'>Châu Âu</p>
+                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Châu Âu</p>
                                             </div>
                                         </div>
                                         <div className="col-4 pt-5">
@@ -108,7 +108,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                                 <img width={'100%'} height={'100%'} src="./img/home/map/thaiLan.jpg" alt="..." />
                                             </div>
                                             <div className="title ps-2 pt-3">
-                                                <p className='mb-0'>Thái Lan</p>
+                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Thái Lan</p>
                                             </div>
                                         </div>
                                         <div className="col-4 pt-5">
@@ -116,7 +116,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                                 <img width={'100%'} height={'100%'} src="./img/home/map/phap.jpg" alt="..." />
                                             </div>
                                             <div className="title ps-2 pt-3">
-                                                <p className='mb-0'>Pháp</p>
+                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Pháp</p>
                                             </div>
                                         </div>
                                         <div className="col-4 pt-5">
@@ -124,7 +124,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                                 <img width={'100%'} height={'100%'} src="./img/home/map/hoaKy.jpg" alt="..." />
                                             </div>
                                             <div className="title ps-2 pt-3">
-                                                <p className='mb-0'>Hoa Kỳ</p>
+                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Hoa Kỳ</p>
                                             </div>
                                         </div>
                                         <div className="col-4 pt-5">
@@ -132,7 +132,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                                 <img width={'100%'} height={'100%'} src="./img/home/map/hanQuoc.jpg" alt="..." />
                                             </div>
                                             <div className="title ps-2 pt-3">
-                                                <p className='mb-0'>Hàn Quốc</p>
+                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Hàn Quốc</p>
                                             </div>
                                         </div>
                                         </div>
