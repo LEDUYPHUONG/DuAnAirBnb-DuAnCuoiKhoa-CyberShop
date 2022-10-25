@@ -141,7 +141,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                             </div>
                         </div>
                     </div>
-                    <div className='d-none  modal-content'>
+                    <div className='d-none modal-content'>
                         <div className="date-picker border-0 rounded-5" style={{width:'900px', height:'500px', textAlign:'center',zIndex:10, position:"fixed", top: 163, left:'50%', background:'#ffffff', transform: 'translateX(-58%)'}}>
                             <DatePickerAntd />
                         </div>

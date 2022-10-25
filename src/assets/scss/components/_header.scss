@@ -16,6 +16,9 @@
             &:hover{
                 box-shadow: 0 4px 4px rgba(225, 225, 225, 0.5) !important;
             }
+            &::after{
+                display: none;
+            }
         }
     }
 }
