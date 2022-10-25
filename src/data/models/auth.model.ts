@@ -26,4 +26,4 @@ export interface AccountInfo {
   permissions: Permission;
 }
 
-export const TOKEN_KEY = "token";
+export const TOKEN_KEY = "tokenCybersoft";

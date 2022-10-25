@@ -1,12 +1,10 @@
 import {configureStore,PayloadAction} from '@reduxjs/toolkit'
+import productReducer from './reducer/productReducer'
 
 
 export const store = configureStore({
     reducer:{
-        numberReducer: (state,action:PayloadAction<number>) =>{
-            return 1;
-        },
-       
+        productReducer: productReducer
     }
 })
 
