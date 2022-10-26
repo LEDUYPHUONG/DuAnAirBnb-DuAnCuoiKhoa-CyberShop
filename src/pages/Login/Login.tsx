@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
 
-type Props = {
-    title?: string
-}
+type Props = {};
 
-export default function Login({title}: Props) {
-  return (
-    <div>Login</div>
-  )
+export default function Login({}: Props) {
+  return <div className="container">
+    <div className="sign_in d-flex">
+      <div className="sign_in_left">
+        
+      </div>
+      <div className="sign_in_right"></div>
+    </div>
+  </div>;
 }

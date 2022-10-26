@@ -1,0 +1,29 @@
+.container {
+  height: 650px;
+  margin-top: 50px;
+  .sign_in {
+    height: 100%;
+    border-radius: 25px;
+    // background: #000;
+    border: 0.5px solid rgba(181, 177, 177, 0.4);
+    box-shadow: 0px 5px 10px rgba(139, 137, 137, 0.3);
+
+    .sign_in_left {
+      background-color: aqua;
+      width: 65%;
+      height: 100%;
+      background-image: url(../../../../../public/img/login.jpg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 25px;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    //   filter:brightness(50%)
+    }
+    .sign_in_right {
+      width: 50%;
+      height: 100%;
+    }
+  }
+}

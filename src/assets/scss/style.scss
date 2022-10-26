@@ -1,13 +1,11 @@
-@import './base/base';
-@import './themes/variable';
+@import "./base/base";
+@import "./themes/variable";
 //component
-@import './components/header';
+@import "./components/header";
 
 //page
-@import './pages/home/home';
+@import "./pages/home/home";
 @import "./pages//detailRoom/detailRoom";
+@import "./pages/login/login";
 //responsive
-@import './responsive/resposive';
-
-
-
+@import "./responsive/resposive";
