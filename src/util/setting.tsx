@@ -105,12 +105,10 @@ http.interceptors.request.use(
 
 // cấu hình kết quả trả về
 http.interceptors.response.use((response) => {
-    console.log(response);
     return response;
 }, err => {
     console.log(err.response.status);
     if(err.response.status === 400 || err.response.status === 404){
-       
         // history.push('/');
         return Promise.reject(err)
     }

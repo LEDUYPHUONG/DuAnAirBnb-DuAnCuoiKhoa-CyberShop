@@ -6,5 +6,6 @@ const dispatch = useAppDispatch()
 const {arrProduct} = useAppSelector((state) => state.productReducer)
 useEffect(() =>{
     dispatch(getProductApi())
+    console.log('arrProduct in location.api.tsx',arrProduct);
 },[])
 export const arrLocationApi = arrProduct

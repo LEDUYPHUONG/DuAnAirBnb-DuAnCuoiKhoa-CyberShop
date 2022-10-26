@@ -37,7 +37,7 @@ export const getProductApi = () => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await http.get('/vi-tri');
-      console.log(response);
+      dispatch(setArrProductApi(response.data.content))
     } catch (error) {
       console.log(error);
     }
