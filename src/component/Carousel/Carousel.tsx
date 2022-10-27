@@ -13,7 +13,7 @@ const renderItemCarousel = () => {
   return arrIconCarousell.map((item,index) => {
     return <div key={index}>
               <div className="d-flex flex-column justify-content-center align-items-center me-5" style={{ height:"80px", opacity:0.6, cursor:"pointer"}}>
-                <img width={24} height={24} src={"./img/home/iconcarousel/icon" + `${item.srcId}` + ".jpg"} alt="..." />
+                <img width={24} height={24} src={"./img/home/iconcarousel/iconA" + `${item.srcId}` + ".jpg"} alt="..." />
                 <span className="d-block" style={{fontSize:"12px", fontWeight:"normal"}}>{item.title}</span>
               </div>
             </div>
