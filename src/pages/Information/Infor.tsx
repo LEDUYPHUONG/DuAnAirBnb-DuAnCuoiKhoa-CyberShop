@@ -1,5 +1,6 @@
 import React from "react";
 import UserInforItem from '../../component/UserInfor/UserInforItem'
+import { NavLink } from 'react-router-dom'
 
 type Props = {
   title?: string;
@@ -45,18 +46,6 @@ export default function Infor({ title }: Props) {
               </div>
             </div>
             <div className="order-bar rounded-pill">
-              {/* <div className="location d-flex justify-content-between align-items-center" style={{padding: "7px"}}>
-              <div style={{width:1, height:0}}></div>
-              <button className='btn text-dark' style={{fontSize: "14px"}}>Địa điểm bất kì</button>
-              <div style={{width:1, height:24, background:"#cccccc"}}></div>
-              <button className='btn text-dark' style={{fontSize: "14px"}}>Tuần bất kì</button>
-              <div style={{width:1, height:24, background:"#cccccc"}}></div>
-              <button className='btn text-dark' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px"}}>Thêm khách</button>
-              <button className='btn' style={{border: "none", background: "red", color: "white", borderRadius: "50%", width: "40px", height: "40px", lineHeight: "14px", textAlign: "center"}}>
-                <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
-              </button>
-              <div></div>
-            </div> */}
             </div>
             <div className="singin-singout">
               <div className="location d-flex justify-content-between align-items-center p-2">
@@ -91,7 +80,29 @@ export default function Infor({ title }: Props) {
           </div>
         </div>
       </div>
-      <UserInforItem></UserInforItem>
+      <UserInforItem />
+      <div className='d-flex justify-content-around align-items-center' style={{ position: "fixed", bottom: 0, left: 0, height: "47px", backgroundColor: "rgb(247, 247, 247)", border: "1px solid #cccccc", width: "100%", padding: "16px 48px", paddingLeft: "80px", paddingRight: "80px", fontSize: "16px", lineHeight: "16px", zIndex: 10 }}>
+        <div className='footer-left d-flex' style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}>
+          © 2022 Airbnb, Inc.
+          <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }} className="fa-solid fa-circle"></i></div>
+          <NavLink to=""><span className='text-dark' style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}>Quyền riêng tư</span></NavLink>
+          <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }} className="fa-solid fa-circle"></i></div>
+          <NavLink to=""><span className='text-dark' style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}>Điều khoản</span></NavLink>
+          <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }} className="fa-solid fa-circle"></i></div>
+          <NavLink to=""><span className='text-dark' style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}>Sơ đồ trang web</span></NavLink>
+        </div>
+        <div className='footer-right d-flex'>
+          <i className="fa-solid fa-globe"></i>
+          <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }}></i></div>
+          <NavLink to=""><span className='text-dark' style={{ fontSize: "14px" }}>Tiếng Việt (VN)</span></NavLink>
+          <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }}></i></div>
+          <NavLink to=""><span className='text-dark' style={{ fontSize: "14px" }}>$ USD</span></NavLink>
+          <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }}></i></div>
+          <NavLink to=""><span className='text-dark' style={{ fontSize: "14px" }}>Hỗ trợ và tài nguyên</span></NavLink>
+          <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }}></i></div>
+          <i className="fa-solid fa-chevron-up"></i>
+        </div>
+      </div>
     </div>
   );
 }
