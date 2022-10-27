@@ -13,6 +13,7 @@ import Home from './pages/Home/Home';
 import Roomlist from './pages/Roomlist/RoomListPage';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
 import '../src/assets/scss/style.scss';
+import Infor  from './pages/Information/Infor';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,14 +23,14 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='' element={<ResponsiveItem Component={HomeTemplate} ComponentMobile={HomeTemplateMobile}/>}>
-          <Route index element={<ResponsiveItem Component={Roomlist} ComponentMobile={Roomlist} />}></Route>
+          <Route index element={<ResponsiveItem Component={Infor} ComponentMobile={Infor} />}></Route>
           <Route path='home' element={<ResponsiveItem Component={Roomlist} ComponentMobile={Roomlist} />}></Route>
           <Route path='login' element={<Login/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
           <Route path='detail'>
             <Route path=':id'></Route>
           </Route>
-          <Route path='listRoom' element = {<Roomlist/>}></Route>
+          <Route path='Information' element = {<Infor/>}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
         </Route>
       </Routes>
