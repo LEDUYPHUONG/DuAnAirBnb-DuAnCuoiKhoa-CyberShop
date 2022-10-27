@@ -14,6 +14,8 @@ import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
 import "./assets/scss/style.scss";
 import 'antd/dist/antd.css'
+import Signup from "./pages/Signup/Signup"
+
 
 // sao cho nay no k nhac lenh khai
 const root = ReactDOM.createRoot(
@@ -27,11 +29,14 @@ root.render(
           <Route index element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='login' element={<Login/>}></Route>
+          <Route path='signup' element={<Signup/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
-          <Route path='detail'>
+          {/* <Route path='detail'>
             <Route path=':id'></Route>
+          </Route> */}
+          <Route path='detailroom' element = {<RoomDetail/>}>
+          <Route path=':id'></Route>
           </Route>
-          <Route path='detailroom' element = {<RoomDetail/>}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
         </Route>
       </Routes>

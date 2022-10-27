@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
+import {NavLink} from "react-router-dom"
 
 type Props = {};
 
 export default function Login({}: Props) {
+  const navigate = useNavigate()
+  const [type, setType] = useState("password");
+  const handleActionPassword = () => {
+    {
+      type === "password" ? setType("text") : setType("password");
+    }
+  };
+
   const frm = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: Yup.object().shape({
-      //check validation
       email: Yup.string()
-        .required("Bạn chưa nhập email này!")
+        .required("Email đang trống")
         .email("Email không đúng định dạng"),
-      password: Yup.string().required("Bạn vẫn chưa nhập mật khẩu này!"),
+      password: Yup.string().required("Mật khẩu đang trống"),
     }),
-    //values là tên mặc định do formik và yup đặt
     onSubmit: (values) => {},
   });
 
   return (
-    <div className="container">
-      <form className="sign_in d-flex" onSubmit={frm.handleSubmit}>
+    <form className="container" onSubmit={frm.handleSubmit}>
+      <div className="sign_in d-flex" >
         <div className="sign_in_left"></div>
         <div className="sign_in_right">
           <div className="bg_cover d-flex flex-column align-items-center justify-content-center">
@@ -32,35 +40,42 @@ export default function Login({}: Props) {
               <input
                 type="text"
                 id="email"
-                placeholder="Tài khoản"
+                placeholder="Email đăng nhập"
                 className="email_inp"
                 onChange={frm.handleChange}
                 onBlur={frm.handleBlur}
               />
-                <span className="text-danger">{frm.errors.email}</span>
-              <input
-                type="password"
-                id="password"
-                placeholder="Mật khẩu"
-                className="password_inp"
-                onChange={frm.handleChange}
-                onBlur={frm.handleBlur}
-              />
+              <span className="text-danger">{frm.errors.email}</span>
+              <div className="d-flex">
+                <input
+                  type={type}
+                  id="password"
+                  placeholder="Mật khẩu"
+                  className="password_inp"
+                  maxLength={35}
+                  onChange={frm.handleChange}
+                  onBlur={frm.handleBlur}
+                />
+                <i
+                  className="bi bi-eye"
+                  onMouseDown={handleActionPassword}
+                  onMouseUp={handleActionPassword}
+                ></i>
+              </div>
               <span className="text-danger">{frm.errors.password}</span>
             </div>
             <div className="action_btn d-flex flex-column align-items-center">
-              <button className="login_btn">
+              <button className="login_btn" type="submit">
                 Đăng nhập
                 <i className="fa-solid fa-door-open"></i>
               </button>
-              <button className="signin_btn">
-                Đăng ký
-                <i className="fa-solid fa-user-plus"></i>
-              </button>
+              <span>Bạn chưa có tài khoản? 
+                <NavLink  className = "signin_navigate" to={"/signup"}>Đăng ký ngay</NavLink>
+                </span>
             </div>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
