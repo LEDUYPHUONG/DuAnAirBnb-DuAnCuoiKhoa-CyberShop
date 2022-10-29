@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
 import Carousel from '../../component/Carousel/Carousel'
 import FooterPage from '../../component/Footer/FooterPage'
 import HeaderPage from '../../component/Header/HeaderPage'
 import ItemProduct from '../../component/ItemProduct/ItemProduct'
 import ModalHeader from '../../component/Modal/ModalHeader/ModalHeader'
-import { RootState } from '../../redux/configStore'
-import { useAppDispatch } from '../../redux/example/hooks'
-import { getProductApi } from '../../redux/reducer/productReducer'
+
 
 
 type Props = {
@@ -15,11 +12,6 @@ type Props = {
 }
 
 export default function Home({title}: Props) {
-  const { arrProduct } = useSelector((state: RootState) => state.productReducer)
-  const dispatch = useAppDispatch()
-  useEffect(() =>{
-    dispatch(getProductApi())
-  },[]);
 
   const [heightCarousel,setHeightCarousel] = useState('100px')
   const [heightHeader,setHeightHeader] = useState('180px')

@@ -11,33 +11,61 @@ export interface ProductModel {
 }
 
 export interface ProductState {
-    arrProduct: ProductModel[]
+    arrLocation: ProductModel[],
+    arrProduct: ProductModel[],
 }
 
 const initialState: ProductState = {
-    arrProduct: []
+    arrLocation: [],
+    arrProduct: [
+      {
+        id:        0,
+        tenViTri:  '',
+        tinhThanh: '',
+        quocGia:   '',
+        hinhAnh:   ''
+      }
+    ],
 }
 
 const productReducer = createSlice({
   name: 'productReducer',
   initialState,
   reducers: {
+    setArrLocationApi : (state:ProductState, action: PayloadAction<ProductModel[]>) => {
+        state.arrLocation = action.payload;
+      },
     setArrProductApi : (state:ProductState, action: PayloadAction<ProductModel[]>) => {
-        state.arrProduct = action.payload;
+      state.arrProduct = action.payload;
       }
   }
 });
 
-export const {setArrProductApi} = productReducer.actions
+export const { setArrLocationApi, setArrProductApi } = productReducer.actions
 
 export default productReducer.reducer
 
 // action API (action thunk)
-export const getProductApi = () => {
+export const getLocationApi = () => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await http.get('/vi-tri');
-      dispatch(setArrProductApi(response.data.content))
+      dispatch(setArrLocationApi(response.data.content))
+      console.log('response getLocationApi ',response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getProductApi = (keywordRedux: string ) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await http.get('/vi-tri/phan-trang-tim-kiem?' + `${keywordRedux}`);
+      console.log('/vi-tri/phan-trang-tim-kiem?' + `${keywordRedux}`);
+      
+      dispatch(setArrProductApi(response.data.content.data))
+      console.log('response getProductApi',response);
+      console.log('response.data.content.data getProductApi',response.data.content.data);
     } catch (error) {
       console.log(error);
     }

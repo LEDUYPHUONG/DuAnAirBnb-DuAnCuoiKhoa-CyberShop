@@ -1,12 +1,19 @@
-import React from 'react'
-import { arrItem } from '../../data/api/dataDemoItem'
-import { useAppSelector } from '../../redux/example/hooks'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/configStore'
+import { useAppDispatch } from '../../redux/example/hooks'
+import { getLocationApi, getProductApi, ProductModel } from '../../redux/reducer/productReducer'
 
 export default function ItemProduct() {
-  const { arrProduct } = useAppSelector((state) => state.productReducer)
-
-    const renderItemCarouselItem = () => {
-    return arrProduct.map((item,index) => {
+  const { arrProduct, arrLocation } = useSelector((state: RootState) => state.productReducer)
+  const keywordRedux  = useSelector((state: RootState) => state.keywordReducer)
+  const dispatch = useAppDispatch()
+  useEffect(() =>{
+    dispatch(getLocationApi())
+    dispatch(getProductApi(keywordRedux))
+  },[]);
+    const renderItemHomePage = (arrProd:ProductModel[]) => {
+    return arrProd.map((item,index) => {
       return <div className="item" key={index} style={{margin:"5px 10px", cursor: "pointer", marginBottom: "20px"}}>
       <div className='img-out' style={{position:"relative", width:"257px",height:"270px" ,border:"none", borderRadius:"10px", overflow:"hidden", objectFit:"cover", marginBottom:"5px"}}>
         <img className='w-100 h-100' src={item.hinhAnh !== '' ? item.hinhAnh : 'img/hinhMinhHoa.jpg' } alt="..." />
@@ -26,7 +33,7 @@ export default function ItemProduct() {
   }
   return (
     <div className='d-flex flex-wrap justify-content-between' style={{margin:"5px -10px"}}>
-        {renderItemCarouselItem()}
+        {renderItemHomePage(arrProduct)}
     </div>
   )
 }
