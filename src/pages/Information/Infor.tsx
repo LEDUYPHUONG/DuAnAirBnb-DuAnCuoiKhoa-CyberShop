@@ -7,9 +7,10 @@ type Props = {
 };
 
 export default function Infor({ title }: Props) {
+  
   return (
     <>
-      <div>
+      <div className="infor-main">
         <div
           className="header-container"
           style={{

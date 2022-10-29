@@ -28,13 +28,22 @@ const CarouselInfor = () => {
                 {" "}
                 Toàn bộ căn hộ dịch vụ tại Bình Thạnh
               </div>
-              <div className="">
+              <div className="pb-2">
                 Romantic APT for Long-term Living@BEST L...
               </div>
-              <div className="border-bottom" style={{ width: "10%" }}></div>
-              <div className="d-flex flex-row mb-3">
-                <div className="p-2"></div>
-              </div>
+              <div className="border-bottom" style={{ width: "10%"}}></div>
+              <ul className="infor-listgrouproom list-group list-group-horizontal pt-2">
+                <li className="infor-usernumber"  style={{listStyle:"none", fontSize:14}}>2 khách</li>
+                <li className="infor-roomtype" style={{marginLeft:20,fontSize:14}}>Phòng Studio</li>
+                <li className="infor-bednumber" style={{marginLeft:20,fontSize:14}}>1 giường</li>
+                <li className="infor-bathnumber" style={{marginLeft:20,fontSize:14}}>1 phòng tắm</li>
+              </ul>
+              <ul className="infor-machine list-group list-group-horizontal pt-2">
+                <li className="infor-wifi"  style={{listStyle:"none", fontSize:14}}>Wifi</li>
+                <li className="infor-kitchen" style={{marginLeft:20,fontSize:14}}>Bếp</li>
+                <li className="infor-air" style={{marginLeft:20,fontSize:14}}>Điều hòa nhiệt độ</li>
+                <li className="infor-machine" style={{marginLeft:20,fontSize:14}}>Máy giặt</li>
+              </ul>
               <div></div>
               <div></div>
             </div>
