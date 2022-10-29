@@ -1,4 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit'
+import keySearchReducer from './reducer/keySearchReducer'
 import keywordReducer from './reducer/keywordReducer'
 import productReducer from './reducer/productReducer'
 
@@ -6,7 +7,8 @@ import productReducer from './reducer/productReducer'
 export const store = configureStore({
     reducer:{
         productReducer: productReducer,
-        keywordReducer: keywordReducer
+        keywordReducer: keywordReducer,
+        keySearchReducer: keySearchReducer
     }
 })
 

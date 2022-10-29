@@ -51,7 +51,6 @@ export const getLocationApi = () => {
     try {
       const response = await http.get('/vi-tri');
       dispatch(setArrLocationApi(response.data.content))
-      console.log('response getLocationApi ',response);
     } catch (error) {
       console.log(error);
     }
@@ -60,12 +59,8 @@ export const getLocationApi = () => {
 export const getProductApi = (keywordRedux: string ) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await http.get('/vi-tri/phan-trang-tim-kiem?' + `${keywordRedux}`);
-      console.log('/vi-tri/phan-trang-tim-kiem?' + `${keywordRedux}`);
-      
+      const response = await http.get('/vi-tri/phan-trang-tim-kiem?' + `${keywordRedux}`);      
       dispatch(setArrProductApi(response.data.content.data))
-      console.log('response getProductApi',response);
-      console.log('response.data.content.data getProductApi',response.data.content.data);
     } catch (error) {
       console.log(error);
     }

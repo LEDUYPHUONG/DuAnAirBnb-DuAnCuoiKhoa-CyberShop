@@ -1,11 +1,39 @@
 import React from 'react'
 import 'antd/dist/antd.min.css'
 import DatePickerAntd from '../../datePickerAntd/DatePickerAntd'
+import { RootState } from '../../../redux/configStore'
+import { setKeySearch } from '../../../redux/reducer/keySearchReducer'
+import { useAppDispatch } from '../../../redux/example/hooks'
+import { useSelector } from 'react-redux'
+import { arrLocationSearch, LocationSearchModel } from '../../../data/api/dataDemoSearch'
 
 export default function ModalHeader() {
+    const keySearch =  useSelector((state: RootState) => state.keySearchReducer)
+    const arrSearchLocation:LocationSearchModel[] = arrLocationSearch
+    const dispatch = useAppDispatch()
 
-// style for background of 1 button (button search modal)
-const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89) 0%, rgb(189, 30, 89) 27.5%, rgb(215, 4, 102) 40%, rgb(227, 28, 95) 57.5%, rgb(230, 30, 77) 75%, rgb(255, 56, 92) 100%)'
+    const handleClickSetKeySearch = (item:LocationSearchModel) =>{
+        dispatch(setKeySearch(`${item.title}`))
+    }
+
+    const renderItemSearch = (arrLocation: LocationSearchModel[]) => {
+        return arrLocation.map((item,index) =>{
+            return <div key={index} className="col-4 pt-5">
+                        <div className="img-out mx-1" style={{cursor: "pointer"}} onClick={() => {
+                            handleClickSetKeySearch(item)
+                        }}>
+                            <div className='img-in border border-dark rounded-5 overflow-hidden'>
+                                <img width={'100%'} height={'100%'} src={item.srcImage} alt="..." />
+                            </div>
+                            <div className="title ps-2 pt-3">
+                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>{item.title}</p>
+                            </div>
+                        </div>
+                    </div>
+        })
+    }
+    // style for background of 1 button (button search modal)
+    const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89) 0%, rgb(189, 30, 89) 27.5%, rgb(215, 4, 102) 40%, rgb(227, 28, 95) 57.5%, rgb(230, 30, 77) 75%, rgb(255, 56, 92) 100%)'
 
   return (
 
@@ -55,7 +83,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                             <div style={{width:1, height:0}}></div>
                                             <button className='btn text-dark d-flex flex-column rounded-pill buttonUserActive buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}} type='button'>
                                                 <span>Địa điểm</span>
-                                                <input type="text" placeholder='Tìm kiếm điểm đến' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
+                                                <input type="text" defaultValue={keySearch} placeholder='Tìm kiếm điểm đến' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
                                             </button>
                                             <div style={{width:1, height:24, background:"#cccccc"}}></div>
                                                 <button className='btn text-dark d-flex flex-column rounded-pill buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}}>
@@ -87,54 +115,7 @@ const bgImgBtnSearch = 'radial-gradient(circle at center right, rgb(189, 30, 89)
                                     <div className="location-inner p-5">
                                         <p className='ps-2 mb-0'>Tìm kiếm theo khu vực</p>
                                         <div className="location-map d-flex flex-wrap">
-                                        <div className="col-4 pt-5">
-                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
-                                                <img width={'100%'} height={'100%'} src="./img/home/map/timKiemLinhHoat.jpg" alt="..." />
-                                            </div>
-                                            <div className="title ps-2 pt-3">
-                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Tìm kiếm linh hoạt</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-4 pt-5">
-                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
-                                                <img width={'100%'} height={'100%'} src="./img/home/map/chauAu.jpg" alt="..." />
-                                            </div>
-                                            <div className="title ps-2 pt-3">
-                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Châu Âu</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-4 pt-5">
-                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
-                                                <img width={'100%'} height={'100%'} src="./img/home/map/thaiLan.jpg" alt="..." />
-                                            </div>
-                                            <div className="title ps-2 pt-3">
-                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Thái Lan</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-4 pt-5">
-                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
-                                                <img width={'100%'} height={'100%'} src="./img/home/map/phap.jpg" alt="..." />
-                                            </div>
-                                            <div className="title ps-2 pt-3">
-                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Pháp</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-4 pt-5">
-                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
-                                                <img width={'100%'} height={'100%'} src="./img/home/map/hoaKy.jpg" alt="..." />
-                                            </div>
-                                            <div className="title ps-2 pt-3">
-                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Hoa Kỳ</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-4 pt-5">
-                                            <div className="img-out mx-1 border border-dark rounded-5 overflow-hidden ">
-                                                <img width={'100%'} height={'100%'} src="./img/home/map/hanQuoc.jpg" alt="..." />
-                                            </div>
-                                            <div className="title ps-2 pt-3">
-                                                <p className='mb-0' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>Hàn Quốc</p>
-                                            </div>
-                                        </div>
+                                            {renderItemSearch(arrSearchLocation)}
                                         </div>
                                     </div>
                                 </div>
