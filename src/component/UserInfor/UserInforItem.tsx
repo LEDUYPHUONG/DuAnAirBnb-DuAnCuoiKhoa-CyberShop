@@ -1,4 +1,5 @@
 import React from "react";
+import CarouselInfor from "../UserInfor/CarouselInfor";
 
 const UserInforItem = () => {
   return (
@@ -8,7 +9,7 @@ const UserInforItem = () => {
     >
       <div
         className="justify-content-center mb-3"
-        style={{ margin: "120px 420px 32px", padding: "0 16px" }}
+        style={{ margin: "120px 320px 32px 420px", padding: "0 16px" }}
       >
         <div className="justify-content-center mb-3">
           <div
@@ -158,25 +159,64 @@ const UserInforItem = () => {
             >
               <div
                 className="infor-right"
-                style={{ margin: "auto", maxWidth: "632px",marginRight:0 }}
+                style={{ margin: "auto", maxWidth: "100%", marginRight: 0 }}
               >
                 <div
                   className="infor-right-welcome"
                   style={{ marginBottom: "48px" }}
                 >
-                  <div className="infor-right-hello" style={{ fontSize: "32px",lineHeight:"36px",marginBottom:8 }}>
-                    <h1 style={{fontSize:"1em",margin:0}}>Xin chào, tôi là Khang</h1>
+                  <div
+                    className="infor-right-hello"
+                    style={{
+                      fontSize: "32px",
+                      lineHeight: "36px",
+                      marginBottom: 8,
+                    }}
+                  >
+                    <h1 style={{ fontSize: "1em", margin: 0 }}>
+                      Xin chào, tôi là Khang
+                    </h1>
                   </div>
-                  <div className="infor-right-status" style={{fontSize:14, lineHeight:"18px", marginBottom:8}}>
-                  Bắt đầu tham gia vào 2022
+                  <div
+                    className="infor-right-status"
+                    style={{
+                      fontSize: 14,
+                      lineHeight: "18px",
+                      marginBottom: 8,
+                    }}
+                  >
+                    Bắt đầu tham gia vào 2022
                   </div>
-                  <div className="infor-right-editprofile" style={{marginTop:16}}>
-                  <button style={{border:0, backgroundColor:"transparent",textDecoration:"underline"}}>Chỉnh sửa hồ sơ</button>
+                  <div
+                    className="infor-right-editprofile"
+                    style={{ marginTop: 16,marginBottom:8 }}
+                  >
+                    <button
+                      style={{
+                        border: 0,
+                        backgroundColor: "transparent",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Chỉnh sửa hồ sơ
+                    </button>
+                  </div>
+                  <div
+                    className="infor-myroom"
+                    style={{
+                      fontSize: "32px",
+                      lineHeight: "36px",
+                      marginBottom: 8,
+                      marginTop:16,
+                      fontWeight:700
+                    }}
+                  >
+                    <h1 style={{ fontSize: "1em", margin: 0 }}>
+                      Phòng đã thuê
+                    </h1>
                   </div>
                 </div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <CarouselInfor />
               </div>
             </div>
           </div>
