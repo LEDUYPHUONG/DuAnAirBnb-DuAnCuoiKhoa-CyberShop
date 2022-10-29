@@ -44,8 +44,6 @@ const CarouselInfor = () => {
                 <li className="infor-air" style={{marginLeft:20,fontSize:14}}>Điều hòa nhiệt độ</li>
                 <li className="infor-machine" style={{marginLeft:20,fontSize:14}}>Máy giặt</li>
               </ul>
-              <div></div>
-              <div></div>
             </div>
           </div>
         </div>
