@@ -13,7 +13,11 @@ export default function ModalHeader() {
     const dispatch = useAppDispatch()
 
     const handleClickSetKeySearch = (item:LocationSearchModel) =>{
-        dispatch(setKeySearch(`${item.title}`))
+        if(item.title === 'Tìm kiếm linh hoạt'){
+            dispatch(setKeySearch(''))
+        }else{
+            dispatch(setKeySearch(`${item.title}`))
+        }
     }
 
     const renderItemSearch = (arrLocation: LocationSearchModel[]) => {
