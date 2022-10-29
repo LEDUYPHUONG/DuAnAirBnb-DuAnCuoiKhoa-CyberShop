@@ -19,7 +19,7 @@ export default function ModalHeader() {
     const renderItemSearch = (arrLocation: LocationSearchModel[]) => {
         return arrLocation.map((item,index) =>{
             return <div key={index} className="col-4 pt-5">
-                        <div className="img-out mx-1" style={{cursor: "pointer"}} onClick={() => {
+                        <div className="img-out mx-2" style={{cursor: "pointer"}} onClick={() => {
                             handleClickSetKeySearch(item)
                         }}>
                             <div className='img-in border border-dark rounded-5 overflow-hidden'>
@@ -112,7 +112,7 @@ export default function ModalHeader() {
                         <div >
                             <div className="location-container">
                                 <div className="location-out">
-                                    <div className="location-inner p-5">
+                                    <div className="location-inner" style={{padding:'50px'}}>
                                         <p className='ps-2 mb-0'>Tìm kiếm theo khu vực</p>
                                         <div className="location-map d-flex flex-wrap">
                                             {renderItemSearch(arrSearchLocation)}
