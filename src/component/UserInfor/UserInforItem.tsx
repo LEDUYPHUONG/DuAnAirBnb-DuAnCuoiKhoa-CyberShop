@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 
 const UserInforItem = () => {
-  const arr = Array(10).fill(1)
-  const [open, setOpen] = useState(false)
-  const [enable, setEnable] = useState(true)
+  const arr = Array(10).fill(1);
+  const [open, setOpen] = useState(false);
+  const [enable, setEnable] = useState(true);
 
   return (
     <div
@@ -57,7 +57,7 @@ const UserInforItem = () => {
                     style={{ textAlign: "center" }}
                   >
                     <a
-                      href=""
+                      href="..."
                       className="edit"
                       style={{ textDecoration: "underline" }}
                     >
@@ -165,9 +165,7 @@ const UserInforItem = () => {
                 className="infor-right"
                 style={{ margin: "auto", maxWidth: "100%", marginRight: 0 }}
               >
-                <div
-                  className="infor-right-welcome"
-                >
+                <div className="infor-right-welcome">
                   <div
                     className="infor-right-hello"
                     style={{
@@ -206,84 +204,265 @@ const UserInforItem = () => {
                     </button>
                   </div>
 
-                  {open && <div className="border-bottom ">
-
-                    <p style={{ fontSize: 16, marginTop: 20, marginBottom: 10 }}>Giới thiệu</p>
-                    <div className="input-group" style={{ width: "100%", minHeight: 96, marginBottom: 20 }}>
-                      <textarea onChange={e => {
-                        if (e.target.value) setEnable(false)
-                      }} className="form-control" aria-label="With textarea"></textarea>
-                    </div>
-                    <p style={{ fontSize: 16, marginTop: 20, marginBottom: 10 }}>Vị trí</p>
-                    <div className="input-group mb-3">
-                      <input onChange={e => {
-                        if (e.target.value) setEnable(false)
-                      }} type="text" className="form-control" aria-label="Username" aria-describedby="basic-addon1" />
-                    </div>
-                    <p style={{ fontSize: 16, margin: 0 }}>Ngôn ngữ của tôi</p>
-                    <p style={{ fontSize: 14, margin: 0, textDecoration: "underline" }} data-bs-toggle="modal" data-bs-target="#exampleModal">Thêm ngôn ngữ khác</p>
-                    <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div className="modal-dialog">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" style={{ margin: 0 }}></button>
-                            <h1 className="modal-title fs-5" id="exampleModalLabel" style={{ fontSize: 16, margin: 0, marginRight: 150 }}>Ngôn ngữ của tôi</h1>
-                          </div>
-                          <div className="modal-body">
-                            <ul className="list-group">
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" />
-                                <label className="form-check-label" htmlFor="firstCheckbox">Bahasa Indonesia</label>
-                              </li>
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="secondCheckbox" />
-                                <label className="form-check-label" htmlFor="secondCheckbox">Bengali</label>
-                              </li>
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox" />
-                                <label className="form-check-label" htmlFor="thirdCheckbox">English</label>
-                              </li>
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox" />
-                                <label className="form-check-label" htmlFor="thirdCheckbox">Español</label>
-                              </li>
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox" />
-                                <label className="form-check-label" htmlFor="thirdCheckbox">Português</label>
-                              </li>
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox" />
-                                <label className="form-check-label" htmlFor="thirdCheckbox">ภาษาไทย</label>
-                              </li>
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox" />
-                                <label className="form-check-label" htmlFor="thirdCheckbox">中文</label>
-                              </li>
-                              <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox" />
-                                <label className="form-check-label" htmlFor="thirdCheckbox">Vietnamese</label>
-                              </li>
-
-                            </ul>
-                          </div>
-                          <div className="modal-footer" style={{ justifyContent: "flex-start" }}>
-                            <button type="button" className="btn btn-dark">Hoàn tất</button>
+                  {open && (
+                    <div className="border-bottom ">
+                      <p
+                        style={{
+                          fontSize: 16,
+                          marginTop: 20,
+                          marginBottom: 10,
+                        }}
+                      >
+                        Giới thiệu
+                      </p>
+                      <div
+                        className="input-group"
+                        style={{
+                          width: "100%",
+                          minHeight: 96,
+                          marginBottom: 20,
+                        }}
+                      >
+                        <textarea
+                          onChange={(e) => {
+                            if (e.target.value) setEnable(false);
+                          }}
+                          className="form-control"
+                          aria-label="With textarea"
+                        ></textarea>
+                      </div>
+                      <p
+                        style={{
+                          fontSize: 16,
+                          marginTop: 20,
+                          marginBottom: 10,
+                        }}
+                      >
+                        Vị trí
+                      </p>
+                      <div className="input-group mb-3">
+                        <input
+                          onChange={(e) => {
+                            if (e.target.value) setEnable(false);
+                          }}
+                          type="text"
+                          className="form-control"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <p style={{ fontSize: 16, margin: 0 }}>
+                        Ngôn ngữ của tôi
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 14,
+                          margin: 0,
+                          textDecoration: "underline",
+                        }}
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
+                        Thêm ngôn ngữ khác
+                      </p>
+                      <div
+                        className="modal fade"
+                        id="exampleModal"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                                style={{ margin: 0 }}
+                              ></button>
+                              <h1
+                                className="modal-title fs-5"
+                                id="exampleModalLabel"
+                                style={{
+                                  fontSize: 16,
+                                  margin: 0,
+                                  marginRight: 150,
+                                }}
+                              >
+                                Ngôn ngữ của tôi
+                              </h1>
+                            </div>
+                            <div className="modal-body">
+                              <ul className="list-group">
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="firstCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="firstCheckbox"
+                                  >
+                                    Bahasa Indonesia
+                                  </label>
+                                </li>
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="secondCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="secondCheckbox"
+                                  >
+                                    Bengali
+                                  </label>
+                                </li>
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="thirdCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="thirdCheckbox"
+                                  >
+                                    English
+                                  </label>
+                                </li>
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="thirdCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="thirdCheckbox"
+                                  >
+                                    Español
+                                  </label>
+                                </li>
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="thirdCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="thirdCheckbox"
+                                  >
+                                    Português
+                                  </label>
+                                </li>
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="thirdCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="thirdCheckbox"
+                                  >
+                                    ภาษาไทย
+                                  </label>
+                                </li>
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="thirdCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="thirdCheckbox"
+                                  >
+                                    中文
+                                  </label>
+                                </li>
+                                <li className="list-group-item">
+                                  <input
+                                    className="form-check-input me-1"
+                                    type="checkbox"
+                                    value=""
+                                    id="thirdCheckbox"
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="thirdCheckbox"
+                                  >
+                                    Vietnamese
+                                  </label>
+                                </li>
+                              </ul>
+                            </div>
+                            <div
+                              className="modal-footer"
+                              style={{ justifyContent: "flex-start" }}
+                            >
+                              <button type="button" className="btn btn-dark">
+                                Hoàn tất
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <p
+                        style={{
+                          fontSize: 16,
+                          marginTop: 20,
+                          marginBottom: 10,
+                        }}
+                      >
+                        Công việc
+                      </p>
+                      <div className="input-group" style={{ marginBottom: 32 }}>
+                        <input
+                          onChange={(e) => {
+                            if (e.target.value) setEnable(false);
+                          }}
+                          type="text"
+                          className="form-control"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <div
+                        className="d-flex justify-content-between"
+                        style={{ marginBottom: 20 }}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setOpen(false)}
+                          className="btn btn-secondary text-decoration-underline"
+                          style={{ padding: "6px 10px" }}
+                        >
+                          Hủy
+                        </button>
+                        <button
+                          type="button"
+                          disabled={enable}
+                          className="btn btn-dark"
+                          style={{ fontSize: 20, padding: "10px 20px" }}
+                        >
+                          Lưu
+                        </button>
+                      </div>
                     </div>
-                    <p style={{ fontSize: 16, marginTop: 20, marginBottom: 10 }}>Công việc</p>
-                    <div className="input-group" style={{ marginBottom: 32 }}>
-                      <input onChange={e => {
-                        if (e.target.value) setEnable(false)
-                      }} type="text" className="form-control" aria-label="Username" aria-describedby="basic-addon1" />
-                    </div>
-                    <div className="d-flex justify-content-between" style={{ marginBottom: 20 }}>
-                      <button type="button" onClick={() => setOpen(false)} className="btn btn-secondary text-decoration-underline" style={{ padding: "6px 10px" }}>Hủy</button>
-                      <button type="button" disabled={enable} className="btn btn-dark" style={{ fontSize: 20, padding: "10px 20px" }}>Lưu</button>
-                    </div>
-
-                  </div>}
+                  )}
 
                   <div
                     className="infor-myroom"
@@ -292,7 +471,7 @@ const UserInforItem = () => {
                       lineHeight: "36px",
                       marginBottom: 16,
                       marginTop: 16,
-                      fontWeight: 700
+                      fontWeight: 700,
                     }}
                   >
                     <h1 style={{ fontSize: "1em", margin: 0 }}>
@@ -314,4 +493,4 @@ const UserInforItem = () => {
   );
 };
 
-export default UserInforItem
+export default UserInforItem;
