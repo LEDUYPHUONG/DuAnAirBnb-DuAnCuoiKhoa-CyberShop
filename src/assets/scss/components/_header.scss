@@ -1,14 +1,24 @@
+@import "./modal/modalheader";
+.order-bar{
+    &:hover{
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    }
+}
 
-// .container{
-//     .header{
-//         .order-bar{
-
-//             .location{
-//                 button{
-//                    
-//                     
-//                 }
-//             }
-//         }
-//     }
-// }
+.singin-singout{
+    .location{
+        .btn-BAhost-globe{
+            &:hover{
+                background-color: rgba($color: #cccccc, $alpha: 0.2);
+            }
+        }
+        .btn-singin-singout{
+            &:hover{
+                box-shadow: 0 4px 4px rgba(225, 225, 225, 0.5) !important;
+            }
+            &::after{
+                display: none;
+            }
+        }
+    }
+}
