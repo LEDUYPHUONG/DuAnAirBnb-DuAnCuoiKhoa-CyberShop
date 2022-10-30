@@ -12,7 +12,7 @@ export interface ProductModel {
 
 export interface ProductState {
     arrLocation: ProductModel[],
-    arrProduct: ProductModel[],
+    arrProduct: ProductModel[]
 }
 
 const initialState: ProductState = {
@@ -25,7 +25,7 @@ const initialState: ProductState = {
         quocGia:   '',
         hinhAnh:   ''
       }
-    ],
+    ]
 }
 
 const productReducer = createSlice({

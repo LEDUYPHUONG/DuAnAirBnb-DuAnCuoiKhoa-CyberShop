@@ -1,30 +1,46 @@
-export interface LocationSearchModel {
-    srcImage: string,
-    title: string
-}
-export const arrLocationSearch = [
+import { ProductModel } from "../../redux/reducer/productReducer";
+
+export const arrLocationSearch:ProductModel[] = [
     {
-        srcImage: './img/home/map/timKiemLinhHoat.jpg',
-        title: 'Tìm kiếm linh hoạt'
+        id:        0,
+        tenViTri:  'Tìm kiếm linh hoạt',
+        tinhThanh: '',
+        quocGia:   '',
+        hinhAnh:   './img/home/map/timKiemLinhHoat.jpg'
     },
     {
-        srcImage: './img/home/map/chauAu.jpg',
-        title: 'Châu Âu'
+        id:        0,
+        tenViTri:  'Châu Âu',
+        tinhThanh: '',
+        quocGia:   '',
+        hinhAnh:   './img/home/map/chauAu.jpg'
     },
     {
-        srcImage: './img/home/map/thaiLan.jpg',
-        title: 'Thái Lan'
+        id:        0,
+        tenViTri:  'Thái Lan',
+        tinhThanh: '',
+        quocGia:   '',
+        hinhAnh:   './img/home/map/thaiLan.jpg'
     },
     {
-        srcImage: './img/home/map/phap.jpg',
-        title: 'Pháp'
+        id:        0,
+        tenViTri:  'Pháp',
+        tinhThanh: '',
+        quocGia:   '',
+        hinhAnh:   './img/home/map/phap.jpg'
     },
     {
-        srcImage: './img/home/map/hoaKy.jpg',
-        title: 'Hoa Kỳ'
+        id:        0,
+        tenViTri:  'Hoa Kỳ',
+        tinhThanh: '',
+        quocGia:   '',
+        hinhAnh:   './img/home/map/hoaKy.jpg'
     },
     {
-        srcImage: './img/home/map/hanQuoc.jpg',
-        title: 'Hàn Quốc'
+        id:        0,
+        tenViTri:  'Hàn Quốc',
+        tinhThanh: '',
+        quocGia:   '',
+        hinhAnh:   './img/home/map/hanQuoc.jpg'
     },
 ]
