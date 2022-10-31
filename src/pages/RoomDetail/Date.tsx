@@ -7,7 +7,7 @@ const App: React.FC = () => (
   <Space direction="vertical" size={12}>
     <RangePicker
       placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
-      format={["DD-MM-YYYY"]}
+      format={["DD-MM-YYYY"]}   
     />
   </Space>
 );
