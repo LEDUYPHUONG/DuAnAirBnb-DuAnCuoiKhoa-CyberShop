@@ -28,6 +28,5 @@ export const navigateLinkHeaderSlide = createSlice({
 });
 
 export const { saveNavigateLinkHeader } = navigateLinkHeaderSlide.actions;
-export const selectNavigateLinkHeader = (state: RootState) =>
-  state.navigateLinkHeader.valueLinkHeader;
+
 export default navigateLinkHeaderSlide.reducer;

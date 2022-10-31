@@ -104,33 +104,30 @@ export const http = axios.create({
 // cấu hình request header
 
 http.interceptors.request.use(
-  (config: any) => {
-    const token = getStore(ACCESS_TOKEN);
-    config.headers = {
-      ...config.headers,
-      ["Authorization"]: `Bearer ${token}`,
-      ["TokenCybersoft"]: TOKEN_CYBERSOFT,
-    };
+    (config:AxiosRequestConfig)  => {
 
-    // config.headers['Content-Type'] = 'application/json';
-    return config;
-  },
-  (error) => {
-    Promise.reject(error);
-  }
-);
+        const token = getStore(ACCESS_TOKEN);
+        if( config.headers){
+            config.headers  = {
+                ['tokenCybersoft']: TOKEN_CYBERSOFT
+            }
+        }
+        return config
+    },
+    error => {
+        Promise.reject(error)
+    }
+)
 
 // cấu hình kết quả trả về
-http.interceptors.response.use(
-  (response) => {
-    console.log(response);
+http.interceptors.response.use((response) => {
     return response;
   },
   (err) => {
     console.log(err.response.status);
-    if (err.response.status === 400 || err.response.status === 404) {
-      // history.push('/');
-      return Promise.reject(err);
+    if(err.response.status === 400 || err.response.status === 404){
+        // history.push('/');
+        return Promise.reject(err)
     }
 
     if (err.response.status === 401 || err.response.status === 403) {

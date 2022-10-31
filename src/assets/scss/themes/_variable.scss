@@ -1,79 +1,107 @@
-// color-text
-$C-text-primary: #000000;
-$C-text-white: #FFFFFF;
+// font-face
+@import '../fonts/fontsface';
+//back ground
+    $bg-white-primary: #ffffff;
+    $bg-white-dark: #cccccc;
+    $bg-white-light: #ffffff;
+    
+    $bg-black-primary: #000000;
+    $bg-black-light: #2c2c2c;
+    $bg-black-dark: #000000;
+    
+    $bg-red-primary: #fe2c55;
+    $bg-red-dark: #c3002d;
+    $bg-red-light: #ff6b81;
+    
+// color-text 
+    $C-dark: #000000;
+    $C-white: #ffffff;
+    $C-gray: #cccccc;
+    
+// font
+    // size 12, 14, 16, 18, 20, 24, 30, 32,  40
+    $fs-m: 12px;
+    $fs-sm: 14px;
+    $fs-ssm: 16px;
+    $fs-sssm: 18px;
+    $fs-b: 20px;
+    $fs-sb: 24px;
+    $fs-ssb: 30px;
+    $fs-sssb: 32px;
+    $fs-lg: 40px;
+    // weight
+    $fw-m: 300;
+    $fw-sm: 400;
+    $fw-sd: 500;
+    $fw-b: 700;
+    $fw-lg: 900;
+    
+// font-family
+    $ff-p-M: 'Circular-Medium';
+    $ff-p-Bk: 'Circular-Book';
+    $ff-p-Bd: 'Circular-Bold';
+    $ff-p-B: 'Circular-Black';
 
-// font 
-    //size 
-    $f-size-m: 12px;
-    $f-size-sm: 14px;
-    $f-size-ssm: 16px;
-    $f-size-sssm: 18px;
-    $f-size-b: 20px;
-    $f-size-sb: 24px;
-    $f-size-ssb: 30px;
-    $f-size-sssb: 40px;
-    //more font-size you want...
-    //weight
-    $f-weight-m: 100;
-    $f-weight-sm: 200;
-    $f-weight-ssm: 300;
-    $f-weight-nomal: 400;
-    $f-weight-b: 500;
-    $f-weight-sb: 600;
-    $f-weight-ssb: 700;
-    $f-weight-lg: 800;
-    $f-weight-slg: 900;
-    // font-family
-    $f-family-primary: 'Segoe UI';
-    $f-family-Second: 'Roboto-Regular';
+    $ff-s-M: 'SegoeUI-Medium';
+    $ff-s-B: 'SegoeUI-Bold';
+    $ff-s-BI: 'SegoeUI-BoldItalic';
+    $ff-s-I: 'SegoeUI-Italic';
 
-// background
-$bg-primary: #000000;
-$bg-white: #ffffff;
-$bg-button: #F8F8F8;
-//more background you want...
+    $ff-t: 'Roboto-Regular';
 
-//@mixin
-    // text
-@mixin text(
-    $f-fam:$f-family-primary,
-    $f-wei:$f-weight-nomal,
-    $f-size:$f-size-b,
-    $line-heig:20px,
-    $color:$C-text-primary,
-    ) 
-    {
-    font-family: $f-fam;
-    font-weight: $f-wei;
-    font-size: $f-size;
-    line-height: $line-heig;
-    color: $color;
-}
-    // button
-@mixin button(
-    $width: 150px,
-    $height: 50px,
-    $backgr:$bg-white,
-    $boder:none,
-    $br-radius:5px,
-    $padding: 10px 20px,
-    $margin:0px
-    ) 
-    {
-    width: $width ;
-    height: $height;
-    background-color: $backgr;
-    border: $boder;
-    border-radius: $br-radius;
-    padding: $padding;
-    margin: $margin;
-    //default
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    &:hover{
-        background-color: gray;
-        border: 3px solid red;
-        
+//@mixin - @include
+    @mixin text(
+      $ff: $ff-p-M,
+      $fw: $fw-m,
+      $fs: $fs-m,
+      $c: $C-primary,
+    
+    ) {
+      font-family: $ff;
+      font-weight: $fw;
+      font-size: $fs;
+      color: $c;
     }
-}
+    
+    @mixin button(
+        $mw: 150px,
+        $mh: 50px,
+        $bg: $bg-white-primary,
+        $br: 5px,
+        $p: 13px 35px,
+        $m: 0px,
+        $hv: $bg-white-light
+      )
+      {
+        min-width: $mw;
+        min-height: $mh;
+        background-color: $bg;
+        border-radius: $br;
+        padding: $p;
+        margin: $m;
+        &:hover 
+        {
+          background-color: $hv;
+        }
+    
+        border: none;
+        user-select: none;
+        cursor: pointer;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
