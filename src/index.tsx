@@ -24,15 +24,15 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='' element={<ResponsiveItem Component={HomeTemplate} ComponentMobile={HomeTemplateMobile}/>}>
-          <Route index element={<ResponsiveItem Component={RoomListPage} ComponentMobile={RoomListPage} />}></Route>
+          <Route index element={<ResponsiveItem Component={Home} ComponentMobile={Home} />}></Route>
           <Route path='home' element={<ResponsiveItem Component={Roomlist} ComponentMobile={Roomlist} />}></Route>
           <Route path='infor' element={<ResponsiveItem Component={Infor} ComponentMobile={Infor} />}></Route>
+          <Route path='roomlist' element={<ResponsiveItem Component={RoomListPage} ComponentMobile={RoomListPage} />}></Route>
           <Route path='login' element={<Login/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
           <Route path='detail'>
             <Route path=':id'></Route>
           </Route>
-          <Route path='Roomlist' element = {<Infor/>}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
         </Route>
       </Routes>
