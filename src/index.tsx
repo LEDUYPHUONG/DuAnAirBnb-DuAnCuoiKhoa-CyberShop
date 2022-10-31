@@ -10,7 +10,7 @@ import HomeTemplateMobile from './templates/HomeTemplateMobile';
 import Login from './pages/Login/Login';
 import Demo from './pages/Demo/Demo';
 import Home from './pages/Home/Home';
-import Roomlist from './pages/Roomlist/RoomListPage';
+import Roomlist from './pages/Roomlist/RoomList';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
 import '../src/assets/scss/style.scss';
 import MapHome from './component/MapHome/MapHome';
@@ -19,7 +19,7 @@ import Profile from './pages/Profile/Profile';
 import Manage from './pages/Admin/Manage';
 import SignIn from './pages/SignIn/SignIn';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
-import SignUp from './pages/Signup/Signup';
+import SignUp from './pages/SignUp/Signup';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
