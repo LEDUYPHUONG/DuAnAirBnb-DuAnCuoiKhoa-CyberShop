@@ -18,8 +18,8 @@ import Admin from './pages/Admin/Admin';
 import Profile from './pages/Profile/Profile';
 import Manage from './pages/Admin/Manage';
 import SignIn from './pages/SignIn/SignIn';
-import SignUp from './pages/Signup/SignUp';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
+import SignUp from './pages/Signup/Signup';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -48,7 +48,6 @@ root.render(
           <Route path='*' element={<Navigate to='' />}></Route>
           <Route path='admin' element={<Admin/>}></Route>
           <Route path='signin' element={<SignIn/>}></Route>
-          <Route path='signup' element={<SignUp/>}></Route>
           <Route path='manage' element={<Manage/>}></Route>
         </Route>
       </Routes>
