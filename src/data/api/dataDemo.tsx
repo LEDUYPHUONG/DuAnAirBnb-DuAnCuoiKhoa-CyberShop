@@ -1,139 +1,239 @@
+export interface ArrIconCarousel  {
+  srcId:string,
+  title:string
+}
+
 export const arrIconCarousel = [
     {
+      srcId: "00",
+      title: "Tất cả nhà",
+    },
+    {
       srcId: "01",
-      title: "Ven hồ"
+      title: "A",
+      //Thật ấn tượng
     },
     {
       srcId: "02",
-      title: "Công viên quốc gia"
+      title: "B",
+      //Thiết kế
     },
     {
       srcId: "03",
-      title: "Hồ bơi tuyệt vời"
+      title: "C",
+      //Khung cảnh tuyệt vời
     },
     {
       srcId: "04",
-      title: "Nhà thuyền"
+      title: "D",
+      //Hồ bơi tuyệt vời
     },
     {
       srcId: "05",
-      title: "Cối xay gió"
+      title: "E",
+      //Phục vụ bữa sáng
     },
     {
       srcId: "06",
-      title: "Thật ấn tượng!"
+      title: "F",
+      //Nhà chung
     },
     {
       srcId: "07",
-      title: "Bắc Cực"
+      title: "G",
+      //Nhà nhỏ
     },
     {
       srcId: "08",
-      title: "Nhà nhỏ"
+      title: "H",
+      //Nhà trên cây
     },
     {
       srcId: "09",
-      title: "Đảo"
+      title: "Nhà khung chữ A",
     },
     {
       srcId: "10",
-      title: "Lướt sóng"
+      title: "Công viên quốc gia",
     },
     {
       srcId: "11",
-      title: "Cabin"
+      title: "Cabin",
     },
     {
       srcId: "12",
-      title: "Thiết kế"
+      title: "Không gian sáng tạo",
     },
     {
       srcId: "13",
-      title: "Bãi biển"
+      title: "Ven hồ",
     },
     {
       srcId: "14",
-      title: "Khung cảnh tuyệt vời"
+      title: "Trượt tuyết",
     },
     {
       srcId: "15",
-      title: "Hang động"
+      title: "Bải biển",
     },
     {
       srcId: "16",
-      title: "Nhiệt đới"
+      title: "Biệt thự",
     },
     {
       srcId: "17",
-      title: "Nhà khung chữ A"
+      title: "Nông thôn",
     },
     {
       srcId: "18",
-      title: "Nhà dưới lòng đất"
+      title: "Nhà dưới lòng đất",
     },
     {
       srcId: "19",
-      title: "Nhà chung"
+      title: "Nhà thuyền",
     },
     {
       srcId: "20",
-      title: "Luxe"
+      title: "Nhiệt đới",
     },
     {
       srcId: "21",
-      title: "Chơi golf"
+      title: "Hồ",
     },
     {
       srcId: "22",
-      title: "Phục vụ bữa sáng"
+      title: "Lâu đài",
     },
     {
       srcId: "23",
-      title: "Lâu đài"
+      title: "Grand piano",
     },
     {
       srcId: "24",
-      title: "Nông trại"
+      title: "Các thành phố nổi tiếng",
     },
     {
       srcId: "25",
-      title: "Nông thôn"
+      title: "Hang động",
     },
     {
       srcId: "26",
-      title: "Biệt thự"
+      title: "Nhà không sữ dụng các dịch vụ tiện ích",
     },
     {
       srcId: "27",
-      title: "Xe cắm trại"
+      title: "Lướt sóng",
     },
     {
       srcId: "28",
-      title: "Nhà mang tính lịch sử"
+      title: "Xe cắm trại",
     },
     {
       srcId: "29",
-      title: "Thuyền"
+      title: "Container",
     },
     {
       srcId: "30",
-      title: "Trượt tuyết"
+      title: "Đảo",
     },
     {
       srcId: "31",
-      title: "Nhà phong cách Cycladic"
+      title: "Riad",
     },
     {
       srcId: "32",
-      title: "Các thành phố nổi tiếng"
+      title: "Sa mạc",
     },
     {
       srcId: "33",
-      title: "Bếp của bếp trưởng"
+      title: "Cối xay gió",
     },
     {
       srcId: "34",
-      title: "Khu cắm trại"
+      title: "Vườn nho",
     },
-  
+    {
+      srcId: "35",
+      title: "Hướng biển",
+    },
+    {
+      srcId: "36",
+      title: "Nông trại",
+    },
+    {
+      srcId: "37",
+      title: "Nhà nông trại",
+    },
+    {
+      srcId: "38",
+      title: "Lều yurt",
+    },
+    {
+      srcId: "39",
+      title: "Thuyền",
+    },
+    {
+      srcId: "40",
+      title: "Minsu",
+    },
+    {
+      srcId: "41",
+      title: "Bắc cực",
+    },
+    {
+      srcId: "42",
+      title: "Chơi golf",
+    },
+    {
+      srcId: "43",
+      title: "Khu cắm trại",
+    },
+    {
+      srcId: "44",
+      title: "Dammuso",
+    },
+    {
+      srcId: "45",
+      title: "Luxe",
+    },
+    {
+      srcId: "46",
+      title: "Nhà mang tính lịch sử",
+    },
+    {
+      srcId: "47",
+      title: "Nhà phong cách Cycladic",
+    },
+    {
+      srcId: "48",
+      title: "Bếp của bếp trưởng",
+    },
+    {
+      srcId: "49",
+      title: "Lều mục đồng",
+    },
+    {
+      srcId: "50",
+      title: "Nhà mái vòm",
+    },
+    {
+      srcId: "51",
+      title: "Ryokan",
+    },
+    {
+      srcId: "52",
+      title: "Casa Particular",
+    },
+    {
+      srcId: "53",
+      title: "Tháp",
+    },
+    {
+      srcId: "54",
+      title: "Đường trượt tuyết thẳng tới chổ ở",
+    },
+    {
+      srcId: "55",
+      title: "Nhà chỏm nón",
+    },
   ]

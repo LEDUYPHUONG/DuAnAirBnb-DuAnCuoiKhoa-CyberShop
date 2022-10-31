@@ -1,10 +1,10 @@
-import { iteratorSymbol } from 'immer/dist/internal'
 import React, { useState } from 'react'
 import Carousel from '../../component/Carousel/Carousel'
 import FooterPage from '../../component/Footer/FooterPage'
 import HeaderPage from '../../component/Header/HeaderPage'
 import ItemProduct from '../../component/ItemProduct/ItemProduct'
-import { arrIconCarousel } from '../../data/api/dataDemo'
+import ModalHeader from '../../component/Modal/ModalHeader/ModalHeader'
+
 
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function Home({title}: Props) {
-  const arrItemProduct = arrIconCarousel;
+
   const [heightCarousel,setHeightCarousel] = useState('100px')
   const [heightHeader,setHeightHeader] = useState('180px')
 
@@ -23,6 +23,7 @@ export default function Home({title}: Props) {
       setHeightCarousel("100px");
     }
   }
+
   const scrollDownSetHeightHeader = () => {
     if(window.scrollY > 0) {
       setHeightHeader("160px");
@@ -30,24 +31,15 @@ export default function Home({title}: Props) {
       setHeightHeader("180px");
     }
   }
+
   window.onscroll = () =>{
     scrollDownSetHeightCarousel();
     scrollDownSetHeightHeader();
   }
-
-  const renderItem = () => {
-    return arrItemProduct.map((item,index) => {
-      // {renderItem()}
-      return null
-    })
-  }
-
-
-
-
   return (
     <div>
       <HeaderPage />
+      <ModalHeader />
       <div className='home-container mx-auto' style={{ position:"fixed", background:"#ffffff",width:"100%", height:`${heightHeader}`,margin:"0 48px", padding:`${heightCarousel} 48px 0`,zIndex:9}}>
         <div>
           <Carousel />
