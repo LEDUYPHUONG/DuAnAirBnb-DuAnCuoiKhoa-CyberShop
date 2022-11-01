@@ -6,6 +6,6 @@ type Props = {
 
 export default function HomeMobile({title}: Props) {
   return (
-    <div>HomeMobile</div>
+    <div>Home Mobile</div>
   )
 }
