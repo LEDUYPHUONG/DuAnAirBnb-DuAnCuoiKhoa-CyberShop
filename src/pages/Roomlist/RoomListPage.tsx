@@ -1,11 +1,11 @@
 import React from 'react'
 import RoomListItem from '../../component/RoomListItem/RoomListItem'
-import './RoomList.css'
+import './RoomListPage.css'
 import HeaderPage from '../../component/Header/HeaderPage'
 import FooterPage from '../../component/Footer/FooterPage'
 import { relative } from 'path'
 
-const RoomList = () => {
+const RoomListPage = () => {
   const arr = Array(10).fill(1)
 
   return (
@@ -34,4 +34,4 @@ const RoomList = () => {
   )
 }
 
-export default RoomList
+export default RoomListPage
