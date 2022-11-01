@@ -19,7 +19,7 @@ import Profile from './pages/Profile/Profile';
 import Manage from './pages/Admin/Manage';
 import SignIn from './pages/SignIn/SignIn';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
-import SignUp from './pages/SignUp/SignUp1';
+import SignUp from './pages/SignUp/SignUp';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
