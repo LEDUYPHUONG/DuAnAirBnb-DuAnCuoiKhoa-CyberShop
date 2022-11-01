@@ -6,20 +6,22 @@ import { setKeySearch } from '../../../redux/reducer/keySearchReducer'
 import { useAppDispatch } from '../../../redux/example/hooks'
 import { useSelector } from 'react-redux'
 import { arrLocationSearch } from '../../../data/api/dataDemoSearch'
-import { useSearchParams } from 'react-router-dom'
-import { ProductModel, setArrProductApi } from '../../../redux/reducer/productReducer'
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
+import { ProductModel, setArrProductApi, setProductSearch } from '../../../redux/reducer/productReducer'
 import { http } from '../../../util/setting'
 
 export default function ModalHeader() {
     const keySearch =  useSelector((state: RootState) => state.keySearchReducer)
+    const {productSearch} =  useSelector((state: RootState) => state.productReducer)
     const arrSearchLocation:ProductModel[] = arrLocationSearch
     const dispatch = useAppDispatch()
-
+    const navigate = useNavigate();
 
 
     let keywordRef = useRef("");
     let [searchParams, setSearchParams] = useSearchParams();
     let [arrSearch, setArrSearch] = useState([]);
+    const [valueInputSearch,setValueInputSearch] = useState('')
     let timeoutRef = useRef({});
     const getLocationByKeyword = async () => {
         try {
@@ -57,8 +59,20 @@ export default function ModalHeader() {
     setSearchParams({ keyword: keywordRef.current });
     };
 
+    const handelClickMoveToRoomListPage = () => {
+        navigate('/roomlist')
+
+    }
+
     const handleClickSetKeySearchLocation = (item:ProductModel) =>{
-        dispatch(setKeySearch(`${item.tenViTri}`))
+        console.log(`${item.tenViTri}`);
+
+        setValueInputSearch(item.tenViTri + ', ' + item.tinhThanh + ', ' + item.quocGia)
+
+        dispatch(setProductSearch(item))
+        
+        console.log('productSearch in productReducer',productSearch);
+        
     }
 
     const renderLocationByKeyword = () => {
@@ -69,6 +83,9 @@ export default function ModalHeader() {
                     className='btn btn-outline-light py-2 px-5 text-start d-flex flex-nowrap justify-content-start align-items-center w-100 '
                     onClick={() =>{
                         handleClickSetKeySearchLocation(location)
+                    }}
+                    onBlur={() =>{
+                        setValueInputSearch('')
                     }}
                     >
                         <div className="out-icon-location p-4 rounded-4 text-center text-dark" style={{fontSize:'25px', background:'#ebebeb', width:'60px', height:'60px'}}>
@@ -158,33 +175,43 @@ export default function ModalHeader() {
                                         <div className="order-bar-modal rounded-pill" style={{ border: "2px solid rgba(204, 204, 204, 0.5)", overflow:"hidden"}}>
                                             <div className="location d-flex justify-content-between align-items-center" style={{background:"#EBEBEB"}}>
                                                 <div style={{width:1, height:0}}></div>
-                                                <button className='btn text-dark d-flex flex-column rounded-pill buttonUserActive buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}} type='button'>
-                                                    <span>Địa điểm</span>
-                                                    <input 
-                                                        type="text" 
-                                                        defaultValue={keySearch} 
-                                                        placeholder='Tìm kiếm điểm đến' 
-                                                        style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}
-                                                        id="keywordRef"
-                                                        onChange={handleChange}
-                                                        />
-                                                </button>
+                                                    <button className='btn text-dark d-flex flex-column rounded-pill buttonUserActive buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}} type='button'>
+                                                        <span>Địa điểm</span>
+                                                        <input 
+                                                            type="text" 
+                                                            defaultValue={keySearch}
+                                                            value={valueInputSearch} 
+                                                            placeholder='Tìm kiếm điểm đến' 
+                                                            style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px", width:'100%'}}
+                                                            id="keywordRef"
+                                                            onChange={handleChange}
+                                                            />
+                                                    </button>
                                                 <div style={{width:1, height:24, background:"#cccccc"}}></div>
                                                     <button className='btn text-dark d-flex flex-column rounded-pill buttonUserHover' style={{fontSize: "14px", outline:"none", padding:"10px 25px", width:"300px"}}>
                                                         <span>Ngày</span>
                                                         <input className='book-day' type="text" disabled placeholder='Thêm ngày' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
                                                     </button>
                                                     <div style={{width:1, height:24, background:"#cccccc"}}></div>
-                                                    <button className='btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover' style={{width:"300px", padding: "6px 5px 6px 25px"}}>
-                                                        <span className='text-dark d-flex flex-column align-items-start' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>
-                                                            <span>Khách</span>
-                                                            <input className='book-people' type="text" disabled placeholder='Thêm khách' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
-                                                        </span>
-                                                        <span className='btn d-flex justify-content-center align-items-center' style={{backgroundImage:bgImgBtnSearch, backgroundSize: "200% 200%",border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}>
-                                                            <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
-                                                            <span className='ps-3'>Tìm kiếm</span>
-                                                        </span>
-                                                    </button>
+                                                    
+                                                        <button type='button' className='btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover ' style={{width:"300px", padding: "6px 5px 6px 25px"}} 
+                                                        >
+                                                            <span className='text-dark d-flex flex-column align-items-start ' style={{fontFamily: "Roboto-Regular",fontSize: "14px"}}>
+                                                                <span>Khách</span>
+                                                                <input className='book-people' type="text" disabled placeholder='Thêm khách' style={{opacity: 0.5, fontFamily: "Roboto-Regular",fontSize: "14px", outline:"none",borderRadius:"0px"}}/>
+                                                            </span>
+                                                            <span 
+                                                            data-dismiss="modal"
+                                                            className='btn d-flex justify-content-center align-items-center' 
+                                                            style={{backgroundImage:bgImgBtnSearch, backgroundSize: "200% 200%",border: "none", color: "white", borderRadius: "50px", width: "130px", height: "48px", lineHeight: "14px", textAlign: "center", outline:"none"}}
+                                                             onClick={() => {
+                                                                handelClickMoveToRoomListPage()
+                                                            }}>
+                                                                <i className="fa-solid fa-magnifying-glass" style={{fontSize: "14px", lineHeight: "14px", width: "14px", height: "14px"}}></i>
+                                                                <span className='ps-3'>Tìm kiếm</span>
+                                                            </span>
+                                                        </button>
+                                                    
                                                 </div>
                                             </div>
                                     </form>
