@@ -1,0 +1,127 @@
+.container {
+  height: 650px;
+  margin-top: 50px;
+  .sign_up {
+    height: 100%;
+    border-radius: 25px;
+    border: 0.5px solid rgba(181, 177, 177, 0.4);
+    box-shadow: 0px 5px 10px rgba(139, 137, 137, 0.3);
+
+    .sign_up_left {
+      width: 65%;
+      height: 100%;
+      border-radius: 25px;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      background-image: url(../../../../../public/img/airbnb_logo1.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .sign_up_right {
+      width: 40%;
+      height: 100%;
+      position: relative;
+      background: url("https://img.freepik.com/premium-vector/black-wave-stripe-background_263670-126.jpg?w=2000");
+      border-bottom-right-radius: 25px;
+      border-top-right-radius: 25px;
+
+      .bg_cover {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        z-index: 1;
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        h2 {
+          color: #74c259;
+          font-size: 33px;
+          font-weight: 800;
+          margin-top: 30px;
+          margin-bottom: 40px;
+          text-align: center;
+        }
+        .signup_input {
+          input:-webkit-autofill,
+          input:-webkit-autofill:hover,
+          input:-webkit-autofill:focus,
+          input:-webkit-autofill:active {
+            transition: background-color 5000s;
+            -webkit-text-fill-color: #fff !important;
+          }
+          .signup_email_inp,
+          .signup_password_inp {
+            width: 370px;
+            border-bottom: 2px solid rgba(243, 232, 232, 0.8);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background: transparent;
+            outline: 0;
+            font-size: 20px;
+            color: #ffffff;
+          }
+          .ant-picker-input {
+            input {
+              width: 370px;
+              background-color: #12b4c0;
+              border-bottom: 2px solid rgba(243, 232, 232, 0.8);
+              border-top: none;
+              border-left: none;
+              border-right: none;
+              background: transparent;
+              outline: 0;
+              font-size: 20px;
+              color: #ffffff;
+              margin-bottom: 20px;
+            }
+           span{
+            display: none;
+           }
+          }
+
+          i {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 300;
+            cursor: pointer;
+            margin-left: -25px;
+          }
+          span {
+            margin-bottom: 15px;
+            text-align: left;
+            display: inline-block;
+            height: 10px;
+          }
+        }
+        .action_btn {
+          .signin_btn {
+            width: 150px;
+            height: 55px;
+            border: none;
+            border-radius: 25px;
+            color: #ffffff;
+            background: #74c259;
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            i {
+              margin-left: 10px;
+            }
+          }
+        
+          span {
+            color: #ffffff;
+            .login_navigate {
+              color: #12b4c0;
+              margin-left: 7px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
