@@ -12,7 +12,8 @@ export interface ProductModel {
 
 export interface ProductState {
     arrLocation: ProductModel[],
-    arrProduct: ProductModel[]
+    arrProduct: ProductModel[],
+    productSearch: ProductModel
 }
 
 const initialState: ProductState = {
@@ -25,7 +26,14 @@ const initialState: ProductState = {
         quocGia:   '',
         hinhAnh:   ''
       }
-    ]
+    ],
+    productSearch: {
+      id:        0,
+      tenViTri:  '',
+      tinhThanh: '',
+      quocGia:   '',
+      hinhAnh:   ''
+    }
 }
 
 const productReducer = createSlice({
@@ -37,11 +45,14 @@ const productReducer = createSlice({
       },
     setArrProductApi : (state:ProductState, action: PayloadAction<ProductModel[]>) => {
       state.arrProduct = action.payload;
+      },
+    setProductSearch : (state:ProductState, action: PayloadAction<ProductModel>) => {
+      state.productSearch = action.payload;
       }
   }
 });
 
-export const { setArrLocationApi, setArrProductApi } = productReducer.actions
+export const { setArrLocationApi, setArrProductApi, setProductSearch } = productReducer.actions
 
 export default productReducer.reducer
 
