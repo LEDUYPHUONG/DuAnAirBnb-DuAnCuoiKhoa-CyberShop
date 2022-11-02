@@ -16,59 +16,64 @@ export default function Admin() {
             </div>
         </div>
         <div className='admin-body w-full d-flex justify-content-start align-items-start'>
-            <div className='admin-navbar mx-5' style={{width:'200px'}}>
-                <div className='pt-5' style={{cursor: 'pointer'}}>Quản lý người dùng</div>
-                <div className='pt-5' style={{cursor: 'pointer'}}>Quản lý thông tin vị trí</div>
-                <div className='pt-5' style={{cursor: 'pointer'}}>Quản lý thông tin phòng</div>
-                <div className='pt-5' style={{cursor: 'pointer'}}>Quản lý đặt phòng</div>
+            <div className='admin-navbar' style={{width:'255px'}}>
+                <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>User management</button>
+                <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Location information management</button>
+                <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Manage room information</button>
             </div>
             <div className='px-5 border-start' style={{width: '-webkit-fill-available', height:'calc(100vh - 55px)'}}>
-                <p className='my-5'>Thêm quản trị viên</p>
+                <p className='my-5'>Add admin</p>
                 <div className='pb-3' style={{width:'100%'}}>
-                    <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Nhập vào tài khoản hoặc tên người dùng'/>
-                    <button type="button" className="btn btn-primary me-5 ms-2"> Tìm</button>
+                    <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Enter account or username'/>
+                    <button type="button" className="btn btn-primary me-5 ms-2"> Find</button>
                 </div>
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Mã phòng</th>
-                            <th>Tên phòng</th>
-                            <th>Hình ảnh</th>
-                            <th>Location</th>
-                            <th>Guesmax</th>
-                            <th></th>
-                            <th></th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Role</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody className='w-full'>
                         <tr>
                             <td scope="row"> 1 </td>
-                            <td>place 1</td>
+                            <td>Hùng</td>
                             <td>
                                 <img style={{width:'50px', height:'50px'}} src="https://i.pravatar.cc/" alt="..." />
                             </td>
-                            <td>dreamLand</td>
-                            <td>4</td>
+                            <td>0900000biết</td>
+                            <td>men</td>
+                            <td>
+                                Admin
+                            </td>
                             <td>
                                 <button className='btn btn-primary'>Xem thông tin chi tiết</button>
+                                <button className='btn btn-warning mx-3 text-dark'>Sửa</button>
+                                <button className='btn btn-danger'>x</button>
                             </td>
-                            <td>Sửa</td>
-                            <td><button className='btn btn-danger'>x</button></td>
                         </tr>
                         <tr>
-                            <td scope="row"> 1 </td>
-                            <td>place 1</td>
+                            <td scope="row"> 2 </td>
+                            <td>Phong</td>
                             <td>
                                 <img style={{width:'50px', height:'50px'}} src="https://i.pravatar.cc/" alt="..." />
                             </td>
-                            <td>dreamLand</td>
-                            <td>4</td>
+                            <td>090000đéobiết</td>
+                            <td>woman</td>
+                            <td>
+                                User
+                            </td>
                             <td>
                                 <button className='btn btn-primary'>Xem thông tin chi tiết</button>
+                                <button className='btn btn-warning mx-3 text-dark'>Sửa</button>
+                                <button className='btn btn-danger'>x</button>
                             </td>
-                            <td>Sửa</td>
-                            <td><button className='btn btn-danger'>x</button></td>
+                            
                         </tr>
                     </tbody>
                 </table>
