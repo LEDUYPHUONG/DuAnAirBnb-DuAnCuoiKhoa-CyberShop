@@ -26,6 +26,10 @@ export default function RoomInfo({ title }: Props) {
   console.log("param nè", roomId);
   //render tiện ích
 
+  const renderTienIch = ()=>{
+    
+  }
+
 
   useEffect(() => {
     dispatch(getRoomDetailApi(roomId));
@@ -202,7 +206,7 @@ export default function RoomInfo({ title }: Props) {
             <div className="convenience">
               <ul className="d-flex flex-wrap">
                 <div className="col-6">
-                  <li className="d-flex align-items-center" value={objectRoomDetail.bep}>
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.bep? "" : "d-none"}`}>
                     <div className="convi_icon">
                       <i className="fa-solid fa-kitchen-set"></i>
                     </div>
@@ -212,7 +216,7 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center" value={objectRoomDetail.tivi}>
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.tivi? "" : "d-none"}`}>
                     <div className="convi_icon">
                       <i className="fa-solid fa-tv"></i>
                     </div>
@@ -222,7 +226,7 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center" value={objectRoomDetail.dieuHoa}>
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.dieuHoa? "" : "d-none"}`}>
                     <div className="convi_icon">
                       <i className="fa-regular fa-snowflake"></i>
                     </div>
@@ -232,7 +236,7 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center" value={objectRoomDetail.banLa}>
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.banLa? "" : "d-none"}`}>
                     <div className="convi_icon">
                       <i className="fa-solid fa-temperature-arrow-up"></i>
                     </div>
@@ -242,7 +246,7 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center tienich" value={objectRoomDetail.doXe}>
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.doXe? "" : "d-none"}`}>
                     <div className="convi_icon">
                       <i className="fa-solid fa-square-parking"></i>
                     </div>
@@ -255,7 +259,7 @@ export default function RoomInfo({ title }: Props) {
                 </div>
 
                 <div className="col-6">
-                  <li className="d-flex align-items-center" value={objectRoomDetail.wifi} >
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.wifi? "" : "d-none"}`}>
                     <div className="convi_icon">
                       <i className="fa-solid fa-wifi"></i>
                     </div>
@@ -265,7 +269,7 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center" value={objectRoomDetail.mayGiat} >
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.mayGiat? "" : "d-none"}`}>
                     <div className="convi_icon">
                     <i className="fa-solid fa-socks"></i>
                     </div>
@@ -275,7 +279,7 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center"  value={objectRoomDetail.hoBoi}>
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.hoBoi? "" : "d-none"}`}>
                     <div className="convi_icon">
                     <i className="fa-solid fa-person-swimming"></i>
                     </div>
@@ -285,7 +289,7 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center" value={objectRoomDetail.banUi}>
+                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.banUi? "" : "d-none"}`}>
                     <div className="convi_icon">
                       <i className="fa-solid fa-icicles"></i>
                     </div>
@@ -317,7 +321,7 @@ export default function RoomInfo({ title }: Props) {
           <div className="booking_area">
             <div className="price_and_rating1 d-flex justify-content-between align-items-center">
               <div className="price">
-                <span className="price_text">$44</span>
+                <span className="price_text">${objectRoomDetail.giaTien}</span>
                 <span>/đêm</span>
               </div>
               <div className="textReview">

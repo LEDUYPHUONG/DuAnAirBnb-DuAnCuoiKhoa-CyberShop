@@ -24,8 +24,18 @@ export interface roomDetailModel {
   hinhAnh: string;
 }
 
-const initialState:any = {
+export interface bookedRoomModel {
+    id: number,
+    maPhong: number,
+    ngayDen: string,
+    ngayDi: string,
+    soLuongKhach: number,
+    maNguoiDung: number
+}
+
+const initialState: any = {
   objectRoomDetail: {},
+  arrBookedRoom: [],
 };
 
 const roomDetailReducer = createSlice({
@@ -35,10 +45,13 @@ const roomDetailReducer = createSlice({
     getRoomDetailAction: (state, action: PayloadAction<roomDetailModel>) => {
       state.objectRoomDetail = action.payload;
     },
+    getBookedRoomAction: (state, action: PayloadAction<bookedRoomModel[]>) => {
+        state.arrBookedRoom = action.payload;
+      },
   },
 });
 
-export const {getRoomDetailAction} = roomDetailReducer.actions;
+export const { getRoomDetailAction } = roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
 
@@ -51,6 +64,17 @@ export const getRoomDetailApi = (id: any) => {
       dispatch(getRoomDetailAction(result.data.content));
     } catch (err) {
       console.log("getRoomDetailApiErr", err);
+    }
+  };
+};
+
+export const getBookedRoomApi = (id: any) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      let result = await http.get("/dat-phong");
+      dispatch(getRoomDetailAction(result.data.content));
+    } catch (err) {
+      console.log("getBookedRoomApiErr", err);
     }
   };
 };
