@@ -1,12 +1,14 @@
-import {configureStore,PayloadAction} from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit'
+import keySearchReducer from './reducer/keySearchReducer'
+import keywordReducer from './reducer/keywordReducer'
+import productReducer from './reducer/productReducer'
 
 
 export const store = configureStore({
     reducer:{
-        numberReducer: (state,action:PayloadAction<number>) =>{
-            return 1;
-        },
-       
+        productReducer: productReducer,
+        keywordReducer: keywordReducer,
+        keySearchReducer: keySearchReducer
     }
 })
 
