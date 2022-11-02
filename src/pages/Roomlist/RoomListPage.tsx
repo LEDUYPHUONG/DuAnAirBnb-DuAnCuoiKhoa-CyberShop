@@ -8,26 +8,8 @@ import axios from 'axios'
 import { getToken } from '../../data/services/token.service'
 
 const RoomListPage = () => {
+  const arr = Array(10).fill(1)
   
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    const url = 'https://airbnbnew.cybersoft.edu.vn/api/phong-thue' 
-    const id = "1"
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAzMCIsIkhldEhhblN0cmluZyI6IjE3LzAyLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY3NjU5MjAwMDAwMCIsIm5iZiI6MTY0ODIyNzYwMCwiZXhwIjoxNjc2NzM5NjAwfQ.aK-3RvHXQyu6H2-FFiafeSKR4UMCcRmnuDbTT-XIcUU"
-    const getRoomList = async () => {
-      const res = await axios.get(`https://airbnbnew.cybersoft.edu.vn/api/phong-thue/lay-phong-theo-vi-tri?maViTri=1`, {
-        headers : {'Authorization': 'Bearer ' + token}
-      })
-      console.log(res?.data);
-      setData(res?.data?.content)
-    }
-    try {
-      getRoomList()
-    } catch (error) {
-      
-    }
-  },[])
 
   return (
     <>
@@ -51,9 +33,9 @@ const RoomListPage = () => {
             
           </div>
           <div className="roomlist-item_content" style={{display:'flex', width:"100%", flexWrap: 'wrap'}}>
-            {data.map((item, index) => (
+            {arr.map((item, index) => (
               <div key={index} style={{ width: '50%', marginTop: 20 }}>
-                <RoomListItem item={item} />
+                <RoomListItem />
               </div>
             ))}
           </div>

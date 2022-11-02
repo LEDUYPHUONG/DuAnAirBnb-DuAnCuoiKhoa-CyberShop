@@ -1,8 +1,8 @@
 import React from "react";
 import "./RoomListItem.css";
 
-const RoomListItem = ({item}: any) => {
-  console.log(item);
+const RoomListItem = () => {
+
   
   return (
     <div
@@ -18,7 +18,7 @@ const RoomListItem = ({item}: any) => {
 
       <div className="roomlist-address">
         <div className="d-flex justify-content-between align-items-center mt-3">
-          <span style={{fontSize:15}} >{item?.tenPhong}</span>
+          <span style={{fontSize:15}} >Hang động tại Noyers-sur-Cher</span>
 
           <div className="roomlist-like">
             <div className="d-flex justify-content-between align-items-center">
