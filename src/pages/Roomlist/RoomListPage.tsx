@@ -39,11 +39,11 @@ const RoomListPage = () => {
 
             <div>
                   <div style={{padding:"7px 0"}}>
-                    <span className='d-flex border rounded-4' style={{padding:"2px 16px 0"}}>
-                      <span style={{width:"50%"}}>
+                    <span className='d-flex border rounded-4' style={{padding:"2px 10px", width: 120, height: 50}}>
+                      <span style={{ display: 'flex', alignItems: 'center' , marginRight: 20}}>
                         <img src="./img/setting-lines.png" alt="" style={{width:12,height:12}} />
                       </span>
-                      <span style={{width:"50%"}}>Bộ lọc</span>
+                      <span style={{display: 'flex', alignItems: 'center'}}>Bộ lọc</span>
                     </span>
               </div>
               
