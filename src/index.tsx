@@ -20,6 +20,7 @@ import SignIn from './pages/SignIn/SignIn';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
 import SignUp from './pages/SignUp/SignUp';
 import "./assets/scss/style.scss"
+import Infor from './pages/Information/Infor';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -37,6 +38,10 @@ root.render(
           <Route path='map' element={<MapHome/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
           <Route path='profile' element={<Profile/>}></Route>
+          <Route path='Information' element={<Infor/>}></Route>
+          <Route path='detail'>
+            <Route path=':id'></Route>
+          </Route>
           <Route path='detailroom' element = {<RoomDetail/>}>
           <Route path=':id'></Route>
           </Route>
