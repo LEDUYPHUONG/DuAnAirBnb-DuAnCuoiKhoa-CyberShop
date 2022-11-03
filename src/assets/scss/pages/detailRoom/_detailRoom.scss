@@ -1,5 +1,6 @@
 .container {
   .roomName {
+    margin-top: 50px;
     font-size: 30px;
   }
   .review {
@@ -194,7 +195,7 @@
       border: 1px solid rgb(221, 221, 221);
       position: -webkit-sticky;
       position: sticky;
-      top: 30px;
+      top: 80px;
       margin-bottom: 40px;
 
       // background-color: rgb(95, 203, 13);
@@ -279,25 +280,45 @@
     }
   }
   .commentary {
-    .ant-comment-avatar {
-      img {
-        width: 40px;
-        height: 40px;
-      }
-    }
-    .ant-comment-content {
-      .ant-comment-content-author {
-        display: flex;
-        flex-direction: column;
-        .ant-comment-content-author-name {
-          font-size: 16px;
-          color: black;
-          font-weight: 500;
+    height: 550px;
+    // .ant-comment-avatar {
+    //   img {
+    //     width: 40px;
+    //     height: 40px;
+    //   }
+    // }
+    // .ant-comment-content {
+    //   .ant-comment-content-author {
+    //     display: flex;
+    //     flex-direction: column;
+    //     .ant-comment-content-author-name {
+    //       font-size: 16px;
+    //       color: black;
+    //       font-weight: 500;
+    //     }
+    //     .ant-comment-content-author-time {
+    //       font-size: 14px;
+    //       font-weight: 400;
+    //       color: #8e9092;
+    //     }
+    //   }
+    // }
+    .comment{
+      .usercomment{
+        img{
+          border-radius: 100px;
+          width: 50px;
+          height: 50px;
         }
-        .ant-comment-content-author-time {
-          font-size: 14px;
-          font-weight: 400;
-          color: #8e9092;
+        .commentInfo{
+          margin-left: 20px;
+         .tenNguoiDung{
+          font-weight: 700;
+          font-size: 20px;
+         }
+         .ngayDang{
+          font-size: 12px;
+         }
         }
       }
     }
