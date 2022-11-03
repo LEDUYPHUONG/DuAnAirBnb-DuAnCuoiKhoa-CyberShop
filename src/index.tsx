@@ -32,22 +32,18 @@ root.render(
           <Route index element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='roomlist' element={<ResponsiveItem Component={Roomlist} ComponentMobile={Roomlist} />}></Route>
-          <Route path='login' element={<Login/>}></Route>
           <Route path='signup' element={<SignUp/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
           <Route path='map' element={<MapHome/>}></Route>
           <Route path='demo' element={<Demo/>}></Route>
           <Route path='profile' element={<Profile/>}></Route>
-          <Route path='detail'>
-            <Route path=':id'></Route>
-          </Route>
           <Route path='detailroom' element = {<RoomDetail/>}>
           <Route path=':id'></Route>
           </Route>
           <Route path='listRoom' element = {<Roomlist/>}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
           <Route path='admin' element={<Admin/>}></Route>
-          <Route path='signin' element={<SignIn/>}></Route>
+          <Route path='signin' element={<Login/>}></Route>
           <Route path='manage' element={<Manage/>}></Route>
         </Route>
       </Routes>
