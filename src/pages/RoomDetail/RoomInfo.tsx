@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { Image } from "antd";
-import Date from "./Date";
+// import Date from "./Date";
 import SelectNumberPassenger from "./SelectNumberPassenger";
 import WriteComment from "./WriteComment";
 import Comment from "./Comment";
@@ -11,9 +11,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import {
   getBookedRoomApi,
+  getNumberStayDatesAction,
   getRoomDetailApi,
 } from "../../redux/reducer/roomDetailReducer";
 import { values } from "lodash";
+
+//---------------import cho phần Date--------------
+import { DatePicker, Space } from "antd";
+import type { RangePickerProps } from "antd/es/date-picker";
+import moment from "moment";
+//---------------------
 
 type Props = {
   title?: string;
@@ -27,18 +34,35 @@ export default function RoomInfo({ title }: Props) {
   const { arrBookedRoom } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
-  // console.log(arrBookedRoom);
   const param = useParams();
   const roomId = param.id;
   console.log("param nè", roomId);
 
- 
   useEffect(() => {
     dispatch(getRoomDetailApi(roomId));
-    dispatch(getBookedRoomApi())
-
+    dispatch(getBookedRoomApi());
   }, [roomId]);
 
+  //-----------------chức năng cho phần chọn ngày ở--------------
+  const { RangePicker } = DatePicker;
+  // function count số ngày đã chọn
+  function countNumberOfDates(dateString: any) {
+    let daysNum = (dateString[1] - dateString[0]) / (1000 * 3600 * 24);
+    console.log("daysNum", daysNum);
+    return daysNum;
+    // dispatch(getNumberStayDatesAction(daysNum))
+  }
+  //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
+  const disabledDate: RangePickerProps["disabledDate"] = (current) => {
+    // Can not select days before today and today
+    return current && current < moment().endOf("day");
+  };
+  //lấy dữ liệu ngày đã chọn từ redux
+  const { arrNumberStayDates } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
+
+  //-------------------------------------------------------------------
   return (
     <div className="container">
       <h4 className="roomName">{objectRoomDetail.tenPhong}</h4>
@@ -385,7 +409,15 @@ export default function RoomInfo({ title }: Props) {
               </div>
             </div>
             <div className="pick_options d-flex flex-column">
-              <Date />
+              {/* <Date/> */}
+              <Space direction="vertical" size={12}>
+                <RangePicker
+                  placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
+                  format={["DD-MM-YYYY"]}
+                  onChange={(dateString) => countNumberOfDates(dateString)}
+                  disabledDate={disabledDate}
+                />
+              </Space>
               <SelectNumberPassenger />
               <button className="datphong_btn">Đặt phòng</button>
               <span className="text-center mt-2">Bạn vẫn chưa bị trừ tiền</span>
@@ -393,7 +425,9 @@ export default function RoomInfo({ title }: Props) {
             <div className="cashier">
               <div className="tien_phong d-flex justify-content-between">
                 <div className="tinh_tien">
-                  <a href="#">$44 x 5 đêm</a>
+                  <a href="#">
+                    ${objectRoomDetail.giaTien} x {arrNumberStayDates} đêm
+                  </a>
                 </div>
                 <div className="thanh_tien">$221</div>
               </div>
@@ -401,7 +435,7 @@ export default function RoomInfo({ title }: Props) {
                 <div className="tinh_tien">
                   <a href="#"> Phí dịch vụ</a>
                 </div>
-                <div className="thanh_tien">$31</div>
+                <div className="thanh_tien">$8</div>
               </div>
               <div className="tong_tien d-flex justify-content-between">
                 <div className="mt-2">
