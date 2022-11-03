@@ -1,19 +1,71 @@
 import React from "react";
+import { useEffect } from "react";
 import { Image } from "antd";
-import Date from "./Date";
+// import Date from "./Date";
 import SelectNumberPassenger from "./SelectNumberPassenger";
 import WriteComment from "./WriteComment";
 import Comment from "./Comment";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/configStore";
+import {
+  getBookedRoomApi,
+  getNumberStayDatesAction,
+  getRoomDetailApi,
+} from "../../redux/reducer/roomDetailReducer";
+import { values } from "lodash";
 
+//---------------import cho phần Date--------------
+import { DatePicker, Space } from "antd";
+import type { RangePickerProps } from "antd/es/date-picker";
+import moment from "moment";
+//---------------------
 
-type Props = {};
+type Props = {
+  title?: string;
+};
 
-export default function RoomInfo({}: Props) {
+export default function RoomInfo({ title }: Props) {
+  const dispatch: AppDispatch = useDispatch();
+  const { objectRoomDetail } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
+  const { arrBookedRoom } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
+  const param = useParams();
+  const roomId = param.id;
+  console.log("param nè", roomId);
+
+  useEffect(() => {
+    dispatch(getRoomDetailApi(roomId));
+    dispatch(getBookedRoomApi());
+  }, [roomId]);
+
+  //-----------------chức năng cho phần chọn ngày ở--------------
+  const { RangePicker } = DatePicker;
+  // function count số ngày đã chọn
+  function countNumberOfDates(dateString: any) {
+    let daysNum = (dateString[1] - dateString[0]) / (1000 * 3600 * 24);
+    console.log("daysNum", daysNum);
+    return daysNum;
+    // dispatch(getNumberStayDatesAction(daysNum))
+  }
+  //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
+  const disabledDate: RangePickerProps["disabledDate"] = (current) => {
+    // Can not select days before today and today
+    return current && current < moment().endOf("day");
+  };
+  //lấy dữ liệu ngày đã chọn từ redux
+  const { arrNumberStayDates } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
+
+  //-------------------------------------------------------------------
   return (
     <div className="container">
-      <h4 className="roomName">Amazing Condotel Relax in Vungtau</h4>
+      <h4 className="roomName">{objectRoomDetail.tenPhong}</h4>
       <div className="review d-flex justify-content-between">
         <div className="d-flex ">
           <div className="textReview">
@@ -50,9 +102,8 @@ export default function RoomInfo({}: Props) {
           <Image.PreviewGroup>
             <div className="item1">
               <Image
-              height={387}
-             
-                src="http://xuonggooccho.com/wp-content/uploads/2020/10/trang-tri-noi-that-phong-ngu-dep.jpg"
+                height={387}
+                src={objectRoomDetail.hinhAnh}
                 alt="roomPhoto"
               />
             </div>
@@ -72,7 +123,7 @@ export default function RoomInfo({}: Props) {
                 alt="roomPhoto"
               />
             </div>
-            <div className="item">
+            {/* <div className="item">
               <Image
                 className="img"
                 height={191}
@@ -88,7 +139,7 @@ export default function RoomInfo({}: Props) {
                 src="https://xaydungvincon.com/Content/Images/FileUpload/2020/9/mau-phong-tam-nho-dep0.jpg"
                 alt="roomPhoto"
               />
-            </div>
+            </div> */}
           </Image.PreviewGroup>
         </div>
       </div>
@@ -98,7 +149,11 @@ export default function RoomInfo({}: Props) {
             <div className="infoRoomName d-flex justify-content-between">
               <div>
                 <h4>Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
-                <span>6 khách - 2 phòng ngủ - 2 giường - 2 phòng tắm</span>
+                <span>
+                  {objectRoomDetail.khach} khách - {objectRoomDetail.phongNgu}{" "}
+                  phòng ngủ - {objectRoomDetail.giuong} giường -{" "}
+                  {objectRoomDetail.phongTam} phòng tắm
+                </span>
               </div>
               <div>
                 <img src="https://i.pravatar.cc" alt="" />
@@ -173,13 +228,7 @@ export default function RoomInfo({}: Props) {
                   <i className="fa-solid fa-language"></i>
                 </button>
                 <div className="gioithieu">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad
-                  laboriosam, provident illum magnam dolore culpa consequuntur
-                  minima ducimus inventore deserunt, quasi atque voluptatibus
-                  maxime voluptate consectetur odio maiores, porro nihil itaque
-                  adipisci neque. Consequatur deleniti, temporibus minus atque
-                  recusandae possimus dolorum ullam praesentium excepturi
-                  quisquam culpa tenetur...
+                  {objectRoomDetail.moTa}
                   <br />
                   <br />
                   <a href="#">Hiển thị thêm</a>
@@ -189,7 +238,12 @@ export default function RoomInfo({}: Props) {
             <div className="convenience">
               <ul className="d-flex flex-wrap">
                 <div className="col-6">
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.bep ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-kitchen-set"></i>
                     </div>
@@ -199,7 +253,12 @@ export default function RoomInfo({}: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.tivi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-tv"></i>
                     </div>
@@ -209,7 +268,12 @@ export default function RoomInfo({}: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.dieuHoa ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-regular fa-snowflake"></i>
                     </div>
@@ -219,30 +283,45 @@ export default function RoomInfo({}: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.banLa ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-temperature-arrow-up"></i>
                     </div>
                     <div className="convi_text">
                       <div className="textTop">
-                        <span>Lò sưởi trong nhà</span>
+                        <span>Bàn là</span>
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.doXe ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-square-parking"></i>
                     </div>
                     <div className="convi_text">
                       <div className="textTop">
-                        <span>Bãi để xe thu phí nằm ngoài khuôn viên</span>
+                        <span>Bãi để xe</span>
                       </div>
                     </div>
                   </li>
                 </div>
 
                 <div className="col-6">
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.wifi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-wifi"></i>
                     </div>
@@ -252,27 +331,42 @@ export default function RoomInfo({}: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.mayGiat ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
-                      <i className="fa-solid fa-elevator"></i>
+                      <i className="fa-solid fa-socks"></i>
                     </div>
                     <div className="convi_text">
                       <div className="textTop">
-                        <span>Thang máy</span>
+                        <span>Máy giặt</span>
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.hoBoi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
-                      <i className="fa-regular fa-building"></i>
+                      <i className="fa-solid fa-person-swimming"></i>
                     </div>
                     <div className="convi_text">
                       <div className="textTop">
-                        <span>Sân hoặc ban công</span>
+                        <span>Hồ bơi</span>
                       </div>
                     </div>
                   </li>
-                  <li className="d-flex align-items-center">
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.banUi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-icicles"></i>
                     </div>
@@ -304,7 +398,7 @@ export default function RoomInfo({}: Props) {
           <div className="booking_area">
             <div className="price_and_rating1 d-flex justify-content-between align-items-center">
               <div className="price">
-                <span className="price_text">$44</span>
+                <span className="price_text">${objectRoomDetail.giaTien}</span>
                 <span>/đêm</span>
               </div>
               <div className="textReview">
@@ -315,7 +409,15 @@ export default function RoomInfo({}: Props) {
               </div>
             </div>
             <div className="pick_options d-flex flex-column">
-              <Date />
+              {/* <Date/> */}
+              <Space direction="vertical" size={12}>
+                <RangePicker
+                  placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
+                  format={["DD-MM-YYYY"]}
+                  onChange={(dateString) => countNumberOfDates(dateString)}
+                  disabledDate={disabledDate}
+                />
+              </Space>
               <SelectNumberPassenger />
               <button className="datphong_btn">Đặt phòng</button>
               <span className="text-center mt-2">Bạn vẫn chưa bị trừ tiền</span>
@@ -323,7 +425,9 @@ export default function RoomInfo({}: Props) {
             <div className="cashier">
               <div className="tien_phong d-flex justify-content-between">
                 <div className="tinh_tien">
-                  <a href="#">$44 x 5 đêm</a>
+                  <a href="#">
+                    ${objectRoomDetail.giaTien} x {arrNumberStayDates} đêm
+                  </a>
                 </div>
                 <div className="thanh_tien">$221</div>
               </div>
@@ -331,7 +435,7 @@ export default function RoomInfo({}: Props) {
                 <div className="tinh_tien">
                   <a href="#"> Phí dịch vụ</a>
                 </div>
-                <div className="thanh_tien">$31</div>
+                <div className="thanh_tien">$8</div>
               </div>
               <div className="tong_tien d-flex justify-content-between">
                 <div className="mt-2">
@@ -344,10 +448,9 @@ export default function RoomInfo({}: Props) {
         </div>
       </div>
       <div className="commentary">
-      <h4 className="roomName">Đánh giá</h4>
-        <Comment/>
-        <WriteComment/>
-
+        <h4 className="roomName">Đánh giá</h4>
+        <Comment />
+        <WriteComment />
       </div>
     </div>
   );
