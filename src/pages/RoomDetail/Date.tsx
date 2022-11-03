@@ -6,7 +6,6 @@ import { date } from "yup/lib/locale";
 import { useSelector } from "react-redux";
 
 const { RangePicker } = DatePicker;
-const {arrNumberStayDates} = useSelector((state: RootState)=> state.roomDetailReducer)
 
 //function lấy ra datestring ngày đến và đi đã chọn, hiện tại mình ko dùng, nhưng nếu muốn console.log ra datastring để xem thì truyền nó vào onChange thay thế hàm countNumberOfDates
 function onChangeDate(date: any, dateString: any) {
