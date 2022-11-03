@@ -1,5 +1,4 @@
 import React from "react";
-import "./RoomListItem.css";
 
 const RoomListItem = () => {
 
@@ -21,7 +20,7 @@ const RoomListItem = () => {
           <span style={{fontSize:15}} >Hang động tại Noyers-sur-Cher</span>
 
           <div className="roomlist-like">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex">
               <img
                 src="/img/Star.png"
                 style={{ width: 20, height: 20, marginBottom: 4 }}
