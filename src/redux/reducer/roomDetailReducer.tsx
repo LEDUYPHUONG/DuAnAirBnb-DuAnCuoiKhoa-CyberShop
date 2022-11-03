@@ -36,6 +36,7 @@ export interface bookedRoomModel {
 const initialState: any = {
   objectRoomDetail: {},
   arrBookedRoom: [],
+  arrNumberStayDates: [],
 };
 
 const roomDetailReducer = createSlice({
@@ -48,11 +49,17 @@ const roomDetailReducer = createSlice({
     getBookedRoomAction: (state, action: PayloadAction<bookedRoomModel[]>) => {
       state.arrBookedRoom = action.payload;
     },
+    getNumberStayDatesAction: (state, action: PayloadAction) => {
+      state.arrNumberStayDates = action.payload;
+    },
   },
 });
 
-export const { getRoomDetailAction, getBookedRoomAction } =
-  roomDetailReducer.actions;
+export const {
+  getRoomDetailAction,
+  getBookedRoomAction,
+  getNumberStayDatesAction,
+} = roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
 
