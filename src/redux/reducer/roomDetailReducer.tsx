@@ -25,12 +25,12 @@ export interface roomDetailModel {
 }
 
 export interface bookedRoomModel {
-    id: number,
-    maPhong: number,
-    ngayDen: string,
-    ngayDi: string,
-    soLuongKhach: number,
-    maNguoiDung: number
+  id: number;
+  maPhong: number;
+  ngayDen: string;
+  ngayDi: string;
+  soLuongKhach: number;
+  maNguoiDung: number;
 }
 
 const initialState: any = {
@@ -46,12 +46,13 @@ const roomDetailReducer = createSlice({
       state.objectRoomDetail = action.payload;
     },
     getBookedRoomAction: (state, action: PayloadAction<bookedRoomModel[]>) => {
-        state.arrBookedRoom = action.payload;
-      },
+      state.arrBookedRoom = action.payload;
+    },
   },
 });
 
-export const { getRoomDetailAction } = roomDetailReducer.actions;
+export const { getRoomDetailAction, getBookedRoomAction } =
+  roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
 
@@ -68,11 +69,12 @@ export const getRoomDetailApi = (id: any) => {
   };
 };
 
-export const getBookedRoomApi = (id: any) => {
+export const getBookedRoomApi = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      let result = await http.get("/dat-phong");
-      dispatch(getRoomDetailAction(result.data.content));
+      const result = await http.get("/dat-phong");
+
+      dispatch(getBookedRoomAction(result.data.content));
     } catch (err) {
       console.log("getBookedRoomApiErr", err);
     }

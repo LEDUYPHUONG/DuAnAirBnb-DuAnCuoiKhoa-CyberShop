@@ -9,7 +9,10 @@ import { NavLink, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
-import { getRoomDetailApi } from "../../redux/reducer/roomDetailReducer";
+import {
+  getBookedRoomApi,
+  getRoomDetailApi,
+} from "../../redux/reducer/roomDetailReducer";
 import { values } from "lodash";
 
 type Props = {
@@ -21,18 +24,19 @@ export default function RoomInfo({ title }: Props) {
   const { objectRoomDetail } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
+  const { arrBookedRoom } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
+  // console.log(arrBookedRoom);
   const param = useParams();
   const roomId = param.id;
   console.log("param nè", roomId);
-  //render tiện ích
 
-  const renderTienIch = ()=>{
-    
-  }
-
-
+ 
   useEffect(() => {
     dispatch(getRoomDetailApi(roomId));
+    dispatch(getBookedRoomApi())
+
   }, [roomId]);
 
   return (
@@ -75,7 +79,7 @@ export default function RoomInfo({ title }: Props) {
             <div className="item1">
               <Image
                 height={387}
-                src= {objectRoomDetail.hinhAnh}
+                src={objectRoomDetail.hinhAnh}
                 alt="roomPhoto"
               />
             </div>
@@ -121,7 +125,11 @@ export default function RoomInfo({ title }: Props) {
             <div className="infoRoomName d-flex justify-content-between">
               <div>
                 <h4>Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
-                <span>{objectRoomDetail.khach} khách - {objectRoomDetail.phongNgu} phòng ngủ - {objectRoomDetail.giuong} giường - {objectRoomDetail.phongTam} phòng tắm</span>
+                <span>
+                  {objectRoomDetail.khach} khách - {objectRoomDetail.phongNgu}{" "}
+                  phòng ngủ - {objectRoomDetail.giuong} giường -{" "}
+                  {objectRoomDetail.phongTam} phòng tắm
+                </span>
               </div>
               <div>
                 <img src="https://i.pravatar.cc" alt="" />
@@ -196,7 +204,7 @@ export default function RoomInfo({ title }: Props) {
                   <i className="fa-solid fa-language"></i>
                 </button>
                 <div className="gioithieu">
-              {objectRoomDetail.moTa}
+                  {objectRoomDetail.moTa}
                   <br />
                   <br />
                   <a href="#">Hiển thị thêm</a>
@@ -206,7 +214,12 @@ export default function RoomInfo({ title }: Props) {
             <div className="convenience">
               <ul className="d-flex flex-wrap">
                 <div className="col-6">
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.bep? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.bep ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-kitchen-set"></i>
                     </div>
@@ -216,7 +229,12 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.tivi? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.tivi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-tv"></i>
                     </div>
@@ -226,7 +244,12 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.dieuHoa? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.dieuHoa ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-regular fa-snowflake"></i>
                     </div>
@@ -236,7 +259,12 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.banLa? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.banLa ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-temperature-arrow-up"></i>
                     </div>
@@ -246,7 +274,12 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.doXe? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.doXe ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-square-parking"></i>
                     </div>
@@ -259,7 +292,12 @@ export default function RoomInfo({ title }: Props) {
                 </div>
 
                 <div className="col-6">
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.wifi? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.wifi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-wifi"></i>
                     </div>
@@ -269,9 +307,14 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.mayGiat? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.mayGiat ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
-                    <i className="fa-solid fa-socks"></i>
+                      <i className="fa-solid fa-socks"></i>
                     </div>
                     <div className="convi_text">
                       <div className="textTop">
@@ -279,9 +322,14 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.hoBoi? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.hoBoi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
-                    <i className="fa-solid fa-person-swimming"></i>
+                      <i className="fa-solid fa-person-swimming"></i>
                     </div>
                     <div className="convi_text">
                       <div className="textTop">
@@ -289,7 +337,12 @@ export default function RoomInfo({ title }: Props) {
                       </div>
                     </div>
                   </li>
-                  <li className= {"d-flex align-items-center " + `${objectRoomDetail.banUi? "" : "d-none"}`}>
+                  <li
+                    className={
+                      "d-flex align-items-center " +
+                      `${objectRoomDetail.banUi ? "" : "d-none"}`
+                    }
+                  >
                     <div className="convi_icon">
                       <i className="fa-solid fa-icicles"></i>
                     </div>
