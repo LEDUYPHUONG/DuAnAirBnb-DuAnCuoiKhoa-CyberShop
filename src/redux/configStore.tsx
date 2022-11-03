@@ -8,7 +8,7 @@ export const store = configureStore({
     reducer:{
         productReducer: productReducer,
         keywordReducer: keywordReducer,
-        keySearchReducer: keySearchReducer
+        keySearchReducer: keySearchReducer,
     }
 })
 
