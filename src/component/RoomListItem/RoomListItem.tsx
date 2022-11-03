@@ -1,6 +1,11 @@
 import React from "react";
+import { RoomlistModel } from "../../redux/reducer/roomlistReducer";
 
-const RoomListItem = () => {
+type Props = {
+  product:RoomlistModel;
+}
+
+export default function RoomListItem ({product}: Props) {
 
   
   return (
@@ -8,12 +13,13 @@ const RoomListItem = () => {
       className="roomlist-item"
       style={{ margin: "0px 10px", position: "relative" }}
     >
-      <img
-        className="roomlist-item_img"
-        style={{ width: "100%", borderRadius: "10px", cursor: "pointer" }}
-        src="https://kientruccb.vn/wp-content/uploads/2020/02/mau-thiet-ke-nha-dep-truyen-cam-hung8.jpg"
-        alt="..."
-      />
+      <div className="image-out" style={{position:"relative", width:"345px",height:"270px" ,border:"none", borderRadius:"10px", overflow:"hidden", objectFit:"cover", marginBottom:"5px",cursor:"pointer"}}>
+        <img
+          style={{width:"100%",height:"100%"}}
+          src={product.hinhAnh}
+          alt="..."
+        />
+      </div>
 
       <div className="roomlist-address">
         <div className="d-flex justify-content-between align-items-center mt-3">
@@ -33,19 +39,20 @@ const RoomListItem = () => {
       </div>
 
       <div className="roomlist-item_des">
-        <p style={{ color: "#746b6b", margin: "0px 0px" }}>Taxi Grove</p>
-        <p style={{ color: "#746b6b", margin: "0px 0px" }}>1 giường queen</p>
+        <p style={{ color: "#746b6b", margin: "0px 0px" }}>{product.tenPhong}</p>
+        <p style={{ color: "#746b6b", margin: "0px 0px" }}>{product.giuong}</p>
         <p style={{ color: "#746b6b", margin: "0px 0px" }}>
           Ngày 30 tháng 10 - Ngày 04 tháng 11
         </p>
       </div>
-      <p
-        className="roomlist-item_price"
+      <div
+        className="roomlist-item_price d-flex"
         style={{ fontSize: "15px", marginTop: 5 }}
       >
 
-        <span>$79 đêm</span>
-      </p>
+        <span style={{fontSize:15, fontWeight:"bold"}}>${product.giaTien}</span>
+        <span style={{marginLeft:3,fontWeight:400}}>đêm</span>
+      </div>
       <div
         className="roomlist-icon_left"
         style={{
@@ -75,5 +82,3 @@ const RoomListItem = () => {
     </div>
   );
 };
-
-export default RoomListItem;
