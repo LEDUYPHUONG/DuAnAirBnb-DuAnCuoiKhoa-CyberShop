@@ -12,7 +12,6 @@ import Demo from './pages/Demo/Demo';
 import Home from './pages/Home/Home';
 import Roomlist from './pages/Roomlist/RoomListPage';
 import ResponsiveItem from './HOC/ResponsiveItem/ResponsiveItem';
-import '../src/assets/scss/style.scss';
 import MapHome from './component/MapHome/MapHome';
 import Admin from './pages/Admin/Admin';
 import Profile from './pages/Profile/Profile';
@@ -20,6 +19,7 @@ import Manage from './pages/Admin/Manage';
 import SignIn from './pages/SignIn/SignIn';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
 import SignUp from './pages/SignUp/SignUp';
+import "./assets/scss/style.scss"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
