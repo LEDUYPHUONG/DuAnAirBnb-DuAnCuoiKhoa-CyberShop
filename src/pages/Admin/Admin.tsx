@@ -54,62 +54,66 @@ export default function Admin() {
 
   return (
     <div>
-        <div className='admin-header w-full d-flex justify-content-between align-items-center px-5 py-3 border-bottom'>
-            <div className='Dashboard d-flex justify-content-end align-items-center' style={{width:'200px'}}>
-                <span >Dashboard</span>
-                <span className='px-3'><i className="fa-solid fa-bars"></i></span>
-            </div>
-            <div className='d-flex justify-content-between align-items-center'>
-                <span className='pe-3'>Admin</span>
-                <ModalAdmin />
-            </div>
-        </div>
-        <div className='admin-body w-full d-flex justify-content-start align-items-start'>
-            <div className='admin-navbar' style={{width:'255px'}}>
-                <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>User management</button>
-                <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Location information management</button>
-                <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Manage room information</button>
-            </div>
-            <div className='px-5 border-start' style={{width: '-webkit-fill-available', height:'calc(100vh - 55px)'}}>
-                <button className='btn btn-success border-0 my-5' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add admin</button>
-                <ModalAddAdmin />
-                <div className='pb-3' style={{width:'100%'}}>
-                    <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Enter account or username'/>
-                    <button type="button" className="btn btn-primary me-5 ms-2"> Find</button>
+        <div className='d-flex justify-content-start align-items-start'>
+            <div className='admin-navbar' style={{width:'400px'}}>
+                <div className='Dashboard bg-dark text-white text-end p-3 d-flex justify-content-end align-items-center' style={{height:'50px'}}>
+                    <span> Dashboard</span>
+                    <span className='px-3'><i className="fa-solid fa-bars"></i></span>
                 </div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Image</th>
-                            <th>Phone</th>
-                            <th>Gender</th>
-                            <th>Role</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody className='w-full'>
-                        {renderAdminUserAccount()}
-                        
-                    </tbody>
-                </table>
-                <div>
-                    <div className='' style={{position:'fixed', zIndex:10, bottom:50, right:50}}>
-                        <button className='btn btn-primary mx-2'  onClick={() => {
-                           handelClickBtnPrevSetArrAdminUser()
-                        }}>
-                            <i className="fa-solid fa-arrow-left me-2"></i>
-                            prev
-                        </button>
-                        <button className='btn btn-primary mx-2'> {numberPage} </button>
-                        <button className='btn btn-primary mx-2' onClick={() => {
-                            handelClickBtnNextSetArrAdminUser()
-                        }}>
+                <div className='admin-navbar-body' style={{width:'100%'}}>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>User management</button>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Location information management</button>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Manage room information</button>
+                </div>
+            </div>
+            <div className='w-100'>
+                <div className='admin-header w-100 d-flex justify-content-end align-items-center px-5 py-3 border-bottom' style={{ height: '50px'}}>
+                    <div className='d-flex justify-content-between align-items-center'>
+                        <span className='pe-3'>Admin</span>
+                        <ModalAdmin />
+                    </div>
+                </div>
+                <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
+                    <button className='btn btn-success border-0 my-5' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add admin</button>
+                    <ModalAddAdmin />
+                    <div className='pb-3' style={{width:'100%'}}>
+                        <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Enter account or username'/>
+                        <button type="button" className="btn btn-primary me-5 ms-2"> Find</button>
+                    </div>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
+                                <th>Role</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody className='w-100'>
+                            {renderAdminUserAccount()}
                             
-                            next
-                            <i className="fa-solid fa-arrow-right ms-2" ></i>
-                        </button>
+                        </tbody>
+                    </table>
+                    <div>
+                        <div className='' style={{position:'fixed', zIndex:10, bottom:50, right:50}}>
+                            <button className='btn btn-primary mx-2'  onClick={() => {
+                                handelClickBtnPrevSetArrAdminUser()
+                            }}>
+                                <i className="fa-solid fa-arrow-left me-2"></i>
+                                prev
+                            </button>
+                            <button className='btn btn-primary mx-2'> {numberPage} </button>
+                            <button className='btn btn-primary mx-2' onClick={() => {
+                                handelClickBtnNextSetArrAdminUser()
+                            }}>
+                                
+                                next
+                                <i className="fa-solid fa-arrow-right ms-2" ></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
