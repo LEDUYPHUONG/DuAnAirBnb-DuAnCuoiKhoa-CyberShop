@@ -43,12 +43,17 @@ export interface arrCommentModel {
 }
 
 export interface BookingRoomModel {
-  id: number;
-  maPhong: number;
+  id: string;
+  maPhong: string;
   ngayDen: string;
   ngayDi: string;
-  soLuongKhach: number;
-  maNguoiDung: number;
+  soLuongKhach: string;
+  maNguoiDung: string;
+}
+
+export interface NgayDenNgayDiModel {
+  // ngayDen: string;
+  // ngayDi: string;
 }
 export interface RoomDetailState {
   objectRoomDetail: roomDetailModel;
@@ -56,6 +61,8 @@ export interface RoomDetailState {
   numberStayDates: number;
   arrComment: arrCommentModel[];
   bookingRoom: BookingRoomModel;
+ ngayDen: string;
+ ngayRoi: string
 }
 const initialState: RoomDetailState = {
   objectRoomDetail: {
@@ -83,13 +90,15 @@ const initialState: RoomDetailState = {
   numberStayDates: 0,
   arrComment: [],
   bookingRoom: {
-    id: 0,
-    maPhong: 0,
+    id: "",
+    maPhong: "",
     ngayDen: "",
     ngayDi: "",
-    soLuongKhach: 0,
-    maNguoiDung: 0,
+    soLuongKhach: "",
+    maNguoiDung: "",
   },
+  ngayDen: "",
+  ngayRoi: ""
 };
 
 const roomDetailReducer = createSlice({
@@ -111,8 +120,14 @@ const roomDetailReducer = createSlice({
     ) => {
       state.arrComment = action.payload;
     },
-    postBookingRoomAction: (state, action: PayloadAction<BookingRoomModel>) => {
+    setBookingAction: (state, action: PayloadAction<BookingRoomModel>) => {
       state.bookingRoom = action.payload;
+    },
+    setNgayDenAction: (state, action: PayloadAction<string>) => {
+      state.ngayDen = action.payload;
+    },
+    setNgayRoiAction: (state, action: PayloadAction<string>) => {
+      state.ngayRoi = action.payload;
     },
   },
 });
@@ -122,7 +137,11 @@ export const {
   getBookedRoomAction,
   setNumberStayDate,
   getCommentAction,
-  postBookingRoomAction,
+  setBookingAction,
+  setNgayRoiAction,
+  setNgayDenAction
+
+  
 } = roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
@@ -147,7 +166,6 @@ export const getBookedRoomApi = () => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await http.get("/dat-phong");
-
       dispatch(getBookedRoomAction(result.data.content));
     } catch (err) {
       console.log("getBookedRoomApiErr", err);
@@ -172,7 +190,8 @@ export const bookRoomApi = (duLieu: BookingRoomModel) => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await http.post("/dat-phong", duLieu);
-      dispatch(postBookingRoomAction(result.data.content));
+      console.log(result);
+      dispatch(setBookingAction(result.data.content));
     } catch (err) {
       console.log("bookRoomApiErr", err);
     }

@@ -15,8 +15,13 @@ import {
   setNumberStayDate,
   getRoomDetailApi,
   bookRoomApi,
+  setBookingAction,
+  setNgayRoiAction,
+  setNgayDenAction,
 } from "../../redux/reducer/roomDetailReducer";
 import { values } from "lodash";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 //---------------import cho phần Date--------------
 import { DatePicker, Space } from "antd";
@@ -28,6 +33,7 @@ import FooterPage from "../../component/Footer/FooterPage";
 import { Comment, List, Tooltip } from "antd";
 import { date } from "yup";
 import { render } from "@testing-library/react";
+import { BookingModel } from "../../Model/BookingModel";
 
 type Props = {
   title?: string;
@@ -42,8 +48,8 @@ export default function RoomInfo({ title }: Props) {
     (state: RootState) => state.roomDetailReducer
   );
   const param = useParams();
-  const roomId: string | undefined = param.id;
-  console.log("param nè", roomId);
+  const roomId: any = param.id;
+  // console.log("param nè", roomId);
 
   useEffect(() => {
     dispatch(getRoomDetailApi(roomId));
@@ -52,14 +58,24 @@ export default function RoomInfo({ title }: Props) {
   }, [roomId]);
 
   //-----------------chức năng cho phần chọn ngày ở và tính giá tiền--------------
+  const { bookingRoom, ngayDen, ngayRoi } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
   const { RangePicker } = DatePicker;
   // function count số ngày đã chọn
-  function countNumberOfDates(dateString: any, date: any) {
+  function countNumberOfDates(dateString: any) {
     let daysNum = (dateString[1] - dateString[0]) / (1000 * 3600 * 24);
-    console.log("daysNum", daysNum);
+    // console.log("daysNum", daysNum);
     // console.log("daystring", dateString);
     dispatch(setNumberStayDate(daysNum));
+    let ngayDen1 = dateString[0]._d;
+    let ngayRoi1 = dateString[1]._d;
+    dispatch(setNgayDenAction(ngayDen1));
+    dispatch(setNgayRoiAction(ngayRoi1));
   }
+
+  console.log("mm", ngayRoi);
+
   //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
     // Can not select days before today and today
@@ -74,8 +90,20 @@ export default function RoomInfo({ title }: Props) {
     return price;
   };
   //-------------------chức năng book phòng ----------------
-//  const 
 
+  const handleSubmit = () => {
+
+   
+    
+    dispatch(bookRoomApi(setBooking))
+  };
+  let setBooking = new BookingModel();
+  setBooking.id = "";
+  setBooking.maPhong = roomId;
+  setBooking.ngayDen = ngayDen;
+  setBooking.ngayDi = ngayRoi;
+  setBooking.soLuongKhach = "2";
+  console.log("4545",setBooking);
   //--------------------------------------------------------
   //--------------------------chức năng phần comment-----------------------------
 
@@ -434,23 +462,30 @@ export default function RoomInfo({ title }: Props) {
                   </span>
                 </div>
               </div>
-              <div className="pick_options d-flex flex-column">
+              <form className="pick_options d-flex flex-column">
                 <Space direction="vertical" size={12}>
                   <RangePicker
                     placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
                     format={["DD-MM-YYYY"]}
                     onChange={(dateString) =>
-                      countNumberOfDates(dateString, date)
+                      countNumberOfDates(dateString)
                     }
                     disabledDate={disabledDate}
+                    id="rangepicker"
                   />
                 </Space>
                 <SelectNumberPassenger />
-                <button className="datphong_btn">Đặt phòng</button>
+                <button
+                  className="datphong_btn"
+                  id="submit_booking"
+                  onClick={handleSubmit}
+                >
+                  Đặt phòng
+                </button>
                 <span className="text-center mt-2">
                   Bạn vẫn chưa bị trừ tiền
                 </span>
-              </div>
+              </form>
               <div className="cashier">
                 <div className="tien_phong d-flex justify-content-between">
                   <div className="tinh_tien">
