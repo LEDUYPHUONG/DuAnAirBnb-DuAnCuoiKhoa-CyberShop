@@ -57,10 +57,10 @@ export default function RoomListPage ({title}: Props) {
           </div>
         </div>
         <div className="roomlist-map" style={{ width: "60%" }}>
-          <iframe style={{ width: "100%", height: "100%", border: 0 }} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.455492242454!2d106.66801531433677!3d10.776383562142328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fef16459c77%3A0xf9ba55fa4f33e17d!2zMTZBIEzDqiBI4buTbmcgUGhvbmcsIFBoxrDhu51uZyAxMiwgUXXhuq1uIDEwLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1665331609460!5m2!1svi!2s" allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe style={{ width: "100%", height: "100%", border: 0 }} src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1125985.4022361215!2d106.75118808994623!3d10.894440694941805!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1667536336616!5m2!1svi!2s" allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-      <div className='d-flex justify-content-between align-items-center' style={{ position: "fixed", bottom: 0, left: 0, height: "47px", background: '#ffffff', border: "1px solid #cccccc", width: "100%", padding: "16px 48px", fontSize: "16px", lineHeight: "16px", zIndex: 10 }}>
+      <div className='d-flex justify-content-between align-items-center' style={{ position: "relative", bottom: 0, left: 0, height: "47px", background: '#ffffff', border: "1px solid #cccccc", width: "100%", padding: "16px 48px", fontSize: "16px", lineHeight: "16px", zIndex: 10 }}>
         <div className='footer-left d-flex' style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}>
           © 2022 Airbnb, Inc.
           <div className='px-1'><i style={{ fontSize: "2px", lineHeight: "20px", verticalAlign: "top", padding: "0 5px" }} className="fa-solid fa-circle"></i></div>
