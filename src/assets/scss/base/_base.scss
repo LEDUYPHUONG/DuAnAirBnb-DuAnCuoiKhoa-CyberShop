@@ -2,8 +2,22 @@
 margin: 0;
 padding: 0;
 box-sizing: border-box;
+font-family:  $ff-t;
 }
     
 .container{
     margin: 0 auto;
+}
+
+button{
+    &:active{
+        border-color: #ffffff !important;
+    }
+}
+
+a{
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline;
+    }
 }

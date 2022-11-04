@@ -1,12 +1,20 @@
-import {configureStore,PayloadAction} from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit'
+import keySearchReducer from './reducer/keySearchReducer'
+import keywordReducer from './reducer/keywordReducer'
+import productReducer from './reducer/productReducer'
+import roomDetailReducer from './reducer/roomDetailReducer'
+import roomlistReducer from './reducer/roomlistReducer'
+import profileReducer from './reducer/profileReducer'
 
 
 export const store = configureStore({
     reducer:{
-        numberReducer: (state,action:PayloadAction<number>) =>{
-            return 1;
-        },
-       
+        productReducer: productReducer,
+        keywordReducer: keywordReducer,
+        keySearchReducer: keySearchReducer,
+        roomDetailReducer : roomDetailReducer,
+        roomlistReducer: roomlistReducer,
+        profileReducer: profileReducer,
     }
 })
 

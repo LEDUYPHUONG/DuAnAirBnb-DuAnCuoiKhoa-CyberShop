@@ -1,12 +1,12 @@
-@import './base/base';
 @import './themes/variable';
+@import './base/base';
 //component
 @import './components/header';
-
+@import './components/footer';
 //page
-@import './pages/home/home';
+@import "./pages/home/home";
+@import "./pages/detailRoom/detailRoom";
+@import "./pages/login/login";
+@import "./pages/signup/signup";
 //responsive
-@import './responsive/resposive';
-
-
-
+@import "./responsive/resposive";

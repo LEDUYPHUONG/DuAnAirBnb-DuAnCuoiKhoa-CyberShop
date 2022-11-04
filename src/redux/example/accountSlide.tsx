@@ -23,5 +23,4 @@ export const accountSlice = createSlice({
 });
 
 export const { saveAccount } = accountSlice.actions;
-export const selectAccount = (state: RootState) => state.account.value;
 export default accountSlice.reducer;
