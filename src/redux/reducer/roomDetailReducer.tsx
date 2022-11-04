@@ -81,15 +81,7 @@ const initialState: RoomDetailState = {
   },
   arrBookedRoom: [],
   numberStayDates: 0,
-  arrComment: [
-    {
-      ngayBinhLuan: "",
-      noiDung: "",
-      saoBinhLuan: 0,
-      tenNguoiBinhLuan: "",
-      avatar: "",
-    },
-  ],
+  arrComment: [],
   bookingRoom: {
     id: 0,
     maPhong: 0,
@@ -119,7 +111,7 @@ const roomDetailReducer = createSlice({
     ) => {
       state.arrComment = action.payload;
     },
-    postBookingRoomAction: (state, action) => {
+    postBookingRoomAction: (state, action: PayloadAction<BookingRoomModel>) => {
       state.bookingRoom = action.payload;
     },
   },
@@ -171,15 +163,15 @@ export const getCommentApi = (maPhong: string | undefined) => {
       );
       dispatch(getCommentAction(result.data.content));
     } catch (err) {
-      console.log("getBookedRoomApiErr", err);
+      console.log("getCommentApiErr", err);
     }
   };
 };
 
-export const bookRoomApi = (data: BookingRoomModel) => {
+export const bookRoomApi = (duLieu: BookingRoomModel) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const result = await http.post("/dat-phong", data);
+      const result = await http.post("/dat-phong", duLieu);
       dispatch(postBookingRoomAction(result.data.content));
     } catch (err) {
       console.log("bookRoomApiErr", err);

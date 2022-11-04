@@ -74,9 +74,7 @@ export default function RoomInfo({ title }: Props) {
     return price;
   };
   //-------------------chức năng book phòng ----------------
-  
-
-
+//  const 
 
   //--------------------------------------------------------
   //--------------------------chức năng phần comment-----------------------------
@@ -86,6 +84,9 @@ export default function RoomInfo({ title }: Props) {
   );
 
   const renderComment = () => {
+    if (arrComment === null) {
+      return <h2>Hiện tại chưa có bình luận nào</h2>;
+    }
     return arrComment.map((cmt, index) => {
       return (
         <div className="usercomment d-flex" key={index}>
@@ -127,7 +128,7 @@ export default function RoomInfo({ title }: Props) {
           </div>
 
           <div className="shareButton d-flex">
-            <a href="#" className="mx-3">
+            <a href="#" className="me-3">
               <i className="fa fa-share-alt"></i>
               Chia sẻ
             </a>
@@ -411,7 +412,7 @@ export default function RoomInfo({ title }: Props) {
                     </li>
                   </div>
                 </ul>
-                <button className="col-5 translate_btn d-flex justify-content-center align-items-center">
+                <button className="col-5 translate_btn d-flex justify-content-center align-items-center tiennghi_btn">
                   <span>Hiển thị tất cả 24 tiện nghi </span>
                 </button>
               </div>

@@ -5,6 +5,9 @@
   }
   .review {
     margin-bottom: 25px;
+    @media screen and (max-width: 428px) {
+      flex-direction: column;
+    }
     .textReview {
       margin-right: 13px;
       i {
@@ -24,6 +27,9 @@
     }
 
     .shareButton {
+      @media screen and (max-width: 428px) {
+        margin-top: 10px;
+      }
       a {
         color: black;
         i {
@@ -46,8 +52,18 @@
       grid-template-columns: repeat(4, 1fr);
       column-gap: 5px;
       row-gap: 5px;
+      @media screen and (max-width: 428px) {
+        display: flex;
+        
+   
+        
+      }
+
       .item {
         padding: 0;
+        @media screen and (max-width: 428px) {
+          display: none;
+        }
         Image {
           width: 100%;
           height: 250px;
@@ -59,6 +75,11 @@
         padding-right: 0;
         grid-column: 1 / span 3;
         grid-row: 1 / span 2;
+        @media screen and (max-width: 428px) {
+          display: flex;
+          margin-left: 10px;
+        }
+
         Image {
           width: 100%;
           height: 100%;
@@ -68,13 +89,11 @@
         }
       }
       .item3 {
+        @media screen and (max-width: 428px) {
+          display: none;
+        }
         Image {
           border-top-right-radius: 12px;
-        }
-      }
-      .item5 {
-        Image {
-          border-bottom-right-radius: 12px;
         }
       }
     }
@@ -82,9 +101,20 @@
   .roomDes {
     margin-top: 20px;
     height: 925px;
+    @media screen and (max-width: 428px) {
+      display: flex;
+      flex-direction: column;
+      height: 1400px;
+    }
+
     .desLeft {
       width: 70%;
-      // background-color: blanchedalmond;
+      @media screen and (max-width: 768px) {
+        width: 55%;
+      }
+      @media screen and (max-width: 428px) {
+       width: 100%;
+      }
       .infoRoom {
         width: 85%;
         .infoRoomName {
@@ -159,7 +189,6 @@
         }
         .convenience {
           padding-bottom: 20px;
-
           border-bottom: 1.5px solid rgba(181, 177, 177, 0.4);
 
           ul {
@@ -184,6 +213,11 @@
               font-size: 23px;
             }
           }
+          .tiennghi_btn {
+            @media screen and (max-width: 768px) {
+              width: 200px;
+            }
+          }
         }
       }
     }
@@ -197,13 +231,18 @@
       position: sticky;
       top: 80px;
       margin-bottom: 40px;
-
-      // background-color: rgb(95, 203, 13);
-
+      @media screen and (max-width: 768px) {
+        width: 45%;
+        margin-bottom: 10px;
+      }   
+      @media screen and (max-width: 428px) {
+        width: 100%; 
+      }
+  
+   
       .booking_area {
         padding: 20px 20px;
         .price_and_rating1 {
-          // background-color: #0d68c3;
           .price {
             .price_text {
               font-size: 28px;
@@ -281,44 +320,22 @@
   }
   .commentary {
     height: 550px;
-    // .ant-comment-avatar {
-    //   img {
-    //     width: 40px;
-    //     height: 40px;
-    //   }
-    // }
-    // .ant-comment-content {
-    //   .ant-comment-content-author {
-    //     display: flex;
-    //     flex-direction: column;
-    //     .ant-comment-content-author-name {
-    //       font-size: 16px;
-    //       color: black;
-    //       font-weight: 500;
-    //     }
-    //     .ant-comment-content-author-time {
-    //       font-size: 14px;
-    //       font-weight: 400;
-    //       color: #8e9092;
-    //     }
-    //   }
-    // }
-    .comment{
-      .usercomment{
-        img{
+    .comment {
+      .usercomment {
+        img {
           border-radius: 100px;
           width: 50px;
           height: 50px;
         }
-        .commentInfo{
+        .commentInfo {
           margin-left: 20px;
-         .tenNguoiDung{
-          font-weight: 700;
-          font-size: 20px;
-         }
-         .ngayDang{
-          font-size: 12px;
-         }
+          .tenNguoiDung {
+            font-weight: 700;
+            font-size: 20px;
+          }
+          .ngayDang {
+            font-size: 12px;
+          }
         }
       }
     }

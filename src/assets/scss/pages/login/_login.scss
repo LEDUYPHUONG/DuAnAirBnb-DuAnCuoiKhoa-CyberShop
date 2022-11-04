@@ -6,7 +6,6 @@
     border-radius: 25px;
     border: 0.5px solid rgba(181, 177, 177, 0.4);
     box-shadow: 0px 5px 10px rgba(139, 137, 137, 0.3);
-
     .sign_in_left {
       width: 65%;
       height: 100%;
@@ -17,6 +16,12 @@
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+      @media screen and (max-width: 1024px) {
+        width: 45%;
+      }
+      @media screen and (max-width: 428px) {
+        width: 0;
+      }
     }
     .sign_in_right {
       width: 40%;
@@ -25,6 +30,17 @@
       background: url("https://img.freepik.com/premium-vector/black-wave-stripe-background_263670-126.jpg?w=2000");
       border-bottom-right-radius: 25px;
       border-top-right-radius: 25px;
+      @media screen and (max-width: 1280px) {
+        width: 55%;
+      }
+      @media screen and (max-width: 768px) {
+        width: 55%;
+      }
+      @media screen and (max-width: 428px) {
+        width: 100%;
+        border-bottom-left-radius: 25px;
+        border-top-left-radius: 25px;
+      }
 
       .bg_cover {
         width: 100%;
@@ -34,6 +50,10 @@
         z-index: 1;
         border-bottom-right-radius: 25px;
         border-top-right-radius: 25px;
+        @media screen and (max-width: 428px) {
+          border-bottom-left-radius: 25px;
+          border-top-left-radius: 25px;         
+        }
         h2 {
           color: #12b4c0;
           font-size: 33px;
@@ -62,6 +82,9 @@
             outline: 0;
             font-size: 20px;
             color: #ffffff;
+            @media screen and (max-width: 768px) {
+              width: 300px;
+            }
           }
           i {
             color: #ffffff;
