@@ -4,6 +4,7 @@ import keywordReducer from './reducer/keywordReducer'
 import productReducer from './reducer/productReducer'
 import roomDetailReducer from './reducer/roomDetailReducer'
 import roomlistReducer from './reducer/roomlistReducer'
+import profileReducer from './reducer/profileReducer'
 
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
         keySearchReducer: keySearchReducer,
         roomDetailReducer : roomDetailReducer,
         roomlistReducer: roomlistReducer,
+        profileReducer: profileReducer,
     }
 })
 
