@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/configStore";
+import { useAppDispatch } from "../../redux/example/hooks";
+import { getProfileRoomApi, ProfileRoomModel } from "../../redux/reducer/profileReducer";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 
-const UserInforItem = () => {
-  const arr = Array(10).fill(1)
+type Props = {
+  title?:string;
+};
+
+export default function UserInforItem ({title}: Props) {
+  
+  const {arrProfileRoom} = useSelector((state:RootState) => state.profileReducer)
+  const dispatch = useAppDispatch()
+  useEffect(()=>{
+    // call api
+    const actionApi = getProfileRoomApi();
+    dispatch(actionApi);
+  },[])
+
+// chuc nang
   const [open, setOpen] = useState(false)
   const [enable, setEnable] = useState(true)
 
@@ -300,11 +317,11 @@ const UserInforItem = () => {
                     </h1>
                   </div>
                 </div>
-                {arr.map((item, index) => (
+                {arrProfileRoom.map((prod:ProfileRoomModel, index:number) =>
                   <div key={index}>
-                    <CarouselInfor />
+                    {CarouselInfor({product:prod})}
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>
@@ -313,5 +330,3 @@ const UserInforItem = () => {
     </div>
   );
 };
-
-export default UserInforItem

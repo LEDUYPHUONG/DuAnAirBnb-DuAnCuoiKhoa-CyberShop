@@ -4,7 +4,7 @@ import HeaderPage from '../../component/Header/HeaderPage';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/configStore';
-import { getRoomlistApi, RoomlistModel } from '../../redux/reducer/roomlistReducer';
+import { getRoomidAction, getRoomlistApi, RoomlistModel } from '../../redux/reducer/roomlistReducer';
 import { useAppDispatch } from '../../redux/example/hooks';
 
 type Props = {
@@ -19,8 +19,8 @@ export default function RoomListPage ({title}: Props) {
   const dispatch = useAppDispatch()
   useEffect(()=>{
     // call api
-    const actionApi = getRoomlistApi();
-    dispatch(actionApi);
+    const id = productSearch.id
+    dispatch(getRoomlistApi(id));
 
   },[])
 
@@ -47,20 +47,13 @@ export default function RoomListPage ({title}: Props) {
 
           </div>
           <div className="roomlist-item_content" style={{ display: 'flex', width: "100%", flexWrap: 'wrap' }}>
-            {/* {arr.map((item, index) => (
-              <div key={index} style={{ width: '50%', marginTop: 20 }}>
-                <RoomListItem />
-              </div>
-            ))} */}
             {arrRoomlist.map((prod:RoomlistModel,index:number) =>
-          
-              <div key={index} style={{ width: '50%', marginTop: 20 }}>
+              <div key={index} style={{ width: '50%', marginTop: 20 }} onClick={() => {
+                dispatch(getRoomidAction(prod))
+              }}>
                 {RoomListItem({product:prod})}
               </div>
             )}
-              
-            
-            
           </div>
         </div>
         <div className="roomlist-map" style={{ width: "60%" }}>
