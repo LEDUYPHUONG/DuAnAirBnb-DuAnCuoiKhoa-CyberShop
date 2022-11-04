@@ -40,7 +40,7 @@ export default function RoomListItem ({product}: Props) {
 
       <div className="roomlist-item_des">
         <p style={{ color: "#746b6b", margin: "0px 0px" }}>{product.tenPhong}</p>
-        <p style={{ color: "#746b6b", margin: "0px 0px" }}>{product.giuong}</p>
+        <p style={{ color: "#746b6b", margin: "0px 0px" }}>{product.giuong}  giường</p>
         <p style={{ color: "#746b6b", margin: "0px 0px" }}>
           Ngày 30 tháng 10 - Ngày 04 tháng 11
         </p>
