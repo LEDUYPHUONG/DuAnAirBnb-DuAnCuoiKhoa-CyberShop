@@ -57,6 +57,7 @@ export const getAdminUserInfoApi = (value:any) => {
         // dispatch(setArrAdminUserApi(response.data.content.data))
       } catch (error) {
         console.log(error);
+        alert('Thêm admin thất bại');
       }
     };
   };
