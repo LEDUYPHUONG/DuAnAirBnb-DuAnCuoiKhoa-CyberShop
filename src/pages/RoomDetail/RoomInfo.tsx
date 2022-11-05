@@ -5,7 +5,7 @@ import { Image } from "antd";
 // import SelectNumberPassenger from "./SelectNumberPassenger";
 import WriteComment from "./WriteComment";
 // import Comment from "./Comment";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import {
@@ -23,6 +23,12 @@ import FooterPage from "../../component/Footer/FooterPage";
 //---------------------import phần comment------------
 
 import { BookingModel } from "../../Model/BookingModel";
+import {
+  getStore,
+  getStoreJson,
+  USER_ID,
+  USER_LOGIN,
+} from "../../util/setting";
 
 type Props = {
   title?: string;
@@ -64,15 +70,23 @@ export default function RoomInfo({ title }: Props) {
     return price;
   };
   //-----------------------------CHỨC NĂNG BOOK PHÒNG--------------------------------
+  const arrNguoiDung: any = getStore(USER_LOGIN);
+  // console.log(arrNguoiDung);
+
+  // const nguoiDangSuDung = arrNguoiDung.filter(nguoidung => nguoidung.id )
+
+  const idNguoiDung = getStoreJson(USER_ID);
+  console.log("ID NGUOI DUNG",idNguoiDung);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     let setBooking = new BookingModel();
-    setBooking.id = 1297;
+    setBooking.id = 0;
     setBooking.maPhong = idPhong;
     setBooking.ngayDen = den.value;
     setBooking.ngayDi = roi.value;
     setBooking.soLuongKhach = numberPassenger;
+    setBooking.maNguoiDung = idNguoiDung
     //set +numberPassenger vì kiểu dữ liệu là số nên add + để từ chuỗi thành số
     if (den.value == "" || roi.value == "") {
       alert("Vui lòng điền đầy đủ các trường thông tin đặt phòng");
