@@ -19,14 +19,14 @@ export interface UserLoginModel {
   password: string;
 }
 export interface SignUpModel {
-  id: number,
-  name: string,
-  email: string,
-  password: string,
-  phone: string,
-  birthday: string,
-  gender: boolean,
-  role: string,
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  birthday: string;
+  gender: boolean;
+  role: string;
 }
 
 export interface UserReducerState {
@@ -53,8 +53,7 @@ const userLoginReducer = createSlice({
   },
 });
 
-export const { getUserProfile_Action } =
-  userLoginReducer.actions;
+export const { getUserProfile_Action } = userLoginReducer.actions;
 
 export default userLoginReducer.reducer;
 
@@ -70,7 +69,9 @@ export const loginApi = (userLogin: UserLoginModel) => {
       setStore(ACCESS_TOKEN, result.data.content.token);
       setTimeout(() => {
         history.push(`/profile/${result.data.content.user.id}`);
+        window.location.reload();
       }, 2000);
+
       console.log(result.data.content.user.id);
       dispatch(getProfileApi());
     } catch (err) {
@@ -103,6 +104,7 @@ export const signupApi = (frmSignUp: SignUpModel) => {
       );
       setTimeout(() => {
         history.push("/signin");
+        window.location.reload();
       }, 1000);
     } catch (err) {
       console.log("dangkyErr", err);
