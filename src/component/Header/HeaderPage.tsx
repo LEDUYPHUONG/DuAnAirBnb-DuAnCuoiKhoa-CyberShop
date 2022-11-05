@@ -23,7 +23,7 @@ export default function HeaderPage({ title }: Props) {
     >
       <div
         className="header-top m-auto"
-        style={{ height: "80px", padding: "0 48px" }}
+        style={{ height: "80px", padding: "0 26px 0 48px" }}
       >
         <div className="header d-flex justify-content-between align-items-center">
           <NavLink to="/">

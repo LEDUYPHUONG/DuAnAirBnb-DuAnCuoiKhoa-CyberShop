@@ -17,7 +17,7 @@ export default function CarouselInfor ({product}: Props){
           >
             <div className="col-auto d-none d-lg-block">
               <img
-                className="roomlist-item_img rounded"
+                className="roomlist-item_img rounded-4"
                 style={{ width: "100%", height: "100%" }}
                 src="https://kientruccb.vn/wp-content/uploads/2020/02/mau-thiet-ke-nha-dep-truyen-cam-hung8.jpg"
                 alt="..."

@@ -1,23 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { Image } from "antd";
 // import Date from "./Date";
-import SelectNumberPassenger from "./SelectNumberPassenger";
+// import SelectNumberPassenger from "./SelectNumberPassenger";
 import WriteComment from "./WriteComment";
 // import Comment from "./Comment";
-import { NavLink, useParams } from "react-router-dom";
-import ReactDOM from "react-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import {
   getBookedRoomApi,
   getCommentApi,
-  setNumberStayDate,
   getRoomDetailApi,
   bookRoomApi,
 } from "../../redux/reducer/roomDetailReducer";
-import { values } from "lodash";
-
 //---------------import cho phần Date--------------
 import { DatePicker, Space } from "antd";
 import type { RangePickerProps } from "antd/es/date-picker";
@@ -25,9 +21,8 @@ import moment from "moment";
 import HeaderPage from "../../component/Header/HeaderPage";
 import FooterPage from "../../component/Footer/FooterPage";
 //---------------------import phần comment------------
-import { Comment, List, Tooltip } from "antd";
-import { date } from "yup";
-import { render } from "@testing-library/react";
+
+import { BookingModel } from "../../Model/BookingModel";
 
 type Props = {
   title?: string;
@@ -41,25 +36,20 @@ export default function RoomInfo({ title }: Props) {
   const { arrBookedRoom } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
+  const { roomId } = useSelector((state: RootState) => state.roomlistReducer);
   const param = useParams();
-  const roomId: string | undefined = param.id;
-  console.log("param nè", roomId);
-
+  const idPhong: any = param.id;
   useEffect(() => {
-    dispatch(getRoomDetailApi(roomId));
+    dispatch(getRoomDetailApi(idPhong));
     dispatch(getBookedRoomApi());
-    dispatch(getCommentApi(roomId));
-  }, [roomId]);
+    dispatch(getCommentApi(idPhong));
+  }, [idPhong]);
 
   //-----------------chức năng cho phần chọn ngày ở và tính giá tiền--------------
-  const { RangePicker } = DatePicker;
-  // function count số ngày đã chọn
-  function countNumberOfDates(dateString: any, date: any) {
-    let daysNum = (dateString[1] - dateString[0]) / (1000 * 3600 * 24);
-    console.log("daysNum", daysNum);
-    // console.log("daystring", dateString);
-    dispatch(setNumberStayDate(daysNum));
-  }
+  const { bookingRoom } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
+
   //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
     // Can not select days before today and today
@@ -73,19 +63,38 @@ export default function RoomInfo({ title }: Props) {
     let price = objectRoomDetail.giaTien * numberStayDates;
     return price;
   };
-  //-------------------chức năng book phòng ----------------
-  
+  //-----------------------------CHỨC NĂNG BOOK PHÒNG--------------------------------
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    let setBooking = new BookingModel();
+    setBooking.id = 1297;
+    setBooking.maPhong = idPhong;
+    setBooking.ngayDen = den.value;
+    setBooking.ngayDi = roi.value;
+    setBooking.soLuongKhach = numberPassenger;
+    //set +numberPassenger vì kiểu dữ liệu là số nên add + để từ chuỗi thành số
+    if (den.value == "" || roi.value == "") {
+      alert("Vui lòng điền đầy đủ các trường thông tin đặt phòng");
+      return null;
+    } else {
+      dispatch(bookRoomApi(setBooking));
+    }
+  };
+  const den = document.getElementById("calendar_den") as HTMLInputElement;
+  const roi = document.getElementById("calendar_roi") as HTMLInputElement;
 
+  //----------------------CHỌN GIÁ TRỊ CHO INPUT CHỌN SỐ KHÁCH----------------
+  const [numberPassenger, setNumberPassenger] = useState(1);
 
-  //--------------------------------------------------------
-  //--------------------------chức năng phần comment-----------------------------
-
+  //------------------------CHỨC NĂNG PHẦN COMMENT (RENDER VÀ ADD CMT)-----------------------------
   const { arrComment } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
-
   const renderComment = () => {
+    if (arrComment === null) {
+      return <h2>Hiện tại chưa có bình luận nào</h2>;
+    }
     return arrComment.map((cmt, index) => {
       return (
         <div className="usercomment d-flex" key={index}>
@@ -99,7 +108,6 @@ export default function RoomInfo({ title }: Props) {
       );
     });
   };
-
   //--------------------------------------------------------------------------------
   return (
     <>
@@ -127,7 +135,7 @@ export default function RoomInfo({ title }: Props) {
           </div>
 
           <div className="shareButton d-flex">
-            <a href="#" className="mx-3">
+            <a href="#" className="me-3">
               <i className="fa fa-share-alt"></i>
               Chia sẻ
             </a>
@@ -411,7 +419,7 @@ export default function RoomInfo({ title }: Props) {
                     </li>
                   </div>
                 </ul>
-                <button className="col-5 translate_btn d-flex justify-content-center align-items-center">
+                <button className="col-5 translate_btn d-flex justify-content-center align-items-center tiennghi_btn">
                   <span>Hiển thị tất cả 24 tiện nghi </span>
                 </button>
               </div>
@@ -433,24 +441,41 @@ export default function RoomInfo({ title }: Props) {
                   </span>
                 </div>
               </div>
-              <div className="pick_options d-flex flex-column">
-                <Space direction="vertical" size={12}>
-                  <RangePicker
-                    placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
-                    format={["DD-MM-YYYY"]}
-                    onChange={(dateString) =>
-                      countNumberOfDates(dateString, date)
-                    }
-                    disabledDate={disabledDate}
-                  />
-                </Space>
-                <SelectNumberPassenger />
-                <button className="datphong_btn">Đặt phòng</button>
+              <form className="pick_options d-flex flex-column">
+                <span>Ngày nhận phòng</span>
+                <input type="date" name="" id="calendar_den" />
+                <span>Ngày trả phòng</span>
+                <input type="date" name="" id="calendar_roi" />
+                <span>Số khách</span>
+                <select
+                  className="form-control"
+                  onChange={(e) => {
+                    const SelectedPassenger = e.target.value;
+                    setNumberPassenger(+SelectedPassenger);
+                  }}
+                >
+                  <option value="1" selected>
+                    1 người lớn
+                  </option>
+                  <option value="2">2 người lớn</option>
+                  <option value="3">2 người lớn 1 trẻ em (dưới 12 tuổi)</option>
+                  <option value="4">
+                    2 người lớn và 2 em bé (dưới 2 tuổi)
+                  </option>
+                </select>
+
+                <button
+                  className="datphong_btn"
+                  id="submit_booking"
+                  onClick={handleSubmit}
+                >
+                  Đặt phòng
+                </button>
                 <span className="text-center mt-2">
                   Bạn vẫn chưa bị trừ tiền
                 </span>
-              </div>
-              <div className="cashier">
+              </form>
+              {/* <div className="cashier">
                 <div className="tien_phong d-flex justify-content-between">
                   <div className="tinh_tien">
                     <a href="#">
@@ -471,7 +496,7 @@ export default function RoomInfo({ title }: Props) {
                   </div>
                   <div className="mt-2">${renderPrice() + 8}</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import roomDetailReducer from './reducer/roomDetailReducer'
 import roomlistReducer from './reducer/roomlistReducer'
 import profileReducer from './reducer/profileReducer'
 import manageAdminUserReducer from './reducer/manageAdminUserReducer'
+import userReducer from './reducer/userReducer'
 
 
 export const store = configureStore({
@@ -18,7 +19,8 @@ export const store = configureStore({
         roomDetailReducer : roomDetailReducer,
         roomlistReducer: roomlistReducer,
         profileReducer: profileReducer,
-        manageAdminUserReducer: manageAdminUserReducer
+        manageAdminUserReducer: manageAdminUserReducer,
+        userReducer : userReducer
     }
 })
 
