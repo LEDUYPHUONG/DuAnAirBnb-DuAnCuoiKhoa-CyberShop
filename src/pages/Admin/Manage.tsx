@@ -1,5 +1,5 @@
 import React from 'react'
-import ModalAdmin from '../../component/Modal/ModalAdmin/ModalAdmin'
+import ModalAdmin from '../../component/Dropdown/DropdownAdmin'
 
 
 export default function Manage() {

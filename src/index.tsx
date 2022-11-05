@@ -17,8 +17,10 @@ import Manage from './pages/Admin/Manage';
 import RoomDetail from './pages/RoomDetail/RoomDetail';
 import SignUp from './pages/SignUp/SignUp';
 import Infor from './pages/Information/Infor';
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import 'antd/dist/antd.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./assets/scss/style.scss"
 
 const root = ReactDOM.createRoot(
@@ -33,7 +35,7 @@ root.render(
           <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='map' element={<MapHome/>}></Route>
           <Route path='profile'>
-            <Route path=':id' element = {<Infor/>}></Route>
+            <Route path=':iduser' element = {<Infor/>}></Route>
           </Route>
           <Route path='detailroom'>
             <Route path=':id' element = {<RoomDetail/>}></Route>
