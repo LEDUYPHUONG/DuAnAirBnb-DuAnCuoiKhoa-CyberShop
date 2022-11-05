@@ -76,8 +76,9 @@ export const config = {
     }
     return null;
   },
-  ACCESS_TOKEN: "accessToken",
+  ACCESS_TOKEN: "accessToken(token của người dùng)",
   USER_LOGIN: "userLogin",
+  USER_ID: "userId"
 };
 
 export const {
@@ -89,6 +90,7 @@ export const {
   getStoreJson,
   ACCESS_TOKEN,
   USER_LOGIN,
+  USER_ID
 } = config;
 
 const DOMAIN = "https://airbnbnew.cybersoft.edu.vn/api";
