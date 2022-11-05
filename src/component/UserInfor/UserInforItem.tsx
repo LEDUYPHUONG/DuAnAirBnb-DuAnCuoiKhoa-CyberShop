@@ -4,32 +4,29 @@ import { RootState } from "../../redux/configStore";
 import { useAppDispatch } from "../../redux/example/hooks";
 import {
   getProfileRoomApi,
+  getProfileUserAction,
   getProfileUserApi,
   ProfileRoomModel,
+  ProfileUser,
 } from "../../redux/reducer/profileReducer";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 
-type Props = {
-  title?: string;
-};
+export default function UserInforItem () {
+  const { arrProfileRoom, arrProfileUser } = useSelector(
+    (state: RootState) => state.profileReducer
+  );
 
-export default function UserInforItem({ title }: Props) {
-  const { arrProfileRoom } = useSelector(
-    (state: RootState) => state.profileReducer
-  );
-  const { arrProfileUser } = useSelector(
-    (state: RootState) => state.profileReducer
-  );
   const dispatch = useAppDispatch();
   useEffect(() => {
     // call api
     dispatch(getProfileRoomApi())
     dispatch(getProfileUserApi())
   }, []);
-
+  // const renderInfor
   // chuc nang
   const [open, setOpen] = useState(false);
   const [enable, setEnable] = useState(true);
+  
 
   return (
     <div
@@ -164,7 +161,7 @@ export default function UserInforItem({ title }: Props) {
                           margin: "0",
                         }}
                       >
-                        Khang đã xác nhận
+                        {arrProfileUser.name} đã xác nhận
                       </h1>
                     </div>
                     <div
@@ -207,7 +204,7 @@ export default function UserInforItem({ title }: Props) {
                     }}
                   >
                     <h1 style={{ fontSize: "1em", margin: 0 }}>
-                      Xin chào, tôi là Khang
+                      Xin chào, tôi là {arrProfileUser.name}
                     </h1>
                   </div>
                   <div
@@ -247,22 +244,7 @@ export default function UserInforItem({ title }: Props) {
                       >
                         Tên cá nhân
                       </p>
-                      {/* <div
-                        className="input-group"
-                        style={{
-                          width: "100%",
-                          minHeight: 96,
-                          marginBottom: 20,
-                        }}
-                      >
-                        <textarea
-                          onChange={(e) => {
-                            if (e.target.value) setEnable(false);
-                          }}
-                          className="form-control"
-                          aria-label="With textarea"
-                        ></textarea>
-                      </div> */}
+                      
                       <div className="input-group mb-3">
                         <input
                           onChange={(e) => {
@@ -273,6 +255,7 @@ export default function UserInforItem({ title }: Props) {
                           aria-label="Username"
                           aria-describedby="basic-addon1"
                           style={{ borderRadius: 5! }}
+                          defaultValue={arrProfileUser.name}
                         />
                       </div>
                       <p
@@ -294,6 +277,7 @@ export default function UserInforItem({ title }: Props) {
                           aria-label="Username"
                           aria-describedby="basic-addon1"
                           style={{ borderRadius: 5! }}
+                          defaultValue={arrProfileUser.email}
                         />
                       </div>
 
@@ -316,6 +300,7 @@ export default function UserInforItem({ title }: Props) {
                           aria-label="Username"
                           aria-describedby="basic-addon1"
                           style={{ borderRadius: 5! }}
+                          defaultValue={arrProfileUser.phone}
                         />
                       </div>
 
@@ -338,6 +323,7 @@ export default function UserInforItem({ title }: Props) {
                           aria-label="Username"
                           aria-describedby="basic-addon1"
                           style={{ borderRadius: 5! }}
+                          defaultValue={arrProfileUser.birthday}
                         />
                       </div>
 
