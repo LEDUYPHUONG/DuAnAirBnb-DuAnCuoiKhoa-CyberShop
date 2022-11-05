@@ -74,7 +74,6 @@ export default function Admin() {
                     </div>
                 </div>
                 <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
-                    <button className='btn btn-success border-0 my-5' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add admin</button>
                     <ModalAddAdmin />
                     <div className='pb-3' style={{width:'100%'}}>
                         <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Enter account or username'/>

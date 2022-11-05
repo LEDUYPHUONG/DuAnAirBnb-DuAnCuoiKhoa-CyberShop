@@ -3,9 +3,6 @@ import Carousel from '../../component/Carousel/Carousel'
 import FooterPage from '../../component/Footer/FooterPage'
 import HeaderPage from '../../component/Header/HeaderPage'
 import ItemProduct from '../../component/ItemProduct/ItemProduct'
-import ModalHeader from '../../component/Modal/ModalHeader/ModalHeader'
-
-
 
 type Props = {
     title?: string
@@ -39,7 +36,6 @@ export default function Home({title}: Props) {
   return (
     <div>
       <HeaderPage />
-      <ModalHeader />
       <div className='home-container mx-auto' style={{ position:"fixed", background:"#ffffff",width:"100%", height:`${heightHeader}`,margin:"0 48px", padding:`${heightCarousel} 48px 0`,zIndex:9}}>
         <div>
           <Carousel />
