@@ -95,7 +95,7 @@ export default function RoomListPage({ title }: Props) {
           
             <div className="roomlist-item_content" style={{ display: 'flex', width: "100%", flexWrap: 'wrap' }}>
             {arrRoomlist.map((prod:RoomlistModel,index:number ) =>
-            <NavLink to={`/detailroom/${prod.id}`}>
+            <NavLink to={`/detailroom/${prod.id}`} style={{width:"50%"}}>
               <div key={index} style={{ marginTop: 20 }} onClick={() => {
                 dispatch(getRoomidAction(prod))
               }}>
