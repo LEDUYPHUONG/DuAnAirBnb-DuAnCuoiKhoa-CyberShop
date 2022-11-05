@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { Image } from "antd";
 // import Date from "./Date";
-import SelectNumberPassenger from "./SelectNumberPassenger";
+// import SelectNumberPassenger from "./SelectNumberPassenger";
 import WriteComment from "./WriteComment";
 // import Comment from "./Comment";
 import { NavLink, useParams } from "react-router-dom";
@@ -15,9 +15,6 @@ import {
   setNumberStayDate,
   getRoomDetailApi,
   bookRoomApi,
-  setBookingAction,
-  setNgayRoiAction,
-  setNgayDenAction,
 } from "../../redux/reducer/roomDetailReducer";
 import { values } from "lodash";
 import { useFormik } from "formik";
@@ -34,7 +31,9 @@ import { Comment, List, Tooltip } from "antd";
 import { date } from "yup";
 import { render } from "@testing-library/react";
 import { BookingModel } from "../../Model/BookingModel";
-
+//---import chon so nguoi
+// import { Select } from "antd";
+// import { InputNumber } from "antd";
 type Props = {
   title?: string;
 };
@@ -47,34 +46,19 @@ export default function RoomInfo({ title }: Props) {
   const { arrBookedRoom } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
+  const { roomId } = useSelector((state: RootState) => state.roomlistReducer);
   const param = useParams();
-  const roomId: any = param.id;
-  // console.log("param nè", roomId);
-
+  const idPhong: any = param.id;
   useEffect(() => {
-    dispatch(getRoomDetailApi(roomId));
+    dispatch(getRoomDetailApi(idPhong));
     dispatch(getBookedRoomApi());
-    dispatch(getCommentApi(roomId));
-  }, [roomId]);
+    dispatch(getCommentApi(idPhong));
+  }, [idPhong]);
 
   //-----------------chức năng cho phần chọn ngày ở và tính giá tiền--------------
-  const { bookingRoom, ngayDen, ngayRoi } = useSelector(
+  const { bookingRoom } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
-  const { RangePicker } = DatePicker;
-  // function count số ngày đã chọn
-  function countNumberOfDates(dateString: any) {
-    let daysNum = (dateString[1] - dateString[0]) / (1000 * 3600 * 24);
-    // console.log("daysNum", daysNum);
-    // console.log("daystring", dateString);
-    dispatch(setNumberStayDate(daysNum));
-    let ngayDen1 = dateString[0]._d;
-    let ngayRoi1 = dateString[1]._d;
-    dispatch(setNgayDenAction(ngayDen1));
-    dispatch(setNgayRoiAction(ngayRoi1));
-  }
-
-  console.log("mm", ngayRoi);
 
   //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
@@ -89,24 +73,25 @@ export default function RoomInfo({ title }: Props) {
     let price = objectRoomDetail.giaTien * numberStayDates;
     return price;
   };
-  //-------------------chức năng book phòng ----------------
+  //-----------------------------CHỨC NĂNG BOOK PHÒNG--------------------------------
 
   const handleSubmit = () => {
-
-   
-    
-    dispatch(bookRoomApi(setBooking))
+    let setBooking = new BookingModel();
+    setBooking.id = 1297;
+    setBooking.maPhong = idPhong;
+    setBooking.ngayDen = den.value;
+    setBooking.ngayDi = roi.value;
+    setBooking.soLuongKhach = +numberPassenger;
+    //set +numberPassenger vì kiểu dữ liệu là số nên add + để từ chuỗi thành số
+    dispatch(bookRoomApi(setBooking));
   };
-  let setBooking = new BookingModel();
-  setBooking.id = "";
-  setBooking.maPhong = roomId;
-  setBooking.ngayDen = ngayDen;
-  setBooking.ngayDi = ngayRoi;
-  setBooking.soLuongKhach = "2";
-  console.log("4545",setBooking);
-  //--------------------------------------------------------
-  //--------------------------chức năng phần comment-----------------------------
+  const den = document.getElementById("calendar_den") as HTMLInputElement;
+  const roi = document.getElementById("calendar_roi") as HTMLInputElement;
 
+  //----------------------CHỌN GIÁ TRỊ CHO INPUT CHỌN SỐ KHÁCH----------------
+  const [numberPassenger, setNumberPassenger] = useState("");
+
+  //------------------------CHỨC NĂNG PHẦN COMMENT (RENDER VÀ ADD CMT)-----------------------------
   const { arrComment } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
@@ -128,7 +113,6 @@ export default function RoomInfo({ title }: Props) {
       );
     });
   };
-
   //--------------------------------------------------------------------------------
   return (
     <>
@@ -463,18 +447,28 @@ export default function RoomInfo({ title }: Props) {
                 </div>
               </div>
               <form className="pick_options d-flex flex-column">
-                <Space direction="vertical" size={12}>
-                  <RangePicker
-                    placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
-                    format={["DD-MM-YYYY"]}
-                    onChange={(dateString) =>
-                      countNumberOfDates(dateString)
-                    }
-                    disabledDate={disabledDate}
-                    id="rangepicker"
-                  />
-                </Space>
-                <SelectNumberPassenger />
+                <span>Ngày nhận phòng</span>
+                <input type="date" name="" id="calendar_den" />
+                <span>Ngày trả phòng</span>
+                <input type="date" name="" id="calendar_roi" />
+                <span>Số khách</span>
+                <select
+                  className="form-control"
+                  onChange={(e) => {
+                    const SelectedPassenger = e.target.value;
+                    setNumberPassenger(SelectedPassenger);
+                  }}
+                >
+                  <option value="1" selected>
+                    1 người lớn
+                  </option>
+                  <option value="2">2 người lớn</option>
+                  <option value="3">2 người lớn 1 trẻ em (dưới 12 tuổi)</option>
+                  <option value="4">
+                    2 người lớn và 2 em bé (dưới 2 tuổi)
+                  </option>
+                </select>
+
                 <button
                   className="datphong_btn"
                   id="submit_booking"

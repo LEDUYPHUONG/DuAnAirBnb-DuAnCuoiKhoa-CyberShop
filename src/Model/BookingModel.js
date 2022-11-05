@@ -1,8 +1,8 @@
 export class BookingModel {
-  id = "";
-  maPhong = "";
+  id = 0;
+  maPhong = 0;
   ngayDen = "";
   ngayDi = "";
-  soLuongKhach = "";
-  maNguoiDung = "";
+  soLuongKhach = 0;
+  maNguoiDung = 0;
 }

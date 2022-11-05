@@ -43,26 +43,23 @@ export interface arrCommentModel {
 }
 
 export interface BookingRoomModel {
-  id: string;
-  maPhong: string;
+  id: number;
+  maPhong: number;
   ngayDen: string;
   ngayDi: string;
-  soLuongKhach: string;
-  maNguoiDung: string;
+  soLuongKhach: number;
+  maNguoiDung: number;
 }
 
-export interface NgayDenNgayDiModel {
-  // ngayDen: string;
-  // ngayDi: string;
-}
+
 export interface RoomDetailState {
   objectRoomDetail: roomDetailModel;
   arrBookedRoom: bookedRoomModel[];
   numberStayDates: number;
   arrComment: arrCommentModel[];
   bookingRoom: BookingRoomModel;
- ngayDen: string;
- ngayRoi: string
+  soNguoi:number
+ 
 }
 const initialState: RoomDetailState = {
   objectRoomDetail: {
@@ -90,15 +87,14 @@ const initialState: RoomDetailState = {
   numberStayDates: 0,
   arrComment: [],
   bookingRoom: {
-    id: "",
-    maPhong: "",
+    id: 0,
+    maPhong: 0,
     ngayDen: "",
     ngayDi: "",
-    soLuongKhach: "",
-    maNguoiDung: "",
+    soLuongKhach: 0,
+    maNguoiDung: 0,
   },
-  ngayDen: "",
-  ngayRoi: ""
+soNguoi:0
 };
 
 const roomDetailReducer = createSlice({
@@ -123,12 +119,8 @@ const roomDetailReducer = createSlice({
     setBookingAction: (state, action: PayloadAction<BookingRoomModel>) => {
       state.bookingRoom = action.payload;
     },
-    setNgayDenAction: (state, action: PayloadAction<string>) => {
-      state.ngayDen = action.payload;
-    },
-    setNgayRoiAction: (state, action: PayloadAction<string>) => {
-      state.ngayRoi = action.payload;
-    },
+  
+ 
   },
 });
 
@@ -138,17 +130,13 @@ export const {
   setNumberStayDate,
   getCommentAction,
   setBookingAction,
-  setNgayRoiAction,
-  setNgayDenAction
-
-  
 } = roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
 
 // call API
 
-export const getRoomDetailApi = (id: string | undefined) => {
+export const getRoomDetailApi = (id: number | undefined) => {
   return async (dispatch: AppDispatch) => {
     if (id !== undefined) {
       try {
