@@ -6,6 +6,7 @@ import {
   AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
+import { createBrowserHistory } from "history";
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
   console.info(`[request] [${JSON.stringify(config)}]`);
@@ -137,6 +138,9 @@ http.interceptors.response.use((response) => {
     }
   }
 );
+
+     
+export  const history = createBrowserHistory({})
 
 /**
  * status code

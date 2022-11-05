@@ -1,25 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { Image } from "antd";
 // import Date from "./Date";
 // import SelectNumberPassenger from "./SelectNumberPassenger";
 import WriteComment from "./WriteComment";
 // import Comment from "./Comment";
-import { NavLink, useParams } from "react-router-dom";
-import ReactDOM from "react-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import {
   getBookedRoomApi,
   getCommentApi,
-  setNumberStayDate,
   getRoomDetailApi,
   bookRoomApi,
 } from "../../redux/reducer/roomDetailReducer";
-import { values } from "lodash";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-
 //---------------import cho phần Date--------------
 import { DatePicker, Space } from "antd";
 import type { RangePickerProps } from "antd/es/date-picker";
@@ -27,13 +21,9 @@ import moment from "moment";
 import HeaderPage from "../../component/Header/HeaderPage";
 import FooterPage from "../../component/Footer/FooterPage";
 //---------------------import phần comment------------
-import { Comment, List, Tooltip } from "antd";
-import { date } from "yup";
-import { render } from "@testing-library/react";
+
 import { BookingModel } from "../../Model/BookingModel";
-//---import chon so nguoi
-// import { Select } from "antd";
-// import { InputNumber } from "antd";
+
 type Props = {
   title?: string;
 };
@@ -75,7 +65,8 @@ export default function RoomInfo({ title }: Props) {
   };
   //-----------------------------CHỨC NĂNG BOOK PHÒNG--------------------------------
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     let setBooking = new BookingModel();
     setBooking.id = 1297;
     setBooking.maPhong = idPhong;
@@ -83,8 +74,12 @@ export default function RoomInfo({ title }: Props) {
     setBooking.ngayDi = roi.value;
     setBooking.soLuongKhach = numberPassenger;
     //set +numberPassenger vì kiểu dữ liệu là số nên add + để từ chuỗi thành số
-    dispatch(bookRoomApi(setBooking));
-    alert("Đã đăng ký phòng thành công ^^");
+    if (den.value == "" || roi.value == "") {
+      alert("Vui lòng điền đầy đủ các trường thông tin đặt phòng");
+      return null;
+    } else {
+      dispatch(bookRoomApi(setBooking));
+    }
   };
   const den = document.getElementById("calendar_den") as HTMLInputElement;
   const roi = document.getElementById("calendar_roi") as HTMLInputElement;
@@ -96,7 +91,6 @@ export default function RoomInfo({ title }: Props) {
   const { arrComment } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
-
   const renderComment = () => {
     if (arrComment === null) {
       return <h2>Hiện tại chưa có bình luận nào</h2>;

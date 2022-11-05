@@ -51,15 +51,13 @@ export interface BookingRoomModel {
   maNguoiDung: number;
 }
 
-
 export interface RoomDetailState {
   objectRoomDetail: roomDetailModel;
   arrBookedRoom: bookedRoomModel[];
   numberStayDates: number;
   arrComment: arrCommentModel[];
   bookingRoom: BookingRoomModel;
-  soNguoi:number
- 
+  soNguoi: number;
 }
 const initialState: RoomDetailState = {
   objectRoomDetail: {
@@ -94,7 +92,7 @@ const initialState: RoomDetailState = {
     soLuongKhach: 0,
     maNguoiDung: 0,
   },
-soNguoi:0
+  soNguoi: 0,
 };
 
 const roomDetailReducer = createSlice({
@@ -119,8 +117,6 @@ const roomDetailReducer = createSlice({
     setBookingAction: (state, action: PayloadAction<BookingRoomModel>) => {
       state.bookingRoom = action.payload;
     },
-  
- 
   },
 });
 
@@ -180,8 +176,10 @@ export const bookRoomApi = (duLieu: BookingRoomModel) => {
       const result = await http.post("/dat-phong", duLieu);
       console.log(result);
       dispatch(setBookingAction(result.data.content));
+      alert("Đã đăng ký phòng thành công ^^");
     } catch (err) {
       console.log("bookRoomApiErr", err);
+      alert("Đăng ký phòng thất bại ^^");
     }
   };
 };

@@ -1,67 +1,63 @@
-import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ListGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import {
   ACCESS_TOKEN,
-  getCookie,
   getStoreJson,
+  http,
   setCookie,
   setStore,
-  setStoreJson,
   USER_LOGIN,
+  history,
 } from "../../util/setting";
-import { AppDispatch } from "../configStore";
+import { AppDispatch, RootState } from "../configStore";
 
-// import { historyBrowser } from "../../index";
-
-export interface userLoginModel {
+export interface UserLoginModel {
   email: string;
   password: string;
 }
 
+export interface UserReducerState {
+  userLogin: UserLoginModel;
+}
 const initialState = {
-  //chọn getStoreJson để nhận dữ liệu lưu ở strore dưới dạng json
   userLogin: getStoreJson(USER_LOGIN),
 };
 
-const userLogin = createSlice({
+const userLoginReducer = createSlice({
   name: "userLoginReducer",
   initialState,
   reducers: {
-    getProfileAction: (state, action) => {
+    setUserLogin_Action: (state, action: PayloadAction<UserLoginModel>) => {
       state.userLogin = action.payload;
     },
   },
 });
 
-export const { getProfileAction } = userLogin.actions;
+export const { setUserLogin_Action } = userLoginReducer.actions;
 
-export default userLogin.reducer;
+export default userLoginReducer.reducer;
 
-// call api
+export const loginApi = (userLogin: UserLoginModel) => {
+  return async (dispatch: AppDispatch) => {
+    console.log("userLogin", userLogin);
 
-// export const loginApi = (userLogin: userLoginModel) => {
-//   return async (dispatch: AppDispatch) => {
-//     console.log("đây là của loginApi", userLogin);
-//     try {
-//       let result = await axios({
-//         url: "https://shop.cyberlearn.vn/api/Users/signin",
-//         method: "POST",
-//         data: userLogin,
-//       });
-//       //sau khi đăng nhập thành công lưu dữ liệu vào local hoặc cookie
-//       console.log(result);
-//       setCookie(ACCESS_TOKEN, result.data.content.accessToken, 30);
-//       setStore(ACCESS_TOKEN, result.data.content.accessToken);
-//       setTimeout(() => {
-//         historyBrowser.push("/profile");
-//       }, 5000);
-//       dispatch(getProfileApi());
-//     } catch (err) {
-//       console.log(err);
-//       historyBrowser.push("/");
-//     }
-//   };
-// };
+    try {
+      let result = await http.post("/auth/signin" , userLogin);
+      //sau khi đăng nhập thành công lưu dữ liệu vào local hoặc cookie
+      console.log(result);
+      setCookie(ACCESS_TOKEN, result.data.token, 30);
+      setStore(ACCESS_TOKEN, result.data.token);
+      setTimeout(() => {
+        history.push("/profile");
+      }, 2000);
+    //   dispatch(setUserLogin_Action(userLogin));
+    } catch (err) {
+      console.log(err);
+      history.push("/");
+    }
+  };
+};
 
 // export const getProfileApi = (tokenReceived = getCookie(ACCESS_TOKEN)) => {
 //   return async (dispatch) => {

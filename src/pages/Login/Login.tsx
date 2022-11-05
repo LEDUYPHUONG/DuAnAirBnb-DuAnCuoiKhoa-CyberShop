@@ -5,11 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import FooterPage from "../../component/Footer/FooterPage";
 import HeaderPage from "../../component/Header/HeaderPage";
+import { bookRoomApi } from "../../redux/reducer/roomDetailReducer";
+import { loginApi } from "../../redux/reducer/userReducer";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/configStore";
 
 type Props = {};
 
 export default function Login({}: Props) {
   const navigate = useNavigate();
+  const dispatch:AppDispatch = useDispatch()
   const [type, setType] = useState("password");
   const handleActionPassword = () => {
     {
@@ -28,7 +33,10 @@ export default function Login({}: Props) {
         .email("Email không đúng định dạng"),
       password: Yup.string().required("Mật khẩu đang trống"),
     }),
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      dispatch(loginApi(values));
+      console.log(values);
+    },
   });
 
   return (
