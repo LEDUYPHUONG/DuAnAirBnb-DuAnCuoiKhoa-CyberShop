@@ -475,7 +475,7 @@ export default function RoomInfo({ title }: Props) {
                   Bạn vẫn chưa bị trừ tiền
                 </span>
               </form>
-              <div className="cashier">
+              {/* <div className="cashier">
                 <div className="tien_phong d-flex justify-content-between">
                   <div className="tinh_tien">
                     <a href="#">
@@ -496,7 +496,7 @@ export default function RoomInfo({ title }: Props) {
                   </div>
                   <div className="mt-2">${renderPrice() + 8}</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

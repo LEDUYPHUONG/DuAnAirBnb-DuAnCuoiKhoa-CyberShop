@@ -7,7 +7,7 @@ type Props = {
 
 export default function RoomListItem ({product}: Props) {
 
-  
+
   return (
     <div
       className="roomlist-item"
