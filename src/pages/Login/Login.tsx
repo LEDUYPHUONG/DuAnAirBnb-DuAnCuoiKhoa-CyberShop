@@ -9,6 +9,7 @@ import { bookRoomApi } from "../../redux/reducer/roomDetailReducer";
 import { loginApi } from "../../redux/reducer/userReducer";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/configStore";
+import * as Icon from 'react-bootstrap-icons';
 
 type Props = {};
 

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import { signupApi } from "../../redux/reducer/userReducer";
 import { SignUpModel } from "../../Model/SignUpModel";
+import * as Icon from 'react-bootstrap-icons';
 
 type Props = {};
 
