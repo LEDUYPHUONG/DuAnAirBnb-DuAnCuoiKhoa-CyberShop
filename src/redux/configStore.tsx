@@ -6,6 +6,7 @@ import productReducer from './reducer/productReducer'
 import roomDetailReducer from './reducer/roomDetailReducer'
 import roomlistReducer from './reducer/roomlistReducer'
 import profileReducer from './reducer/profileReducer'
+import userReducer from './reducer/userReducer'
 
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
         roomDetailReducer : roomDetailReducer,
         roomlistReducer: roomlistReducer,
         profileReducer: profileReducer,
+        userReducer : userReducer
     }
 })
 
