@@ -11,6 +11,7 @@ import {
   history,
   getCookie,
   setStoreJson,
+  USER_ID,
 } from "../../util/setting";
 import { AppDispatch, RootState } from "../configStore";
 
@@ -67,11 +68,11 @@ export const loginApi = (userLogin: UserLoginModel) => {
       console.log(result);
       setCookie(ACCESS_TOKEN, result.data.content.token, 30);
       setStore(ACCESS_TOKEN, result.data.content.token);
+      setStore(USER_ID, result.data.content.user.id)
       setTimeout(() => {
         history.push(`/profile/${result.data.content.user.id}`);
-        window.location.reload();
+        // window.location.reload();
       }, 2000);
-
       console.log(result.data.content.user.id);
       dispatch(getProfileApi());
     } catch (err) {
