@@ -101,7 +101,9 @@ export const signupApi = (frmSignUp: SignUpModel) => {
       alert(
         "Đăng ký thành công! Hãy đăng nhập để trải nghiệm nhiều hơn từ chúng tôi ^^"
       );
-      history.push("/signin");
+      setTimeout(() => {
+        history.push("/signin");
+      }, 1000);
     } catch (err) {
       console.log("dangkyErr", err);
     }
