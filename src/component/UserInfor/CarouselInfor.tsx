@@ -1,7 +1,12 @@
 import React from "react";
 import { DatePicker } from "antd";
+import { ProfileRoomModel } from "../../redux/reducer/profileReducer";
 
-const CarouselInfor = () => {
+type Props = {
+  product:ProfileRoomModel;
+}
+
+export default function CarouselInfor ({product}: Props){
   return (
     <div className="d-flex flex-column mb-3">
       <div className="col-md-6" style={{ width: "100%" }}>
@@ -33,7 +38,7 @@ const CarouselInfor = () => {
               </div>
               <div className="border-bottom" style={{ width: "10%"}}></div>
               <ul className="infor-listgrouproom list-group list-group-horizontal pt-2">
-                <li className="infor-usernumber"  style={{listStyle:"none", fontSize:14}}>2 khách</li>
+                <li className="infor-usernumber"  style={{listStyle:"none", fontSize:14}}>2 {product.soLuongKhach}</li>
                 <li className="infor-roomtype" style={{marginLeft:20,fontSize:14}}>Phòng Studio</li>
                 <li className="infor-bednumber" style={{marginLeft:20,fontSize:14}}>1 giường</li>
                 <li className="infor-bathnumber" style={{marginLeft:20,fontSize:14}}>1 phòng tắm</li>
@@ -51,4 +56,3 @@ const CarouselInfor = () => {
     </div>
   );
 };
-export default CarouselInfor;
