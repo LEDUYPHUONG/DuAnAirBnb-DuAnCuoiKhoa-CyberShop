@@ -1,4 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit'
+import adminReducer from './reducer/adminReducer'
 import keySearchReducer from './reducer/keySearchReducer'
 import keywordReducer from './reducer/keywordReducer'
 import productReducer from './reducer/productReducer'
@@ -12,6 +13,7 @@ export const store = configureStore({
         productReducer: productReducer,
         keywordReducer: keywordReducer,
         keySearchReducer: keySearchReducer,
+        adminReducer: adminReducer,
         roomDetailReducer : roomDetailReducer,
         roomlistReducer: roomlistReducer,
         profileReducer: profileReducer,
