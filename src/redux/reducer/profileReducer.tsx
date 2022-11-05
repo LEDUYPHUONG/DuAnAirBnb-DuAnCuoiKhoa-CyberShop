@@ -31,15 +31,15 @@ export interface ProfileModel {
 const initialState: ProfileModel = {
   arrProfileRoom: [],
   arrProfileUser: {
-    id: 1267,
-    name: 'Nguyễn Minh Hoang',
-    email: 'Hoangngongao@gmail.com',
+    id: 1286,
+    name: 'NguyenMinhHoang',
+    email: 'kennen@gmail.com',
     password: '',
-    phone: '',
-    birthday: '21/08/2001',
-    avatar: '',
-    gender: true,
-    role: '',
+    phone: '0921392103',
+    birthday: '05/11/2022',
+    gender: false,
+    avatar: 'https://airbnbnew.cybersoft.edu.vn/avatar/03-11-2022-01-07-31-eo-gio-1024x768-1.jpeg',
+    role: 'ADMIN',
   },
 };
 

@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/configStore";
 import { useAppDispatch } from "../../redux/example/hooks";
-import {
-  getProfileRoomApi,
-  getProfileUserAction,
-  getProfileUserApi,
-  ProfileRoomModel,
-  ProfileUser,
-} from "../../redux/reducer/profileReducer";
+import {getProfileRoomApi,getProfileUserApi,ProfileRoomModel} from "../../redux/reducer/profileReducer";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 
 export default function UserInforItem () {
@@ -22,6 +16,8 @@ export default function UserInforItem () {
     dispatch(getProfileRoomApi())
     dispatch(getProfileUserApi())
   }, []);
+  
+
   // const renderInfor
   // chuc nang
   const [open, setOpen] = useState(false);
@@ -72,7 +68,7 @@ export default function UserInforItem () {
                     }}
                   >
                     <img
-                      src="https://kientruccb.vn/wp-content/uploads/2020/02/mau-thiet-ke-nha-dep-truyen-cam-hung8.jpg"
+                      src={arrProfileUser.avatar}
                       alt="..."
                       style={{
                         width: "100%",
@@ -85,13 +81,12 @@ export default function UserInforItem () {
                     className="infor-editimg"
                     style={{ textAlign: "center" }}
                   >
-                    <a
-                      href=""
+                    <p
                       className="edit"
-                      style={{ textDecoration: "underline" }}
+                      style={{ textDecoration: "underline",marginTop:8}}
                     >
                       Cập nhật ảnh
-                    </a>
+                    </p>
                   </div>
                 </div>
                 <div
