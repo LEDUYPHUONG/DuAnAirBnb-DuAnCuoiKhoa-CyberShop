@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { RootState } from "../../redux/configStore";
 import { RoomlistModel } from "../../redux/reducer/roomlistReducer";
 
 type Props = {
@@ -7,9 +10,8 @@ type Props = {
 
 export default function RoomListItem ({product}: Props) {
 
-  
   return (
-    <div
+      <div
       className="roomlist-item"
       style={{ margin: "0px 10px", position: "relative" }}
     >
@@ -23,7 +25,7 @@ export default function RoomListItem ({product}: Props) {
 
       <div className="roomlist-address">
         <div className="d-flex justify-content-between align-items-center mt-3">
-          <span style={{fontSize:15}} >Hang động tại Noyers-sur-Cher</span>
+          <span style={{fontSize:15,color: "#000000"}} >Hang động tại Noyers-sur-Cher</span>
 
           <div className="roomlist-like">
             <div className="d-flex">
@@ -32,7 +34,7 @@ export default function RoomListItem ({product}: Props) {
                 style={{ width: 20, height: 20, marginBottom: 4 }}
                 alt="..."
               />
-              <span>4,79 (234)</span>
+              <span style={{ color: "#000000"}}>4,79 (234)</span>
             </div>
           </div>
         </div>
@@ -50,8 +52,8 @@ export default function RoomListItem ({product}: Props) {
         style={{ fontSize: "15px", marginTop: 5 }}
       >
 
-        <span style={{fontSize:15, fontWeight:"bold"}}>${product.giaTien}</span>
-        <span style={{marginLeft:3,fontWeight:400}}>đêm</span>
+        <span style={{fontSize:15,color: "#000000", fontWeight:"bold"}}>${product.giaTien}</span>
+        <span style={{marginLeft:3,fontWeight:400,color: "#000000"}}>đêm</span>
       </div>
       <div
         className="roomlist-icon_left"
@@ -62,6 +64,7 @@ export default function RoomListItem ({product}: Props) {
           borderRadius: "5px",
           backgroundColor: "#fafafa",
           padding: "5px",
+          color: "#000000"
         }}
       >
         Chủ nhà siêu cấp
@@ -80,5 +83,6 @@ export default function RoomListItem ({product}: Props) {
         <img width={21} height={18} src="./img/home/heart.png" alt="..." />
       </div>
     </div>
+    
   );
 };

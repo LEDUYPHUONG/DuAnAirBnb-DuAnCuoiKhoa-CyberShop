@@ -50,12 +50,14 @@ export interface BookingRoomModel {
   soLuongKhach: number;
   maNguoiDung: number;
 }
+
 export interface RoomDetailState {
   objectRoomDetail: roomDetailModel;
   arrBookedRoom: bookedRoomModel[];
   numberStayDates: number;
   arrComment: arrCommentModel[];
   bookingRoom: BookingRoomModel;
+  soNguoi: number;
 }
 const initialState: RoomDetailState = {
   objectRoomDetail: {
@@ -81,15 +83,7 @@ const initialState: RoomDetailState = {
   },
   arrBookedRoom: [],
   numberStayDates: 0,
-  arrComment: [
-    {
-      ngayBinhLuan: "",
-      noiDung: "",
-      saoBinhLuan: 0,
-      tenNguoiBinhLuan: "",
-      avatar: "",
-    },
-  ],
+  arrComment: [],
   bookingRoom: {
     id: 0,
     maPhong: 0,
@@ -98,6 +92,7 @@ const initialState: RoomDetailState = {
     soLuongKhach: 0,
     maNguoiDung: 0,
   },
+  soNguoi: 0,
 };
 
 const roomDetailReducer = createSlice({
@@ -119,7 +114,7 @@ const roomDetailReducer = createSlice({
     ) => {
       state.arrComment = action.payload;
     },
-    postBookingRoomAction: (state, action) => {
+    setBookingAction: (state, action: PayloadAction<BookingRoomModel>) => {
       state.bookingRoom = action.payload;
     },
   },
@@ -130,14 +125,14 @@ export const {
   getBookedRoomAction,
   setNumberStayDate,
   getCommentAction,
-  postBookingRoomAction,
+  setBookingAction,
 } = roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
 
 // call API
 
-export const getRoomDetailApi = (id: string | undefined) => {
+export const getRoomDetailApi = (id: number | undefined) => {
   return async (dispatch: AppDispatch) => {
     if (id !== undefined) {
       try {
@@ -155,7 +150,6 @@ export const getBookedRoomApi = () => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await http.get("/dat-phong");
-
       dispatch(getBookedRoomAction(result.data.content));
     } catch (err) {
       console.log("getBookedRoomApiErr", err);
@@ -171,18 +165,21 @@ export const getCommentApi = (maPhong: string | undefined) => {
       );
       dispatch(getCommentAction(result.data.content));
     } catch (err) {
-      console.log("getBookedRoomApiErr", err);
+      console.log("getCommentApiErr", err);
     }
   };
 };
 
-export const bookRoomApi = (data: BookingRoomModel) => {
+export const bookRoomApi = (duLieu: BookingRoomModel) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const result = await http.post("/dat-phong", data);
-      dispatch(postBookingRoomAction(result.data.content));
+      const result = await http.post("/dat-phong", duLieu);
+      console.log(result);
+      dispatch(setBookingAction(result.data.content));
+      alert("Đã đăng ký phòng thành công ^^");
     } catch (err) {
       console.log("bookRoomApiErr", err);
+      alert("Đăng ký phòng thất bại ^^");
     }
   };
 };

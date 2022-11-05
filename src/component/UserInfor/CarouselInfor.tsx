@@ -17,7 +17,7 @@ export default function CarouselInfor ({product}: Props){
           >
             <div className="col-auto d-none d-lg-block">
               <img
-                className="roomlist-item_img rounded"
+                className="roomlist-item_img rounded-4"
                 style={{ width: "100%", height: "100%" }}
                 src="https://kientruccb.vn/wp-content/uploads/2020/02/mau-thiet-ke-nha-dep-truyen-cam-hung8.jpg"
                 alt="..."
@@ -38,7 +38,7 @@ export default function CarouselInfor ({product}: Props){
               </div>
               <div className="border-bottom" style={{ width: "10%"}}></div>
               <ul className="infor-listgrouproom list-group list-group-horizontal pt-2">
-                <li className="infor-usernumber"  style={{listStyle:"none", fontSize:14}}>2 {product.soLuongKhach}</li>
+                <li className="infor-usernumber"  style={{listStyle:"none", fontSize:14}}>{product.soLuongKhach} Khách</li>
                 <li className="infor-roomtype" style={{marginLeft:20,fontSize:14}}>Phòng Studio</li>
                 <li className="infor-bednumber" style={{marginLeft:20,fontSize:14}}>1 giường</li>
                 <li className="infor-bathnumber" style={{marginLeft:20,fontSize:14}}>1 phòng tắm</li>
