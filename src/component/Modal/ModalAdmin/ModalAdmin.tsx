@@ -1,32 +1,26 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import Dropdown from 'react-bootstrap/Dropdown';
+import { useNavigate } from 'react-router-dom';
 
-export default function ModalAdmin() {
+function HandleClickSignInOrJoin() {
+  const navigate = useNavigate()
   return (
     <>
-      <div className="dropdown">
-        <button
-          className="btn btn-light dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-            <span className="pe-3"><i className="fa-solid fa-globe"></i></span>
-        </button>
-        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <NavLink className="dropdown-item" to="/profile">
-              Profile
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="dropdown-item" to="/login">
-              Logout
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+      <Dropdown className="d-inline mx-2">
+        <Dropdown.Toggle id="dropdown-autoclose-true">
+          <i className="fa-solid fa-globe me-2"></i>
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+            <Dropdown.Item className='text-decoration-none' onClick={() =>{
+              navigate('/signup')
+            }}>Sign In</Dropdown.Item>
+            <Dropdown.Item className='text-decoration-none' onClick={() =>{
+              navigate('/signin')
+            }}>Join</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </>
   );
 }
+
+export default HandleClickSignInOrJoin;

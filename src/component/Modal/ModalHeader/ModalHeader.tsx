@@ -1,5 +1,4 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
-import 'antd/dist/antd.min.css';
 import DatePickerAntd from '../../datePickerAntd/DatePickerAntd';
 import { RootState } from '../../../redux/configStore';
 import { setKeySearch } from '../../../redux/reducer/keySearchReducer';
@@ -9,6 +8,7 @@ import { arrLocationSearch } from '../../../data/api/dataDemoSearch';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ProductModel, setProductSearch} from '../../../redux/reducer/productReducer';
 import { http } from '../../../util/setting';
+import 'bootstrap/dist/js/bootstrap.js';
 
 function useDebounce<T>(value: T, delay?: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);

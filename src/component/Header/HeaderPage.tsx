@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
+import 'bootstrap/dist/js/bootstrap.js';
 type Props = {
     title?:string
 }
@@ -55,12 +55,12 @@ export default function HeaderPage({title}: Props) {
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li>
-                    <NavLink className="dropdown-item" to="/signin">
+                    <NavLink className="dropdown-item text-decoration-none" to="/signin">
                       Sign In
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="dropdown-item" to="/signup">
+                    <NavLink className="dropdown-item text-decoration-none" to="/signup">
                       Join
                     </NavLink>
                   </li>
