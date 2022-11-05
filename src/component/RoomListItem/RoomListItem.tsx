@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { RootState } from "../../redux/configStore";
 import { RoomlistModel } from "../../redux/reducer/roomlistReducer";
 
 type Props = {
@@ -7,9 +10,8 @@ type Props = {
 
 export default function RoomListItem ({product}: Props) {
 
-  
   return (
-    <div
+      <div
       className="roomlist-item"
       style={{ margin: "0px 10px", position: "relative" }}
     >
@@ -80,5 +82,6 @@ export default function RoomListItem ({product}: Props) {
         <img width={21} height={18} src="./img/home/heart.png" alt="..." />
       </div>
     </div>
+    
   );
 };
