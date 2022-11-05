@@ -140,7 +140,7 @@ http.interceptors.response.use((response) => {
 );
 
      
-export  const history = createBrowserHistory({})
+export const history = createBrowserHistory({})
 
 /**
  * status code

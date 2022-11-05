@@ -6,11 +6,16 @@ import { NavLink } from "react-router-dom";
 import { DatePicker } from "antd";
 import FooterPage from "../../component/Footer/FooterPage";
 import HeaderPage from "../../component/Header/HeaderPage";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/configStore";
+import { signupApi } from "../../redux/reducer/userReducer";
+import { SignUpModel } from "../../Model/SignUpModel";
 
 type Props = {};
 
 export default function Login({}: Props) {
   const navigate = useNavigate();
+  const dispacth: AppDispatch = useDispatch();
   const [typePW, setTypePW] = useState("password");
   const [type_REPW, setType_REPW] = useState("password");
   const handle_Password_Icon = () => {
@@ -27,11 +32,12 @@ export default function Login({}: Props) {
   };
   const frm = useFormik({
     initialValues: {
+      id: 0,
+      name: "",
       email: "",
       password: "",
-      retype_password: "",
-      name: "",
       phone: "",
+      retype_password: "",
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
@@ -58,7 +64,12 @@ export default function Login({}: Props) {
           "Số điện thoại không đúng định dạng"
         ),
     }),
-    onSubmit: (values) => {},
+
+
+    onSubmit: (values:any) => {
+      dispacth(signupApi(values));
+
+    },
   });
 
   return (
