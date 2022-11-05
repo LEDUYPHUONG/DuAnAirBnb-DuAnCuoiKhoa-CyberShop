@@ -81,15 +81,16 @@ export default function RoomInfo({ title }: Props) {
     setBooking.maPhong = idPhong;
     setBooking.ngayDen = den.value;
     setBooking.ngayDi = roi.value;
-    setBooking.soLuongKhach = +numberPassenger;
+    setBooking.soLuongKhach = numberPassenger;
     //set +numberPassenger vì kiểu dữ liệu là số nên add + để từ chuỗi thành số
     dispatch(bookRoomApi(setBooking));
+    alert("Đã đăng ký phòng thành công ^^");
   };
   const den = document.getElementById("calendar_den") as HTMLInputElement;
   const roi = document.getElementById("calendar_roi") as HTMLInputElement;
 
   //----------------------CHỌN GIÁ TRỊ CHO INPUT CHỌN SỐ KHÁCH----------------
-  const [numberPassenger, setNumberPassenger] = useState("");
+  const [numberPassenger, setNumberPassenger] = useState(1);
 
   //------------------------CHỨC NĂNG PHẦN COMMENT (RENDER VÀ ADD CMT)-----------------------------
   const { arrComment } = useSelector(
@@ -456,7 +457,7 @@ export default function RoomInfo({ title }: Props) {
                   className="form-control"
                   onChange={(e) => {
                     const SelectedPassenger = e.target.value;
-                    setNumberPassenger(SelectedPassenger);
+                    setNumberPassenger(+SelectedPassenger);
                   }}
                 >
                   <option value="1" selected>
