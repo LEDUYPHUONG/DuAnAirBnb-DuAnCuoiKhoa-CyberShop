@@ -71,7 +71,7 @@ export const loginApi = (userLogin: UserLoginModel) => {
       setStore(USER_ID, result.data.content.user.id)
       setTimeout(() => {
         history.push(`/profile/${result.data.content.user.id}`);
-        // window.location.reload();
+        window.location.reload();
       }, 2000);
       console.log(result.data.content.user.id);
       dispatch(getProfileApi());
