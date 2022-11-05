@@ -1,21 +1,30 @@
+import { useFormik } from "formik";
+import { values } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { RootState } from "../../redux/configStore";
 import { useAppDispatch } from "../../redux/example/hooks";
 import {getProfileRoomApi,getProfileUserApi,ProfileRoomModel} from "../../redux/reducer/profileReducer";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 
 export default function UserInforItem () {
-  const { arrProfileRoom, arrProfileUser } = useSelector(
+  const { arrProfileRoom , arrProfileUser } = useSelector(
     (state: RootState) => state.profileReducer
   );
 
   const dispatch = useAppDispatch();
+
+  const param = useParams();
+  const userid: any = param.iduser
+
+
   useEffect(() => {
     // call api
-    dispatch(getProfileRoomApi())
-    dispatch(getProfileUserApi())
-  }, []);
+    dispatch(getProfileRoomApi());
+    dispatch(getProfileUserApi(userid));
+
+  }, [userid]);
   
 
   // const renderInfor

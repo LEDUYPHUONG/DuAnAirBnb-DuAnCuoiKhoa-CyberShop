@@ -33,7 +33,7 @@ root.render(
           <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='map' element={<MapHome/>}></Route>
           <Route path='profile'>
-            <Route path=':id' element = {<Infor/>}></Route>
+            <Route path=':iduser' element = {<Infor/>}></Route>
           </Route>
           <Route path='detailroom'>
             <Route path=':id' element = {<RoomDetail/>}></Route>

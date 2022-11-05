@@ -72,10 +72,10 @@ export const getProfileRoomApi = () => {
     }
   };
 };
-export const getProfileUserApi = () => {
+export const getProfileUserApi = (userid: string) => {
   return async (dispacth: AppDispatch) => {
     try {
-      const result = await http.get("/users/1266");
+      const result = await http.get(`/users/${userid}`);
       dispacth(getProfileUserAction(result.data.content));
     } catch (err) {
       console.log(err);
