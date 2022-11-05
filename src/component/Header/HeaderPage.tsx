@@ -1,4 +1,5 @@
 import React from 'react'
+import DropdownHeader from '../../component/Dropdown/DropdownHeader'
 import { NavLink } from 'react-router-dom'
 import 'bootstrap/dist/js/bootstrap.js';
 type Props = {
@@ -38,34 +39,7 @@ export default function HeaderPage({title}: Props) {
               <div style={{width:1, height:0}}></div>
               <button className='btn-BAhost-globe btn rounded-pill text-dark' style={{fontSize: "14px", outline:"none", height:'44px', padding:'0 15px'}}>Trở thành chủ nhà</button>
               <button className='btn-BAhost-globe btn rounded-pill text-dark' style={{outline:"none",  height:'44px', width:'44px'}}><i className="fa-solid fa-globe" ></i></button>
-              
-              <div className="dropdown d-flex justify-content-between align-items-center">
-                <button
-                  className="btn-singin-singout btn dropdown-toggle rounded-pill d-flex justify-content-between align-items-center ms-2"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style={{border: "1px solid rgba(204, 204, 204, 0.5)", outline:"none"}}
-                >
-                    <span className="d-flex justify-content-between align-items-center">
-                      <i className="fa-solid fa-bars pe-3 text-dark"></i>
-                      <i className="fa-solid fa-circle-user text-dark" style={{width:30, height:30,lineHeight:"30px", fontSize:30}} ></i>
-                    </span>
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <NavLink className="dropdown-item text-decoration-none" to="/signin">
-                      Sign In
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink className="dropdown-item text-decoration-none" to="/signup">
-                      Join
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
+              <DropdownHeader />
             <div>
           </div>
         </div>
