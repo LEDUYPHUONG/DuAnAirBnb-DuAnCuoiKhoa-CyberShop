@@ -103,7 +103,7 @@ export default function UserInforItem () {
                   style={{ marginBottom: "16px" }}
                 >
                   <img
-                    src="./img/security.png"
+                    src="/img/security.png"
                     alt="..."
                     style={{
                       height: "40px",
@@ -174,7 +174,7 @@ export default function UserInforItem () {
                     >
                       <div className="d-flex align-items-center p-2">
                         <img
-                          src="./img/check.png"
+                          src="/img/check.png"
                           alt=""
                           style={{ width: "16px", height: "16px" }}
                         />

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import ModalAddAdmin from '../../component/Modal/ModalAdmin/ModalAddAdmin'
-import ModalAdmin from '../../component/Modal/ModalAdmin/ModalAdmin'
+import DropdownAdmin from '../../component/Dropdown/DropdownAdmin'
 import { RootState } from '../../redux/configStore'
 import { useAppDispatch } from '../../redux/example/hooks'
 import { getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
@@ -70,11 +70,10 @@ export default function Admin() {
                 <div className='admin-header w-100 d-flex justify-content-end align-items-center px-5 py-3 border-bottom' style={{ height: '50px'}}>
                     <div className='d-flex justify-content-between align-items-center'>
                         <span className='pe-3'>Admin</span>
-                        <ModalAdmin />
+                        <DropdownAdmin />
                     </div>
                 </div>
                 <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
-                    <button className='btn btn-success border-0 my-5' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add admin</button>
                     <ModalAddAdmin />
                     <div className='pb-3' style={{width:'100%'}}>
                         <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Enter account or username'/>
