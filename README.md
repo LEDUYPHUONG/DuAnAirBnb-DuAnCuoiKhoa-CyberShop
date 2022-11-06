@@ -22,7 +22,7 @@
       II. Thành viên: 3 người (BC30)
       1. Lê Duy Phương.
       2. Hưng GN.
-      3. Khang Nguyễn.
+      3. Nguyễn Hoàng Khang.
       
       III. Phân task:
       1. Lê Duy Phương: trang home (layout, call api), trang admin(layout, call api)
