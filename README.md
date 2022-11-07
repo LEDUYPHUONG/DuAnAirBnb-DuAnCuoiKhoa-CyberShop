@@ -14,9 +14,9 @@
 - Người dùng có thể nhìn thấy ở vị trí hiện tại có bao nhiêu phòng có thể đặt ở bên trái giao diện, vài thông tin cơ bản của phòng như: địa chỉ của phòng, giá thuê phòng 1 đêm, hình ảnh phòng, tiện ích của phòng ... Ở bên phải giao diện trang roomlist là bản đồ cho biết vị trí những nhà có phòng có thể thuê ở vị trí đã search. Hiện phần google map Api có thu phí khi sử dụng nên chỉ hiện tạm bản đồ tượng trưng.
 -  Người dùng có thể click vào các phòng trên giao diện để chuyển qua trang detailroom để xem chi tiết phòng và đặt phòng.
 #### 5. Các chức năng ở trang detailroom:
-- Ở trang này người dùng có thể nhìn thấy đầy đủ thông tin của phòng: hình ảnh, tiện ích như số phòng, số giường, số phòng tắm, tivi, bàn là ...
-- Người dùng có thể đặt phòng (ngày đến nhận  phòng, ngày trả phòng, số người đến ở phòng)
-- Người dùng có thể comment phía dưới ở phần bình luận
+- Hiển thị thông tin của phòng: tên phòng, hình ảnh, mô tả phòng, các tiện ích, các comment đánh giá (hiện tại api lỗi nên check render comment mentor vào các trang roomdetail/9 ; roomdetail/13; v.v.. để xem nha)...
+- Chức năng đặt phòng qua chọn ngày đến, ngày rời và số người lưu trú.
+- Comment đánh giá.
 #### 6 Các chức năng ở trang admin:
 - khi đăng nhập thành công, người dùng sẽ được chuyển sang trang admin(nếu là admin) hoặc chuyển về trang detailroom nếu là user. 
 - Ở trang admin này, mặc định mới vào là ở trang quản lý người dùng, người dùng có thể thêm 1 admin khác, có thể xem, xóa, sửa thông tin cá nhân của user/admin khác có trong danh sách. Tương tự với các thẻ còn lại có trong trang admin.
