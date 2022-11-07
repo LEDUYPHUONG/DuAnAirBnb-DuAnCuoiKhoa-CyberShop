@@ -50,6 +50,14 @@ export interface BookingRoomModel {
   soLuongKhach: number;
   maNguoiDung: number;
 }
+export interface CommentModel {
+  id: number;
+  maPhong: number;
+  maNguoiBinhLuan: number;
+  ngayBinhLuan: string;
+  noiDung: string;
+  saoBinhLuan: number;
+}
 
 export interface RoomDetailState {
   objectRoomDetail: roomDetailModel;
@@ -161,7 +169,7 @@ export const bookRoomApi = (duLieu: BookingRoomModel) => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await http.post("/dat-phong", duLieu);
-      console.log(result);
+      // console.log(result);
       alert("Đã đăng ký phòng thành công ^^");
     } catch (err) {
       console.log("bookRoomApiErr", err);
@@ -172,6 +180,18 @@ export const bookRoomApi = (duLieu: BookingRoomModel) => {
       } else {
         alert("Đăng ký phòng thất bại!");
       }
+    }
+  };
+};
+export const postCommentApi = (duLieuComment: CommentModel) => {
+  //ở đây mình đã set type cho comment chứ ko cần phải tạo file model js như signin và booking nữa. Xem lại phần này nhé!
+  return async (dispatch: AppDispatch) => {
+    try {
+      let result = await http.post("/binh-luan", duLieuComment);
+      alert("Đánh giá của bạn đã được ghi nhận. Cảm ơn bạn rất nhiều!");
+      window.location.reload()
+    } catch (err) {
+      console.log("CommentErrors", err);
     }
   };
 };
