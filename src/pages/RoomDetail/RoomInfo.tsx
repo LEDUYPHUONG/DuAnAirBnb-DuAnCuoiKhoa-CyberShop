@@ -42,7 +42,6 @@ export default function RoomInfo({ title }: Props) {
   const { arrBookedRoom } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
-  const { roomId } = useSelector((state: RootState) => state.roomlistReducer);
   const param = useParams();
   const idPhong: any = param.id;
   useEffect(() => {
@@ -52,10 +51,7 @@ export default function RoomInfo({ title }: Props) {
   }, [idPhong]);
 
   //-----------------chức năng cho phần chọn ngày ở và tính giá tiền--------------
-  const { bookingRoom } = useSelector(
-    (state: RootState) => state.roomDetailReducer
-  );
-
+  
   //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
     // Can not select days before today and today
@@ -517,7 +513,6 @@ export default function RoomInfo({ title }: Props) {
         <div className="commentary">
           <h4 className="roomName">Đánh giá</h4>
           <div className="comment">{renderComment()}</div>
-
           <WriteComment />
         </div>
       </div>

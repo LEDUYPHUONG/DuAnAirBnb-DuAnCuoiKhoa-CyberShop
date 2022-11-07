@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Action } from "@remix-run/router";
 import { number } from "yup/lib/locale";
-import { http } from "../../util/setting";
+import { ACCESS_TOKEN, getStore, history, http } from "../../util/setting";
 import { AppDispatch } from "../configStore";
 
 export interface roomDetailModel {
@@ -56,7 +56,6 @@ export interface RoomDetailState {
   arrBookedRoom: bookedRoomModel[];
   numberStayDates: number;
   arrComment: arrCommentModel[];
-  bookingRoom: BookingRoomModel;
   soNguoi: number;
 }
 const initialState: RoomDetailState = {
@@ -84,14 +83,6 @@ const initialState: RoomDetailState = {
   arrBookedRoom: [],
   numberStayDates: 0,
   arrComment: [],
-  bookingRoom: {
-    id: 0,
-    maPhong: 0,
-    ngayDen: "",
-    ngayDi: "",
-    soLuongKhach: 0,
-    maNguoiDung: 0,
-  },
   soNguoi: 0,
 };
 
@@ -114,9 +105,6 @@ const roomDetailReducer = createSlice({
     ) => {
       state.arrComment = action.payload;
     },
-    setBookingAction: (state, action: PayloadAction<BookingRoomModel>) => {
-      state.bookingRoom = action.payload;
-    },
   },
 });
 
@@ -125,7 +113,6 @@ export const {
   getBookedRoomAction,
   setNumberStayDate,
   getCommentAction,
-  setBookingAction,
 } = roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
@@ -157,7 +144,7 @@ export const getBookedRoomApi = () => {
   };
 };
 
-export const getCommentApi = (maPhong: string | undefined) => {
+export const getCommentApi = (maPhong: number | string | undefined) => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await http.get(
@@ -175,11 +162,16 @@ export const bookRoomApi = (duLieu: BookingRoomModel) => {
     try {
       const result = await http.post("/dat-phong", duLieu);
       console.log(result);
-      dispatch(setBookingAction(result.data.content));
       alert("Đã đăng ký phòng thành công ^^");
     } catch (err) {
       console.log("bookRoomApiErr", err);
-      alert("Đăng ký phòng thất bại ^^");
+      if (!getStore(ACCESS_TOKEN)) {
+        alert("Bạn cần đăng nhập mới có thể đặt được phòng");
+        history.push("/signin");
+        window.location.reload();
+      } else {
+        alert("Đăng ký phòng thất bại!");
+      }
     }
   };
 };

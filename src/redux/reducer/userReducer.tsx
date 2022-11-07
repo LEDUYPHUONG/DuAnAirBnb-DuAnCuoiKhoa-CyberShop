@@ -29,7 +29,14 @@ export interface SignUpModel {
   gender: boolean;
   role: string;
 }
-
+export interface CommentModel {
+  id: number;
+  maPhong: number;
+  maNguoiBinhLuan: number;
+  ngayBinhLuan: string;
+  noiDung: string;
+  saoBinhLuan: 0;
+}
 export interface UserReducerState {
   userLogin: UserLoginModel;
   userSignup: SignUpModel;
@@ -37,8 +44,6 @@ export interface UserReducerState {
 
 const initialState = {
   userLogin: getStoreJson(USER_LOGIN) || {},
-  // userSignup: {
-  // },
 };
 
 const userLoginReducer = createSlice({
@@ -48,9 +53,6 @@ const userLoginReducer = createSlice({
     getUserProfile_Action: (state, action: PayloadAction<UserLoginModel>) => {
       state.userLogin = action.payload;
     },
-    // setSignUp_Action: (state, action: PayloadAction<SignUpModel>) => {
-    //   state.userSignup = action.payload;
-    // },
   },
 });
 
@@ -68,7 +70,7 @@ export const loginApi = (userLogin: UserLoginModel) => {
       console.log(result);
       setCookie(ACCESS_TOKEN, result.data.content.token, 30);
       setStore(ACCESS_TOKEN, result.data.content.token);
-      setStore(USER_ID, result.data.content.user.id)
+      setStore(USER_ID, result.data.content.user.id);
       setTimeout(() => {
         history.push(`/profile/${result.data.content.user.id}`);
         window.location.reload();
@@ -99,7 +101,6 @@ export const signupApi = (frmSignUp: SignUpModel) => {
   return async (dispatch: AppDispatch) => {
     try {
       let result = await http.post("/auth/signup", frmSignUp);
-      // dispatch(setSignUp_Action(frmSignUp));
       alert(
         "Đăng ký thành công! Hãy đăng nhập để trải nghiệm nhiều hơn từ chúng tôi ^^"
       );
