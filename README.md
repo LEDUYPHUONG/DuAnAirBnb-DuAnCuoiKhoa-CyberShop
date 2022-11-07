@@ -25,7 +25,7 @@
   2. Hưng GN.
   3. Nguyễn Hoàng Khang.
       
- #### `III. Phân task:`
-  1. **Lê Duy Phương**: trang `home (layout, call api)`, trang `admin(layout, call api)`
-  2. **Đinh Tiến Hưng**: trang `detailroom (layout, call api)`, trang `Signup (layout, call Api)`, trang `Singin (layout, call api)`
-  3. **Khang Nguyễn**: trang `roomlist (layout, call api)`, trang `Information (layout, call api)`.
+ #### `III. Phần công việc:`
+  1. **Lê Duy Phương**: `home (layout, call api)`, `admin(layout, call api)`
+  2. **Đinh Tiến Hưng**:`detailroom (layout, call api)`, trang `Signup (layout, call Api)`, `Singin (layout, call api)`
+  3. **Khang Nguyễn**: `roomlist (layout, call api)`,`Information (layout, call api)`.
