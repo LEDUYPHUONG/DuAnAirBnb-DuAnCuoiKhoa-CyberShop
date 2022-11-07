@@ -1,89 +1,68 @@
-import { Avatar, Button, Comment, Form, Input, List } from 'antd';
-import moment from 'moment';
-import React, { useState } from 'react';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { AppDispatch, RootState } from "../../redux/configStore";
+import { postCommentApi } from "../../redux/reducer/roomDetailReducer";
+import { getStoreJson } from "../../util/setting";
 
-const { TextArea } = Input;
+type Props = {};
 
-interface CommentItem {
-  author: string;
-  avatar: string;
-  content: React.ReactNode;
-  datetime: string;
-}
-
-interface EditorProps {
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onSubmit: () => void;
-  submitting: boolean;
-  value: string;
-}
-
-const CommentList = ({ comments }: { comments: CommentItem[] }) => (
-  <List
-    dataSource={comments}
-    itemLayout="horizontal"
-    renderItem={props => <Comment {...props} />}
-  />
-);
-
-const Editor = ({ onChange, onSubmit, submitting, value }: EditorProps) => (
-  <>
-    <Form.Item>
-      <TextArea rows={4} onChange={onChange} value={value} />
-    </Form.Item>
-    <Form.Item>
-      <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
-        Add Comment
-      </Button>
-    </Form.Item>
-  </>
-);
-
-const App: React.FC = () => {
-  const [comments, setComments] = useState<CommentItem[]>([]);
-  const [submitting, setSubmitting] = useState(false);
-  const [value, setValue] = useState('');
-
-  const handleSubmit = () => {
-    if (!value) return;
-
-    setSubmitting(true);
-
-    setTimeout(() => {
-      setSubmitting(false);
-      setValue('');
-      setComments([
-        ...comments,
-        {
-          author: 'Người lạ',
-          avatar: 'https://joeschmoe.io/api/v1/random',
-          content: <p>{value}</p>,
-          datetime: "tháng 10 năm 2022"
-        },
-      ]);
-    }, 1000);
+export default function WriteComment({}: Props) {
+  const dispatch: AppDispatch = useDispatch();
+  const infoUser = getStoreJson("User_Info");
+  console.log("info nguoi dung", infoUser);
+  //Hàm Number() :convert string to number;
+  //Lấy ngày hiện tại
+  const takeDate = new Date();
+  const today = `${takeDate.getDate()}/${
+    takeDate.getMonth() + 1
+  }/${takeDate.getFullYear()}`;
+  // console.log(today);
+  // lấy nội dung bình luận
+  const [noidung, setNoidung] = useState("");
+  const handleNoiDung = (e: any) => {
+    setNoidung(e.target.value);
+  };
+  const userComment = {
+    id: 0,
+    maPhong: Number(useParams().id),
+    maNguoiBinhLuan: infoUser.id,
+    ngayBinhLuan: today,
+    noiDung: noidung,
+    saoBinhLuan: 0,
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(e.target.value);
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    dispatch(postCommentApi(userComment));
   };
+
+  // console.log(userComment);
 
   return (
-    <>
-      {comments.length > 0 && <CommentList comments={comments} />}
-      <Comment
-        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="user" />}
-        content={
-          <Editor
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            submitting={submitting}
-            value={value}
-          />
-        }
+    <div className="container d-flex">
+      <img
+        src="https://picsum.photos/200/300/?random&t="
+        alt="user_avt"
+        style={{ width: 50, height: 50, borderRadius: 100 }}
       />
-    </>
+      <div className="commentInfo  d-flex flex-column">
+        <textarea
+          className="form-control mx-3"
+          rows={4}
+          cols={100}
+          id="binhluan"
+          placeholder="Viết bình luận..."
+          onChange={handleNoiDung}
+        />
+        <button
+          className="btn btn-primary mt-2 mx-3"
+          style={{ width: 140 }}
+          onClick={handleSubmit}
+        >
+          Gửi bình luận
+        </button>
+      </div>
+    </div>
   );
-};
-
-export default App;
+}

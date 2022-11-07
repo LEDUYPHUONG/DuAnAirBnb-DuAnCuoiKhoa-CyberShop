@@ -1,6 +1,6 @@
 .container {
   .roomName {
-    margin-top: 50px;
+    margin-top: 100px;
     font-size: 30px;
   }
   .review {
@@ -41,8 +41,6 @@
   }
   .roomPhoto {
     width: 100%;
-    // height: 620px;
-    // background: #000;
     .row {
       &::before {
         display: none;
@@ -53,12 +51,8 @@
       column-gap: 5px;
       row-gap: 5px;
       @media screen and (max-width: 428px) {
-        display: flex;
-        
-   
-        
+        display: flex;       
       }
-
       .item {
         padding: 0;
         @media screen and (max-width: 428px) {
@@ -237,9 +231,7 @@
       }   
       @media screen and (max-width: 428px) {
         width: 100%; 
-      }
-  
-   
+      }   
       .booking_area {
         padding: 20px 20px;
         .price_and_rating1 {

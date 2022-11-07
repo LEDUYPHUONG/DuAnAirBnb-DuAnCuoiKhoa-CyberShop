@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Image } from "antd";
-// import Date from "./Date";
-// import SelectNumberPassenger from "./SelectNumberPassenger";
 import WriteComment from "./WriteComment";
-// import Comment from "./Comment";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
@@ -42,7 +39,6 @@ export default function RoomInfo({ title }: Props) {
   const { arrBookedRoom } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
-  const { roomId } = useSelector((state: RootState) => state.roomlistReducer);
   const param = useParams();
   const idPhong: any = param.id;
   useEffect(() => {
@@ -52,10 +48,7 @@ export default function RoomInfo({ title }: Props) {
   }, [idPhong]);
 
   //-----------------chức năng cho phần chọn ngày ở và tính giá tiền--------------
-  const { bookingRoom } = useSelector(
-    (state: RootState) => state.roomDetailReducer
-  );
-
+  
   //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
   const disabledDate: RangePickerProps["disabledDate"] = (current) => {
     // Can not select days before today and today
@@ -70,7 +63,7 @@ export default function RoomInfo({ title }: Props) {
     return price;
   };
   //-----------------------------CHỨC NĂNG BOOK PHÒNG--------------------------------
-  const arrNguoiDung: any = getStore(USER_LOGIN);
+  // const arrNguoiDung: any = getStore(USER_LOGIN);
   // console.log(arrNguoiDung);
 
   // const nguoiDangSuDung = arrNguoiDung.filter(nguoidung => nguoidung.id )
@@ -111,7 +104,7 @@ export default function RoomInfo({ title }: Props) {
     }
     return arrComment.map((cmt, index) => {
       return (
-        <div className="usercomment d-flex" key={index}>
+        <div className="usercomment d-flex mb-4" key={index}>
           <img src={cmt.avatar} alt={cmt.tenNguoiBinhLuan} />
           <div className="commentInfo  d-flex flex-column">
             <span className="tenNguoiDung">{cmt.tenNguoiBinhLuan}</span>
@@ -515,9 +508,8 @@ export default function RoomInfo({ title }: Props) {
           </div>
         </div>
         <div className="commentary">
-          <h4 className="roomName">Đánh giá</h4>
+          <h4 className="h4 mb-4">Đánh giá</h4>
           <div className="comment">{renderComment()}</div>
-
           <WriteComment />
         </div>
       </div>
