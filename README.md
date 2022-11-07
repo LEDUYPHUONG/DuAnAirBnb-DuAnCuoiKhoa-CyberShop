@@ -26,6 +26,6 @@
   3. Nguyễn Hoàng Khang.
       
  #### `III. Phân task:`
-  1. Lê Duy Phương: trang home (layout, call api), trang admin(layout, call api)
-  2. Đinh Tiến Hưng: trang detailroom (layout, call api), trang signup (layout, call Api), trang sigin (layout, call api)
-  3. Khang Nguyễn: trang roomlist (layout, call api), trang Information (layout, call api).
+  1. Lê Duy Phương: trang `home (layout, call api)`, trang `admin(layout, call api)`
+  2. Đinh Tiến Hưng: trang `detailroom (layout, call api)`, trang `Signup (layout, call Api)`, trang `Singin (layout, call api)`
+  3. Khang Nguyễn: trang `roomlist (layout, call api)`, trang `Information (layout, call api)`.
