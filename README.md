@@ -28,4 +28,4 @@
  #### `III. Phần công việc:`
   1. **Lê Duy Phương**:   `home (layout, call api)`,   `admin(layout, call api)`
   2. **Đinh Tiến Hưng**:  `detailroom (layout, call api)`,   `Signup (layout, call Api)`,    `Singin (layout, call api)`
-  3. **Khang Nguyễn**:    `roomlist (layout, call api)`,   `Information (layout, call api)`.
+  3. **Nguyễn Hoàng Khang**:    `roomlist (layout, call api)`,   `Information (layout, call api)`.
