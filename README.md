@@ -1,5 +1,5 @@
-  ##Mô tả "Dự Án AirBnB - HKP" ##
-      I. Các chức năng:
+  ## Mô tả "Dự Án AirBnB - HKP"
+      `I. Các chức năng:`
       I.1. Các chức năng ở trang home:
       1. Xem tất cả các vị trí có thể đặt phòng ( lúc mới vào trang chủ hoặc bấm vào Icon "Tất cả phòng" trên carousel của trang chủ).
       2. Xem nhanh các vị trí theo gợi ý (Phân trang vị trí khi tìm kiếm vị trí đặt phòng) bằng cách ấn vào các icon trên carousel. Bấm vào chữ Icon (A) thì tìm được những vị trí có chữ A trong đó (Nếu có API phân trang theo đặc điểm của các vị trí thì sẽ làm được y như trang airBnB). Bấm vào nút next hoặc prev để chuyển sang những gợi ý khác.
