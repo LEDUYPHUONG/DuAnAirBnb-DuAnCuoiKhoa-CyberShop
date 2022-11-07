@@ -110,9 +110,10 @@ http.interceptors.request.use(
     (config:AxiosRequestConfig)  => {
 
         const token = getStore(ACCESS_TOKEN);
-        if( config.headers){
+        if(config.headers){
             config.headers  = {
-                ['tokenCybersoft']: TOKEN_CYBERSOFT
+                ['tokenCybersoft']: TOKEN_CYBERSOFT,
+                ['token']: token
             }
         }
         return config
