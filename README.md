@@ -1,8 +1,8 @@
   ## Mô tả "Dự Án AirBnB - HKP"
-      `I. Các chức năng:`
-      I.1. Các chức năng ở trang home:
-      1. Xem tất cả các vị trí có thể đặt phòng ( lúc mới vào trang chủ hoặc bấm vào Icon "Tất cả phòng" trên carousel của trang chủ).
-      2. Xem nhanh các vị trí theo gợi ý (Phân trang vị trí khi tìm kiếm vị trí đặt phòng) bằng cách ấn vào các icon trên carousel. Bấm vào chữ Icon (A) thì tìm được những vị trí có chữ A trong đó (Nếu có API phân trang theo đặc điểm của các vị trí thì sẽ làm được y như trang airBnB). Bấm vào nút next hoặc prev để chuyển sang những gợi ý khác.
+      #### I. Các chức năng:
+      - I.1. Các chức năng ở trang home:
+       -1. Xem tất cả các vị trí có thể đặt phòng ( lúc mới vào trang chủ hoặc bấm vào Icon "Tất cả phòng" trên carousel của trang chủ).
+       -2. Xem nhanh các vị trí theo gợi ý (Phân trang vị trí khi tìm kiếm vị trí đặt phòng) bằng cách ấn vào các icon trên carousel. Bấm vào chữ Icon (A) thì tìm được những vị trí có chữ A trong đó (Nếu có API phân trang theo đặc điểm của các vị trí thì sẽ làm được y như trang airBnB). Bấm vào nút next hoặc prev để chuyển sang những gợi ý khác.
       3. bấm vào Thanh Search (Địa điểm bất kỳ | Tuần bất kỳ | Thêm Khách) sẽ mở ra modal có thanh search địa điểm để người dùng gõ từ khóa tìm vị trí có thể đặt phòng. Xuất hiện danh sách vị trí có vị trí chứa từ khóa đã gõ vào để người dùng click vào chọn. Bấm Icon Tìm kiếm để chuyển qua trang roomlist, người dùng sẽ tìm thấy những địa điểm còn phòng có thể đặt ở vị trí đã search.
       4. Bấm vào Icon "Hiện Bản đồ" để link qua bản đồ vị trí đặt phòng. Cái này phải có tài khoản google map Api, đóng phí hàng tháng để sử dụng nên chỉ dừng ở mức hiện bản đồ chứ trên bản đồ không có hiện ra vị trí đặt phòng.
       5. Người Dùng có thể click vào button phía sau dòng chữ "Trở thành chủ nhà" chọn mục SignIn hoặc Join để chuyển qua trang đăng nhập hoặc đăng ký.
