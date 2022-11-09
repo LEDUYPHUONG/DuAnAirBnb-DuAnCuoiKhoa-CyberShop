@@ -1,14 +1,11 @@
 import React from "react";
 import UserInforItem from "../../component/UserInfor/UserInforItem";
 import { NavLink } from "react-router-dom";
-import Item from "antd/lib/list/Item";
 import HeaderPage from "../../component/Header/HeaderPage";
 
-type Props = {
-  title?: string;
-};
 
-export default function Infor({ title }: Props) {
+
+export default function Infor() {
   
   return (
     <>

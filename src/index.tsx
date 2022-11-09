@@ -22,10 +22,20 @@ import "slick-carousel/slick/slick-theme.css";
 import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./assets/scss/style.scss"
+import { ACCESS_TOKEN, getStoreJson } from './util/setting';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+export const isVerification = (): boolean => {
+  const token: string | null = isUserLogIn();
+  return token != null;
+};
+
+export const isUserLogIn = () => {
+  const result = getStoreJson(ACCESS_TOKEN);
+  return result;
+};
 root.render(
   <Provider store={store}>
     <BrowserRouter>
@@ -34,17 +44,20 @@ root.render(
           <Route index element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
           <Route path='map' element={<MapHome/>}></Route>
-          <Route path='profile'>
-            <Route path=':iduser' element = {<Infor/>}></Route>
-          </Route>
           <Route path='detailroom'>
             <Route path=':id' element = {<RoomDetail/>}></Route>
           </Route>
           <Route path='roomList' element = {<Roomlist/>}></Route>
-          <Route path='signin' element={<Login/>}></Route>
-          <Route path='signup' element={<SignUp/>}></Route>
-          <Route path='admin' element={<Admin/>}></Route>
-          <Route path='manage' element={<Manage/>}></Route>
+          <Route path='signin' element={
+            isVerification() ? (<Infor/>) : (<Login/>)}></Route>
+          <Route path='signup' element={
+            isVerification() ? (<Infor/>) : (<SignUp/>)}></Route>
+          <Route  path='profile' element={
+            isVerification() ? (<Infor/>) : (<Login/>)}></Route>
+          <Route path='admin' element={
+            isVerification() ? (<Admin/>) : (<Login/>)}></Route>
+          <Route path='manage' element={
+            isVerification() ? (<Manage/>) : (<Login/>)}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
 
           <Route path='demo' element={<Demo/>}></Route>

@@ -72,7 +72,7 @@ export const config = {
   getStoreJson: (name: string) => {
     if (localStorage.getItem(name)) {
       let result: any = localStorage.getItem(name);
-      return JSON.parse(result);
+      return result;
     }
     return null;
   },
