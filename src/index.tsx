@@ -59,7 +59,6 @@ root.render(
           <Route path='manage' element={
             isVerification() ? (<Manage/>) : (<Login/>)}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
-
           <Route path='demo' element={<Demo/>}></Route>
         </Route>
       </Routes>
