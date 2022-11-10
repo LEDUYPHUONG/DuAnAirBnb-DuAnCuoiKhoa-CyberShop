@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import FooterPage from "../../component/Footer/FooterPage";
 import HeaderPage from "../../component/Header/HeaderPage";
-import { bookRoomApi } from "../../redux/reducer/roomDetailReducer";
 import { loginApi } from "../../redux/reducer/userReducer";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/configStore";
 
-type Props = {};
-
-export default function Login({}: Props) {
-  const navigate = useNavigate();
+export default function Login() {
   const dispatch: AppDispatch = useDispatch();
   const [type, setType] = useState("password");
   const handleActionPassword = () => {
