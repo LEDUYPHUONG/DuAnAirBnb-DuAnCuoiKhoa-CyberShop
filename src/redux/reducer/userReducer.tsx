@@ -12,6 +12,7 @@ import {
   getCookie,
   setStoreJson,
   USER_ID,
+  USER_INFO,
 } from "../../util/setting";
 import { AppDispatch, RootState } from "../configStore";
 
@@ -59,11 +60,11 @@ export const loginApi = (userLogin: UserLoginModel) => {
     try {
       let result = await http.post("/auth/signin", userLogin);
       //sau khi đăng nhập thành công lưu dữ liệu vào local hoặc cookie
-      // console.log(result);
+      console.log(result);
       // setCookie(ACCESS_TOKEN, result.data.content.token, 30);
       setStore(ACCESS_TOKEN, result.data.content.token);
       setStore(USER_ID, result.data.content.user.id);
-      setStoreJson("User_Info", result.data.content.user);
+      setStoreJson(USER_INFO, result.data.content.user);
       setTimeout(() => {
         history.push('/profile');///${result.data.content.user.id}
         window.location.reload();

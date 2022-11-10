@@ -1,5 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../../util/setting';
 
 function HandleClickSignInOrJoin() {
   const navigate = useNavigate()
@@ -34,6 +35,9 @@ function HandleClickSignInOrJoin() {
             <Dropdown.Item className='text-decoration-none' onClick={() =>{
               navigate('/profile')
             }}>Profile</Dropdown.Item>
+            <Dropdown.Item className='text-decoration-none' onClick={() =>{
+              logout()
+            }}>Logout</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>

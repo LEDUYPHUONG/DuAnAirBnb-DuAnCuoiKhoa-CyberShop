@@ -76,9 +76,18 @@ export const config = {
     }
     return null;
   },
+  logout: () =>{
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(USER_LOGIN);
+    localStorage.removeItem(USER_ID);
+    localStorage.removeItem(USER_INFO);
+    history.push('/signin');
+    window.location.reload()
+  },
   ACCESS_TOKEN: "accessToken(token của người dùng)",
   USER_LOGIN: "userLogin",
-  USER_ID: "userId"
+  USER_ID: "userId",
+  USER_INFO: "User_Info",
 };
 
 export const {
@@ -88,9 +97,11 @@ export const {
   setStore,
   setStoreJson,
   getStoreJson,
+  logout,
   ACCESS_TOKEN,
   USER_LOGIN,
-  USER_ID
+  USER_ID,
+  USER_INFO
 } = config;
 
 const DOMAIN = "https://airbnbnew.cybersoft.edu.vn/api";
