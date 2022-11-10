@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import FooterPage from "../../component/Footer/FooterPage";
 import HeaderPage from "../../component/Header/HeaderPage";
-import { bookRoomApi } from "../../redux/reducer/roomDetailReducer";
 import { loginApi } from "../../redux/reducer/userReducer";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/configStore";
-import * as Icon from 'react-bootstrap-icons';
 
-type Props = {};
-
-export default function Login({}: Props) {
-  const navigate = useNavigate();
-  const dispatch:AppDispatch = useDispatch()
+export default function Login() {
+  const dispatch: AppDispatch = useDispatch();
   const [type, setType] = useState("password");
   const handleActionPassword = () => {
     {
@@ -36,7 +30,12 @@ export default function Login({}: Props) {
     }),
     onSubmit: (values) => {
       dispatch(loginApi(values));
-      console.log(values);
+      // console.log(values);
+      (
+        document.getElementById("login_btn") as HTMLButtonElement
+      ).style.display = "none";
+      (document.getElementById("spinner") as HTMLButtonElement).style.display =
+        "block";
     },
   });
 
@@ -78,17 +77,25 @@ export default function Login({}: Props) {
                 <span className="text-danger">{frm.errors.password}</span>
               </div>
               <div className="action_btn d-flex flex-column align-items-center">
-                <button className="login_btn" type="submit">
-                  Đăng nhập
-                  <i className="fa-solid fa-door-open"></i>
-                </button>
-                <span>
-                  Bạn chưa có tài khoản?
-                  <NavLink className="signin_navigate" to={"/signup"}>
-                    Đăng ký ngay
-                  </NavLink>
-                </span>
+                <div className="d-flex">
+                  <button className="login_btn" type="submit" id="login_btn">
+                    Đăng nhập
+                    <i className="fa-solid fa-door-open"></i>
+                  </button>
+                  <div
+                    className="spinner-border text-primary"
+                    role="status"
+                    id="spinner"
+                    style={{ width: 25, height: 25, display: "none" }}
+                  ></div>
+                </div>
               </div>
+              <span className="navigate_to_signup">
+                Bạn chưa có tài khoản?
+                <NavLink className="signin_navigate" to={"/signup"}>
+                  Đăng ký ngay
+                </NavLink>
+              </span>
             </div>
           </div>
         </div>

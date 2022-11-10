@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Action } from "@remix-run/router";
-import { number } from "yup/lib/locale";
 import { ACCESS_TOKEN, getStore, history, http } from "../../util/setting";
 import { AppDispatch } from "../configStore";
 
@@ -58,13 +56,12 @@ export interface CommentModel {
   noiDung: string;
   saoBinhLuan: number;
 }
-
+export interface ArrNgayOLaiModel {}
 export interface RoomDetailState {
   objectRoomDetail: roomDetailModel;
   arrBookedRoom: bookedRoomModel[];
-  numberStayDates: number;
   arrComment: arrCommentModel[];
-  soNguoi: number;
+  arrNgayOLai: any;
 }
 const initialState: RoomDetailState = {
   objectRoomDetail: {
@@ -89,9 +86,8 @@ const initialState: RoomDetailState = {
     hinhAnh: "",
   },
   arrBookedRoom: [],
-  numberStayDates: 0,
   arrComment: [],
-  soNguoi: 0,
+  arrNgayOLai: [],
 };
 
 const roomDetailReducer = createSlice({
@@ -104,24 +100,21 @@ const roomDetailReducer = createSlice({
     getBookedRoomAction: (state, action: PayloadAction<bookedRoomModel[]>) => {
       state.arrBookedRoom = action.payload;
     },
-    setNumberStayDate: (state, action: PayloadAction<number>) => {
-      state.numberStayDates = action.payload;
-    },
     getCommentAction: (
       state: RoomDetailState,
       action: PayloadAction<arrCommentModel[]>
     ) => {
       state.arrComment = action.payload;
     },
+
+    setArrNgayOLai: (state, action: PayloadAction<ArrNgayOLaiModel[]>) => {
+      state.arrNgayOLai = action.payload;
+    },
   },
 });
 
-export const {
-  getRoomDetailAction,
-  getBookedRoomAction,
-  setNumberStayDate,
-  getCommentAction,
-} = roomDetailReducer.actions;
+export const { getRoomDetailAction, getBookedRoomAction, getCommentAction, setArrNgayOLai } =
+  roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
 
@@ -178,7 +171,7 @@ export const bookRoomApi = (duLieu: BookingRoomModel) => {
         history.push("/signin");
         window.location.reload();
       } else {
-        alert("Đăng ký phòng thất bại!");
+        alert("Đăng ký phòng không thành công!");
       }
     }
   };
@@ -189,7 +182,7 @@ export const postCommentApi = (duLieuComment: CommentModel) => {
     try {
       let result = await http.post("/binh-luan", duLieuComment);
       alert("Đánh giá của bạn đã được ghi nhận. Cảm ơn bạn rất nhiều!");
-      window.location.reload()
+      window.location.reload();
     } catch (err) {
       console.log("CommentErrors", err);
     }

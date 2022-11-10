@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { DatePicker } from "antd";
 import FooterPage from "../../component/Footer/FooterPage";
 import HeaderPage from "../../component/Header/HeaderPage";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/configStore";
+import { useDispatch} from "react-redux";
+import { AppDispatch } from "../../redux/configStore";
 import { signupApi } from "../../redux/reducer/userReducer";
-import { SignUpModel } from "../../Model/SignUpModel";
-import * as Icon from 'react-bootstrap-icons';
 
-type Props = {};
-
-export default function Login({}: Props) {
-  const navigate = useNavigate();
+export default function SignUp() {
   const dispacth: AppDispatch = useDispatch();
   const [typePW, setTypePW] = useState("password");
   const [type_REPW, setType_REPW] = useState("password");

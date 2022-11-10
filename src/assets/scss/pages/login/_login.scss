@@ -102,6 +102,7 @@
           }
         }
         .action_btn {
+          height: 100px;
           .login_btn {
             width: 150px;
             height: 55px;
@@ -116,14 +117,15 @@
               margin-left: 10px;
             }
           }
-          span {
-            color: #ffffff;
-            .signin_navigate {
-              color: #74c259;
-              margin-left: 7px;
-              font-weight: 700;
+         
+        }
+        .navigate_to_signup {
+          color: #ffffff;
+          .signin_navigate {
+            color: #74c259;
+            margin-left: 7px;
+            font-weight: 700;
 
-            }
           }
         }
       }

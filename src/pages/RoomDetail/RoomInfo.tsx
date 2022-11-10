@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Image } from "antd";
-import WriteComment from "./WriteComment";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
@@ -10,28 +8,21 @@ import {
   getCommentApi,
   getRoomDetailApi,
   bookRoomApi,
+  setArrNgayOLai,
+  postCommentApi,
 } from "../../redux/reducer/roomDetailReducer";
 //---------------import cho phần Date--------------
 import { DatePicker, Space } from "antd";
-import type { RangePickerProps } from "antd/es/date-picker";
-import moment from "moment";
 import HeaderPage from "../../component/Header/HeaderPage";
 import FooterPage from "../../component/Footer/FooterPage";
 //---------------------import phần comment------------
-
+import WriteComment from "./WriteComment";
 import { BookingModel } from "../../Model/BookingModel";
-import {
-  getStore,
-  getStoreJson,
-  USER_ID,
-  USER_LOGIN,
-} from "../../util/setting";
+import { getStore, getStoreJson, USER_ID } from "../../util/setting";
 
-type Props = {
-  title?: string;
-};
+type Props = {};
 
-export default function RoomInfo({ title }: Props) {
+export default function RoomInfo({}: Props) {
   const dispatch: AppDispatch = useDispatch();
   const { objectRoomDetail } = useSelector(
     (state: RootState) => state.roomDetailReducer
@@ -48,49 +39,54 @@ export default function RoomInfo({ title }: Props) {
   }, [idPhong]);
 
   //-----------------chức năng cho phần chọn ngày ở và tính giá tiền--------------
-  
-  //function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
-  const disabledDate: RangePickerProps["disabledDate"] = (current) => {
-    // Can not select days before today and today
-    return current && current < moment().endOf("day");
+  const [number_Days, setNumber_Days] = useState(0);
+
+  const countNumberOfDates = (date: any) => {
+    let daysNum = (date[1] - date[0]) / (1000 * 3600 * 24);
+    setNumber_Days(daysNum);
   };
-  //lấy dữ liệu ngày đã chọn từ redux
-  const { numberStayDates } = useSelector(
-    (state: RootState) => state.roomDetailReducer
-  );
   const renderPrice = () => {
-    let price = objectRoomDetail.giaTien * numberStayDates;
+    let price = objectRoomDetail.giaTien * number_Days;
     return price;
   };
+  // function không cho chọn những ngày trước hôm nay (vì đã qua lịch booking)
+  // const disabledDate: RangePickerProps["disabledDate"] = (current) => {
+  //   // Can not select days before today and today
+  //   return current && current < moment().endOf("day");
+  // };
+  const { arrNgayOLai } = useSelector(
+    (state: RootState) => state.roomDetailReducer
+  );
+  const { RangePicker } = DatePicker;
+  function onChangeDate(date: any, dateString: any) {
+    console.log("datestring", dateString);
+    dispatch(setArrNgayOLai(dateString));
+    countNumberOfDates(date);
+  }
   //-----------------------------CHỨC NĂNG BOOK PHÒNG--------------------------------
-  // const arrNguoiDung: any = getStore(USER_LOGIN);
-  // console.log(arrNguoiDung);
-
-  // const nguoiDangSuDung = arrNguoiDung.filter(nguoidung => nguoidung.id )
-
   const idNguoiDung = getStoreJson(USER_ID);
-  console.log("ID NGUOI DUNG",idNguoiDung);
+  // const den = document.getElementById("calendar_den") as HTMLInputElement;
+  // const roi = document.getElementById("calendar_roi") as HTMLInputElement;
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     let setBooking = new BookingModel();
     setBooking.id = 0;
     setBooking.maPhong = idPhong;
-    setBooking.ngayDen = den.value;
-    setBooking.ngayDi = roi.value;
+    setBooking.ngayDen = arrNgayOLai[0];
+    setBooking.ngayDi = arrNgayOLai[1];
     setBooking.soLuongKhach = numberPassenger;
-    setBooking.maNguoiDung = idNguoiDung
+    setBooking.maNguoiDung = idNguoiDung;
+    console.log("ngayden-ngaydi", arrNgayOLai[0], arrNgayOLai[1]);
+
     //set +numberPassenger vì kiểu dữ liệu là số nên add + để từ chuỗi thành số
-    if (den.value == "" || roi.value == "") {
+    if (arrNgayOLai[0] == null && arrNgayOLai[1] == null) {
       alert("Vui lòng điền đầy đủ các trường thông tin đặt phòng");
       return null;
     } else {
       dispatch(bookRoomApi(setBooking));
     }
   };
-  const den = document.getElementById("calendar_den") as HTMLInputElement;
-  const roi = document.getElementById("calendar_roi") as HTMLInputElement;
-
   //----------------------CHỌN GIÁ TRỊ CHO INPUT CHỌN SỐ KHÁCH----------------
   const [numberPassenger, setNumberPassenger] = useState(1);
 
@@ -449,13 +445,17 @@ export default function RoomInfo({ title }: Props) {
                 </div>
               </div>
               <form className="pick_options d-flex flex-column">
-                <span>Ngày nhận phòng</span>
-                <input type="date" name="" id="calendar_den" />
-                <span>Ngày trả phòng</span>
-                <input type="date" name="" id="calendar_roi" />
+                <RangePicker
+                  placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
+                  format={["YYYY-MM-DD"]}
+                  onChange={(date, dateString) =>
+                    onChangeDate(date, dateString)
+                  }
+                  // disabledDate={disabledDate}
+                />
                 <span>Số khách</span>
                 <select
-                  className="form-control"
+                  className="form-control input_number_passenger"
                   onChange={(e) => {
                     const SelectedPassenger = e.target.value;
                     setNumberPassenger(+SelectedPassenger);
@@ -482,11 +482,11 @@ export default function RoomInfo({ title }: Props) {
                   Bạn vẫn chưa bị trừ tiền
                 </span>
               </form>
-              {/* <div className="cashier">
+              <div className="cashier">
                 <div className="tien_phong d-flex justify-content-between">
                   <div className="tinh_tien">
                     <a href="#">
-                      ${objectRoomDetail.giaTien} x {numberStayDates} đêm
+                      ${objectRoomDetail.giaTien} x {number_Days} đêm
                     </a>
                   </div>
                   <div className="thanh_tien">${renderPrice()}</div>
@@ -501,9 +501,11 @@ export default function RoomInfo({ title }: Props) {
                   <div className="mt-2">
                     <span>Tổng:</span>
                   </div>
-                  <div className="mt-2">${renderPrice() + 8}</div>
+                  <div className="mt-2">
+                    ${renderPrice() === 0 ? 0 : renderPrice() + 8}
+                  </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
