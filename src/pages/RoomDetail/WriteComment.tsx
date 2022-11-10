@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import { postCommentApi } from "../../redux/reducer/roomDetailReducer";
-import { getStoreJson } from "../../util/setting";
+import { getStore, getStoreJson, USER_ID } from "../../util/setting";
 
 type Props = {};
 
-export default function WriteComment({}: Props) {
+function WriteComment({}: Props) {
   const dispatch: AppDispatch = useDispatch();
-  const infoUser = getStoreJson("User_Info");
-  console.log("info nguoi dung", infoUser);
+  // const infoUser = getStoreJson("User_Info"); => cách này bị lỗi, tìm hiểu thêm lý do nhé!
+  const maNguoiDung = Number(getStore(USER_ID))
+  console.log("manguoidung", maNguoiDung);
   //Hàm Number() :convert string to number;
   //Lấy ngày hiện tại
   const takeDate = new Date();
@@ -26,7 +27,7 @@ export default function WriteComment({}: Props) {
   const userComment = {
     id: 0,
     maPhong: Number(useParams().id),
-    maNguoiBinhLuan: infoUser.id,
+    maNguoiBinhLuan: maNguoiDung,
     ngayBinhLuan: today,
     noiDung: noidung,
     saoBinhLuan: 0,
@@ -37,10 +38,8 @@ export default function WriteComment({}: Props) {
     dispatch(postCommentApi(userComment));
   };
 
-  // console.log(userComment);
-
   return (
-    <div className="container d-flex">
+    <div className="d-flex inp_binhluan">
       <img
         src="https://picsum.photos/200/300/?random&t="
         alt="user_avt"
@@ -66,3 +65,4 @@ export default function WriteComment({}: Props) {
     </div>
   );
 }
+export default memo (WriteComment)

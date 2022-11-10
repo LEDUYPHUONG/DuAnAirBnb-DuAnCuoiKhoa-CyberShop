@@ -2,17 +2,14 @@ import { DatePicker, Space } from "antd";
 import React from "react";
 import type { RangePickerProps } from "antd/es/date-picker";
 import moment from "moment";
-import { date } from "yup/lib/locale";
-import { useSelector } from "react-redux";
 
 const { RangePicker } = DatePicker;
-
 //function lấy ra datestring ngày đến và đi đã chọn, hiện tại mình ko dùng, nhưng nếu muốn console.log ra datastring để xem thì truyền nó vào onChange thay thế hàm countNumberOfDates
-// function onChangeDate(date: any, dateString: any) {
-//   console.log("date", date);
-//   console.log("datestring", dateString);
-//   console.log("0", dateString[0]);
-// }
+function onChangeDate(date: any, dateString: any) {
+console.log("datestring", dateString);
+ console.log(dateString[0]);
+ 
+}
 // function count số ngày đã chọn
 function countNumberOfDates(dateString: any) {
   let daysNum = (dateString[1] - dateString[0]) / (1000 * 3600 * 24);
@@ -29,7 +26,8 @@ const App: React.FC = () => (
     <RangePicker
       placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
       format={["DD-MM-YYYY"]}
-      onChange={(dateString) => countNumberOfDates(dateString)}
+      onChange={(date,dateString) => countNumberOfDates(date)
+      }
       disabledDate={disabledDate}
     />
   </Space>
