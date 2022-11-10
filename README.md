@@ -1,4 +1,6 @@
   ## Mô tả "Dự Án AirBnB - HKP"
+  ### Link deploy: https://cybershop-airbnb-hkp.vercel.app/
+  
 #### `I.Các chức năng:`
 #### 1. Các chức năng ở trang home:
 - Xem tất cả các vị trí có thể đặt phòng ( lúc mới vào trang chủ hoặc bấm vào Icon "Tất cả phòng" trên carousel của trang chủ).
