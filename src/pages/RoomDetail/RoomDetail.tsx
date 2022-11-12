@@ -1,7 +1,6 @@
 import RoomInfo from './RoomInfo'
-type Props = {}
 
-export default function RoomDetail({}: Props) {
+export default function RoomDetail() {
   return (
     <div>
         <RoomInfo/>

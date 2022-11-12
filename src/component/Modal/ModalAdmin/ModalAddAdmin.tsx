@@ -3,30 +3,17 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { DatePicker } from "antd";
 import { useAppDispatch } from "../../../redux/example/hooks";
 import { getAdminUserInfoApi } from "../../../redux/reducer/manageAdminUserReducer";
 
 function ModalAddAdmin() {
   const [show, setShow] = useState(false);
   const dispatch = useAppDispatch()
-  const navigate = useNavigate();
   const [typePW, setTypePW] = useState("password");
-  const [type_REPW, setType_REPW] = useState("password");
   const handle_Password_Icon = () => {
-    {
-      typePW === "password" ? setTypePW("text") : setTypePW("password");
-    }
+    typePW === "password" ? setTypePW("text") : setTypePW("password");
   };
-  const handle_Retype_Password_Icon = () => {
-    {
-      type_REPW === "password"
-        ? setType_REPW("text")
-        : setType_REPW("password");
-    }
-  };
+
   const frm = useFormik({
     initialValues: {
       id: 0,

@@ -60,6 +60,7 @@ function ModalHeader() {
 
   useEffect(() => {
     getLocationByKeyword();
+    // eslint-disable-next-line
   }, [debouncedValue]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

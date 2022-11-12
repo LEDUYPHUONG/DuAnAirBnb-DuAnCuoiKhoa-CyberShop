@@ -1,6 +1,5 @@
 import React from "react";
 import UserInforItem from "../../component/UserInfor/UserInforItem";
-import { NavLink } from "react-router-dom";
 import HeaderPage from "../../component/Header/HeaderPage";
 import FooterPage from "../../component/Footer/FooterPage";
 

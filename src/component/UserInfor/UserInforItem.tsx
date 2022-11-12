@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/example/hooks";
-import { getProfileRoomApi,getProfileUserApi,postProfileUserApi,ProfileRoomModel } from "../../redux/reducer/profileReducer";
+import { getProfileRoomApi, getProfileUserApi, ProfileRoomModel } from "../../redux/reducer/profileReducer";
 import { getStoreJson, USER_ID } from "../../util/setting";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 
-interface FormElements extends HTMLFormControlsCollection {
-  yourInputName: HTMLInputElement
-}
+// interface FormElements extends HTMLFormControlsCollection {
+//   yourInputName: HTMLInputElement
+// }
 
-interface YourFormElement extends HTMLFormElement {
- readonly elements: FormElements
-}
+// interface YourFormElement extends HTMLFormElement {
+//  readonly elements: FormElements
+// }
 
 export default function UserInforItem () {
   const { arrProfileRoom , arrProfileUser } = useAppSelector(
@@ -24,6 +24,7 @@ export default function UserInforItem () {
     
     dispatch(getProfileRoomApi(idUser));
     dispatch(getProfileUserApi(idUser));
+    // eslint-disable-next-line
   }, []);
 
   const renderRoomListRented = () => {
@@ -38,14 +39,14 @@ export default function UserInforItem () {
       })
     }
   }
-  const handleFormSubmit = (e: React.FormEvent<YourFormElement>) => {
-    e.preventDefault();
-    // dispatch(postProfileUserApi())
-    console.log(e.currentTarget.elements.yourInputName.value)
-}
-  const handldeClickPostInfoUser = (id: number, value: FormData) => {
-    dispatch(postProfileUserApi(id, value))
-  }
+//   const handleFormSubmit = (e: React.FormEvent<YourFormElement>) => {
+//     e.preventDefault();
+//     // dispatch(postProfileUserApi())
+//     console.log(e.currentTarget.elements.yourInputName.value)
+// }
+//   const handldeClickPostInfoUser = (id: number, value: FormData) => {
+//     dispatch(postProfileUserApi(id, value))
+//   }
   // const renderInfor
   // chuc nang
   const [open, setOpen] = useState(false);

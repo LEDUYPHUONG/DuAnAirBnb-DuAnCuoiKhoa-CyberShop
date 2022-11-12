@@ -13,12 +13,12 @@ export default function Admin() {
     useEffect(() =>{
         dispatch(getArrAdminUserApi(numberPage))
         console.log(arrAdminUser);
-        
+        // eslint-disable-next-line
       },[numberPage]);
     const renderAdminUserAccount = () => {
         return arrAdminUser.map((item,index) =>{
             return <tr key={index}>
-                        <td scope="row"> {item.id} </td>
+                        <td> {item.id} </td>
                         <td>{item.name}</td>
                         <td>
                             <img style={{width:'50px', height:'50px'}} src={item.avatar} alt="..." />

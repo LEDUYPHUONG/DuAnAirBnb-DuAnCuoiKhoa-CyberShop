@@ -5,12 +5,13 @@ import { useAppDispatch } from '../../redux/example/hooks'
 import { getLocationApi, getProductApi, ProductModel } from '../../redux/reducer/productReducer'
 
 export default function ItemProduct() {
-  const { arrProduct, arrLocation } = useSelector((state: RootState) => state.productReducer)
+  const { arrProduct } = useSelector((state: RootState) => state.productReducer)
   const keywordRedux  = useSelector((state: RootState) => state.keywordReducer)
   const dispatch = useAppDispatch()
   useEffect(() =>{
     dispatch(getLocationApi())
     dispatch(getProductApi(keywordRedux))
+    // eslint-disable-next-line
   },[]);
     const renderItemHomePage = (arrProd:ProductModel[]) => {
     return arrProd.map((item,index) => {
