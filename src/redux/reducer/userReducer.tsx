@@ -68,7 +68,7 @@ export const loginApi = (userLogin: UserLoginModel) => {
       setTimeout(() => {
         history.push('/profile');///${result.data.content.user.id}
         window.location.reload();
-      }, 2000);
+      }, 500);
       console.log(result.data.content.user.id);
       dispatch(getProfileApi());
     } catch (err) {

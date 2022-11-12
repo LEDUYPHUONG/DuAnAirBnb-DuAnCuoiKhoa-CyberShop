@@ -4,6 +4,11 @@ type Props = {}
 
 export default function Demo({}: Props) {
   return (
-    <div>Demo</div>
+    <div>
+      <p>haha                     
+        
+      </p>
+          <h1>hihi</h1>
+        </div>
   )
 }
