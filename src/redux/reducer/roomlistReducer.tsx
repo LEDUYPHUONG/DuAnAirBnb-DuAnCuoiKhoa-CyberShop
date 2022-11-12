@@ -76,7 +76,7 @@ export default roomlistReducer.reducer;
 export const getRoomlistApi = (id:number) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const result = await http.get("phong-thue/lay-phong-theo-vi-tri?maViTri=" + `${id}`);
+      const result = await http.get(`phong-thue/lay-phong-theo-vi-tri?maViTri=${id}`);
       let arrRoomlist: RoomlistModel[] = result.data.content;
       const action = getRoomlistAction(arrRoomlist);
       dispatch(action);

@@ -45,7 +45,7 @@ export default adminReducer.reducer
 export const getArrAdminUserApi = (numberPage:number) => {
     return async (dispatch: AppDispatch) => {
       try {
-        const response = await http.get('/users/phan-trang-tim-kiem?pageIndex=' + `${numberPage}` + '&pageSize=5');
+        const response = await http.get(`/users/phan-trang-tim-kiem?pageIndex=${numberPage}&pageSize=5`);
         console.log(response.data.content.data);
         
         dispatch(setArrAdminUserApi(response.data.content.data))

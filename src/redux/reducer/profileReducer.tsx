@@ -31,15 +31,15 @@ export interface ProfileModel {
 const initialState: ProfileModel = {
   arrProfileRoom: [],
   arrProfileUser: {
-    id: 1286,
-    name: 'NguyenMinhHoang',
-    email: 'kennen@gmail.com',
+    id: 0,
+    name: '',
+    email: '',
     password: '',
-    phone: '0921392103',
-    birthday: '05/11/2022',
+    phone: '',
+    birthday: '',
     gender: false,
-    avatar: 'https://airbnbnew.cybersoft.edu.vn/avatar/03-11-2022-01-07-31-eo-gio-1024x768-1.jpeg',
-    role: 'ADMIN',
+    avatar: '',
+    role: '',
   },
 };
 
@@ -62,21 +62,33 @@ export default profileReducer.reducer;
 
 // action api
 
-export const getProfileRoomApi = () => {
+export const getProfileRoomApi = (idUser: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const result = await http.get("dat-phong/lay-theo-nguoi-dung/1");
+      const result = await http.get("dat-phong/lay-theo-nguoi-dung/" + idUser);
       dispatch(getProfileRoomAction(result.data.content));
     } catch (err) {
       console.log(err);
     }
   };
 };
-export const getProfileUserApi = (userid: string) => {
+export const getProfileUserApi = (idUser: string) => {
   return async (dispacth: AppDispatch) => {
     try {
-      const result = await http.get(`/users/${userid}`);
+      const result = await http.get(`/users/${idUser}`);
       dispacth(getProfileUserAction(result.data.content));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+export const postProfileUserApi = (idUser: number, valueSubmit: FormData) => {
+  return async (dispacth: AppDispatch) => {
+    try {
+      const result = await http.put(`/users/${idUser}`, valueSubmit);
+      console.log(result);
+      console.log(result.data.content);
     } catch (err) {
       console.log(err);
     }

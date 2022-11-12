@@ -14,16 +14,13 @@ export default function SignUp() {
   const [typePW, setTypePW] = useState("password");
   const [type_REPW, setType_REPW] = useState("password");
   const handle_Password_Icon = () => {
-    {
-      typePW === "password" ? setTypePW("text") : setTypePW("password");
-    }
+    typePW === "password" ? setTypePW("text") : setTypePW("password")
   };
   const handle_Retype_Password_Icon = () => {
-    {
+
       type_REPW === "password"
         ? setType_REPW("text")
         : setType_REPW("password");
-    }
   };
   const frm = useFormik({
     initialValues: {

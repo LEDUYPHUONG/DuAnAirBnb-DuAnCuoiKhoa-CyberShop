@@ -1,32 +1,52 @@
-import { useFormik } from "formik";
-import { values } from "lodash";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { RootState } from "../../redux/configStore";
-import { useAppDispatch } from "../../redux/example/hooks";
-import {getProfileRoomApi,getProfileUserApi,ProfileRoomModel} from "../../redux/reducer/profileReducer";
+import { useAppDispatch, useAppSelector } from "../../redux/example/hooks";
+import { getProfileRoomApi, getProfileUserApi, ProfileRoomModel } from "../../redux/reducer/profileReducer";
+import { getStoreJson, USER_ID } from "../../util/setting";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 
+// interface FormElements extends HTMLFormControlsCollection {
+//   yourInputName: HTMLInputElement
+// }
+
+// interface YourFormElement extends HTMLFormElement {
+//  readonly elements: FormElements
+// }
+
 export default function UserInforItem () {
-  const { arrProfileRoom , arrProfileUser } = useSelector(
-    (state: RootState) => state.profileReducer
+  const { arrProfileRoom , arrProfileUser } = useAppSelector(
+    (state) => state.profileReducer
   );
-
   const dispatch = useAppDispatch();
-
-  const param = useParams();
-  const userid: any = param.iduser
-
-
   useEffect(() => {
-    // call api
-    dispatch(getProfileRoomApi());
-    dispatch(getProfileUserApi(userid));
+    const idUser: string = getStoreJson(USER_ID)
+    console.log(idUser);
+    console.log('arrProfileRoom', arrProfileRoom);
+    
+    dispatch(getProfileRoomApi(idUser));
+    dispatch(getProfileUserApi(idUser));
+    // eslint-disable-next-line
+  }, []);
 
-  }, [userid]);
-  
-
+  const renderRoomListRented = () => {
+    if (arrProfileRoom.length === 0) {
+      return (<p className="text-danger text-center">Danh sách phòng từng đặt rỗng, xin vui lòng đặt phòng!</p>)
+    } else {
+      return arrProfileRoom.map((prod: ProfileRoomModel, index: number) => {
+        return (<div key={index}>
+                  {CarouselInfor({ product: prod })}
+                </div>
+        )
+      })
+    }
+  }
+//   const handleFormSubmit = (e: React.FormEvent<YourFormElement>) => {
+//     e.preventDefault();
+//     // dispatch(postProfileUserApi())
+//     console.log(e.currentTarget.elements.yourInputName.value)
+// }
+//   const handldeClickPostInfoUser = (id: number, value: FormData) => {
+//     dispatch(postProfileUserApi(id, value))
+//   }
   // const renderInfor
   // chuc nang
   const [open, setOpen] = useState(false);
@@ -186,195 +206,226 @@ export default function UserInforItem () {
                 </div>
               </div>
             </div>
-            <div
-              className="p-2"
-              style={{
-                width: "66.67%",
-                paddingLeft: "8px",
-                paddingRight: "8px",
-              }}
-            >
+            <form>
               <div
-                className="infor-right"
-                style={{ margin: "auto", maxWidth: "100%", marginRight: 0 }}
+                className="p-2"
+                style={{
+                  width: "66.67%",
+                  paddingLeft: "8px",
+                  paddingRight: "8px",
+                }}
               >
-                <div className="infor-right-welcome">
-                  <div
-                    className="infor-right-hello"
-                    style={{
-                      fontSize: "32px",
-                      lineHeight: "36px",
-                      marginBottom: 8,
-                    }}
-                  >
-                    <h1 style={{ fontSize: "1em", margin: 0 }}>
-                      Xin chào, tôi là {arrProfileUser.name}
-                    </h1>
-                  </div>
-                  <div
-                    className="infor-right-status"
-                    style={{
-                      fontSize: 14,
-                      lineHeight: "18px",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Bắt đầu tham gia vào 2022
-                  </div>
-                  <div
-                    className="infor-right-editprofile"
-                    style={{ marginTop: 16, marginBottom: 8 }}
-                  >
-                    <button
+                <div
+                  className="infor-right"
+                  style={{ margin: "auto", maxWidth: "100%", marginRight: 0 }}
+                >
+                  <div className="infor-right-welcome">
+                    <div
+                      className="infor-right-hello"
                       style={{
-                        border: 0,
-                        backgroundColor: "transparent",
-                        textDecoration: "underline",
+                        fontSize: "32px",
+                        lineHeight: "36px",
+                        marginBottom: 8,
                       }}
-                      onClick={() => setOpen(true)}
                     >
-                      Chỉnh sửa hồ sơ
-                    </button>
-                  </div>
-
-                  {open && (
-                    <div className="border-bottom ">
-                      <p
-                        style={{
-                          fontSize: 16,
-                          marginTop: 20,
-                          marginBottom: 10,
-                        }}
-                      >
-                        Tên cá nhân
-                      </p>
-                      
-                      <div className="input-group mb-3">
-                        <input
-                          onChange={(e) => {
-                            if (e.target.value) setEnable(false);
-                          }}
-                          type="text"
-                          className="form-control"
-                          aria-label="Username"
-                          aria-describedby="basic-addon1"
-                          style={{ borderRadius: 5! }}
-                          defaultValue={arrProfileUser.name}
-                        />
-                      </div>
-                      <p
-                        style={{
-                          fontSize: 16,
-                          marginTop: 20,
-                          marginBottom: 10,
-                        }}
-                      >
-                        Email
-                      </p>
-                      <div className="input-group mb-3">
-                        <input
-                          onChange={(e) => {
-                            if (e.target.value) setEnable(false);
-                          }}
-                          type="text"
-                          className="form-control"
-                          aria-label="Username"
-                          aria-describedby="basic-addon1"
-                          style={{ borderRadius: 5! }}
-                          defaultValue={arrProfileUser.email}
-                        />
-                      </div>
-
-                      <p
-                        style={{
-                          fontSize: 16,
-                          marginTop: 20,
-                          marginBottom: 10,
-                        }}
-                      >
-                        Số điện thoại
-                      </p>
-                      <div className="input-group" style={{ marginBottom: 32 }}>
-                        <input
-                          onChange={(e) => {
-                            if (e.target.value) setEnable(false);
-                          }}
-                          type="nu"
-                          className="form-control"
-                          aria-label="Username"
-                          aria-describedby="basic-addon1"
-                          style={{ borderRadius: 5! }}
-                          defaultValue={arrProfileUser.phone}
-                        />
-                      </div>
-
-                      <p
-                        style={{
-                          fontSize: 16,
-                          marginTop: 20,
-                          marginBottom: 10,
-                        }}
-                      >
-                        Ngày sinh
-                      </p>
-                      <div className="input-group" style={{ marginBottom: 32 }}>
-                        <input
-                          onChange={(e) => {
-                            if (e.target.value) setEnable(false);
-                          }}
-                          type="nu"
-                          className="form-control"
-                          aria-label="Username"
-                          aria-describedby="basic-addon1"
-                          style={{ borderRadius: 5! }}
-                          defaultValue={arrProfileUser.birthday}
-                        />
-                      </div>
-
-                      <div
-                        className="d-flex justify-content-between"
-                        style={{ marginBottom: 20 }}
-                      >
-                        <button
-                          type="button"
-                          onClick={() => setOpen(false)}
-                          className="btn btn-secondary text-decoration-underline"
-                          style={{ padding: "10px 20px" }}
-                        >
-                          Hủy
-                        </button>
-                        <button
-                          type="button"
-                          disabled={enable}
-                          className="btn btn-dark"
-                          style={{ fontSize: 20, padding: "10px 20px" }}
-                        >
-                          Lưu
-                        </button>
-                      </div>
+                      <h1 style={{ fontSize: "1em", margin: 0 }}>
+                        Xin chào, tôi là {arrProfileUser.name}
+                      </h1>
                     </div>
-                  )}
+                    <div
+                      className="infor-right-status"
+                      style={{
+                        fontSize: 14,
+                        lineHeight: "18px",
+                        marginBottom: 8,
+                      }}
+                    >
+                      Bắt đầu tham gia vào 2022
+                    </div>
+                    <div
+                      className="infor-right-editprofile"
+                      style={{ marginTop: 16, marginBottom: 8 }}
+                    >
+                      <button
+                        style={{
+                          border: 0,
+                          backgroundColor: "transparent",
+                          textDecoration: "underline",
+                        }}
+                        onClick={() => setOpen(true)}
+                      >
+                        Chỉnh sửa hồ sơ
+                      </button>
+                    </div>
 
-                  <div
-                    className="infor-myroom"
-                    style={{
-                      fontSize: "32px",
-                      lineHeight: "36px",
-                      marginBottom: 16,
-                      marginTop: 16,
-                      fontWeight: 700,
-                    }}
-                  >
-                    <h1 style={{ fontSize: "1em", margin: 0 }}>
-                      Phòng đã thuê
-                    </h1>
+                    {open && (
+                      <div className="border-bottom ">
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          ID
+                        </p>
+                        
+                        <div className="input-group mb-3">
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="text"
+                            className="form-control"
+                            name="idUser"
+                            aria-label="Userid"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.id}
+                            disabled
+                          />
+                        </div>
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Tên cá nhân
+                        </p>
+                        
+                        <div className="input-group mb-3">
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="text"
+                            className="form-control"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.name}
+                          />
+                        </div>
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Email
+                        </p>
+                        <div className="input-group mb-3">
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="text"
+                            className="form-control"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.email}
+                            disabled
+                          />
+                        </div>
+
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Số điện thoại
+                        </p>
+                        <div className="input-group" style={{ marginBottom: 32 }}>
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="nu"
+                            className="form-control"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.phone}
+                          />
+                        </div>
+
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Ngày sinh (dd/mm/yyyy)
+                        </p>
+                        <div className="input-group" style={{ marginBottom: 32 }}>
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="nu"
+                            className="form-control"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.birthday}
+                          />
+                        </div>
+
+                        <div
+                          className="d-flex justify-content-between"
+                          style={{ marginBottom: 20 }}
+                        >
+                          <button
+                            type="button"
+                            onClick={() => setOpen(false)}
+                            className="btn btn-secondary text-decoration-underline"
+                            style={{ padding: "10px 20px" }}
+                          >
+                            Hủy
+                          </button>
+                          <button
+                            type="submit"
+                            disabled={enable}
+                            className="btn btn-dark"
+                            style={{ fontSize: 20, padding: "10px 20px" }}
+                            onClick={() => {
+                              // handleFormSubmit()
+                            }}
+                          >
+                            Lưu
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    <div
+                      className="infor-myroom"
+                      style={{
+                        fontSize: "32px",
+                        lineHeight: "36px",
+                        marginBottom: 16,
+                        marginTop: 16,
+                        fontWeight: 700,
+                      }}
+                    >
+                      <h1 style={{ fontSize: "1em", margin: 0 }}>
+                        Phòng đã thuê
+                      </h1>
+                    </div>
+                    {renderRoomListRented()}
                   </div>
+                  
                 </div>
-                {arrProfileRoom.map((prod: ProfileRoomModel, index: number) => (
-                  <div key={index}>{CarouselInfor({ product: prod })}</div>
-                ))}
               </div>
-            </div>
+            </form>
+            
           </div>
         </div>
       </div>

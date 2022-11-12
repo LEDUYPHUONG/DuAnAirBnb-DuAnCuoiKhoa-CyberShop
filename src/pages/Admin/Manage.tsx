@@ -43,7 +43,7 @@ export default function Manage() {
                     </thead>
                     <tbody className='w-full'>
                         <tr>
-                            <td scope="row"> 1 </td>
+                            <td> 1 </td>
                             <td>place 1</td>
                             <td>
                                 <img style={{width:'50px', height:'50px'}} src="https://i.pravatar.cc/" alt="..." />
@@ -56,20 +56,7 @@ export default function Manage() {
                             <td>Sửa</td>
                             <td><button className='btn btn-danger'>x</button></td>
                         </tr>
-                        <tr>
-                            <td scope="row"> 1 </td>
-                            <td>place 1</td>
-                            <td>
-                                <img style={{width:'50px', height:'50px'}} src="https://i.pravatar.cc/" alt="..." />
-                            </td>
-                            <td>dreamLand</td>
-                            <td>4</td>
-                            <td>
-                                <button className='btn btn-primary'>Xem thông tin chi tiết</button>
-                            </td>
-                            <td>Sửa</td>
-                            <td><button className='btn btn-danger'>x</button></td>
-                        </tr>
+             
                     </tbody>
                 </table>
                 <div>

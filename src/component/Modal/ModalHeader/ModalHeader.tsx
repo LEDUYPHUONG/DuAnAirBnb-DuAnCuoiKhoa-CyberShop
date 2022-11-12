@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import DropdownHeader from "../../Dropdown/DropdownHeader";
 import React, { useEffect, useState, ChangeEvent } from "react";
 import DatePickerAntd from "../../datePickerAntd/DatePickerAntd";
 import { RootState } from "../../../redux/configStore";
@@ -59,6 +60,7 @@ function ModalHeader() {
 
   useEffect(() => {
     getLocationByKeyword();
+    // eslint-disable-next-line
   }, [debouncedValue]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -84,21 +86,19 @@ function ModalHeader() {
       return (
         <div className="location-search" key={index}>
           <button
-            className="btn btn-outline-light py-2 px-5 text-start d-flex flex-nowrap justify-content-start align-items-center w-100 "
+            className="btn btn-outline-light py-1 px-5 my-1 text-start d-flex flex-nowrap justify-content-start align-items-center w-100"
             onClick={() => {
               handleClickSetKeySearchLocation(location);
             }}
-            // onBlur={() => {
-            //   setValueInputSearch('');
-            // }}
           >
             <div
-              className="out-icon-location p-4 rounded-4 text-center text-dark"
+              className="out-icon-location rounded-4 text-center text-dark"
               style={{
                 fontSize: "25px",
                 background: "#ebebeb",
                 width: "60px",
                 height: "60px",
+                lineHeight: "60px",
               }}
             >
               <i className="fa-solid fa-location-dot"></i>
@@ -170,8 +170,8 @@ function ModalHeader() {
           border: "1px solid rgba(204, 204, 204, 0.5)",
         }}
       >
-        <div className="location d-flex justify-content-between align-items-center">
-          <div style={{ width: 1, height: 0 }}></div>
+        <div className="location d-flex justify-content-between align-items-center rounded-pill">
+ 
           <button
             className="btn text-dark"
             style={{ fontSize: "14px", outline: "none" }}
@@ -272,7 +272,6 @@ function ModalHeader() {
                   className="location d-flex justify-content-between align-items-center"
                   style={{ padding: "5px 7px" }}
                 >
-                  <div style={{ width: 1, height: 0 }}></div>
                   <button className="btn text-dark" type="button">
                     <span
                       style={{
@@ -312,6 +311,7 @@ function ModalHeader() {
                 </div>
               </div>
               <div className="singin-singout">
+              <div className="singin-singout">
             <div className="location d-flex justify-content-between align-items-center">
               <div style={{ width: 1, height: 0 }}></div>
               <button
@@ -331,41 +331,23 @@ function ModalHeader() {
               >
                 <i className="fa-solid fa-globe"></i>
               </button>
-              <div className="dropdown d-flex justify-content-between align-items-center">
-                <button
-                  className="btn-singin-singout btn dropdown-toggle rounded-pill d-flex justify-content-between align-items-center"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style={{border: "1px solid rgba(204, 204, 204, 0.5)", outline:"none"}}
-                >
-                    <span className="d-flex justify-content-between align-items-center">
-                      <i className="fa-solid fa-bars pe-3 text-dark"></i>
-                      <i className="fa-solid fa-circle-user text-dark" style={{width:30, height:30,lineHeight:"30px", fontSize:30}} ></i>
-                    </span>
-                </button>
-              </div>
+              <DropdownHeader />
+              <div></div>
             </div>
+          </div>
           </div>
             </div>
           </div>
           <div className="header-main m-auto">
-            <div className="header d-flex justify-content-between align-items-center pb-4">
-              <div></div>
+            <div className="header d-flex justify-content-center align-items-center pb-4">
               <form>
                 <div
                   className="order-bar-modal rounded-pill"
-                  style={{
-                    border: "2px solid rgba(204, 204, 204, 0.5)",
-                    overflow: "hidden",
-                  }}
                 >
                   <div
-                    className="location d-flex justify-content-between align-items-center"
+                    className="location d-flex justify-content-between align-items-center rounded-pill"
                     style={{ background: "#EBEBEB" }}
                   >
-                    <div style={{ width: 1, height: 0 }}></div>
                     <button
                       className="btn text-dark d-flex flex-column rounded-pill buttonUserActive buttonUserHover"
                       style={{
@@ -437,7 +419,7 @@ function ModalHeader() {
                       className="btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover "
                       style={{
                         width: "300px",
-                        padding: "6px 5px 6px 25px",
+                        padding: "7px 7px 7px 25px",
                       }}
                     >
                       <span
@@ -459,6 +441,7 @@ function ModalHeader() {
                             fontSize: "14px",
                             outline: "none",
                             borderRadius: "0px",
+                            width: "100px"
                           }}
                         />
                       </span>
@@ -488,15 +471,15 @@ function ModalHeader() {
                             lineHeight: "14px",
                             width: "14px",
                             height: "14px",
+                            marginRight: "5px"
                           }}
                         ></i>
-                        <span className="ps-3">Tìm kiếm</span>
+                        <span>Tìm kiếm</span>
                       </span>
                     </button>
                   </div>
                 </div>
               </form>
-              <div style={{ paddingLeft: "140px" }}></div>
             </div>
           </div>
           <div
@@ -508,7 +491,7 @@ function ModalHeader() {
               top: 171,
               left: "50%",
               background: "#ffffff",
-              transform: "translateX(-86%)",
+              transform: "translateX(-50%)",
             }}
           >
             <div>

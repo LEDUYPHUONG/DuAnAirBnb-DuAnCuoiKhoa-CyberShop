@@ -5,12 +5,13 @@ import { useAppDispatch } from '../../redux/example/hooks'
 import { getLocationApi, getProductApi, ProductModel } from '../../redux/reducer/productReducer'
 
 export default function ItemProduct() {
-  const { arrProduct, arrLocation } = useSelector((state: RootState) => state.productReducer)
+  const { arrProduct } = useSelector((state: RootState) => state.productReducer)
   const keywordRedux  = useSelector((state: RootState) => state.keywordReducer)
   const dispatch = useAppDispatch()
   useEffect(() =>{
     dispatch(getLocationApi())
     dispatch(getProductApi(keywordRedux))
+    // eslint-disable-next-line
   },[]);
     const renderItemHomePage = (arrProd:ProductModel[]) => {
     return arrProd.map((item,index) => {
@@ -23,11 +24,9 @@ export default function ItemProduct() {
       </div>
       <div className="title-rate d-flex justify-content-between align-items-center" style={{position:"relative", width:"257px",paddingTop:"5px"}} >
         <span> Địa điểm du lịch</span>
-        <span style={{fontSize: "15px", verticalAlign: "middle"}}><i className="fa-solid fa-star"></i><span style={{fontFamily:"Roboto-Regular",verticalAlign: "middle"}}> 5</span></span>
+        <span style={{fontSize: "15px", verticalAlign: "middle"}}><i className="fa-solid fa-star"></i><span style={{fontFamily:"Roboto-Regular",verticalAlign: "middle"}}> {Math.ceil(Math.random()*5)}</span></span>
       </div>
       <span className='d-block' style={{fontFamily:"Roboto-Regular", opacity:0.8}}>{item.tenViTri}, {item.tinhThanh}, {item.quocGia}</span>
-      <span className='d-block' style={{fontFamily:"Roboto-Regular", opacity:0.8}}>5.11.2022</span>
-      <span className='d-block'>$1000/<span style={{fontFamily:"Roboto-Regular"}}>đêm</span></span>
     </div>
     })
   }

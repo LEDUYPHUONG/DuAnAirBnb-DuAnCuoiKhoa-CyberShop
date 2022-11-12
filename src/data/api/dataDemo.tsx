@@ -50,115 +50,142 @@ export const arrIconCarousel = [
     },
     {
       srcId: "09",
-      title: "Nhà khung chữ A",
+      title: "I",
+      //Nhà khung chữ A
     },
     {
       srcId: "10",
-      title: "Công viên quốc gia",
+      title: "J",
+      //Công viên quốc gia
     },
     {
       srcId: "11",
-      title: "Cabin",
+      title: "K",
+      //Cabin
     },
     {
       srcId: "12",
-      title: "Không gian sáng tạo",
+      title: "L",
+      //Không gian sáng tạo
     },
     {
       srcId: "13",
-      title: "Ven hồ",
+      title: "M",
+      //Ven hồ
     },
     {
       srcId: "14",
-      title: "Trượt tuyết",
+      title: "N",
+      //Trượt tuyết
     },
     {
       srcId: "15",
-      title: "Bải biển",
+      title: "O",
+      //Bải biển
     },
     {
       srcId: "16",
-      title: "Biệt thự",
+      title: "P",
+      //Biệt thự
     },
     {
       srcId: "17",
-      title: "Nông thôn",
+      title: "Q",
+      //Nông thôn
     },
     {
       srcId: "18",
-      title: "Nhà dưới lòng đất",
+      title: "R",
     },
     {
       srcId: "19",
-      title: "Nhà thuyền",
+      title: "S",
+      //Nhà thuyền
     },
     {
       srcId: "20",
-      title: "Nhiệt đới",
+      title: "T",
+      //Nhiệt đới
     },
     {
       srcId: "21",
-      title: "Hồ",
+      title: "U",
+      //Hồ
     },
     {
       srcId: "22",
-      title: "Lâu đài",
+      title: "V",
+      //Lâu đài
     },
     {
       srcId: "23",
-      title: "Grand piano",
+      title: "W",
+      //Grand piano
     },
     {
       srcId: "24",
-      title: "Các thành phố nổi tiếng",
+      title: "X",
+      //Các thành phố nổi tiếng
     },
     {
       srcId: "25",
-      title: "Hang động",
+      title: "Y",
+      //Hang động
     },
     {
       srcId: "26",
-      title: "Nhà không sữ dụng các dịch vụ tiện ích",
+      title: "Z",
+      //Nhà không sữ dụng các dịch vụ tiện ích
     },
     {
       srcId: "27",
-      title: "Lướt sóng",
+      title: "1",
+      //Lướt sóng
     },
     {
       srcId: "28",
-      title: "Xe cắm trại",
+      title: "2",
+      //Xe cắm trại
     },
     {
       srcId: "29",
-      title: "Container",
+      title: "3",
+      //Container
     },
     {
       srcId: "30",
-      title: "Đảo",
+      title: "4",
+      //Đảo
     },
     {
       srcId: "31",
-      title: "Riad",
+      title: "5",
+      //Riad
     },
     {
       srcId: "32",
-      title: "Sa mạc",
+      title: "6",
+      //Sa mạc
     },
     {
       srcId: "33",
-      title: "Cối xay gió",
+      title: "7",
+      //Cối xay gió
     },
     {
       srcId: "34",
-      title: "Vườn nho",
+      title: "8",
+      //Vườn nho
     },
     {
       srcId: "35",
-      title: "Hướng biển",
+      title: "9",
+      //Hướng biển
     },
     {
       srcId: "36",
-      title: "Nông trại",
+      title: "0",
+      //Nông trại
     },
     {
       srcId: "37",
