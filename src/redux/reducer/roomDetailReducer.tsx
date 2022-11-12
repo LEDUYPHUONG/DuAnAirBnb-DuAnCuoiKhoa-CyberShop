@@ -162,7 +162,7 @@ export const bookRoomApi = (duLieu: BookingRoomModel) => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await http.post("/dat-phong", duLieu);
-      // console.log(result);
+      console.log(result);
       alert("Đã đăng ký phòng thành công ^^");
     } catch (err) {
       console.log("bookRoomApiErr", err);
@@ -181,6 +181,7 @@ export const postCommentApi = (duLieuComment: CommentModel) => {
   return async (dispatch: AppDispatch) => {
     try {
       let result = await http.post("/binh-luan", duLieuComment);
+      console.log(result);
       alert("Đánh giá của bạn đã được ghi nhận. Cảm ơn bạn rất nhiều!");
       window.location.reload();
     } catch (err) {

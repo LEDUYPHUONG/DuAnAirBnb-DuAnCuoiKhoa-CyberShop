@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Image } from "antd";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import {
@@ -9,25 +9,19 @@ import {
   getRoomDetailApi,
   bookRoomApi,
   setArrNgayOLai,
-  postCommentApi,
 } from "../../redux/reducer/roomDetailReducer";
 //---------------import cho phần Date--------------
-import { DatePicker, Space } from "antd";
+import { DatePicker } from "antd";
 import HeaderPage from "../../component/Header/HeaderPage";
 import FooterPage from "../../component/Footer/FooterPage";
 //---------------------import phần comment------------
 import WriteComment from "./WriteComment";
 import { BookingModel } from "../../Model/BookingModel";
-import { getStore, getStoreJson, USER_ID } from "../../util/setting";
+import { getStoreJson, USER_ID } from "../../util/setting";
 
-type Props = {};
-
-export default function RoomInfo({}: Props) {
+export default function RoomInfo() {
   const dispatch: AppDispatch = useDispatch();
   const { objectRoomDetail } = useSelector(
-    (state: RootState) => state.roomDetailReducer
-  );
-  const { arrBookedRoom } = useSelector(
     (state: RootState) => state.roomDetailReducer
   );
   const param = useParams();
@@ -36,6 +30,7 @@ export default function RoomInfo({}: Props) {
     dispatch(getRoomDetailApi(idPhong));
     dispatch(getBookedRoomApi());
     dispatch(getCommentApi(idPhong));
+    // eslint-disable-next-line
   }, [idPhong]);
 
   //-----------------chức năng cho phần chọn ngày ở và tính giá tiền--------------
@@ -122,7 +117,7 @@ export default function RoomInfo({}: Props) {
             <div className="textReview">
               <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
               <span className="tinyText">
-                4.8 (<a href="#">10 đánh giá</a>)
+                4.8 (<NavLink to='/'>10 đánh giá</NavLink>)
               </span>
             </div>
             <div className="textReview">
@@ -132,20 +127,20 @@ export default function RoomInfo({}: Props) {
             <div className="textReview">
               <i className="fa fa-map-marker" style={{ color: "#ec6e6e" }}></i>
               <span className="tinyText">
-                <a href="#">Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN</a>
+                <NavLink to='/'>Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN</NavLink>
               </span>
             </div>
           </div>
 
           <div className="shareButton d-flex">
-            <a href="#" className="me-3">
+            <NavLink to='/' className="me-3">
               <i className="fa fa-share-alt"></i>
               Chia sẻ
-            </a>
-            <a href="#">
+            </NavLink>
+            <NavLink to='/'>
               <i className="fa fa-bookmark"></i>
               Lưu
-            </a>
+            </NavLink>
           </div>
         </div>
         <div className="roomPhoto">
@@ -222,7 +217,7 @@ export default function RoomInfo({}: Props) {
                         <div className="text_bott">
                           <span>
                             Chủ nhà này đã cam kết thực hiện 5 bước vệ sinh tăng
-                            cường của Airbnb. <a href="#">Hiển thị thêm</a>
+                            cường của Airbnb. <NavLink to='/'>Hiển thị thêm</NavLink>
                           </span>
                         </div>
                       </div>
@@ -265,7 +260,7 @@ export default function RoomInfo({}: Props) {
                     {objectRoomDetail.moTa}
                     <br />
                     <br />
-                    <a href="#">Hiển thị thêm</a>
+                    <NavLink to='/'>Hiển thị thêm</NavLink>
                   </div>
                 </div>
               </div>
@@ -440,7 +435,7 @@ export default function RoomInfo({}: Props) {
                 <div className="textReview">
                   <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
                   <span className="tinyText">
-                    4.8 <a href="#">(10 đánh giá)</a>
+                    4.8 <NavLink to='/'>(10 đánh giá)</NavLink>
                   </span>
                 </div>
               </div>
@@ -485,15 +480,15 @@ export default function RoomInfo({}: Props) {
               <div className="cashier">
                 <div className="tien_phong d-flex justify-content-between">
                   <div className="tinh_tien">
-                    <a href="#">
+                    <NavLink to='/'>
                       ${objectRoomDetail.giaTien} x {number_Days} đêm
-                    </a>
+                    </NavLink>
                   </div>
                   <div className="thanh_tien">${renderPrice()}</div>
                 </div>
                 <div className="tien_dich_vu d-flex justify-content-between">
                   <div className="tinh_tien">
-                    <a href="#"> Phí dịch vụ</a>
+                    <NavLink to='/'> Phí dịch vụ</NavLink>
                   </div>
                   <div className="thanh_tien">$8</div>
                 </div>

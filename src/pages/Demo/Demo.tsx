@@ -1,9 +1,12 @@
 import React from 'react'
 
-type Props = {}
-
-export default function Demo({}: Props) {
+export default function Demo() {
   return (
-    <div>Demo</div>
+    <div>
+      <p>haha                     
+        
+      </p>
+          <h1>hihi</h1>
+        </div>
   )
 }

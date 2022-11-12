@@ -1,13 +1,11 @@
 import { memo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { AppDispatch, RootState } from "../../redux/configStore";
+import { AppDispatch } from "../../redux/configStore";
 import { postCommentApi } from "../../redux/reducer/roomDetailReducer";
-import { getStore, getStoreJson, USER_ID } from "../../util/setting";
+import { getStore, USER_ID } from "../../util/setting";
 
-type Props = {};
-
-function WriteComment({}: Props) {
+function WriteComment() {
   const dispatch: AppDispatch = useDispatch();
   // const infoUser = getStoreJson("User_Info"); => cách này bị lỗi, tìm hiểu thêm lý do nhé!
   const maNguoiDung = Number(getStore(USER_ID))

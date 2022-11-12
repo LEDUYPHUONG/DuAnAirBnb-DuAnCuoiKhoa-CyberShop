@@ -13,16 +13,17 @@ export default function Carousel() {
   const dispatch = useAppDispatch()
   useEffect(() =>{
     dispatch(getProductApi(keywordRedux))
+    // eslint-disable-next-line
   },[keywordRedux])
   const handleClickSetArrproduct = (itemClick:ArrIconCarousel) => {
     if(itemClick.title === 'Tất cả nhà'){
-      dispatch(setKeyword('pageIndex=1' + '&' + 'pageSize=20'))
+      dispatch(setKeyword('pageIndex=1&pageSize=20'))
     }
     if(itemClick.title === ''){
-      dispatch(setKeyword('pageIndex=1' + '&' + 'pageSize=20'))
+      dispatch(setKeyword('pageIndex=1&pageSize=20'))
     }
     if(itemClick.srcId !== '00' && itemClick.title !== ''){
-      dispatch(setKeyword('pageIndex=1' + '&' + 'pageSize=20' + '&' + 'keyword=' + `${itemClick.title}`))
+      dispatch(setKeyword(`pageIndex=1&pageSize=20&keyword=${itemClick.title}`))
     }
   }
  
@@ -33,7 +34,7 @@ export default function Carousel() {
                 onClick={() =>{
                   handleClickSetArrproduct(item)
                 }}>
-                  <img width={24} height={24} src={"./img/home/iconcarousel/iconA" + `${item.srcId}` + ".jpg"} alt="..." />
+                  <img width={24} height={24} src={`./img/home/iconcarousel/iconA${item.srcId}.jpg`} alt="..." />
                   <span className="d-block" style={{fontSize:"12px", fontWeight:"normal"}}>{item.title}</span>
                 </div>
               </div>

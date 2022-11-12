@@ -12,9 +12,7 @@ export default function Login() {
   const dispatch: AppDispatch = useDispatch();
   const [type, setType] = useState("password");
   const handleActionPassword = () => {
-    {
-      type === "password" ? setType("text") : setType("password");
-    }
+    type === "password" ? setType("text") : setType("password");
   };
 
   const frm = useFormik({
