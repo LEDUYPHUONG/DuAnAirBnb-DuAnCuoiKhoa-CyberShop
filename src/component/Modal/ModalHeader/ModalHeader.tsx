@@ -86,12 +86,14 @@ function ModalHeader() {
       return (
         <div className="location-search" key={index}>
           <button
+            id="hover-bg-white"
             className="btn btn-outline-light py-1 px-5 my-1 text-start d-flex flex-nowrap justify-content-start align-items-center w-100"
             onClick={() => {
               handleClickSetKeySearchLocation(location);
             }}
           >
             <div
+              id="hover-color-white"
               className="out-icon-location rounded-4 text-center text-dark"
               style={{
                 fontSize: "25px",
@@ -101,7 +103,7 @@ function ModalHeader() {
                 lineHeight: "60px",
               }}
             >
-              <i className="fa-solid fa-location-dot"></i>
+              <i id="hover-bg-gray" className="fa-solid fa-location-dot"></i>
             </div>
             <div
               className="text-location text-dark ps-4 fst-normal text-wrap"
@@ -162,6 +164,7 @@ function ModalHeader() {
   return (
     <>
       <Button
+        id="hover-color-white"
         variant="outline-light"
         onClick={() => setShow(true)}
         className="order-bar rounded-pill"
@@ -172,26 +175,21 @@ function ModalHeader() {
       >
         <div className="location d-flex justify-content-between align-items-center rounded-pill">
  
-          <button
+          <div
             className="btn text-dark"
             style={{ fontSize: "14px", outline: "none" }}
-            data-toggle="modal"
-            data-target="#myModal"
-            type="button"
           >
             Địa điểm bất kì
-          </button>
+          </div>
           <div style={{ width: 1, height: 24, background: "#cccccc" }}></div>
-          <button
+          <div
             className="btn text-dark"
             style={{ fontSize: "14px", outline: "none" }}
-            data-toggle="modal"
-            data-target="#myModal"
           >
             Tuần bất kì
-          </button>
+          </div>
           <div style={{ width: 1, height: 24, background: "#cccccc" }}></div>
-          <button
+          <div
             className="btn text-dark"
             style={{
               opacity: 0.5,
@@ -199,37 +197,23 @@ function ModalHeader() {
               fontSize: "14px",
               outline: "none",
             }}
-            data-toggle="modal"
-            data-target="#myModal"
           >
             Thêm khách
-          </button>
-          <button
-            className="btn"
+          </div>
+          <div
             style={{
-              border: "none",
               background: "red",
-              color: "white",
               borderRadius: "50%",
               width: "35px",
               height: "35px",
-              lineHeight: "14px",
+              lineHeight: "35px",
               textAlign: "center",
-              outline: "none",
             }}
-            data-toggle="modal"
-            data-target="#myModal"
           >
             <i
-              className="fa-solid fa-magnifying-glass"
-              style={{
-                fontSize: "14px",
-                lineHeight: "14px",
-                width: "14px",
-                height: "14px",
-              }}
+              className="fa-solid fa-magnifying-glass p-2"
             ></i>
-          </button>
+          </div>
         </div>
       </Button>
 
@@ -358,7 +342,7 @@ function ModalHeader() {
                       }}
                       type="button"
                     >
-                      <span>Địa điểm</span>
+                      <span id="hover-bg-dddddd">Địa điểm</span>
                       <input
                         type="text"
                         value={valueInputSearch}
@@ -371,7 +355,7 @@ function ModalHeader() {
                           borderRadius: "0px",
                           width: "100%",
                         }}
-                        id="keywordRef"
+                        id="keywordRef hover-bg-dddddd"
                         onChange={handleChange}
                       />
                     </button>
@@ -446,7 +430,6 @@ function ModalHeader() {
                         />
                       </span>
                       <span
-                        data-dismiss="modal"
                         className="btn d-flex justify-content-center align-items-center"
                         style={{
                           backgroundImage: bgImgBtnSearch,
