@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { http } from "../../util/setting";
 import { AppDispatch } from "../configStore";
+import { UserSignUpModel } from "./userReducer";
 
 export interface ProfileRoomModel {
   id: number;
@@ -83,7 +84,7 @@ export const getProfileUserApi = (idUser: string) => {
   }
 }
 
-export const postProfileUserApi = (idUser: number, valueSubmit: FormData) => {
+export const postProfileUserApi = (idUser: number, valueSubmit: UserSignUpModel) => {
   return async (dispacth: AppDispatch) => {
     try {
       const result = await http.put(`/users/${idUser}`, valueSubmit);

@@ -16,7 +16,7 @@ export interface UserLoginModel {
   email: string;
   password: string;
 }
-export interface SignUpModel {
+export interface UserSignUpModel {
   id: number;
   name: string;
   email: string;
@@ -25,47 +25,44 @@ export interface SignUpModel {
   birthday: string;
   gender: boolean;
   role: string;
+  avatar:string
 }
 
 export interface UserReducerState {
   userLogin: UserLoginModel;
-  userSignup: SignUpModel;
+  userSignup: UserSignUpModel;
 }
 
 const initialState = {
-  userLogin: getStoreJson(USER_LOGIN) || {},
+  userLogin: getStoreJson(USER_LOGIN),
+  userSignup: getStoreJson(USER_INFO)
 };
 
 const userLoginReducer = createSlice({
   name: "userLoginReducer",
   initialState,
   reducers: {
-    getUserProfile_Action: (state, action: PayloadAction<UserLoginModel>) => {
-      state.userLogin = action.payload;
+    setUserSignup:(state, action: PayloadAction<UserSignUpModel>) => {
+      state.userSignup = action.payload;
     },
   },
 });
 
-export const { getUserProfile_Action } = userLoginReducer.actions;
+export const { setUserSignup } = userLoginReducer.actions;
 
 export default userLoginReducer.reducer;
 
-export const loginApi = (userLogin: UserLoginModel) => {
+export const loginApi = (formLogin: UserLoginModel) => {
   return async (dispatch: AppDispatch) => {
-    console.log("userLogin", userLogin);
     try {
-      let result = await http.post("/auth/signin", userLogin);
-      //sau khi đăng nhập thành công lưu dữ liệu vào local hoặc cookie
-      console.log(result);
-      // setCookie(ACCESS_TOKEN, result.data.content.token, 30);
+      let result = await http.post("/auth/signin", formLogin);
       setStore(ACCESS_TOKEN, result.data.content.token);
       setStore(USER_ID, result.data.content.user.id);
       setStoreJson(USER_INFO, result.data.content.user);
       setTimeout(() => {
-        history.push('/profile');///${result.data.content.user.id}
+        history.push('/profile');
         window.location.reload();
       }, 500);
-      console.log(result.data.content.user.id);
       dispatch(getProfileApi());
     } catch (err) {
       console.log(err);
@@ -75,24 +72,24 @@ export const loginApi = (userLogin: UserLoginModel) => {
 };
 
 export const getProfileApi = () => {
-  return async (dispatch: AppDispatch) => {
+  return async () => {
     try {
       let result = await http.get("/users");
-      getUserProfile_Action(result.data.content);
+      console.log('result getProfileApi',result);
     } catch (err) {
       console.log(err);
     }
   };
 };
 
-export const signupApi = (frmSignUp: SignUpModel) => {
-  return async (dispatch: AppDispatch) => {
+export const signupApi = (frmSignUp: UserSignUpModel) => {
+  return async () => {
     try {
       let result = await http.post("/auth/signup", frmSignUp);
-      console.log(result);
+      console.log('result signupApi',result);
       
       alert(
-        "Đăng ký thành công! Hãy đăng nhập để trải nghiệm nhiều hơn từ chúng tôi ^^"
+        "Đăng ký thành công!"
       );
       setTimeout(() => {
         history.push("/signin");

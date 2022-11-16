@@ -5,11 +5,7 @@ import HeaderPage from '../../component/Header/HeaderPage'
 import ItemProduct from '../../component/ItemProduct/ItemProduct'
 import MoveMapHome from '../../component/MapHome/MoveMapHome'
 
-type Props = {
-    title?: string
-}
-
-export default function Home({title}: Props) {
+export default function Home() {
 
   const [heightCarousel,setHeightCarousel] = useState('100px')
   const [heightHeader,setHeightHeader] = useState('180px')

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/example/hooks";
-import { getProfileRoomApi, getProfileUserApi, ProfileRoomModel } from "../../redux/reducer/profileReducer";
+import { getProfileRoomApi, getProfileUserApi, postProfileUserApi, ProfileRoomModel } from "../../redux/reducer/profileReducer";
 import { getStoreJson, USER_ID } from "../../util/setting";
 import CarouselInfor from "../UserInfor/CarouselInfor";
-
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { setUserSignup, UserSignUpModel } from "../../redux/reducer/userReducer";
+import { FileX } from "react-bootstrap-icons";
 // interface FormElements extends HTMLFormControlsCollection {
 //   yourInputName: HTMLInputElement
 // }
@@ -13,10 +16,39 @@ import CarouselInfor from "../UserInfor/CarouselInfor";
 // }
 
 export default function UserInforItem () {
-  const { arrProfileRoom , arrProfileUser } = useAppSelector(
-    (state) => state.profileReducer
-  );
+  const { arrProfileRoom , arrProfileUser } = useAppSelector((state) => state.profileReducer);
+  const { userSignup } = useAppSelector((state) => state.userReducer);
+  const [open, setOpen] = useState(false);
+  const [enable, setEnable] = useState(true);
+  const [eyeInputPassword, setEyeInputPassword] = useState(false)
   const dispatch = useAppDispatch();
+
+  const formInfoUser = useFormik({
+    initialValues: {
+      id: 0,
+      email: '',
+      role: '',
+      name: '',
+      birthday: '',
+      password: '',
+      phone: '',
+      gender: true,
+      avatar:''
+    },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required("Identifier required!"),
+      phone: Yup.string().required("Identifier required!"),
+      birthdate: Yup.date()
+      .max(new Date(Date.now() - 567648000000), "You must be at least 18 years")
+      .required("Required"),
+    }),
+    onSubmit: (values: UserSignUpModel, { resetForm }) => {
+      dispatch(postProfileUserApi(values.id,values));
+      resetForm();
+    }
+});
+
+
   useEffect(() => {
     const idUser: string = getStoreJson(USER_ID)
     console.log(idUser);
@@ -41,7 +73,7 @@ export default function UserInforItem () {
   }
 //   const handleFormSubmit = (e: React.FormEvent<YourFormElement>) => {
 //     e.preventDefault();
-//     // dispatch(postProfileUserApi())
+//     dispatch(postProfileUserApi())
 //     console.log(e.currentTarget.elements.yourInputName.value)
 // }
 //   const handldeClickPostInfoUser = (id: number, value: FormData) => {
@@ -49,10 +81,6 @@ export default function UserInforItem () {
 //   }
   // const renderInfor
   // chuc nang
-  const [open, setOpen] = useState(false);
-  const [enable, setEnable] = useState(true);
-  
-
   return (
     <div
       className="infor-container"
@@ -97,7 +125,7 @@ export default function UserInforItem () {
                     }}
                   >
                     <img
-                      src={arrProfileUser.avatar}
+                      src={arrProfileUser.avatar? arrProfileUser.avatar : 'https://i.pravatar.cc/'}
                       alt="..."
                       style={{
                         width: "100%",
@@ -110,17 +138,20 @@ export default function UserInforItem () {
                     className="infor-editimg"
                     style={{ textAlign: "center" }}
                   >
-                    <p
-                      className="edit"
-                      style={{ textDecoration: "underline",marginTop:8}}
+                    <button
+                      className="btn btn-primary edit"
+                      style={{marginTop:8}}
+                      onClick={(event : MouseEvent<HTMLButtonElement>) => {
+                        event.preventDefault();setOpen(true)
+                      }}
                     >
                       Cập nhật ảnh
-                    </p>
+                    </button>
                   </div>
                 </div>
                 <div
                   className="infor-iconservice"
-                  style={{ marginBottom: "16px" }}
+                  style={{ marginBottom: "16px", textAlign:'center' }}
                 >
                   <img
                     src="/img/security.png"
@@ -128,7 +159,7 @@ export default function UserInforItem () {
                     style={{
                       height: "40px",
                       widows: "40px",
-                      fill: "currentcolor",
+                      fill: "currentcolor"
                     }}
                   />
                 </div>
@@ -199,7 +230,7 @@ export default function UserInforItem () {
                           style={{ width: "16px", height: "16px" }}
                         />
 
-                        <div style={{ paddingLeft: "10px" }}>Địa chỉ email</div>
+                        <div style={{ paddingLeft: "10px" }}>Địa chỉ email: {arrProfileUser.email} </div>
                       </div>
                     </div>
                   </div>
@@ -229,7 +260,7 @@ export default function UserInforItem () {
                       }}
                     >
                       <h1 style={{ fontSize: "1em", margin: 0 }}>
-                        Xin chào, tôi là {arrProfileUser.name}
+                        Xin chào {arrProfileUser.name}
                       </h1>
                     </div>
                     <div
@@ -252,8 +283,9 @@ export default function UserInforItem () {
                           backgroundColor: "transparent",
                           textDecoration: "underline",
                         }}
-                        onClick={() => setOpen(true)}
-                      >
+                        onClick={(event : MouseEvent<HTMLButtonElement>) => {
+                          event.preventDefault();setOpen(true)
+                        }}>
                         Chỉnh sửa hồ sơ
                       </button>
                     </div>
@@ -269,7 +301,6 @@ export default function UserInforItem () {
                         >
                           ID
                         </p>
-                        
                         <div className="input-group mb-3">
                           <input
                             onChange={(e) => {
@@ -285,29 +316,7 @@ export default function UserInforItem () {
                             disabled
                           />
                         </div>
-                        <p
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          Tên cá nhân
-                        </p>
                         
-                        <div className="input-group mb-3">
-                          <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
-                            type="text"
-                            className="form-control"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                            style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.name}
-                          />
-                        </div>
                         <p
                           style={{
                             fontSize: 16,
@@ -324,11 +333,60 @@ export default function UserInforItem () {
                             }}
                             type="text"
                             className="form-control"
-                            aria-label="Username"
+                            aria-label="email"
                             aria-describedby="basic-addon1"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.email}
                             disabled
+                          />
+                        </div>
+
+                        
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Role
+                        </p>
+                        <div className="input-group mb-3">
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="text"
+                            className="form-control"
+                            name="role"
+                            aria-label="Role"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.role}
+                            disabled
+                          />
+                        </div>
+
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Tên cá nhân
+                        </p>
+                        <div className="input-group mb-3">
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="text"
+                            className="form-control"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.name}
                           />
                         </div>
 
@@ -378,13 +436,67 @@ export default function UserInforItem () {
                           />
                         </div>
 
+                        <p
+                          className="d-flex justify-content-between align-items-center "
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10
+                          }}
+                        >
+                          <span>Password</span> <span onClick={() => {
+                            setEyeInputPassword(!eyeInputPassword)
+                          }}><i className={eyeInputPassword? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'}></i></span>
+                        </p>
+                        <div className="input-group mb-3 ">
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type={eyeInputPassword? "text" : 'password'}
+                            className="form-control"
+                            name="Password"
+                            aria-label="Password"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.password}
+                          />
+                        </div>
+                        
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Avata
+                        </p>
+                        <div className="input-group mb-3">
+                          <input
+                            onChange={(e) => {
+                              if (e.target.value) setEnable(false);
+                            }}
+                            type="text"
+                            className="form-control"
+                            name="avata"
+                            aria-label="Avata"
+                            aria-describedby="basic-addon1"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.avatar? arrProfileUser.avatar : 'https://i.pravatar.cc/'}
+                          />
+                        </div>
+
                         <div
                           className="d-flex justify-content-between"
                           style={{ marginBottom: 20 }}
                         >
                           <button
                             type="button"
-                            onClick={() => setOpen(false)}
+                            onClick={(event : MouseEvent<HTMLButtonElement>) => {
+                              event.preventDefault();
+                              setOpen(false)
+                            }}
                             className="btn btn-secondary text-decoration-underline"
                             style={{ padding: "10px 20px" }}
                           >
@@ -395,8 +507,8 @@ export default function UserInforItem () {
                             disabled={enable}
                             className="btn btn-dark"
                             style={{ fontSize: 20, padding: "10px 20px" }}
-                            onClick={() => {
-                              // handleFormSubmit()
+                            onClick={(event: MouseEvent<HTMLButtonElement>) =>{
+                              event.preventDefault()
                             }}
                           >
                             Lưu
