@@ -7,19 +7,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { setUserSignup, UserSignUpModel } from "../../redux/reducer/userReducer";
 import { FileX } from "react-bootstrap-icons";
-// interface FormElements extends HTMLFormControlsCollection {
-//   yourInputName: HTMLInputElement
-// }
-
-// interface YourFormElement extends HTMLFormElement {
-//  readonly elements: FormElements
-// }
 
 export default function UserInforItem () {
   const { arrProfileRoom , arrProfileUser } = useAppSelector((state) => state.profileReducer);
   const { userSignup } = useAppSelector((state) => state.userReducer);
   const [open, setOpen] = useState(false);
-  const [enable, setEnable] = useState(true);
   const [eyeInputPassword, setEyeInputPassword] = useState(false)
   const dispatch = useAppDispatch();
 
@@ -43,6 +35,8 @@ export default function UserInforItem () {
       .required("Required"),
     }),
     onSubmit: (values: UserSignUpModel, { resetForm }) => {
+      console.log(123);
+      
       dispatch(postProfileUserApi(values.id,values));
       resetForm();
     }
@@ -71,16 +65,7 @@ export default function UserInforItem () {
       })
     }
   }
-//   const handleFormSubmit = (e: React.FormEvent<YourFormElement>) => {
-//     e.preventDefault();
-//     dispatch(postProfileUserApi())
-//     console.log(e.currentTarget.elements.yourInputName.value)
-// }
-//   const handldeClickPostInfoUser = (id: number, value: FormData) => {
-//     dispatch(postProfileUserApi(id, value))
-//   }
-  // const renderInfor
-  // chuc nang
+
   return (
     <div
       className="infor-container"
@@ -237,7 +222,7 @@ export default function UserInforItem () {
                 </div>
               </div>
             </div>
-            <form>
+            <form onSubmit={formInfoUser.handleSubmit}>
               <div
                 className="p-2"
                 style={{
@@ -303,14 +288,12 @@ export default function UserInforItem () {
                         </p>
                         <div className="input-group mb-3">
                           <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
                             type="text"
                             className="form-control"
-                            name="idUser"
-                            aria-label="Userid"
-                            aria-describedby="basic-addon1"
+                            id="id"
+                            name="id"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.id}
                             disabled
@@ -328,20 +311,18 @@ export default function UserInforItem () {
                         </p>
                         <div className="input-group mb-3">
                           <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
                             type="text"
                             className="form-control"
-                            aria-label="email"
-                            aria-describedby="basic-addon1"
+                            id="email"
+                            name="email"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.email}
                             disabled
                           />
                         </div>
 
-                        
                         <p
                           style={{
                             fontSize: 16,
@@ -353,14 +334,12 @@ export default function UserInforItem () {
                         </p>
                         <div className="input-group mb-3">
                           <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
                             type="text"
                             className="form-control"
+                            id="role"
                             name="role"
-                            aria-label="Role"
-                            aria-describedby="basic-addon1"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.role}
                             disabled
@@ -378,13 +357,12 @@ export default function UserInforItem () {
                         </p>
                         <div className="input-group mb-3">
                           <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
                             type="text"
+                            id='name'
+                            name="name"
                             className="form-control"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.name}
                           />
@@ -401,41 +379,16 @@ export default function UserInforItem () {
                         </p>
                         <div className="input-group" style={{ marginBottom: 32 }}>
                           <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
-                            type="nu"
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
+                            type="text"
                             className="form-control"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
+                            id="birthday"
+                            name="birthday"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.phone}
                           />
-                        </div>
-
-                        <p
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          Ngày sinh (dd/mm/yyyy)
-                        </p>
-                        <div className="input-group" style={{ marginBottom: 32 }}>
-                          <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
-                            type="nu"
-                            className="form-control"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                            style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.birthday}
-                          />
-                        </div>
-
+                        </div>         
                         <p
                           className="d-flex justify-content-between align-items-center "
                           style={{
@@ -450,19 +403,62 @@ export default function UserInforItem () {
                         </p>
                         <div className="input-group mb-3 ">
                           <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
                             type={eyeInputPassword? "text" : 'password'}
                             className="form-control"
-                            name="Password"
-                            aria-label="Password"
-                            aria-describedby="basic-addon1"
+                            name="password"
+                            id="password"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.password}
                           />
                         </div>
-                        
+
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Ngày sinh (dd/mm/yyyy)
+                        </p>
+                        <div className="input-group" style={{ marginBottom: 32 }}>
+                          <input
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
+                            type="text"
+                            className="form-control"
+                            id="phone"
+                            name="phone"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={arrProfileUser.birthday}
+                          />
+                        </div>
+
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Gender
+                        </p>
+                        <div className="input-group mb-3">
+                          <input
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
+                            type="radio"
+                            className="form-control"
+                            id="gender"
+                            name="gender"
+                            value='true'
+                            style={{ borderRadius: 5! }}
+                            defaultValue=''
+                          />
+                        </div>
+
                         <p
                           style={{
                             fontSize: 16,
@@ -474,14 +470,12 @@ export default function UserInforItem () {
                         </p>
                         <div className="input-group mb-3">
                           <input
-                            onChange={(e) => {
-                              if (e.target.value) setEnable(false);
-                            }}
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
                             type="text"
                             className="form-control"
+                            id="avata"
                             name="avata"
-                            aria-label="Avata"
-                            aria-describedby="basic-addon1"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.avatar? arrProfileUser.avatar : 'https://i.pravatar.cc/'}
                           />
@@ -504,12 +498,8 @@ export default function UserInforItem () {
                           </button>
                           <button
                             type="submit"
-                            disabled={enable}
                             className="btn btn-dark"
                             style={{ fontSize: 20, padding: "10px 20px" }}
-                            onClick={(event: MouseEvent<HTMLButtonElement>) =>{
-                              event.preventDefault()
-                            }}
                           >
                             Lưu
                           </button>
