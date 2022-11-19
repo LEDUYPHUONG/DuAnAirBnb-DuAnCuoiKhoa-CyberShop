@@ -5,8 +5,7 @@ import { getStoreJson, USER_ID } from "../../util/setting";
 import CarouselInfor from "../UserInfor/CarouselInfor";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { setUserSignup, UserSignUpModel } from "../../redux/reducer/userReducer";
-import { FileX } from "react-bootstrap-icons";
+import { UserSignUpModel } from "../../redux/reducer/userReducer";
 
 export default function UserInforItem () {
   const { arrProfileRoom , arrProfileUser } = useAppSelector((state) => state.profileReducer);
@@ -445,18 +444,33 @@ export default function UserInforItem () {
                         >
                           Gender
                         </p>
-                        <div className="input-group mb-3">
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type="radio"
-                            className="form-control"
-                            id="gender"
-                            name="gender"
-                            value='true'
-                            style={{ borderRadius: 5! }}
-                            defaultValue=''
-                          />
+                        <div className="input-group mb-3 d-flex justify-content-around align-items-center">
+                          <div className="radio-men">
+                            <input
+                              onChange={formInfoUser.handleChange}
+                              onBlur={formInfoUser.handleBlur}
+                              type="radio"
+                              id="gender"
+                              name="gender"
+                              value='true'
+                              style={{ borderRadius: 5! }}
+                              checked
+                            />
+                            <label htmlFor="true" className="ps-1">Men</label>
+                          </div>
+                          <div className="radio-women">
+                            <input
+                              onChange={formInfoUser.handleChange}
+                              onBlur={formInfoUser.handleBlur}
+                              type="radio"
+                              id="gender"
+                              name="gender"
+                              value='false'
+                              style={{ borderRadius: 5! }}
+                              
+                            />
+                            <label htmlFor="false" className="ps-1">Women</label>
+                          </div>
                         </div>
 
                         <p
