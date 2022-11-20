@@ -6,6 +6,8 @@ import CarouselInfor from "../UserInfor/CarouselInfor";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { UserSignUpModel } from "../../redux/reducer/userReducer";
+import DatePicker from "antd/es/date-picker";
+import * as dayjs from 'dayjs'
 
 export default function UserInforItem () {
   const { arrProfileRoom , arrProfileUser } = useAppSelector((state) => state.profileReducer);
@@ -33,11 +35,11 @@ export default function UserInforItem () {
       .max(new Date(Date.now() - 567648000000), "You must be at least 18 years")
       .required("Required"),
     }),
-    onSubmit: (values: UserSignUpModel, { resetForm }) => {
+    onSubmit: (values: UserSignUpModel) => {
       console.log(123);
       
       dispatch(postProfileUserApi(values.id,values));
-      resetForm();
+      // resetForm();
     }
 });
 
@@ -297,6 +299,7 @@ export default function UserInforItem () {
                             defaultValue={arrProfileUser.id}
                             disabled
                           />
+                          {formInfoUser.errors.id && formInfoUser.touched.id && (<p>{formInfoUser.errors.id}</p>)}
                         </div>
                         
                         <p
@@ -320,6 +323,7 @@ export default function UserInforItem () {
                             defaultValue={arrProfileUser.email}
                             disabled
                           />
+                          {formInfoUser.errors.email && formInfoUser.touched.email && (<p>{formInfoUser.errors.email}</p>)}
                         </div>
 
                         <p
@@ -343,6 +347,7 @@ export default function UserInforItem () {
                             defaultValue={arrProfileUser.role}
                             disabled
                           />
+                          {formInfoUser.errors.role && formInfoUser.touched.role && (<p>{formInfoUser.errors.role}</p>)}
                         </div>
 
                         <p
@@ -365,6 +370,7 @@ export default function UserInforItem () {
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.name}
                           />
+                          {formInfoUser.errors.name && formInfoUser.touched.name && (<p>{formInfoUser.errors.name}</p>)}
                         </div>
 
                         <p
@@ -382,11 +388,12 @@ export default function UserInforItem () {
                             onBlur={formInfoUser.handleBlur}
                             type="text"
                             className="form-control"
-                            id="birthday"
-                            name="birthday"
+                            id="phone"
+                            name="phone"
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.phone}
                           />
+                          {formInfoUser.errors.phone && formInfoUser.touched.phone && (<p>{formInfoUser.errors.phone}</p>)}
                         </div>         
                         <p
                           className="d-flex justify-content-between align-items-center "
@@ -411,6 +418,7 @@ export default function UserInforItem () {
                             style={{ borderRadius: 5! }}
                             defaultValue={arrProfileUser.password}
                           />
+                          {formInfoUser.errors.password && formInfoUser.touched.password && (<p>{formInfoUser.errors.password}</p>)}
                         </div>
 
                         <p
@@ -420,19 +428,16 @@ export default function UserInforItem () {
                             marginBottom: 10,
                           }}
                         >
-                          Ngày sinh (dd/mm/yyyy)
+                          Ngày sinh
                         </p>
                         <div className="input-group" style={{ marginBottom: 32 }}>
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type="text"
-                            className="form-control"
-                            id="phone"
-                            name="phone"
-                            style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.birthday}
-                          />
+                        <DatePicker
+                          bordered={true}
+                          className='w-100'
+                          placeholder="Sinh nhật"
+                          format="DD/MM/YYYY"
+                       
+                        />
                         </div>
 
                         <p
@@ -514,6 +519,9 @@ export default function UserInforItem () {
                             type="submit"
                             className="btn btn-dark"
                             style={{ fontSize: 20, padding: "10px 20px" }}
+                            onClick={(event : MouseEvent<HTMLButtonElement>) => {
+                              event.preventDefault();
+                            }}
                           >
                             Lưu
                           </button>

@@ -56,6 +56,8 @@ export const loginApi = (formLogin: UserLoginModel) => {
   return async (dispatch: AppDispatch) => {
     try {
       let result = await http.post("/auth/signin", formLogin);
+      (document.getElementById("login_btn") as HTMLButtonElement).style.display = "none";
+      (document.getElementById("spinner") as HTMLButtonElement).style.display = "block";
       setStore(ACCESS_TOKEN, result.data.content.token);
       setStore(USER_ID, result.data.content.user.id);
       setStoreJson(USER_INFO, result.data.content.user);
@@ -63,7 +65,7 @@ export const loginApi = (formLogin: UserLoginModel) => {
         history.push('/profile');
         window.location.reload();
       }, 500);
-      dispatch(getProfileApi());
+      // dispatch(getProfileApi());
     } catch (err) {
       console.log(err);
       alert("Đăng nhập không thành công. Kiểm tra lại email và mật khẩu!");
@@ -71,16 +73,16 @@ export const loginApi = (formLogin: UserLoginModel) => {
   };
 };
 
-export const getProfileApi = () => {
-  return async () => {
-    try {
-      let result = await http.get("/users");
-      console.log('result getProfileApi',result);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
+// export const getProfileApi = () => {
+//   return async () => {
+//     try {
+//       let result = await http.get("/users");
+//       console.log('result getProfileApi',result);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
 
 export const signupApi = (frmSignUp: UserSignUpModel) => {
   return async () => {
