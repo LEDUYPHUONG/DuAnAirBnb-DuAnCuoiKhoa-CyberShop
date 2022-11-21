@@ -43,14 +43,10 @@ export default function UserInforItem() {
       // resetForm();
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Identifier required!'),
-      phone: Yup.string().required('Identifier required!'),
-      birthdate: Yup.date()
-        .max(
-          new Date(Date.now() - 567648000000),
-          'You must be at least 18 years',
-        )
-        .required('Required'),
+      name: Yup.string().required('Name required!'),
+      phone: Yup.string().required('Phone required!'),
+      password: Yup.string().required('Password required'),
+      avatar: Yup.string().required('Avatar required!'),
     }),
   });
 
@@ -395,7 +391,7 @@ export default function UserInforItem() {
                         >
                           Tên cá nhân
                         </p>
-                        <div className="input-group mb-3">
+                        <div className="input-group">
                           <input
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
@@ -406,11 +402,11 @@ export default function UserInforItem() {
                             style={{ borderRadius: 5! }}
                             value={formInfoUser.values.name}
                           />
-                          {formInfoUser.errors.name &&
-                            formInfoUser.touched.name && (
-                              <p>{formInfoUser.errors.name}</p>
-                            )}
                         </div>
+                        {formInfoUser.errors.name &&
+                            formInfoUser.touched.name && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.name}</p>
+                            )}
 
                         <p
                           style={{
@@ -423,7 +419,6 @@ export default function UserInforItem() {
                         </p>
                         <div
                           className="input-group"
-                          style={{ marginBottom: 32 }}
                         >
                           <input
                             onChange={formInfoUser.handleChange}
@@ -435,11 +430,12 @@ export default function UserInforItem() {
                             style={{ borderRadius: 5! }}
                             value={formInfoUser.values.phone}
                           />
-                          {formInfoUser.errors.phone &&
-                            formInfoUser.touched.phone && (
-                              <p>{formInfoUser.errors.phone}</p>
-                            )}
                         </div>
+                        {formInfoUser.errors.phone &&
+                            formInfoUser.touched.phone && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.phone}</p>
+                            )}
+
                         <p
                           className="d-flex justify-content-between align-items-center "
                           style={{
@@ -463,7 +459,7 @@ export default function UserInforItem() {
                             ></i>
                           </span>
                         </p>
-                        <div className="input-group mb-3 ">
+                        <div className="input-group">
                           <input
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
@@ -474,12 +470,11 @@ export default function UserInforItem() {
                             style={{ borderRadius: 5! }}
                             value={formInfoUser.values.password}
                           />
-                          {formInfoUser.errors.password &&
-                            formInfoUser.touched.password && (
-                              <p>{formInfoUser.errors.password}</p>
-                            )}
                         </div>
-
+                        {formInfoUser.errors.password &&
+                            formInfoUser.touched.password && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.password}</p>
+                            )}
                         <p
                           style={{
                             fontSize: 16,
@@ -528,40 +523,6 @@ export default function UserInforItem() {
                             <Radio value="true">Men</Radio>
                             <Radio value="false">Women</Radio>
                           </Radio.Group>
-                          {/* <div className="radio-men">
-                            <input
-                              onChange={formInfoUser.handleChange}
-                              onBlur={formInfoUser.handleBlur}
-                              type="radio"
-                              id="gender"
-                              name="gender"
-                              value="true"
-                              style={{ borderRadius: 5! }}
-                              checked={
-                                formInfoUser.values.gender ? true : false
-                              }
-                            />
-                            <label htmlFor="true" className="ps-1">
-                              Men
-                            </label>
-                          </div>
-                          <div className="radio-women">
-                            <input
-                              onChange={formInfoUser.handleChange}
-                              onBlur={formInfoUser.handleBlur}
-                              type="radio"
-                              id="gender"
-                              name="gender"
-                              value="false"
-                              style={{ borderRadius: 5! }}
-                              checked={
-                                !formInfoUser.values.gender ? true : false
-                              }
-                            />
-                            <label htmlFor="false" className="ps-1">
-                              Women
-                            </label>
-                          </div> */}
                         </div>
 
                         <p
@@ -573,25 +534,25 @@ export default function UserInforItem() {
                         >
                           Avata
                         </p>
-                        <div className="input-group mb-3">
+                        <div className="input-group">
                           <input
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
                             type="text"
                             className="form-control"
-                            id="avata"
-                            name="avata"
+                            id="avatar"
+                            name="avatar"
                             style={{ borderRadius: 5! }}
-                            defaultValue={
-                              arrProfileUser.avatar
-                                ? arrProfileUser.avatar
-                                : 'https://i.pravatar.cc/'
-                            }
+                            defaultValue={formInfoUser.values.avatar === '' ? 'https://i.pravatar.cc/' : formInfoUser.values.avatar}
                           />
                         </div>
+                        {formInfoUser.errors.avatar &&
+                            formInfoUser.touched.avatar && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.avatar}</p>
+                            )}
 
                         <div
-                          className="d-flex justify-content-between"
+                          className="d-flex justify-content-between mt-3"
                           style={{ marginBottom: 20 }}
                         >
                           <button
