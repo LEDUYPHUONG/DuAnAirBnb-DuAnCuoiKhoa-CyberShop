@@ -81,11 +81,11 @@ export default function UserInforItem() {
   return (
     <div
       className="infor-container"
-      style={{ width: '100%', marginTop: '80px' }}
+      style={{marginTop: '80px', paddingBottom: '20px' }}
     >
       <div
         className="justify-content-center mb-3"
-        style={{ margin: '120px 300px 32px 300px', padding: '0 16px' }}
+        style={{ margin: '0 auto', padding: '0 16px' }}
       >
         <div className="justify-content-center mb-3">
           <div
@@ -95,7 +95,6 @@ export default function UserInforItem() {
             <div
               className="p-2"
               style={{
-                width: '33.33%',
                 paddingLeft: '8px',
                 paddingRight: '8px',
               }}
@@ -144,7 +143,7 @@ export default function UserInforItem() {
                       style={{ marginTop: 8 }}
                       onClick={(event: MouseEvent<HTMLButtonElement>) => {
                         event.preventDefault();
-                        setOpen(true);
+                        setOpen(!open);
                       }}
                     >
                       Cập nhật ảnh
@@ -182,13 +181,14 @@ export default function UserInforItem() {
                   Xác thực danh tính của bạn với huy hiệu xác minh danh tính.
                 </div>
                 <div
-                  className="infor-challange square border border-dark"
+                  className="infor-challange square border border-dark m-auto"
                   style={{
                     padding: '13px 23px',
                     width: 'fit-content',
                     textAlign: 'center',
                     borderRadius: '8px',
                     border: '1px solid rgba(0,255,0,0.3)',
+                    cursor: 'pointer',
                   }}
                 >
                   Nhận huy hiệu
@@ -253,7 +253,6 @@ export default function UserInforItem() {
               <div
                 className="p-2"
                 style={{
-                  width: '66.67%',
                   paddingLeft: '8px',
                   paddingRight: '8px',
                 }}
@@ -272,7 +271,7 @@ export default function UserInforItem() {
                       }}
                     >
                       <h1 style={{ fontSize: '1em', margin: 0 }}>
-                        Xin chào {arrProfileUser.name}
+                        Xin chào {arrProfileUser.name}!
                       </h1>
                     </div>
                     <div
@@ -297,7 +296,7 @@ export default function UserInforItem() {
                         }}
                         onClick={(event: MouseEvent<HTMLButtonElement>) => {
                           event.preventDefault();
-                          setOpen(true);
+                          setOpen(!open);
                         }}
                       >
                         Chỉnh sửa hồ sơ
@@ -599,7 +598,7 @@ export default function UserInforItem() {
                             type="button"
                             onClick={(event: MouseEvent<HTMLButtonElement>) => {
                               event.preventDefault();
-                              setOpen(false);
+                              setOpen(!open);
                             }}
                             className="btn btn-secondary text-decoration-underline"
                             style={{ padding: '10px 20px' }}
