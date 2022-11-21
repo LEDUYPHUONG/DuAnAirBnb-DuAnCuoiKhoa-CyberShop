@@ -374,6 +374,9 @@ function ModalHeader() {
                         padding: "10px 25px",
                         width: "300px",
                       }}
+                      onClick={(event) =>{
+                        event.preventDefault()
+                      }}
                     >
                       <span>Ngày</span>
                       <input
