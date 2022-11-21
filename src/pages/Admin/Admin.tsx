@@ -101,7 +101,7 @@ export default function Admin() {
                             <button className='btn btn-primary mx-2'  onClick={() => {
                                 handelClickBtnPrevSetArrAdminUser()
                             }}>
-                                <i className="fa-solid fa-arrow-left me-2"></i>
+                                <i className="fa-solid fa-arrow-left me-2 bg-transparent"></i>
                                 prev
                             </button>
                             <button className='btn btn-primary mx-2'> {numberPage} </button>
@@ -110,7 +110,7 @@ export default function Admin() {
                             }}>
                                 
                                 next
-                                <i className="fa-solid fa-arrow-right ms-2" ></i>
+                                <i className="fa-solid fa-arrow-right ms-2 bg-transparent" ></i>
                             </button>
                         </div>
                     </div>

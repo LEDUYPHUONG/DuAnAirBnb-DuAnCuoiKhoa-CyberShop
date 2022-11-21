@@ -233,7 +233,7 @@ export default function UserInforItem() {
                         />
 
                         <div style={{ paddingLeft: '10px' }}>
-                          Địa chỉ email: {arrProfileUser.email}{' '}
+                          Địa chỉ email: {arrProfileUser.email}
                         </div>
                       </div>
                     </div>
@@ -448,7 +448,7 @@ export default function UserInforItem() {
                             marginBottom: 10,
                           }}
                         >
-                          <span>Password</span>{' '}
+                          <span>Password</span>
                           <span
                             onClick={() => {
                               setEyeInputPassword(!eyeInputPassword);
