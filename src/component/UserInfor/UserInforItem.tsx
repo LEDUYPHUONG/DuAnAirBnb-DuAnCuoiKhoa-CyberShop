@@ -1,54 +1,64 @@
-import React, { MouseEvent, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/example/hooks";
-import { getProfileRoomApi, getProfileUserApi, postProfileUserApi, ProfileRoomModel } from "../../redux/reducer/profileReducer";
-import { getStoreJson, USER_ID } from "../../util/setting";
-import CarouselInfor from "../UserInfor/CarouselInfor";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { UserSignUpModel } from "../../redux/reducer/userReducer";
-import DatePicker from "antd/es/date-picker";
-import * as dayjs from 'dayjs'
+import React, { MouseEvent, useEffect, useState } from 'react';
+import moment from 'moment';
+import { useAppDispatch, useAppSelector } from '../../redux/example/hooks';
+import {
+  getProfileRoomApi,
+  getProfileUserApi,
+  postProfileUserApi,
+  ProfileRoomModel,
+} from '../../redux/reducer/profileReducer';
+import { getStoreJson, USER_ID } from '../../util/setting';
+import CarouselInfor from '../UserInfor/CarouselInfor';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { UserSignUpModel } from '../../redux/reducer/userReducer';
+import DatePicker from 'antd/es/date-picker';
+import { Radio } from 'antd';
 
-export default function UserInforItem () {
-  const { arrProfileRoom , arrProfileUser } = useAppSelector((state) => state.profileReducer);
+export default function UserInforItem() {
+  const { arrProfileRoom, arrProfileUser } = useAppSelector(
+    (state) => state.profileReducer,
+  );
   const { userSignup } = useAppSelector((state) => state.userReducer);
   const [open, setOpen] = useState(false);
-  const [eyeInputPassword, setEyeInputPassword] = useState(false)
+  const [eyeInputPassword, setEyeInputPassword] = useState(false);
   const dispatch = useAppDispatch();
 
   const formInfoUser = useFormik({
     initialValues: {
-      id: 0,
-      email: '',
-      role: '',
-      name: '',
-      birthday: '',
-      password: '',
-      phone: '',
-      gender: true,
-      avatar:''
+      id: userSignup.id,
+      email: userSignup.email,
+      role: userSignup.role,
+      name: userSignup.name,
+      birthday: userSignup.birthday,
+      password: userSignup.password,
+      phone: userSignup.phone,
+      gender: userSignup.gender.toString(),
+      avatar: userSignup.avatar,
+    },
+    onSubmit: (values: UserSignUpModel) => {
+      console.log('on submit');
+
+      dispatch(postProfileUserApi(values.id, values));
+      // resetForm();
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required("Identifier required!"),
-      phone: Yup.string().required("Identifier required!"),
+      name: Yup.string().required('Identifier required!'),
+      phone: Yup.string().required('Identifier required!'),
       birthdate: Yup.date()
-      .max(new Date(Date.now() - 567648000000), "You must be at least 18 years")
-      .required("Required"),
+        .max(
+          new Date(Date.now() - 567648000000),
+          'You must be at least 18 years',
+        )
+        .required('Required'),
     }),
-    onSubmit: (values: UserSignUpModel) => {
-      console.log(123);
-      
-      dispatch(postProfileUserApi(values.id,values));
-      // resetForm();
-    }
-});
-
+  });
 
   useEffect(() => {
-    const idUser: string = getStoreJson(USER_ID)
+    const idUser: string = getStoreJson(USER_ID);
     console.log(idUser);
     console.log('arrProfileRoom', arrProfileRoom);
-    
+
     dispatch(getProfileRoomApi(idUser));
     dispatch(getProfileUserApi(idUser));
     // eslint-disable-next-line
@@ -56,79 +66,85 @@ export default function UserInforItem () {
 
   const renderRoomListRented = () => {
     if (arrProfileRoom.length === 0) {
-      return (<p className="text-danger text-center">Danh sách phòng từng đặt rỗng, xin vui lòng đặt phòng!</p>)
+      return (
+        <p className="text-danger text-center">
+          Danh sách phòng từng đặt rỗng, xin vui lòng đặt phòng!
+        </p>
+      );
     } else {
       return arrProfileRoom.map((prod: ProfileRoomModel, index: number) => {
-        return (<div key={index}>
-                  {CarouselInfor({ product: prod })}
-                </div>
-        )
-      })
+        return <div key={index}>{CarouselInfor({ product: prod })}</div>;
+      });
     }
-  }
+  };
 
   return (
     <div
       className="infor-container"
-      style={{ width: "100%", marginTop: "80px" }}
+      style={{ width: '100%', marginTop: '80px' }}
     >
       <div
         className="justify-content-center mb-3"
-        style={{ margin: "120px 300px 32px 300px", padding: "0 16px" }}
+        style={{ margin: '120px 300px 32px 300px', padding: '0 16px' }}
       >
         <div className="justify-content-center mb-3">
           <div
             className="d-flex justify-content-center mb-3"
-            style={{ width: "100%", position: "relative" }}
+            style={{ width: '100%', position: 'relative' }}
           >
             <div
               className="p-2"
               style={{
-                width: "33.33%",
-                paddingLeft: "8px",
-                paddingRight: "8px",
+                width: '33.33%',
+                paddingLeft: '8px',
+                paddingRight: '8px',
               }}
             >
               <div
                 className="square border border-1"
                 style={{
-                  maxWidth: "308px",
-                  padding: "24px",
-                  borderRadius: "12px",
+                  maxWidth: '308px',
+                  padding: '24px',
+                  borderRadius: '12px',
                 }}
               >
                 <div
                   className="infor-updateimage"
-                  style={{ width: "128px", margin: "auto auto 32px auto" }}
+                  style={{ width: '128px', margin: 'auto auto 32px auto' }}
                 >
                   <div
                     className="infor-img"
                     style={{
-                      width: "128px",
-                      height: "128px",
-                      position: "relative",
-                      borderRadius: "100%",
+                      width: '128px',
+                      height: '128px',
+                      position: 'relative',
+                      borderRadius: '100%',
                     }}
                   >
                     <img
-                      src={arrProfileUser.avatar? arrProfileUser.avatar : 'https://i.pravatar.cc/'}
+                      src={
+                        arrProfileUser.avatar
+                          ? arrProfileUser.avatar
+                          : 'https://i.pravatar.cc/'
+                      }
                       alt="..."
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        borderRadius: "100%",
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '100%',
                       }}
                     />
                   </div>
                   <div
                     className="infor-editimg"
-                    style={{ textAlign: "center" }}
+                    style={{ textAlign: 'center' }}
                   >
                     <button
                       className="btn btn-primary edit"
-                      style={{marginTop:8}}
-                      onClick={(event : MouseEvent<HTMLButtonElement>) => {
-                        event.preventDefault();setOpen(true)
+                      style={{ marginTop: 8 }}
+                      onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                        event.preventDefault();
+                        setOpen(true);
                       }}
                     >
                       Cập nhật ảnh
@@ -137,30 +153,30 @@ export default function UserInforItem () {
                 </div>
                 <div
                   className="infor-iconservice"
-                  style={{ marginBottom: "16px", textAlign:'center' }}
+                  style={{ marginBottom: '16px', textAlign: 'center' }}
                 >
                   <img
                     src="/img/security.png"
                     alt="..."
                     style={{
-                      height: "40px",
-                      widows: "40px",
-                      fill: "currentcolor"
+                      height: '40px',
+                      widows: '40px',
+                      fill: 'currentcolor',
                     }}
                   />
                 </div>
                 <div
                   className="infor-check1"
-                  style={{ marginBottom: "8px", fontSize: "18px" }}
+                  style={{ marginBottom: '8px', fontSize: '18px' }}
                 >
                   Xác minh danh tính
                 </div>
                 <div
                   className="infor-check2"
                   style={{
-                    lineHeight: "20px",
-                    marginBottom: "16px",
-                    fontSize: "16px",
+                    lineHeight: '20px',
+                    marginBottom: '16px',
+                    fontSize: '16px',
                   }}
                 >
                   Xác thực danh tính của bạn với huy hiệu xác minh danh tính.
@@ -168,24 +184,24 @@ export default function UserInforItem () {
                 <div
                   className="infor-challange square border border-dark"
                   style={{
-                    padding: "13px 23px",
-                    width: "fit-content",
-                    textAlign: "center",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(0,255,0,0.3)",
+                    padding: '13px 23px',
+                    width: 'fit-content',
+                    textAlign: 'center',
+                    borderRadius: '8px',
+                    border: '1px solid rgba(0,255,0,0.3)',
                   }}
                 >
                   Nhận huy hiệu
                 </div>
                 <div
                   className="infor-line"
-                  style={{ marginTop: "32px", marginBottom: "32px" }}
+                  style={{ marginTop: '32px', marginBottom: '32px' }}
                 >
                   <div
                     className="infor-borderline"
                     style={{
-                      borderBottom: "1px solid rgb(235,235,235",
-                      width: "100%",
+                      borderBottom: '1px solid rgb(235,235,235',
+                      width: '100%',
                     }}
                   ></div>
                 </div>
@@ -193,13 +209,13 @@ export default function UserInforItem () {
                   <div>
                     <div
                       className="infor-comform"
-                      style={{ marginBottom: "24px" }}
+                      style={{ marginBottom: '24px' }}
                     >
                       <h1
                         style={{
-                          fontSize: "22px",
-                          lineHeight: "26px",
-                          margin: "0",
+                          fontSize: '22px',
+                          lineHeight: '26px',
+                          margin: '0',
                         }}
                       >
                         {arrProfileUser.name} đã xác nhận
@@ -207,45 +223,55 @@ export default function UserInforItem () {
                     </div>
                     <div
                       className="infor-email"
-                      style={{ marginBottom: "16px" }}
+                      style={{ marginBottom: '16px' }}
                     >
                       <div className="d-flex align-items-center p-2">
                         <img
                           src="/img/check.png"
                           alt=""
-                          style={{ width: "16px", height: "16px" }}
+                          style={{ width: '16px', height: '16px' }}
                         />
 
-                        <div style={{ paddingLeft: "10px" }}>Địa chỉ email: {arrProfileUser.email} </div>
+                        <div style={{ paddingLeft: '10px' }}>
+                          Địa chỉ email: {arrProfileUser.email}{' '}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <form onSubmit={formInfoUser.handleSubmit}>
+            <form
+              onSubmit={(form) => {
+                console.log({ formInfoUser }); // em có thể console để kiểm tra formInfoUser có nhưng function nào
+                formInfoUser.handleSubmit(form);
+                const { values } = formInfoUser;
+                console.log('submit', values);
+                dispatch(postProfileUserApi(values.id, values));
+              }}
+            >
               <div
                 className="p-2"
                 style={{
-                  width: "66.67%",
-                  paddingLeft: "8px",
-                  paddingRight: "8px",
+                  width: '66.67%',
+                  paddingLeft: '8px',
+                  paddingRight: '8px',
                 }}
               >
                 <div
                   className="infor-right"
-                  style={{ margin: "auto", maxWidth: "100%", marginRight: 0 }}
+                  style={{ margin: 'auto', maxWidth: '100%', marginRight: 0 }}
                 >
                   <div className="infor-right-welcome">
                     <div
                       className="infor-right-hello"
                       style={{
-                        fontSize: "32px",
-                        lineHeight: "36px",
+                        fontSize: '32px',
+                        lineHeight: '36px',
                         marginBottom: 8,
                       }}
                     >
-                      <h1 style={{ fontSize: "1em", margin: 0 }}>
+                      <h1 style={{ fontSize: '1em', margin: 0 }}>
                         Xin chào {arrProfileUser.name}
                       </h1>
                     </div>
@@ -253,7 +279,7 @@ export default function UserInforItem () {
                       className="infor-right-status"
                       style={{
                         fontSize: 14,
-                        lineHeight: "18px",
+                        lineHeight: '18px',
                         marginBottom: 8,
                       }}
                     >
@@ -266,12 +292,14 @@ export default function UserInforItem () {
                       <button
                         style={{
                           border: 0,
-                          backgroundColor: "transparent",
-                          textDecoration: "underline",
+                          backgroundColor: 'transparent',
+                          textDecoration: 'underline',
                         }}
-                        onClick={(event : MouseEvent<HTMLButtonElement>) => {
-                          event.preventDefault();setOpen(true)
-                        }}>
+                        onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                          event.preventDefault();
+                          setOpen(true);
+                        }}
+                      >
                         Chỉnh sửa hồ sơ
                       </button>
                     </div>
@@ -299,9 +327,12 @@ export default function UserInforItem () {
                             defaultValue={arrProfileUser.id}
                             disabled
                           />
-                          {formInfoUser.errors.id && formInfoUser.touched.id && (<p>{formInfoUser.errors.id}</p>)}
+                          {formInfoUser.errors.id &&
+                            formInfoUser.touched.id && (
+                              <p>{formInfoUser.errors.id}</p>
+                            )}
                         </div>
-                        
+
                         <p
                           style={{
                             fontSize: 16,
@@ -320,10 +351,13 @@ export default function UserInforItem () {
                             id="email"
                             name="email"
                             style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.email}
+                            value={formInfoUser.values.email}
                             disabled
                           />
-                          {formInfoUser.errors.email && formInfoUser.touched.email && (<p>{formInfoUser.errors.email}</p>)}
+                          {formInfoUser.errors.email &&
+                            formInfoUser.touched.email && (
+                              <p>{formInfoUser.errors.email}</p>
+                            )}
                         </div>
 
                         <p
@@ -344,10 +378,13 @@ export default function UserInforItem () {
                             id="role"
                             name="role"
                             style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.role}
+                            value={formInfoUser.values.role}
                             disabled
                           />
-                          {formInfoUser.errors.role && formInfoUser.touched.role && (<p>{formInfoUser.errors.role}</p>)}
+                          {formInfoUser.errors.role &&
+                            formInfoUser.touched.role && (
+                              <p>{formInfoUser.errors.role}</p>
+                            )}
                         </div>
 
                         <p
@@ -364,13 +401,16 @@ export default function UserInforItem () {
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
                             type="text"
-                            id='name'
+                            id="name"
                             name="name"
                             className="form-control"
                             style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.name}
+                            value={formInfoUser.values.name}
                           />
-                          {formInfoUser.errors.name && formInfoUser.touched.name && (<p>{formInfoUser.errors.name}</p>)}
+                          {formInfoUser.errors.name &&
+                            formInfoUser.touched.name && (
+                              <p>{formInfoUser.errors.name}</p>
+                            )}
                         </div>
 
                         <p
@@ -382,7 +422,10 @@ export default function UserInforItem () {
                         >
                           Số điện thoại
                         </p>
-                        <div className="input-group" style={{ marginBottom: 32 }}>
+                        <div
+                          className="input-group"
+                          style={{ marginBottom: 32 }}
+                        >
                           <input
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
@@ -391,34 +434,51 @@ export default function UserInforItem () {
                             id="phone"
                             name="phone"
                             style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.phone}
+                            value={formInfoUser.values.phone}
                           />
-                          {formInfoUser.errors.phone && formInfoUser.touched.phone && (<p>{formInfoUser.errors.phone}</p>)}
-                        </div>         
+                          {formInfoUser.errors.phone &&
+                            formInfoUser.touched.phone && (
+                              <p>{formInfoUser.errors.phone}</p>
+                            )}
+                        </div>
                         <p
                           className="d-flex justify-content-between align-items-center "
                           style={{
                             fontSize: 16,
                             marginTop: 20,
-                            marginBottom: 10
+                            marginBottom: 10,
                           }}
                         >
-                          <span>Password</span> <span onClick={() => {
-                            setEyeInputPassword(!eyeInputPassword)
-                          }}><i className={eyeInputPassword? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'}></i></span>
+                          <span>Password</span>{' '}
+                          <span
+                            onClick={() => {
+                              setEyeInputPassword(!eyeInputPassword);
+                            }}
+                          >
+                            <i
+                              className={
+                                eyeInputPassword
+                                  ? 'fa-solid fa-eye'
+                                  : 'fa-solid fa-eye-slash'
+                              }
+                            ></i>
+                          </span>
                         </p>
                         <div className="input-group mb-3 ">
                           <input
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
-                            type={eyeInputPassword? "text" : 'password'}
+                            type={eyeInputPassword ? 'text' : 'password'}
                             className="form-control"
                             name="password"
                             id="password"
                             style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.password}
+                            value={formInfoUser.values.password}
                           />
-                          {formInfoUser.errors.password && formInfoUser.touched.password && (<p>{formInfoUser.errors.password}</p>)}
+                          {formInfoUser.errors.password &&
+                            formInfoUser.touched.password && (
+                              <p>{formInfoUser.errors.password}</p>
+                            )}
                         </div>
 
                         <p
@@ -430,14 +490,25 @@ export default function UserInforItem () {
                         >
                           Ngày sinh
                         </p>
-                        <div className="input-group" style={{ marginBottom: 32 }}>
-                        <DatePicker
-                          bordered={true}
-                          className='w-100'
-                          placeholder="Sinh nhật"
-                          format="DD/MM/YYYY"
-                       
-                        />
+                        <div
+                          className="input-group"
+                          style={{ marginBottom: 32 }}
+                        >
+                          <DatePicker
+                            bordered={true}
+                            className="w-100"
+                            placeholder="Sinh nhật"
+                            format="DD/MM/YYYY"
+                            onChange={(value) => {
+                              const newValue =
+                                moment(value).format('DD/MM/YYYY');
+                              formInfoUser.values.birthday = newValue;
+                            }}
+                            defaultValue={moment(
+                              formInfoUser.values.birthday,
+                              'DD/MM/YYYY',
+                            )}
+                          />
                         </div>
 
                         <p
@@ -450,18 +521,30 @@ export default function UserInforItem () {
                           Gender
                         </p>
                         <div className="input-group mb-3 d-flex justify-content-around align-items-center">
-                          <div className="radio-men">
+                          <Radio.Group
+                            name="gender"
+                            onChange={formInfoUser.handleChange}
+                            value={formInfoUser.values.gender}
+                          >
+                            <Radio value="true">Men</Radio>
+                            <Radio value="false">Women</Radio>
+                          </Radio.Group>
+                          {/* <div className="radio-men">
                             <input
                               onChange={formInfoUser.handleChange}
                               onBlur={formInfoUser.handleBlur}
                               type="radio"
                               id="gender"
                               name="gender"
-                              value='true'
+                              value="true"
                               style={{ borderRadius: 5! }}
-                              checked
+                              checked={
+                                formInfoUser.values.gender ? true : false
+                              }
                             />
-                            <label htmlFor="true" className="ps-1">Men</label>
+                            <label htmlFor="true" className="ps-1">
+                              Men
+                            </label>
                           </div>
                           <div className="radio-women">
                             <input
@@ -470,12 +553,16 @@ export default function UserInforItem () {
                               type="radio"
                               id="gender"
                               name="gender"
-                              value='false'
+                              value="false"
                               style={{ borderRadius: 5! }}
-                              
+                              checked={
+                                !formInfoUser.values.gender ? true : false
+                              }
                             />
-                            <label htmlFor="false" className="ps-1">Women</label>
-                          </div>
+                            <label htmlFor="false" className="ps-1">
+                              Women
+                            </label>
+                          </div> */}
                         </div>
 
                         <p
@@ -496,7 +583,11 @@ export default function UserInforItem () {
                             id="avata"
                             name="avata"
                             style={{ borderRadius: 5! }}
-                            defaultValue={arrProfileUser.avatar? arrProfileUser.avatar : 'https://i.pravatar.cc/'}
+                            defaultValue={
+                              arrProfileUser.avatar
+                                ? arrProfileUser.avatar
+                                : 'https://i.pravatar.cc/'
+                            }
                           />
                         </div>
 
@@ -506,22 +597,19 @@ export default function UserInforItem () {
                         >
                           <button
                             type="button"
-                            onClick={(event : MouseEvent<HTMLButtonElement>) => {
+                            onClick={(event: MouseEvent<HTMLButtonElement>) => {
                               event.preventDefault();
-                              setOpen(false)
+                              setOpen(false);
                             }}
                             className="btn btn-secondary text-decoration-underline"
-                            style={{ padding: "10px 20px" }}
+                            style={{ padding: '10px 20px' }}
                           >
                             Hủy
                           </button>
                           <button
                             type="submit"
                             className="btn btn-dark"
-                            style={{ fontSize: 20, padding: "10px 20px" }}
-                            onClick={(event : MouseEvent<HTMLButtonElement>) => {
-                              event.preventDefault();
-                            }}
+                            style={{ fontSize: 20, padding: '10px 20px' }}
                           >
                             Lưu
                           </button>
@@ -532,24 +620,22 @@ export default function UserInforItem () {
                     <div
                       className="infor-myroom"
                       style={{
-                        fontSize: "32px",
-                        lineHeight: "36px",
+                        fontSize: '32px',
+                        lineHeight: '36px',
                         marginBottom: 16,
                         marginTop: 16,
                         fontWeight: 700,
                       }}
                     >
-                      <h1 style={{ fontSize: "1em", margin: 0 }}>
+                      <h1 style={{ fontSize: '1em', margin: 0 }}>
                         Phòng đã thuê
                       </h1>
                     </div>
                     {renderRoomListRented()}
                   </div>
-                  
                 </div>
               </div>
             </form>
-            
           </div>
         </div>
       </div>

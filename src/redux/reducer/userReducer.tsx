@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { json } from 'stream/consumers';
 import {
   ACCESS_TOKEN,
   getStoreJson,
@@ -9,8 +10,8 @@ import {
   setStoreJson,
   USER_ID,
   USER_INFO,
-} from "../../util/setting";
-import { AppDispatch } from "../configStore";
+} from '../../util/setting';
+import { AppDispatch } from '../configStore';
 
 export interface UserLoginModel {
   email: string;
@@ -25,7 +26,7 @@ export interface UserSignUpModel {
   birthday: string;
   gender: boolean;
   role: string;
-  avatar:string
+  avatar: string;
 }
 
 export interface UserReducerState {
@@ -35,14 +36,14 @@ export interface UserReducerState {
 
 const initialState = {
   userLogin: getStoreJson(USER_LOGIN),
-  userSignup: getStoreJson(USER_INFO)
+  userSignup: JSON.parse(getStoreJson(USER_INFO)),
 };
 
 const userLoginReducer = createSlice({
-  name: "userLoginReducer",
+  name: 'userLoginReducer',
   initialState,
   reducers: {
-    setUserSignup:(state, action: PayloadAction<UserSignUpModel>) => {
+    setUserSignup: (state, action: PayloadAction<UserSignUpModel>) => {
       state.userSignup = action.payload;
     },
   },
@@ -55,9 +56,12 @@ export default userLoginReducer.reducer;
 export const loginApi = (formLogin: UserLoginModel) => {
   return async (dispatch: AppDispatch) => {
     try {
-      let result = await http.post("/auth/signin", formLogin);
-      (document.getElementById("login_btn") as HTMLButtonElement).style.display = "none";
-      (document.getElementById("spinner") as HTMLButtonElement).style.display = "block";
+      let result = await http.post('/auth/signin', formLogin);
+      (
+        document.getElementById('login_btn') as HTMLButtonElement
+      ).style.display = 'none';
+      (document.getElementById('spinner') as HTMLButtonElement).style.display =
+        'block';
       setStore(ACCESS_TOKEN, result.data.content.token);
       setStore(USER_ID, result.data.content.user.id);
       setStoreJson(USER_INFO, result.data.content.user);
@@ -68,7 +72,7 @@ export const loginApi = (formLogin: UserLoginModel) => {
       // dispatch(getProfileApi());
     } catch (err) {
       console.log(err);
-      alert("Đăng nhập không thành công. Kiểm tra lại email và mật khẩu!");
+      alert('Đăng nhập không thành công. Kiểm tra lại email và mật khẩu!');
     }
   };
 };
@@ -87,18 +91,16 @@ export const loginApi = (formLogin: UserLoginModel) => {
 export const signupApi = (frmSignUp: UserSignUpModel) => {
   return async () => {
     try {
-      let result = await http.post("/auth/signup", frmSignUp);
-      console.log('result signupApi',result);
-      
-      alert(
-        "Đăng ký thành công!"
-      );
+      let result = await http.post('/auth/signup', frmSignUp);
+      console.log('result signupApi', result);
+
+      alert('Đăng ký thành công!');
       setTimeout(() => {
-        history.push("/signin");
+        history.push('/signin');
         window.location.reload();
       }, 1000);
     } catch (err) {
-      console.log("dangkyErr", err);
+      console.log('dangkyErr', err);
     }
   };
 };
