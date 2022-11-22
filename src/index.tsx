@@ -21,7 +21,11 @@ import Infor from './pages/Information/Infor';
 import RoomListPage from './pages/Roomlist/RoomListPage';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
-import Admin from './pages/Admin/Admin';
+import UserManage from './pages/Admin/UserManage';
+import LocationInfoManage from './pages/Admin/LocationInfoManage';
+import ReservationManage from './pages/Admin/ReservationManage';
+import RoomInfoManage from './pages/Admin/RoomInfoManage';
+import Admintemplate from './templates/Admintemplate';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -53,8 +57,14 @@ root.render(
             isVerification() ? (<Infor/>) : (<SignUp/>)}></Route>
           <Route  path='profile' element={
             isVerification() ? (<Infor/>) : (<Login/>)}></Route>
-          <Route path='admin' element={
-            isVerification() ? (<Admin/>) : (<Login/>)}></Route>
+          <Route path='admin' element={isVerification() ? (<Admintemplate />) : (<Login/>)}>
+              <Route path='/admin' element={<UserManage/>}></Route>
+              <Route path='/admin/' element={<UserManage/>}></Route>
+              <Route path='/admin/usermanage' element={<UserManage/>}></Route>
+              <Route path='/admin/locationinfomanage' element={<LocationInfoManage/>}></Route>
+              <Route path='/admin/reservationmanage' element={<ReservationManage/>}></Route>
+              <Route path='/admin/roominfomanage' element={<RoomInfoManage/>}></Route>
+          </Route>
           <Route path='*' element={<Navigate to='' />}></Route>
           <Route path='demo' element={<Demo />}></Route>
         </Route>

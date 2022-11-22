@@ -1,8 +1,9 @@
 import React, {MouseEvent, useEffect} from 'react'
+import ModalAddAdmin from '../../component/Modal/ModalAdmin/ModalAddAdmin'
+import ModalInfoAdmin from '../../component/Modal/ModalAdmin/ModalInfoAdmin'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
 import { AdmintUserModel, changeRoleUserToAdmin, deleteAccount, getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
-import ModalAddAdmin from '../Modal/ModalAdmin/ModalAddAdmin'
-import ModalInfoAdmin from '../Modal/ModalAdmin/ModalInfoAdmin'
+
 
 export default function UserManage() {
     const { arrAdminUser, numberPage } = useAppSelector((state) => state.adminReducer)
