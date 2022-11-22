@@ -25,7 +25,7 @@ export default function Admin() {
                             <img style={{width:'50px', height:'50px'}} src={item.avatar} alt="..." />
                         </td>
                         <td>{item.phone}</td>
-                        <td>{item.gender}</td>
+                        <td>{item.gender? 'Nam' : 'Nữ'}</td>
                         <td>{item.role}</td>
                         <td>
                             <ModalInfoAdmin item={item}/>
@@ -93,6 +93,7 @@ export default function Admin() {
                     <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>User management</button>
                     <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Location information management</button>
                     <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Manage room information</button>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Reservation management</button>
                 </div>
             </div>
             <div className='w-100'>
