@@ -4,7 +4,8 @@ import ModalAddAdmin from '../../component/Modal/ModalAdmin/ModalAddAdmin'
 import DropdownAdmin from '../../component/Dropdown/DropdownAdmin'
 import { RootState } from '../../redux/configStore'
 import { useAppDispatch } from '../../redux/example/hooks'
-import { AdmintUserModel, changeRoleUserToAdmin, getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
+import { AdmintUserModel, changeRoleUserToAdmin, deleteAccount, getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
+import ModalInfoAdmin from '../../component/Modal/ModalAdmin/ModalInfoAdmin'
 
 
 export default function Admin() {
@@ -27,18 +28,22 @@ export default function Admin() {
                         <td>{item.gender}</td>
                         <td>{item.role}</td>
                         <td>
-                            <button className='btn btn-primary'>Xem thông tin chi tiết</button>
+                            <ModalInfoAdmin item={item}/>
                             <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
                                 handleClickSetUserRole(item)
                             }}>Sửa</button>
-                            <button className='btn btn-danger'>x</button>
+                            <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
+                                event.preventDefault();
+                                handleClickDeleteAccount(item)
+                            }}>x</button>
                         </td>
                     </tr>
             
         })
     }
-     const handleClickSetUserRole = (item : AdmintUserModel) => {
+
+    const handleClickSetUserRole = (item : AdmintUserModel) => {
         const {id} = item
         const  {role} = item
         let newValueRole :string = 'ADMIN'
@@ -49,7 +54,17 @@ export default function Admin() {
         }
         const newInfo = {...item, role: newValueRole}
         dispatch(changeRoleUserToAdmin(id, newInfo))
-     }
+    }
+
+    const handleClickDeleteAccount = (item : AdmintUserModel) => {
+        const {id} = item
+        dispatch(deleteAccount(id))
+    }
+
+    const handleClickShowInfo = (item : AdmintUserModel) => {
+        const {id} = item
+        dispatch(deleteAccount(id))
+    }
     const handelClickBtnPrevSetArrAdminUser = () => {
         if(numberPage === 1){
             return null

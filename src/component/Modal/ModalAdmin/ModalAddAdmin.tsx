@@ -63,7 +63,6 @@ function ModalAddAdmin() {
       <Modal
         show={show}
         onHide={handleClose}
-        backdrop="static"
         keyboard={false}
       >
         <Modal.Body>

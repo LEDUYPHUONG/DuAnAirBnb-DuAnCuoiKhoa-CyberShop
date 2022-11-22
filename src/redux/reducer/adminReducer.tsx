@@ -67,3 +67,16 @@ export const changeRoleUserToAdmin = (id: number, newInfo: AdmintUserModel) => {
     }
   };
 };
+
+export const deleteAccount = (id: number) => {
+  return async () => {
+    try {
+      const response = await http.delete(`/users?id=${id}`);
+      console.log(response);
+      alert('Delete thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
