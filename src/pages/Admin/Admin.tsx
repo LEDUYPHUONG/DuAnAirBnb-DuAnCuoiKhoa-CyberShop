@@ -29,6 +29,10 @@ export default function Admin() {
                         <td>
                             <button className='btn btn-primary'>Xem thông tin chi tiết</button>
                             <button className='btn btn-warning mx-3 text-dark'>Sửa</button>
+                            {/*  onclick={(event: MouseEvent<HTMLButtonElement>) =>{
+                                event.preventdefault();
+                                handleClickSetUserRole()
+                            }} */}
                             <button className='btn btn-danger'>x</button>
                         </td>
                     </tr>

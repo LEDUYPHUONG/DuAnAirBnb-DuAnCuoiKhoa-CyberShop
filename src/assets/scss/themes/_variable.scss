@@ -73,6 +73,9 @@
     background: rgb(235, 235, 235);
   }
 }
+.ant-picker-dropdown{
+  z-index: 2000;
+}
 //@mixin - @include
     @mixin text(
       $ff: $ff-p-M,

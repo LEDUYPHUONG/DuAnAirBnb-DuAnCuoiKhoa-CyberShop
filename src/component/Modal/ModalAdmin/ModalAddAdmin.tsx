@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAppDispatch } from "../../../redux/example/hooks";
 import { getAdminUserInfoApi } from "../../../redux/reducer/manageAdminUserReducer";
+import { DatePicker } from "antd";
+import moment from "moment";
 
 function ModalAddAdmin() {
   const [show, setShow] = useState(false);
@@ -14,14 +16,14 @@ function ModalAddAdmin() {
     typePW === "password" ? setTypePW("text") : setTypePW("password");
   };
 
-  const frm = useFormik({
+  const formik = useFormik({
     initialValues: {
       id: 0,
       name: "",
       email: "",
       password: "",
       phone: "",
-      birthday: "",
+      birthday: moment().format('DD/MM/YYYY'),
       avatar: null,
       gender: true,
       role: "ADMIN"
@@ -65,7 +67,7 @@ function ModalAddAdmin() {
         keyboard={false}
       >
         <Modal.Body>
-          <form className="container my-5" onSubmit={frm.handleSubmit}>
+          <form className="container my-5" onSubmit={formik.handleSubmit}>
             <div className="sign_up" style={{borderRadius:"20px"}}>
               <div className="sign_up_right w-100 overflow-hidden" style={{borderRadius:"20px"}}>
                 <div className="bg_cover d-flex flex-column align-items-center justify-content-center" style={{borderRadius:"20px"}}>
@@ -76,10 +78,10 @@ function ModalAddAdmin() {
                       id="email"
                       placeholder="Email đăng nhập"
                       className="signup_email_inp"
-                      onChange={frm.handleChange}
-                      onBlur={frm.handleBlur}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                     />
-                    <span className="text-danger">{frm.errors.email}</span>
+                    <span className="text-danger">{formik.errors.email}</span>
                     <div className="d-flex">
                       <input
                         type={typePW}
@@ -87,8 +89,8 @@ function ModalAddAdmin() {
                         placeholder="Mật khẩu đăng nhập"
                         className="signup_password_inp"
                         maxLength={35}
-                        onChange={frm.handleChange}
-                        onBlur={frm.handleBlur}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                       />
                       <i
                         className="bi bi-eye"
@@ -96,7 +98,7 @@ function ModalAddAdmin() {
                         onMouseUp={handle_Password_Icon}
                       ></i>
                     </div>
-                    <span className="text-danger">{frm.errors.password}</span>
+                    <span className="text-danger">{formik.errors.password}</span>
 
                     
                     <input
@@ -104,29 +106,44 @@ function ModalAddAdmin() {
                       id="name"
                       placeholder="Tên tài khoản"
                       className="signup_email_inp"
-                      onChange={frm.handleChange}
-                      onBlur={frm.handleBlur}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                     />
-                    <span className="text-danger">{frm.errors.name}</span>
+                    <span className="text-danger">{formik.errors.name}</span>
                     <input
                       type="text"
                       id="phone"
                       placeholder="Số điện thoại"
                       className="signup_email_inp"
-                      onChange={frm.handleChange}
-                      onBlur={frm.handleBlur}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                     />
-                    <span className="text-danger">{frm.errors.phone}</span>
+                    <span className="text-danger">{formik.errors.phone}</span>
 
-                    <input
+                    {/* <input
                       type="text"
                       id="birthday"
-                      placeholder="Sinh nhật"
+                      placeholder="Sinh nhật (DD/MM/YYYY)"
                       className="signup_email_inp"
-                      onChange={frm.handleChange}
-                      onBlur={frm.handleBlur}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    /> */}
+                    <DatePicker
+                      bordered={false}
+                      className="p-0"
+                      placeholder="Sinh nhật"
+                      format="DD/MM/YYYY"
+                      onChange={(value) => {
+                        const newValue =
+                          moment(value).format('DD/MM/YYYY');
+                          formik.values.birthday = newValue;
+                      }}
+                      defaultValue={moment(
+                        formik.values.birthday,
+                        'DD/MM/YYYY',
+                      )}
                     />
-                    <span className="text-danger">{frm.errors.birthday}</span>
+                    <span className="text-danger">{formik.errors.birthday}</span>
                   </div>
                   <div className="footer-modal">
                     <Button variant="primary mx-1" type="submit">Thêm</Button>
