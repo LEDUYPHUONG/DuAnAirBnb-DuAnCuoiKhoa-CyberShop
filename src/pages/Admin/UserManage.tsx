@@ -1,9 +1,11 @@
-import React, {MouseEvent, useEffect} from 'react'
+import React, {MouseEvent, useEffect, useRef, useState} from 'react'
 import ModalAddAdmin from '../../component/Modal/ModalAdmin/ModalAddAdmin'
 import ModalInfoAdmin from '../../component/Modal/ModalAdmin/ModalInfoAdmin'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
-import { AdmintUserModel, changeRoleUserToAdmin, deleteAccount, getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
-
+import { AdmintUserModel, changeRoleUserToAdmin, deleteAccount, getArrAdminUserApi, setArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
+import { useSearchParams } from "react-router-dom";
+import axios from 'axios'
+import { http } from '../../util/setting'
 
 export default function UserManage() {
     const { arrAdminUser, numberPage } = useAppSelector((state) => state.adminReducer)
@@ -13,6 +15,52 @@ export default function UserManage() {
         console.log(arrAdminUser);
         // eslint-disable-next-line
     },[numberPage]);
+
+
+    let keywordRef = useRef("");
+    let [searchParams, setSearchParams] = useSearchParams();
+    let timeoutRef = useRef({});
+    const getAccountByKeyword = async () => {
+        if(searchParams){
+            let keyword :string | null = searchParams.get("keyword");
+            try {
+                if (keyword && keyword.trim() !== "") {
+                    let response = await http.get(`/users/search/${keyword}`);
+                    console.log(response.data.content);
+                    dispatch(setArrAdminUserApi(response.data.content))
+                    clearTimeout(timeoutRef.current);
+                } else {
+                    dispatch(setNumberPage(1))//set number page = 1, call 5 account firstly
+                }
+                } catch (err) {
+                    console.log(err);
+                }
+        }
+        
+    };
+    
+    useEffect(() => {
+        // Khi từ khóa có giá trị thì mới chạy
+        getAccountByKeyword();
+    }, [keywordRef.current]);
+
+    const handleChange = (event : MouseEvent<HTMLFormElement>) => {
+        keywordRef.current = event.target;
+        timeoutRef.current = setTimeout(() => {
+        setSearchParams({ keyword: keywordRef.current });
+        }, 1000);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // đưa dữ liệu keyword người dùng nhập lên url
+        setSearchParams({ keyword: keywordRef.current });
+    };
+
+
+
+
+
     const handleClickSetUserRole = (item : AdmintUserModel) => {
         const {id} = item
         const  {role} = item
@@ -79,10 +127,16 @@ export default function UserManage() {
     }
   return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
                     <ModalAddAdmin />
-                    <div className='pb-3' style={{width:'100%'}}>
-                        <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Enter account or username'/>
-                        <button type="button" className="btn btn-primary me-5 ms-2"> Find</button>
-                    </div>
+                    <form className='pb-3' style={{width:'100%'}} onSubmit={handleSubmit}>
+                        <input 
+                        className='border-bottom' 
+                        style={{border:'none', outline:'none', width:'400px'}} 
+                        type="text" 
+                        placeholder='Enter account or username' 
+                        id="keywordRef" 
+                        onChange={handleChange}/>
+                        <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
+                    </form>
                     <table className="table">
                         <thead>
                             <tr>
