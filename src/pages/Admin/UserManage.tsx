@@ -1,25 +1,26 @@
-import React, {MouseEvent, useEffect, useRef, useState} from 'react'
+import React, {ChangeEvent, MouseEvent, useEffect, useRef} from 'react'
 import ModalAddAdmin from '../../component/Modal/ModalAdmin/ModalAddAdmin'
 import ModalInfoAdmin from '../../component/Modal/ModalAdmin/ModalInfoAdmin'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
 import { AdmintUserModel, changeRoleUserToAdmin, deleteAccount, getArrAdminUserApi, setArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
 import { useSearchParams } from "react-router-dom";
-import axios from 'axios'
 import { http } from '../../util/setting'
 
 export default function UserManage() {
     const { arrAdminUser, numberPage } = useAppSelector((state) => state.adminReducer)
     const dispatch = useAppDispatch()
-    useEffect(() =>{
-        dispatch(getArrAdminUserApi(numberPage))
-        console.log(arrAdminUser);
-        // eslint-disable-next-line
-    },[numberPage]);
-
 
     let keywordRef = useRef("");
     let [searchParams, setSearchParams] = useSearchParams();
     let timeoutRef = useRef({});
+    
+    useEffect(() =>{
+        dispatch(getArrAdminUserApi(numberPage))
+        getAccountByKeyword();
+        console.log(arrAdminUser);
+        // eslint-disable-next-line
+    },[numberPage, keywordRef.current]);
+
     const getAccountByKeyword = async () => {
         if(searchParams){
             let keyword :string | null = searchParams.get("keyword");
@@ -28,9 +29,9 @@ export default function UserManage() {
                     let response = await http.get(`/users/search/${keyword}`);
                     console.log(response.data.content);
                     dispatch(setArrAdminUserApi(response.data.content))
-                    clearTimeout(timeoutRef.current);
+                    // clearTimeout(timeoutRef.current);
                 } else {
-                    dispatch(setNumberPage(1))//set number page = 1, call 5 account firstly
+                    dispatch(setNumberPage(numberPage))//set number page = 1, call 5 account firstly
                 }
                 } catch (err) {
                     console.log(err);
@@ -38,21 +39,16 @@ export default function UserManage() {
         }
         
     };
-    
-    useEffect(() => {
-        // Khi từ khóa có giá trị thì mới chạy
-        getAccountByKeyword();
-    }, [keywordRef.current]);
 
-    const handleChange = (event : MouseEvent<HTMLFormElement>) => {
-        keywordRef.current = event.target;
+    const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
+        keywordRef.current = event.target.value;
         timeoutRef.current = setTimeout(() => {
         setSearchParams({ keyword: keywordRef.current });
         }, 1000);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event :React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         // đưa dữ liệu keyword người dùng nhập lên url
         setSearchParams({ keyword: keywordRef.current });
     };
@@ -79,10 +75,6 @@ export default function UserManage() {
         dispatch(deleteAccount(id))
     }
 
-    const handleClickShowInfo = (item : AdmintUserModel) => {
-        const {id} = item
-        dispatch(deleteAccount(id))
-    }
     const handelClickBtnPrevSetArrAdminUser = () => {
         if(numberPage === 1){
             return null
@@ -127,14 +119,18 @@ export default function UserManage() {
     }
   return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
                     <ModalAddAdmin />
-                    <form className='pb-3' style={{width:'100%'}} onSubmit={handleSubmit}>
+                    <form className='pb-3' style={{width:'100%'}} onSubmit={(event) =>{
+                        handleSubmit(event)
+                    }}>
                         <input 
                         className='border-bottom' 
                         style={{border:'none', outline:'none', width:'400px'}} 
                         type="text" 
                         placeholder='Enter account or username' 
                         id="keywordRef" 
-                        onChange={handleChange}/>
+                        onChange={(event : ChangeEvent<HTMLInputElement>) =>{
+                            handleChange(event)
+                        }}/>
                         <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
                     </form>
                     <table className="table">

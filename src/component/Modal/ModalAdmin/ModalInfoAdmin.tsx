@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { DatePicker } from "antd";
-import moment from "moment";
 import { AdmintUserModel } from "../../../redux/reducer/adminReducer";
 
 
