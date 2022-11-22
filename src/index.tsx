@@ -22,7 +22,6 @@ import RoomListPage from './pages/Roomlist/RoomListPage';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Admin from './pages/Admin/Admin';
-import Manage from './pages/Admin/Manage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -56,8 +55,6 @@ root.render(
             isVerification() ? (<Infor/>) : (<Login/>)}></Route>
           <Route path='admin' element={
             isVerification() ? (<Admin/>) : (<Login/>)}></Route>
-          <Route path='manage' element={
-            isVerification() ? (<Manage/>) : (<Login/>)}></Route>
           <Route path='*' element={<Navigate to='' />}></Route>
           <Route path='demo' element={<Demo />}></Route>
         </Route>

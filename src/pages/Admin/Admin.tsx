@@ -1,86 +1,23 @@
-import React, { MouseEvent,  useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import ModalAddAdmin from '../../component/Modal/ModalAdmin/ModalAddAdmin'
+import React, {useState} from 'react'
+import LocationInfoManage from '../../component/Admin/LocationInfoManage'
+import ReservationManage from '../../component/Admin/ReservationManage'
+import RoomInfoManage from '../../component/Admin/RoomInfoManage'
+import UserManage from '../../component/Admin/UserManage'
 import DropdownAdmin from '../../component/Dropdown/DropdownAdmin'
-import { RootState } from '../../redux/configStore'
-import { useAppDispatch } from '../../redux/example/hooks'
-import { AdmintUserModel, changeRoleUserToAdmin, deleteAccount, getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
-import ModalInfoAdmin from '../../component/Modal/ModalAdmin/ModalInfoAdmin'
-
 
 export default function Admin() {
-    const { arrAdminUser, numberPage } = useSelector((state: RootState) => state.adminReducer)
-    const dispatch = useAppDispatch()
-    useEffect(() =>{
-        dispatch(getArrAdminUserApi(numberPage))
-        console.log(arrAdminUser);
-        // eslint-disable-next-line
-      },[numberPage]);
-    const renderAdminUserAccount = () => {
-        return arrAdminUser.map((item,index) =>{
-            return <tr key={index}>
-                        <td> {item.id} </td>
-                        <td>{item.name}</td>
-                        <td>
-                            <img style={{width:'50px', height:'50px'}} src={item.avatar} alt="..." />
-                        </td>
-                        <td>{item.phone}</td>
-                        <td>{item.gender? 'Nam' : 'Nữ'}</td>
-                        <td>{item.role}</td>
-                        <td>
-                            <ModalInfoAdmin item={item}/>
-                            <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
-                                event.preventDefault();
-                                handleClickSetUserRole(item)
-                            }}>Sửa</button>
-                            <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
-                                event.preventDefault();
-                                handleClickDeleteAccount(item)
-                            }}>x</button>
-                        </td>
-                    </tr>
-            
-        })
-    }
-
-    const handleClickSetUserRole = (item : AdmintUserModel) => {
-        const {id} = item
-        const  {role} = item
-        let newValueRole :string = 'ADMIN'
-        if (role === 'USER') {
-            newValueRole = 'ADMIN'
-        } else{
-            newValueRole = 'USER'
-        }
-        const newInfo = {...item, role: newValueRole}
-        dispatch(changeRoleUserToAdmin(id, newInfo))
-    }
-
-    const handleClickDeleteAccount = (item : AdmintUserModel) => {
-        const {id} = item
-        dispatch(deleteAccount(id))
-    }
-
-    const handleClickShowInfo = (item : AdmintUserModel) => {
-        const {id} = item
-        dispatch(deleteAccount(id))
-    }
-    const handelClickBtnPrevSetArrAdminUser = () => {
-        if(numberPage === 1){
-            return null
+    const [isComponent, setIsComponent] = useState(1)
+    const handleShowComponentAdmin = () => {
+        if(isComponent === 1) {
+            return <UserManage />
+        } else if(isComponent === 2) {
+            return <LocationInfoManage />
+        } else if(isComponent === 3) {
+            return <RoomInfoManage />
         } else {
-            dispatch(setNumberPage(numberPage - 1))
+            return <ReservationManage />
         }
     }
-
-    const handelClickBtnNextSetArrAdminUser = () => {
-        if(arrAdminUser.length === 0){
-            return null
-        } else {
-            dispatch(setNumberPage(numberPage + 1))
-        }
-    }
-
   return (
     <div>
         <div className='d-flex justify-content-start align-items-start'>
@@ -90,10 +27,18 @@ export default function Admin() {
                     <span className='px-3'><i className="fa-solid fa-bars"></i></span>
                 </div>
                 <div className='admin-navbar-body' style={{width:'100%'}}>
-                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>User management</button>
-                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Location information management</button>
-                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Manage room information</button>
-                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}}>Reservation management</button>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}} onClick={() =>{
+                        setIsComponent(1)
+                    }}>User management</button>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}} onClick={() =>{
+                        setIsComponent(2)
+                    }}>Location information management</button>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}} onClick={() =>{
+                        setIsComponent(3)
+                    }}>Manage room information</button>
+                    <button className='btn btn-primary mt-1 w-100 rounded-0 text-start' style={{cursor: 'pointer'}} onClick={() =>{
+                        setIsComponent(4)
+                    }}>Reservation management</button>
                 </div>
             </div>
             <div className='w-100'>
@@ -103,48 +48,7 @@ export default function Admin() {
                         <DropdownAdmin />
                     </div>
                 </div>
-                <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
-                    <ModalAddAdmin />
-                    <div className='pb-3' style={{width:'100%'}}>
-                        <input className='border-bottom' style={{border:'none', outline:'none', width:'400px'}} type="text" placeholder='Enter account or username'/>
-                        <button type="button" className="btn btn-primary me-5 ms-2"> Find</button>
-                    </div>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Phone</th>
-                                <th>Gender</th>
-                                <th>Role</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody className='w-100'>
-                            {renderAdminUserAccount()}
-                            
-                        </tbody>
-                    </table>
-                    <div>
-                        <div className='' style={{position:'fixed', zIndex:10, bottom:50, right:50}}>
-                            <button className='btn btn-primary mx-2'  onClick={() => {
-                                handelClickBtnPrevSetArrAdminUser()
-                            }}>
-                                <i className="fa-solid fa-arrow-left me-2 bg-transparent"></i>
-                                prev
-                            </button>
-                            <button className='btn btn-primary mx-2'> {numberPage} </button>
-                            <button className='btn btn-primary mx-2' onClick={() => {
-                                handelClickBtnNextSetArrAdminUser()
-                            }}>
-                                
-                                next
-                                <i className="fa-solid fa-arrow-right ms-2 bg-transparent" ></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                {handleShowComponentAdmin()}
             </div>
         </div>
     </div>
