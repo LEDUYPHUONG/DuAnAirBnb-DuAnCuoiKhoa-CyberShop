@@ -120,14 +120,6 @@ function ModalAddAdmin() {
                     />
                     <span className="text-danger">{formik.errors.phone}</span>
 
-                    {/* <input
-                      type="text"
-                      id="birthday"
-                      placeholder="Sinh nhật (DD/MM/YYYY)"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    /> */}
                     <DatePicker
                       bordered={false}
                       className="p-0"

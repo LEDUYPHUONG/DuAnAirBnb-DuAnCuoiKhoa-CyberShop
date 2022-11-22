@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { MouseEvent,  useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import ModalAddAdmin from '../../component/Modal/ModalAdmin/ModalAddAdmin'
 import DropdownAdmin from '../../component/Dropdown/DropdownAdmin'
 import { RootState } from '../../redux/configStore'
 import { useAppDispatch } from '../../redux/example/hooks'
-import { getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
+import { AdmintUserModel, changeRoleUserToAdmin, getArrAdminUserApi, setNumberPage } from '../../redux/reducer/adminReducer'
 
 
 export default function Admin() {
@@ -28,18 +28,28 @@ export default function Admin() {
                         <td>{item.role}</td>
                         <td>
                             <button className='btn btn-primary'>Xem thông tin chi tiết</button>
-                            <button className='btn btn-warning mx-3 text-dark'>Sửa</button>
-                            {/*  onclick={(event: MouseEvent<HTMLButtonElement>) =>{
-                                event.preventdefault();
-                                handleClickSetUserRole()
-                            }} */}
+                            <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
+                                event.preventDefault();
+                                handleClickSetUserRole(item)
+                            }}>Sửa</button>
                             <button className='btn btn-danger'>x</button>
                         </td>
                     </tr>
             
         })
     }
-
+     const handleClickSetUserRole = (item : AdmintUserModel) => {
+        const {id} = item
+        const  {role} = item
+        let newValueRole :string = 'ADMIN'
+        if (role === 'USER') {
+            newValueRole = 'ADMIN'
+        } else{
+            newValueRole = 'USER'
+        }
+        const newInfo = {...item, role: newValueRole}
+        dispatch(changeRoleUserToAdmin(id, newInfo))
+     }
     const handelClickBtnPrevSetArrAdminUser = () => {
         if(numberPage === 1){
             return null

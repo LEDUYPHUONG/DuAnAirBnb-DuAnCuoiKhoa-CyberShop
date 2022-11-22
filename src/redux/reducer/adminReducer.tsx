@@ -54,3 +54,16 @@ export const getArrAdminUserApi = (numberPage:number) => {
       }
     };
   };
+
+export const changeRoleUserToAdmin = (id: number, newInfo: AdmintUserModel) => {
+  return async () => {
+    try {
+      const response = await http.put(`/users/${id}`, newInfo);
+      console.log(response);
+      alert('Cập nhật Role thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
