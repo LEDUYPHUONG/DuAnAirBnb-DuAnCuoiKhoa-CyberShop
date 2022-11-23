@@ -41,7 +41,7 @@ export const {
 } = adminReducer.actions
 
 export default adminReducer.reducer
-
+//.........................API action thunk: UserManage.........................
 export const getArrAdminUserApi = (numberPage:number) => {
     return async (dispatch: AppDispatch) => {
       try {
@@ -54,3 +54,31 @@ export const getArrAdminUserApi = (numberPage:number) => {
       }
     };
   };
+
+export const changeRoleUserToAdmin = (id: number, newInfo: AdmintUserModel) => {
+  return async () => {
+    try {
+      const response = await http.put(`/users/${id}`, newInfo);
+      console.log(response);
+      alert('Cập nhật Role thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteAccount = (id: number) => {
+  return async () => {
+    try {
+      const response = await http.delete(`/users?id=${id}`);
+      console.log(response);
+      alert('Delete thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+//.........................API action thunk: LocationInfoManage.........................
+
