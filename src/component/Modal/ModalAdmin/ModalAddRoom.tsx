@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { useAppDispatch } from "../../../redux/example/hooks";
 import { getAdminUserInfoApi } from "../../../redux/reducer/manageAdminUserReducer";
 import { Radio } from 'antd';
+import { postNewRoomAdminApi } from "../../../redux/reducer/adminRoomInfoManageReducer";
 
 function ModalAddRoom() {
   const [show, setShow] = useState(false);
@@ -64,7 +65,7 @@ function ModalAddRoom() {
             .required("Hình ảnh đang trống"),
     }),
     onSubmit: (values) => {
-      dispatch(getAdminUserInfoApi(values))
+      dispatch(postNewRoomAdminApi(values))
     },
   });
   const handleClose = () => setShow(false);

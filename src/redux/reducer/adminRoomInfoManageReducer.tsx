@@ -66,3 +66,16 @@ export const getRoomInfoAdminApi = (numberPageRoomInfoAdmin :number) => {
       }
     };
 };
+
+export const postNewRoomAdminApi = (values :any) => {
+  return async () => {
+    try {
+      const response = await http.post('/phong-thue', values);
+      console.log(response);
+      alert('Thêm phòng mới thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

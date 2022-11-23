@@ -1,5 +1,6 @@
 import React, { MouseEvent, useEffect} from 'react'
 import ModalAddRoom from '../../component/Modal/ModalAdmin/ModalAddRoom'
+import ModalInfoRoom from '../../component/Modal/ModalAdmin/ModalInfoRoom'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
 import { getRoomInfoAdminApi, setNumberPageRoomInfoAdmin } from '../../redux/reducer/adminRoomInfoManageReducer'
 
@@ -38,12 +39,13 @@ export default function RoomInfoManage() {
                       <td>{item.phongNgu}</td>
                       <td>{item.giuong}</td>
                       <td>
-                          <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
-                              event.preventDefault();
-                          }}>Sửa</button>
-                          <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
-                              event.preventDefault();
-                          }}>x</button>
+                            <ModalInfoRoom item={item}/>
+                            <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
+                                event.preventDefault();
+                            }}>Sửa</button>
+                            <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
+                                event.preventDefault();
+                            }}>x</button>
                       </td>
                   </tr>
           
