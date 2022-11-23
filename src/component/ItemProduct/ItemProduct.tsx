@@ -26,7 +26,8 @@ export default function ItemProduct() {
         <span> Địa điểm du lịch</span>
         <span style={{fontSize: "15px", verticalAlign: "middle"}}><i className="fa-solid fa-star"></i><span style={{fontFamily:"Roboto-Regular",verticalAlign: "middle"}}> {Math.ceil(Math.random()*5)}</span></span>
       </div>
-      <span className='d-block' style={{fontFamily:"Roboto-Regular", opacity:0.8}}>{item.tenViTri}, {item.tinhThanh}, {item.quocGia}</span>
+      <span className='d-block' style={{fontFamily:"Roboto-Regular", opacity:0.8}}>{item.tenViTri}</span>
+      <span className='d-block' style={{fontFamily:"Roboto-Regular", opacity:0.8}}>{item.tinhThanh}, {item.quocGia}</span>
     </div>
     })
   }
