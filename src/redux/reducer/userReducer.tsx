@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   ACCESS_TOKEN,
   getStoreJson,
@@ -9,14 +9,14 @@ import {
   setStoreJson,
   USER_ID,
   USER_INFO,
-} from "../../util/setting";
-import { AppDispatch } from "../configStore";
+} from '../../util/setting';
+import { AppDispatch } from '../configStore';
 
 export interface UserLoginModel {
   email: string;
   password: string;
 }
-export interface SignUpModel {
+export interface UserSignUpModel {
   id: number;
   name: string;
   email: string;
@@ -25,81 +25,81 @@ export interface SignUpModel {
   birthday: string;
   gender: boolean;
   role: string;
+  avatar: string;
 }
 
 export interface UserReducerState {
   userLogin: UserLoginModel;
-  userSignup: SignUpModel;
+  userSignup: UserSignUpModel;
 }
 
 const initialState = {
-  userLogin: getStoreJson(USER_LOGIN) || {},
+  userLogin: getStoreJson(USER_LOGIN),
+  userSignup: JSON.parse(getStoreJson(USER_INFO)),
 };
 
 const userLoginReducer = createSlice({
-  name: "userLoginReducer",
+  name: 'userLoginReducer',
   initialState,
   reducers: {
-    getUserProfile_Action: (state, action: PayloadAction<UserLoginModel>) => {
-      state.userLogin = action.payload;
+    setUserSignup: (state, action: PayloadAction<UserSignUpModel>) => {
+      state.userSignup = action.payload;
     },
   },
 });
 
-export const { getUserProfile_Action } = userLoginReducer.actions;
+export const { setUserSignup } = userLoginReducer.actions;
 
 export default userLoginReducer.reducer;
 
-export const loginApi = (userLogin: UserLoginModel) => {
+export const loginApi = (formLogin: UserLoginModel) => {
   return async (dispatch: AppDispatch) => {
-    console.log("userLogin", userLogin);
     try {
-      let result = await http.post("/auth/signin", userLogin);
-      //sau khi đăng nhập thành công lưu dữ liệu vào local hoặc cookie
-      console.log(result);
-      // setCookie(ACCESS_TOKEN, result.data.content.token, 30);
+      let result = await http.post('/auth/signin', formLogin);
+      (
+        document.getElementById('login_btn') as HTMLButtonElement
+      ).style.display = 'none';
+      (document.getElementById('spinner') as HTMLButtonElement).style.display =
+        'block';
       setStore(ACCESS_TOKEN, result.data.content.token);
       setStore(USER_ID, result.data.content.user.id);
       setStoreJson(USER_INFO, result.data.content.user);
       setTimeout(() => {
-        history.push('/profile');///${result.data.content.user.id}
+        history.push('/profile');
         window.location.reload();
       }, 500);
-      console.log(result.data.content.user.id);
-      dispatch(getProfileApi());
+      // dispatch(getProfileApi());
     } catch (err) {
       console.log(err);
-      alert("Đăng nhập không thành công. Kiểm tra lại email và mật khẩu!");
+      alert('Đăng nhập không thành công. Kiểm tra lại email và mật khẩu!');
     }
   };
 };
 
-export const getProfileApi = () => {
-  return async (dispatch: AppDispatch) => {
-    try {
-      let result = await http.get("/users");
-      getUserProfile_Action(result.data.content);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
+// export const getProfileApi = () => {
+//   return async () => {
+//     try {
+//       let result = await http.get("/users");
+//       console.log('result getProfileApi',result);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
 
-export const signupApi = (frmSignUp: SignUpModel) => {
-  return async (dispatch: AppDispatch) => {
+export const signupApi = (frmSignUp: UserSignUpModel) => {
+  return async () => {
     try {
-      let result = await http.post("/auth/signup", frmSignUp);
-      console.log(result);
-      
-      alert(
-        "Đăng ký thành công! Hãy đăng nhập để trải nghiệm nhiều hơn từ chúng tôi ^^"
-      );
+      let result = await http.post('/auth/signup', frmSignUp);
+      console.log('result signupApi', result);
+
+      alert('Đăng ký thành công!');
       setTimeout(() => {
-        history.push("/signin");
+        history.push('/signin');
         window.location.reload();
       }, 1000);
     } catch (err) {
-      console.log("dangkyErr", err);
+      console.log('dangkyErr', err);
     }
   };
 };

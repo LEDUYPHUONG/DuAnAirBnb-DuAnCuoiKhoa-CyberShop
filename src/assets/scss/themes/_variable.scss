@@ -48,7 +48,34 @@
     $ff-s-I: 'SegoeUI-Italic';
 
     $ff-t: 'Roboto-Regular';
+//hover
+#hover-color-white{
+  &:hover{
+    color: #ffffff;
+  }
+  &:focus{
+    color: #ffffff;
+  }
+};
 
+#hover-bg-white{
+  &:hover{
+    background: #ffffff;
+  }
+}
+#hover-bg-dddddd{
+  &:hover{
+    background: #dddddd;
+  }
+}
+#hover-bg-gray{
+  &:hover{
+    background: rgb(235, 235, 235);
+  }
+}
+.ant-picker-dropdown{
+  z-index: 2000;
+}
 //@mixin - @include
     @mixin text(
       $ff: $ff-p-M,

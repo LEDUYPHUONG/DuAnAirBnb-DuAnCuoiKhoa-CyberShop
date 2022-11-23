@@ -29,11 +29,6 @@ export default function Login() {
     onSubmit: (values) => {
       dispatch(loginApi(values));
       // console.log(values);
-      (
-        document.getElementById("login_btn") as HTMLButtonElement
-      ).style.display = "none";
-      (document.getElementById("spinner") as HTMLButtonElement).style.display =
-        "block";
     },
   });
 

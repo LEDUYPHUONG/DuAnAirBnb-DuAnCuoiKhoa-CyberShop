@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { http } from "../../util/setting";
-import { AppDispatch } from "../configStore";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { http, USER_INFO, setStoreJson } from '../../util/setting';
+import { AppDispatch } from '../configStore';
+import { UserSignUpModel } from './userReducer';
 
 export interface ProfileRoomModel {
   id: number;
@@ -23,10 +24,9 @@ export interface ProfileUser {
 }
 
 export interface ProfileModel {
-  arrProfileRoom: ProfileRoomModel[],
-  arrProfileUser: ProfileUser
+  arrProfileRoom: ProfileRoomModel[];
+  arrProfileUser: ProfileUser;
 }
-
 
 const initialState: ProfileModel = {
   arrProfileRoom: [],
@@ -44,19 +44,23 @@ const initialState: ProfileModel = {
 };
 
 const profileReducer = createSlice({
-  name: "profileReducer",
+  name: 'profileReducer',
   initialState,
   reducers: {
-    getProfileRoomAction: (state, action: PayloadAction<ProfileRoomModel[]>) => {
+    getProfileRoomAction: (
+      state,
+      action: PayloadAction<ProfileRoomModel[]>,
+    ) => {
       state.arrProfileRoom = action.payload;
     },
     getProfileUserAction: (state, action: PayloadAction<ProfileUser>) => {
       state.arrProfileUser = action.payload;
     },
-  }  
+  },
 });
 
-export const { getProfileRoomAction, getProfileUserAction } = profileReducer.actions;
+export const { getProfileRoomAction, getProfileUserAction } =
+  profileReducer.actions;
 
 export default profileReducer.reducer;
 
@@ -65,7 +69,7 @@ export default profileReducer.reducer;
 export const getProfileRoomApi = (idUser: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const result = await http.get("dat-phong/lay-theo-nguoi-dung/" + idUser);
+      const result = await http.get('dat-phong/lay-theo-nguoi-dung/' + idUser);
       dispatch(getProfileRoomAction(result.data.content));
     } catch (err) {
       console.log(err);
@@ -80,17 +84,24 @@ export const getProfileUserApi = (idUser: string) => {
     } catch (err) {
       console.log(err);
     }
-  }
-}
+  };
+};
 
-export const postProfileUserApi = (idUser: number, valueSubmit: FormData) => {
+export const postProfileUserApi = (
+  idUser: number,
+  valueSubmit: UserSignUpModel,
+) => {
   return async (dispacth: AppDispatch) => {
     try {
       const result = await http.put(`/users/${idUser}`, valueSubmit);
       console.log(result);
-      console.log(result.data.content);
+
+      if (result && result.data.content) {
+        console.log('Update thành công', result.data.content);
+        setStoreJson(USER_INFO, result.data.content);
+      }
     } catch (err) {
       console.log(err);
     }
-  }
-}
+  };
+};
