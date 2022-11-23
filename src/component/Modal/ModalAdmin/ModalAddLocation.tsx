@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAppDispatch } from "../../../redux/example/hooks";
-import { getAdminUserInfoApi } from "../../../redux/reducer/manageAdminUserReducer";
+import { postLocationAdminApi } from "../../../redux/reducer/adminLocationReducer";
 
 function ModalAddLocation() {
   const [show, setShow] = useState(false);
@@ -32,7 +32,7 @@ function ModalAddLocation() {
         .required("Hình ảnh đang trống"),
     }),
     onSubmit: (values) => {
-      dispatch(getAdminUserInfoApi(values))
+      dispatch(postLocationAdminApi(values))
     },
   });
   const handleClose = () => setShow(false);
@@ -94,7 +94,7 @@ function ModalAddLocation() {
                     <span className="text-danger">{formik.errors.quocGia}</span>
                     <input
                       type="text"
-                      id="id"
+                      id="hinhAnh"
                       placeholder="Hình ảnh"
                       className="signup_email_inp"
                       onChange={formik.handleChange}

@@ -52,3 +52,15 @@ export const getLocationAdminApi = (numberPageAdmin :number) => {
       }
     };
 };
+
+export const postLocationAdminApi = (form :LocationModel) => {
+  return async () => {
+    try {
+      const response = await http.post('/vi-tri', form);
+      console.log(response);
+      alert('Tạo vị trí mới thành công!')
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
