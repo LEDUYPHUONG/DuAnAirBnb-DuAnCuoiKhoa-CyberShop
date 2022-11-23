@@ -27,7 +27,6 @@ export interface RoomInfoModel {
 export interface AdminRoomInfoModel {
     arrRoomInfoAdmin: RoomInfoModel[],
     numberPageRoomInfoAdmin: number,
-
 }
 
 const initialState: AdminRoomInfoModel = {
@@ -57,9 +56,7 @@ export default adminRoomInfoManageReducer.reducer
 export const getRoomInfoAdminApi = (numberPageRoomInfoAdmin :number) => {
     return async (dispatch: AppDispatch) => {
       try {
-        const response = await http.get(`/phong-thue/phan-trang-tim-kiem?pageIndex=${numberPageRoomInfoAdmin}&pageSize=5`);
-        console.log(response);
-        
+        const response = await http.get(`/phong-thue/phan-trang-tim-kiem?pageIndex=${numberPageRoomInfoAdmin}&pageSize=5`);       
         dispatch(setArrRoomInfoAdminApi(response.data.content.data))
       } catch (error) {
         console.log(error);
@@ -73,6 +70,32 @@ export const postNewRoomAdminApi = (values :any) => {
       const response = await http.post('/phong-thue', values);
       console.log(response);
       alert('Thêm phòng mới thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const putEditRoomAdminApi = (id: number,values :any) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await http.put(`/phong-thue/${id}`, values);
+      console.log(response);
+      alert('Sửa thông tin phòng thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteRoomAdminApi = (id: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await http.delete(`/phong-thue/${id}`);
+      console.log('deleteRoomAdminApi',response.data.content);
+      alert('Delete Thành công!')
       window.location.reload()
     } catch (error) {
       console.log(error);

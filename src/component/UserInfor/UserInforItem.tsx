@@ -239,7 +239,7 @@ export default function UserInforItem() {
             </div>
             <form
               onSubmit={(form) => {
-                console.log({ formInfoUser }); // em có thể console để kiểm tra formInfoUser có nhưng function nào
+                console.log({ formInfoUser });
                 formInfoUser.handleSubmit(form);
                 const { values } = formInfoUser;
                 console.log('submit', values);

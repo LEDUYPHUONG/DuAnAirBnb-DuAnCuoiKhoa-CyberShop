@@ -1,8 +1,9 @@
 import React, { MouseEvent, useEffect} from 'react'
 import ModalAddRoom from '../../component/Modal/ModalAdmin/ModalAddRoom'
+import ModalEditRoom from '../../component/Modal/ModalAdmin/ModalEditRoom'
 import ModalInfoRoom from '../../component/Modal/ModalAdmin/ModalInfoRoom'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
-import { getRoomInfoAdminApi, setNumberPageRoomInfoAdmin } from '../../redux/reducer/adminRoomInfoManageReducer'
+import { deleteRoomAdminApi, getRoomInfoAdminApi, setNumberPageRoomInfoAdmin } from '../../redux/reducer/adminRoomInfoManageReducer'
 
 export default function RoomInfoManage() {
   const { arrRoomInfoAdmin, numberPageRoomInfoAdmin } = useAppSelector((state) => state.adminRoomInfoManageReducer)
@@ -10,7 +11,6 @@ export default function RoomInfoManage() {
 
   useEffect(() =>{
       dispatch(getRoomInfoAdminApi(numberPageRoomInfoAdmin))
-      console.log(arrRoomInfoAdmin);
       // eslint-disable-next-line
   },[numberPageRoomInfoAdmin]);
   
@@ -18,7 +18,7 @@ export default function RoomInfoManage() {
       if(numberPageRoomInfoAdmin === 1){
           return null
       } else {
-          dispatch(setNumberPageRoomInfoAdmin(numberPageRoomInfoAdmin - 1))
+            dispatch(setNumberPageRoomInfoAdmin(numberPageRoomInfoAdmin - 1))
       }
   }
 
@@ -26,7 +26,7 @@ export default function RoomInfoManage() {
       if(arrRoomInfoAdmin.length === 0){
           return null
       } else {
-          dispatch(setNumberPageRoomInfoAdmin(numberPageRoomInfoAdmin + 1))
+            dispatch(setNumberPageRoomInfoAdmin(numberPageRoomInfoAdmin + 1))
       }
   }
 
@@ -40,18 +40,18 @@ export default function RoomInfoManage() {
                       <td>{item.giuong}</td>
                       <td>
                             <ModalInfoRoom item={item}/>
-                            <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
-                                event.preventDefault();
-                            }}>Sửa</button>
+                            <ModalEditRoom item={item}/>
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
+                                dispatch(deleteRoomAdminApi(item.id))
                             }}>x</button>
                       </td>
                   </tr>
           
       })
   }
-return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
+return (
+                <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
                   <ModalAddRoom />
                   <form className='pb-3' style={{width:'100%'}}>
                       <input 
@@ -97,5 +97,6 @@ return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}
                           </button>
                       </div>
                   </div>
-              </div>
+                </div>
+)
 }

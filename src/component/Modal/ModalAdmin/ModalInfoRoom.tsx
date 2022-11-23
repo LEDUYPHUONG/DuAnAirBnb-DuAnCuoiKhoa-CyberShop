@@ -13,7 +13,7 @@ function ModalInfoRoom({item} : Props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+  
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -42,7 +42,7 @@ function ModalInfoRoom({item} : Props) {
                     <p className="text-dark input-group-text text-wrap text-start">Mã vị trí: {item.maViTri}</p>
                     <p className="text-dark input-group-text text-wrap text-start text-center fw-bold">Tiện ích đi kèm</p>
 
-                    <p className="text-dark input-group-text text-wrap text-start px-5 d-flex justify-content-between align-items-center">
+                    <div className="text-dark input-group-text text-wrap text-start px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Máy giặt:</span>
                         <Radio.Group
                             className="pe-5"
@@ -52,8 +52,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Bàn là:</span>
                         <Radio.Group
                             className="pe-5"
@@ -63,8 +63,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Ti vi:</span>
                         <Radio.Group
                             className="pe-5"
@@ -74,8 +74,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Điều hòa:</span>
                         <Radio.Group
                             className="pe-5"
@@ -85,8 +85,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Wifi:</span>
                         <Radio.Group
                             className="pe-5"
@@ -96,8 +96,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Bếp:</span>
                         <Radio.Group
                             className="pe-5"
@@ -107,8 +107,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Chổ đỗ xe:</span>
                         <Radio.Group
                             className="pe-5"
@@ -118,8 +118,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Hồ bơi:</span>
                         <Radio.Group
                             className="pe-5"
@@ -129,8 +129,8 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
-                    <p className="text-dark px-5 d-flex justify-content-between align-items-center">
+                    </div>
+                    <div className="text-dark px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Bàn ủi:</span>
                         <Radio.Group
                             className="pe-5"
@@ -140,7 +140,7 @@ function ModalInfoRoom({item} : Props) {
                             <Radio value="true">Có</Radio>
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
-                    </p>
+                    </div>
                     <p className="text-dark text-center fw-bold">Hình ảnh</p>
 
                     <p className="text-center"><img width={150} height={150} style={{objectFit:'cover'}} src={item.hinhAnh} alt="Hình ảnh" /></p>

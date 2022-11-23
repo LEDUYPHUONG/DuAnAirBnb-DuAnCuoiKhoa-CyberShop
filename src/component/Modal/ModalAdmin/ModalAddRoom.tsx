@@ -4,7 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAppDispatch } from "../../../redux/example/hooks";
-import { getAdminUserInfoApi } from "../../../redux/reducer/manageAdminUserReducer";
 import { Radio } from 'antd';
 import { postNewRoomAdminApi } from "../../../redux/reducer/adminRoomInfoManageReducer";
 
