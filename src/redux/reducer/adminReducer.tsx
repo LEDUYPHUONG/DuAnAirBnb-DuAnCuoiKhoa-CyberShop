@@ -41,7 +41,7 @@ export const {
 } = adminReducer.actions
 
 export default adminReducer.reducer
-
+//.........................API action thunk: UserManage.........................
 export const getArrAdminUserApi = (numberPage:number) => {
     return async (dispatch: AppDispatch) => {
       try {
@@ -80,3 +80,5 @@ export const deleteAccount = (id: number) => {
     }
   };
 };
+//.........................API action thunk: LocationInfoManage.........................
+
