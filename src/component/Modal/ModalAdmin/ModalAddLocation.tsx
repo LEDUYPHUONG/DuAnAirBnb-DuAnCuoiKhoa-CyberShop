@@ -5,16 +5,10 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAppDispatch } from "../../../redux/example/hooks";
 import { getAdminUserInfoApi } from "../../../redux/reducer/manageAdminUserReducer";
-import { DatePicker } from "antd";
-import moment from "moment";
 
 function ModalAddLocation() {
   const [show, setShow] = useState(false);
   const dispatch = useAppDispatch()
-  const [typePW, setTypePW] = useState("password");
-  const handle_Password_Icon = () => {
-    typePW === "password" ? setTypePW("text") : setTypePW("password");
-  };
 
   const formik = useFormik({
     initialValues: {
