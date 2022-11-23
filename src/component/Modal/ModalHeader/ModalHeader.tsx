@@ -90,6 +90,9 @@ function ModalHeader() {
             className="btn btn-outline-light py-1 px-5 my-1 text-start d-flex flex-nowrap justify-content-start align-items-center w-100"
             onClick={() => {
               handleClickSetKeySearchLocation(location);
+              handelClickMoveToRoomListPage();
+              setShow(false)
+              setValueInputSearch('')
             }}
           >
             <div
@@ -445,9 +448,6 @@ function ModalHeader() {
                           lineHeight: "14px",
                           textAlign: "center",
                           outline: "none",
-                        }}
-                        onClick={() => {
-                          handelClickMoveToRoomListPage();
                         }}
                       >
                         <i

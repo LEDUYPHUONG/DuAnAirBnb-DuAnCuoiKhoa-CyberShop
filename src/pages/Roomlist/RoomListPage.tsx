@@ -27,7 +27,7 @@ export default function RoomListPage({ title }: Props) {
   useEffect(() => {
     dispatch(getRoomlistApi(productSearch.id));
     // eslint-disable-next-line
-  }, []);
+  }, [productSearch]);
 
   return (
     <>
