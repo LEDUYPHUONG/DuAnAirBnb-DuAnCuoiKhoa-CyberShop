@@ -19,16 +19,17 @@ function ModalAddLocation() {
       hinhAnh: "",
     },
     validationSchema: Yup.object().shape({
-      id: Yup.string()
+      id: Yup.number()
+        .min(1,'ID đang trống')
         .required("ID đang trống"),
       tenViTri: Yup.string()
-        .required("tenViTri đang trống"),
+        .required("Tên vị trí đang trống"),
       tinhThanh: Yup.string()
-        .required("tinhThanh đang trống"),
+        .required("Tỉnh thành đang trống"),
       quocGia: Yup.string()
-        .required("quocGia đang trống"),
+        .required("Quốc gia đang trống"),
       hinhAnh: Yup.string()
-        .required("hinhAnh đang trống"),
+        .required("Hình ảnh đang trống"),
     }),
     onSubmit: (values) => {
       dispatch(getAdminUserInfoApi(values))
