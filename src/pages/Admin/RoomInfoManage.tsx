@@ -43,7 +43,13 @@ export default function RoomInfoManage() {
                             <ModalEditRoom item={item}/>
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
-                                dispatch(deleteRoomAdminApi(item.id))
+                                let text = "Press a button!\nEither OK or Cancel.";
+                                if (window.confirm(text) == true) {
+                                  text = "You pressed OK!";
+                                  dispatch(deleteRoomAdminApi(item.id))
+                                } else {
+                                  text = "You canceled!";
+                                }
                             }}>x</button>
                       </td>
                   </tr>

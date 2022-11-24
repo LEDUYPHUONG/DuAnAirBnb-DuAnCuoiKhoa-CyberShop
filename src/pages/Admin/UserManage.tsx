@@ -106,11 +106,24 @@ export default function UserManage() {
                             <ModalInfoAdmin item={item}/>
                             <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
-                                handleClickSetUserRole(item)
+                                let text = "Press a button!\nEither OK or Cancel.";
+                                if (window.confirm(text) == true) {
+                                  text = "You pressed OK!";
+                                  handleClickSetUserRole(item)
+                                } else {
+                                  text = "You canceled!";
+                                }
                             }}>Sửa</button>
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
-                                handleClickDeleteAccount(item)
+                                let text = "Press a button!\nEither OK or Cancel.";
+                                if (window.confirm(text) == true) {
+                                  text = "You pressed OK!";
+                                  handleClickDeleteAccount(item)
+                                } else {
+                                  text = "You canceled!";
+                                }
+                                
                             }}>x</button>
                         </td>
                     </tr>

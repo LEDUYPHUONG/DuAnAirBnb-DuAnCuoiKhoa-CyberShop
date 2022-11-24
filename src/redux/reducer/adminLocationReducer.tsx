@@ -59,6 +59,7 @@ export const postLocationAdminApi = (form :LocationModel) => {
       const response = await http.post('/vi-tri', form);
       console.log(response);
       alert('Tạo vị trí mới thành công!')
+      window.location.reload()
     } catch (error) {
       console.log(error);
     }
