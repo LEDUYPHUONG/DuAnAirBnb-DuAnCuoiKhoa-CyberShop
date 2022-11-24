@@ -76,6 +76,9 @@
 .ant-picker-dropdown{
   z-index: 2000;
 }
+.popup-content {
+  z-index: 9999 !important;
+}
 //@mixin - @include
     @mixin text(
       $ff: $ff-p-M,

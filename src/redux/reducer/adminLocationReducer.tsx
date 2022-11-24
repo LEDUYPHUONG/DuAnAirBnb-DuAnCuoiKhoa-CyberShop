@@ -65,3 +65,16 @@ export const postLocationAdminApi = (form :LocationModel) => {
     }
   };
 };
+
+export const putLocationAdminApi = (id :number,form :LocationModel) => {
+  return async () => {
+    try {
+      const response = await http.put(`/vi-tri/${id}`, form);
+      console.log(response);
+      alert('Sửa vị trí thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

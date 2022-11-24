@@ -4,6 +4,7 @@ import ModalAddLocation from '../../component/Modal/ModalAdmin/ModalAddLocation'
 import { getLocationAdminApi, LocationModel, setArrLocationAdminApi, setNumberPageAdmin } from '../../redux/reducer/adminLocationReducer'
 import { useSearchParams } from 'react-router-dom'
 import { http } from '../../util/setting'
+import ModalEditLocation from '../../component/Modal/ModalAdmin/ModalEditLocation'
 
 export default function LocationInfoManage() {
   const { arrLocationAdmin, numberPageAdmin } = useAppSelector((state) => state.adminLocationReducer)
@@ -84,10 +85,8 @@ export default function LocationInfoManage() {
                           <img style={{width:'50px', height:'50px'}} src={item.hinhAnh} alt="..." />
                       </td>
                       <td>
-                          <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
-                              event.preventDefault();
-                          }}>Sửa</button>
-                          <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
+                            <ModalEditLocation item={item} />
+                            <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                               event.preventDefault();
                               let text = "Press a button!\nEither OK or Cancel.";
                                 if (window.confirm(text) == true) {
@@ -97,7 +96,7 @@ export default function LocationInfoManage() {
                                 } else {
                                   text = "You canceled!";
                                 }
-                          }}>x</button>
+                            }}>x</button>
                       </td>
                   </tr>
           
