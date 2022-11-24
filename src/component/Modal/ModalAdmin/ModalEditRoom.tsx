@@ -6,6 +6,8 @@ import Modal from "react-bootstrap/Modal";
 import { putEditRoomAdminApi, RoomInfoModel } from "../../../redux/reducer/adminRoomInfoManageReducer";
 import * as Yup from 'yup';
 import { useAppDispatch } from "../../../redux/example/hooks";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 type Props = {
     item: RoomInfoModel
@@ -41,9 +43,6 @@ function ModalEditRoom({item} : Props) {
             hinhAnh:  item.hinhAnh,
         },
         validationSchema: Yup.object().shape({
-            id: Yup.number()
-                .min(1,'ID đang trống')
-                .required('ID đang trống'),
             tenPhong: Yup.string()
                 .required("Tên phòng đang trống"),
             khach: Yup.number()
@@ -100,24 +99,27 @@ function ModalEditRoom({item} : Props) {
                 >
                   <h2 className="pt-3 fw-semiBold text-danger" style={{fontSize:'25px'}}>THÔNG TIN CỦA PHÒNG CẦN SỬA</h2>
                   <div className="signup_input w-100 px-3">
-                    <div className="input-group mt-3">
-                        <span className="input-group-text">id</span>
-                        <input 
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            className="form-control"
-                            type="number"
-                            id="id"
-                            name="id"
-                            value={formik.values.id}
-                            disabled
-                        />
-                        
-                    </div>
-                    {formik.errors.id &&
-                            formik.touched.id && (
-                              <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.id}</p>
-                            )}
+                    <Popup 
+                        trigger={
+                            <div className="input-group mt-3">
+                                <span className="input-group-text">id</span>
+                                <input 
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    className="form-control"
+                                    type="number"
+                                    id="id"
+                                    name="id"
+                                    value={formik.values.id}
+                                    disabled
+                                />
+                                
+                            </div>
+                        } 
+                        position="top center"
+                        >
+                        <div>This field cannot be changed!</div>
+                    </Popup>
                     <div className="input-group mt-3">
                         <span className="input-group-text">Tên phòng</span>
                         <input 
