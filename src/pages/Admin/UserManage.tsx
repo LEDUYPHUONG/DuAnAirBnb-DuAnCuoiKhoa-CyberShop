@@ -139,7 +139,7 @@ export default function UserManage() {
                         className='border-bottom' 
                         style={{border:'none', outline:'none', width:'400px'}} 
                         type="text" 
-                        placeholder='Enter account or username' 
+                        placeholder='Enter name of account' 
                         id="keywordRef" 
                         onChange={(event : ChangeEvent<HTMLInputElement>) =>{
                             handleChange(event)
