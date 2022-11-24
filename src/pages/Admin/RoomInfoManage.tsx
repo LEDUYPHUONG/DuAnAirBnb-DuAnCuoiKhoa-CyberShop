@@ -1,19 +1,64 @@
-import React, { MouseEvent, useEffect} from 'react'
+import React, { ChangeEvent, MouseEvent, useEffect, useRef} from 'react'
 import ModalAddRoom from '../../component/Modal/ModalAdmin/ModalAddRoom'
 import ModalEditRoom from '../../component/Modal/ModalAdmin/ModalEditRoom'
 import ModalInfoRoom from '../../component/Modal/ModalAdmin/ModalInfoRoom'
+import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
-import { deleteRoomAdminApi, getRoomInfoAdminApi, setNumberPageRoomInfoAdmin } from '../../redux/reducer/adminRoomInfoManageReducer'
+import { deleteRoomAdminApi, getRoomInfoAdminApi, RoomInfoModel, setArrRoomInfoAdminApi, setNumberPageRoomInfoAdmin } from '../../redux/reducer/adminRoomInfoManageReducer'
+import { http } from '../../util/setting'
 
 export default function RoomInfoManage() {
   const { arrRoomInfoAdmin, numberPageRoomInfoAdmin } = useAppSelector((state) => state.adminRoomInfoManageReducer)
   const dispatch = useAppDispatch()
+  let keywordRef = useRef("");
+  let [searchParams, setSearchParams] = useSearchParams();
+  let timeoutRef = useRef({});
 
   useEffect(() =>{
       dispatch(getRoomInfoAdminApi(numberPageRoomInfoAdmin))
+      getRoomByKeyword()
       // eslint-disable-next-line
-  },[numberPageRoomInfoAdmin]);
+  },[numberPageRoomInfoAdmin, keywordRef.current]);
   
+
+  const getRoomByKeyword = async () => {
+    if(searchParams){
+        let keyword :string | null = searchParams.get("keyword");        
+        try {
+            if (keyword && keyword.trim() !== "") {
+                let response = await http.get(`/phong-thue/${keyword}`);
+                console.log(response.data.content);
+                const arrNull: RoomInfoModel[] = []
+                const resultSearch = [...arrNull,response.data.content]
+                dispatch(setArrRoomInfoAdminApi(resultSearch))
+                // clearTimeout(timeoutRef.current);
+            } else {
+                dispatch(setNumberPageRoomInfoAdmin(numberPageRoomInfoAdmin))//set number page = 1, call 5 account firstly
+            }
+            } catch (err) {
+                console.log(err);
+            }
+    }
+    
+    };
+    const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
+        keywordRef.current = event.target.value;
+        timeoutRef.current = setTimeout(() => {
+        setSearchParams({ keyword: keywordRef.current });
+        }, 1000);
+    };
+
+    const handleSubmit = (event :React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        // đưa dữ liệu keyword người dùng nhập lên url
+        setSearchParams({ keyword: keywordRef.current });
+    };
+
+
+
+
+
+
   const handelClickBtnPrevSetArrRoomInfoAdmin = () => {
       if(numberPageRoomInfoAdmin === 1){
           return null
@@ -59,13 +104,18 @@ export default function RoomInfoManage() {
 return (
                 <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
                   <ModalAddRoom />
-                  <form className='pb-3' style={{width:'100%'}}>
+                  <form className='pb-3' style={{width:'100%'}}  onSubmit={(event) =>{
+                        handleSubmit(event)
+                    }}>
                       <input 
                       className='border-bottom' 
                       style={{border:'none', outline:'none', width:'400px'}} 
                       type="text" 
-                      placeholder='Enter account or username' 
-                      id="keywordRef" 
+                      placeholder='Enter ID room' 
+                      id="keywordRef"
+                      onChange={(event : ChangeEvent<HTMLInputElement>) =>{
+                        handleChange(event)
+                    }}
                       />
                       <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
                   </form>

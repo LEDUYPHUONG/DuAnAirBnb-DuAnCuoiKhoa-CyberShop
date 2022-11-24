@@ -16,11 +16,11 @@ export default function LocationInfoManage() {
 
   useEffect(() =>{
       dispatch(getLocationAdminApi(numberPageAdmin))
-      getAccountByKeyword()
+      getLocationByKeyword()
       // eslint-disable-next-line
   },[numberPageAdmin, keywordRef.current]);
   
-    const getAccountByKeyword = async () => {
+    const getLocationByKeyword = async () => {
     if(searchParams){
         let keyword :string | null = searchParams.get("keyword");
         try {
@@ -30,8 +30,6 @@ export default function LocationInfoManage() {
                 const arrNull: LocationModel[] = []
                 const resultSearch = [...arrNull,response.data.content]
                 dispatch(setArrLocationAdminApi(resultSearch))
-                
-                // dispatch(setArrLocationAdminApi(response.data.content))
                 // clearTimeout(timeoutRef.current);
             } else {
                 dispatch(setNumberPageAdmin(numberPageAdmin))//set number page = 1, call 5 account firstly
