@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { http } from '../../util/setting';
+import { history, http } from '../../util/setting';
 import { AppDispatch } from '../configStore';
 
 export interface RoomInfoModel {
@@ -83,6 +83,7 @@ export const putEditRoomAdminApi = (id: number,values :any) => {
       const response = await http.put(`/phong-thue/${id}`, values);
       console.log(response);
       alert('Sửa thông tin phòng thành công!')
+      history.push('/admin/roominfomanage')
       window.location.reload()
     } catch (error) {
       console.log(error);

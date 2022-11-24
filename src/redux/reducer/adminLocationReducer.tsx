@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { http } from "../../util/setting";
+import { history, http } from "../../util/setting";
 import { AppDispatch } from "../configStore";
 
 
@@ -72,6 +72,7 @@ export const putLocationAdminApi = (id :number,form :LocationModel) => {
       const response = await http.put(`/vi-tri/${id}`, form);
       console.log(response);
       alert('Sửa vị trí thành công!')
+      history.push('/admin/locationinfomanage')
       window.location.reload()
     } catch (error) {
       console.log(error);
