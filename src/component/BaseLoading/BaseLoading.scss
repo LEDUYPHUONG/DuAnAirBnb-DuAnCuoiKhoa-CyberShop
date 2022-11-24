@@ -1,0 +1,52 @@
+$span-out: 0;
+
+.base-loading {
+  position: relative;
+
+  // White background layout
+  &::after {
+    content: ' ';
+    position: absolute;
+    z-index: 10;
+    left: $span-out;
+    right: $span-out;
+    bottom: $span-out;
+    top: $span-out;
+    cursor: wait;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: none;
+  }
+
+  &.is-inline {
+    position: static;
+  }
+
+  &.is-loading {
+    min-height: 100px;
+
+    &.is-locked {
+      &::after {
+        display: block;
+      }
+    }
+
+    > .spinner-wrapper {
+      display: block;
+    }
+  }
+
+  &.is-transparent {
+    &:after {
+      background-color: transparent;
+    }
+  }
+
+  .spinner-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 12;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+}
