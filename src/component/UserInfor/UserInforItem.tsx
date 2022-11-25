@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import { UserSignUpModel } from '../../redux/reducer/userReducer';
 import DatePicker from 'antd/es/date-picker';
 import { Radio } from 'antd';
+import ModalUpdateImage from '../Modal/ModalProfile/ModalUpdateImage';
 
 export default function UserInforItem() {
   const { arrProfileRoom, arrProfileUser } = useAppSelector(
@@ -134,16 +135,7 @@ export default function UserInforItem() {
                     className="infor-editimg"
                     style={{ textAlign: 'center' }}
                   >
-                    <button
-                      className="btn btn-primary edit"
-                      style={{ marginTop: 8 }}
-                      onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                        event.preventDefault();
-                        setOpen(!open);
-                      }}
-                    >
-                      Cập nhật ảnh
-                    </button>
+                    <ModalUpdateImage />
                   </div>
                 </div>
                 <div
@@ -239,10 +231,8 @@ export default function UserInforItem() {
             </div>
             <form
               onSubmit={(form) => {
-                console.log({ formInfoUser });
                 formInfoUser.handleSubmit(form);
                 const { values } = formInfoUser;
-                console.log('submit', values);
                 dispatch(postProfileUserApi(values.id, values));
               }}
             >
@@ -381,6 +371,74 @@ export default function UserInforItem() {
                               <p>{formInfoUser.errors.role}</p>
                             )}
                         </div>
+                        
+                        <p
+                          className="d-flex justify-content-between align-items-center "
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          <span>Password</span>
+                          <span
+                            onClick={() => {
+                              setEyeInputPassword(!eyeInputPassword);
+                            }}
+                          >
+                            <i
+                              className={
+                                eyeInputPassword
+                                  ? 'fa-solid fa-eye'
+                                  : 'fa-solid fa-eye-slash'
+                              }
+                            ></i>
+                          </span>
+                        </p>
+                        <div className="input-group">
+                          <input
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
+                            type={eyeInputPassword ? 'text' : 'password'}
+                            className="form-control"
+                            name="password"
+                            id="password"
+                            style={{ borderRadius: 5! }}
+                            value={formInfoUser.values.password}
+                            disabled
+                          />
+                        </div>
+                        {formInfoUser.errors.password &&
+                            formInfoUser.touched.password && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.password}</p>
+                            )}
+                        
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Avata
+                        </p>
+                        <div className="input-group">
+                          <input
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
+                            type="text"
+                            className="form-control"
+                            id="avatar"
+                            name="avatar"
+                            style={{ borderRadius: 5! }}
+                            defaultValue={formInfoUser.values.avatar === '' ? 'Bạn chưa cập nhật ảnh' : formInfoUser.values.avatar}
+                            disabled
+                          />
+                        </div>
+                        {formInfoUser.errors.avatar &&
+                            formInfoUser.touched.avatar && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.avatar}</p>
+                            )}
 
                         <p
                           style={{
@@ -437,45 +495,6 @@ export default function UserInforItem() {
                             )}
 
                         <p
-                          className="d-flex justify-content-between align-items-center "
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          <span>Password</span>
-                          <span
-                            onClick={() => {
-                              setEyeInputPassword(!eyeInputPassword);
-                            }}
-                          >
-                            <i
-                              className={
-                                eyeInputPassword
-                                  ? 'fa-solid fa-eye'
-                                  : 'fa-solid fa-eye-slash'
-                              }
-                            ></i>
-                          </span>
-                        </p>
-                        <div className="input-group">
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type={eyeInputPassword ? 'text' : 'password'}
-                            className="form-control"
-                            name="password"
-                            id="password"
-                            style={{ borderRadius: 5! }}
-                            value={formInfoUser.values.password}
-                          />
-                        </div>
-                        {formInfoUser.errors.password &&
-                            formInfoUser.touched.password && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.password}</p>
-                            )}
-                        <p
                           style={{
                             fontSize: 16,
                             marginTop: 20,
@@ -524,32 +543,6 @@ export default function UserInforItem() {
                             <Radio value="false">Women</Radio>
                           </Radio.Group>
                         </div>
-
-                        <p
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          Avata
-                        </p>
-                        <div className="input-group">
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type="text"
-                            className="form-control"
-                            id="avatar"
-                            name="avatar"
-                            style={{ borderRadius: 5! }}
-                            defaultValue={formInfoUser.values.avatar === '' ? 'https://i.pravatar.cc/' : formInfoUser.values.avatar}
-                          />
-                        </div>
-                        {formInfoUser.errors.avatar &&
-                            formInfoUser.touched.avatar && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.avatar}</p>
-                            )}
 
                         <div
                           className="d-flex justify-content-between mt-3"

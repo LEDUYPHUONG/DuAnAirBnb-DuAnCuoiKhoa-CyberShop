@@ -18,12 +18,17 @@ export interface AdminRoomBookedModel {
     arrRoomBookedAdmin: RoomBookedModel[],
     numberPageRoomBookedAdmin: number,
     arrNgayOLaiAdmin: NgayOLaiModel,
+    ngayDatPhongAdmin: NgayOLaiModel,
 }
 export interface ArrNgayOLaiAdminModel {}
 const initialState: AdminRoomBookedModel = {
     arrRoomBookedAdmin: [],
     numberPageRoomBookedAdmin: 1,
     arrNgayOLaiAdmin: {
+      0: '',
+      1: '',
+    },
+    ngayDatPhongAdmin: {
       0: '',
       1: '',
     },
@@ -42,10 +47,13 @@ const adminReservationManageReducer = createSlice({
     setArrNgayOLaiAdmin: (state, action: PayloadAction<NgayOLaiModel>) => {
       state.arrNgayOLaiAdmin = action.payload;
     },
+    setNgayDatPhongAdmin: (state, action: PayloadAction<NgayOLaiModel>) => {
+      state.ngayDatPhongAdmin = action.payload;
+    },
   }
 });
 
-export const {setArrRoomBookedAdminApi, setNumberPageRoomBookedAdmin, setArrNgayOLaiAdmin} = adminReservationManageReducer.actions
+export const {setArrRoomBookedAdminApi, setNumberPageRoomBookedAdmin, setArrNgayOLaiAdmin, setNgayDatPhongAdmin} = adminReservationManageReducer.actions
 
 export default adminReservationManageReducer.reducer
 
@@ -80,6 +88,19 @@ export const deleteRoomBookedAdminApi = (id: number) => {
     try {
       const response = await http.delete(`/dat-phong/${id}`);
       alert('Delete Thành công!')
+      history.push('/admin/reservationmanage')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const postRoomBookedAdminApi = (values :any) => {
+  return async () => {
+    try {
+      const response = await http.post('/dat-phong', values);
+      alert('Đặt phòng thành công!')
       history.push('/admin/reservationmanage')
       window.location.reload()
     } catch (error) {

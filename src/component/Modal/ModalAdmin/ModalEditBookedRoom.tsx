@@ -6,9 +6,8 @@ import { useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../../redux/example/hooks";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { NgayOLaiModel, putEditRoomBookedAdminApi, RoomBookedModel, setArrNgayOLaiAdmin } from "../../../redux/reducer/adminReservatiionManageReducer";
+import { putEditRoomBookedAdminApi, RoomBookedModel, setArrNgayOLaiAdmin } from "../../../redux/reducer/adminReservatiionManageReducer";
 import { DatePicker } from "antd";
-import * as dayjs from 'dayjs'
 import moment from "moment";
 type Props = {
     item: RoomBookedModel
@@ -30,7 +29,6 @@ function ModalEditBookedRoom({item} : Props) {
         }
       ))
   }
-  console.log(arrNgayOLaiAdmin);
   
   const formik = useFormik({
     enableReinitialize: true,
@@ -163,7 +161,16 @@ function ModalEditBookedRoom({item} : Props) {
                     </div>                    
                     <span className="text-danger mb-3" style={{fontSize: '14px'}}>{formik.errors.soLuongKhach}</span>
 
-                    {/* <div className="input-group">
+                    <RangePicker
+                        placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
+                        format={["YYYY-MM-DD"]}
+                        onChange={(date, dateString) =>
+                            onChangeDate(date, dateString)
+                        }
+                        className='w-100 mb-3 text-danger'
+                    />
+
+                    <div className="input-group">
                         <span className="input-group-text" id="basic-addon1">Ngày đến</span>
                         <input
                         type="text"
@@ -173,6 +180,7 @@ function ModalEditBookedRoom({item} : Props) {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.ngayDen}
+                        disabled
                         />
                     </div>  
                     <span className="text-danger mb-3" style={{fontSize: '14px'}}>{formik.errors.ngayDen}</span>
@@ -187,18 +195,11 @@ function ModalEditBookedRoom({item} : Props) {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.ngayDi}
+                        disabled
                         />
                     </div>  
                     <span className="text-danger mb-3" style={{fontSize: '14px'}}>{formik.errors.ngayDi}</span>
-                     */}
-                    <RangePicker
-                    placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
-                    format={["YYYY-MM-DD"]}
-                    onChange={(date, dateString) =>
-                        onChangeDate(date, dateString)
-                    }
-                    className='w-100 mb-3'
-                    />
+                    
                   </div>
                   <div className="footer-modal">
                     <Button variant="primary mx-1" type="submit">Sửa</Button>
