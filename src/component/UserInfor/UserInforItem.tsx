@@ -39,23 +39,17 @@ export default function UserInforItem() {
     },
     onSubmit: (values: UserSignUpModel) => {
       console.log('on submit');
-
-      dispatch(postProfileUserApi(values.id, values));
       // resetForm();
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required('Name required!'),
       phone: Yup.string().required('Phone required!'),
       password: Yup.string().required('Password required'),
-      avatar: Yup.string().required('Avatar required!'),
     }),
   });
 
   useEffect(() => {
     const idUser: string = getStoreJson(USER_ID);
-    console.log(idUser);
-    console.log('arrProfileRoom', arrProfileRoom);
-
     dispatch(getProfileRoomApi(idUser));
     dispatch(getProfileUserApi(idUser));
     // eslint-disable-next-line
@@ -411,33 +405,6 @@ export default function UserInforItem() {
                         {formInfoUser.errors.password &&
                             formInfoUser.touched.password && (
                               <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.password}</p>
-                            )}
-                        
-                        <p
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          Avata
-                        </p>
-                        <div className="input-group">
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type="text"
-                            className="form-control"
-                            id="avatar"
-                            name="avatar"
-                            style={{ borderRadius: 5! }}
-                            defaultValue={formInfoUser.values.avatar === '' ? 'Bạn chưa cập nhật ảnh' : formInfoUser.values.avatar}
-                            disabled
-                          />
-                        </div>
-                        {formInfoUser.errors.avatar &&
-                            formInfoUser.touched.avatar && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.avatar}</p>
                             )}
 
                         <p
