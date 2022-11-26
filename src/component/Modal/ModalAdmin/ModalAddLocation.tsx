@@ -95,7 +95,7 @@ function ModalAddLocation() {
                     <input
                       type="text"
                       id="hinhAnh"
-                      placeholder="Hình ảnh"
+                      placeholder="Hình ảnh (để dấu cách nếu chưa có link)"
                       className="signup_email_inp"
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}

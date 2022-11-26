@@ -1,7 +1,7 @@
 import React, { ChangeEvent, MouseEvent, useEffect, useRef} from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
 import ModalAddLocation from '../../component/Modal/ModalAdmin/ModalAddLocation'
-import { getLocationAdminApi, LocationModel, setArrLocationAdminApi, setNumberPageAdmin } from '../../redux/reducer/adminLocationReducer'
+import { deleteLocationAdminApi, getLocationAdminApi, LocationModel, setArrLocationAdminApi, setNumberPageAdmin } from '../../redux/reducer/adminLocationReducer'
 import { useSearchParams } from 'react-router-dom'
 import { http } from '../../util/setting'
 import ModalEditLocation from '../../component/Modal/ModalAdmin/ModalEditLocation'
@@ -80,7 +80,7 @@ export default function LocationInfoManage() {
                       <td>{item.tinhThanh}</td>
                       <td>{item.quocGia}</td>
                       <td>
-                          <img style={{width:'50px', height:'50px'}} src={item.hinhAnh} alt="..." />
+                          <img style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
                       </td>
                       <td>
                             <ModalEditLocation item={item} />
@@ -89,8 +89,7 @@ export default function LocationInfoManage() {
                               let text = "Press a button!\nEither OK or Cancel.";
                                 if (window.confirm(text) == true) {
                                   text = "You pressed OK!";
-                                  alert('Đã viết hàm delete đâu mà đòi xóa :V');
-                                  
+                                  dispatch(deleteLocationAdminApi(item.id))
                                 } else {
                                   text = "You canceled!";
                                 }

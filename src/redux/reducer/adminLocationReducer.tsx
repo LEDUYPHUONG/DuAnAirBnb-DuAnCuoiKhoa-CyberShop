@@ -79,3 +79,16 @@ export const putLocationAdminApi = (id :number,form :LocationModel) => {
     }
   };
 };
+
+export const deleteLocationAdminApi = (id :number) => {
+  return async () => {
+    try {
+      const response = await http.delete(`/vi-tri/${id}`);
+      alert('Xóa vị trí thành công!')
+      history.push('/admin/locationinfomanage')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
