@@ -32,7 +32,7 @@ export default function ItemProduct() {
     })
   }
   return (
-    <div className='d-flex flex-wrap justify-content-between' style={{margin:"5px -10px"}}>
+    <div className='container-item-home d-flex flex-wrap justify-content-between' style={{margin:"5px -10px"}}>
         {renderItemHomePage(arrProduct)}
     </div>
   )

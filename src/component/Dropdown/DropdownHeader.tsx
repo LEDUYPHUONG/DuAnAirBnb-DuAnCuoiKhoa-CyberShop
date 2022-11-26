@@ -14,7 +14,7 @@ function HandleClickSignInOrJoin() {
                   style={{border: "1px solid rgba(204, 204, 204, 0.5)", outline:"none"}}
                 >
                     <span className="d-flex justify-content-between align-items-center">
-                      <i className="fa-solid fa-bars pe-3 text-dark"></i>
+                      <i className="hidden-under-576px fa-solid fa-bars pe-3 text-dark"></i>
                       <i className="fa-solid fa-circle-user text-dark" style={{width:30, height:30,lineHeight:"30px", fontSize:30}} ></i>
                     </span>
                 </div>

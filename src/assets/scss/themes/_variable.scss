@@ -57,6 +57,13 @@
     color: #ffffff;
   }
 };
+.animal-hover-move-left-5px{
+  &:hover{
+    transform: translateX(-5px);
+    transition-delay: 0.2s;
+  }
+}
+
 
 #hover-bg-white{
   &:hover{

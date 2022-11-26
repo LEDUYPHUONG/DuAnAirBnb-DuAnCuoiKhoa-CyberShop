@@ -65,7 +65,7 @@ export default function Carousel() {
   const settings = {
     className: "slider variable-width",
     // slidesToShow: 8,
-    slidesToScroll: 4,
+    slidesToScroll: 3,
     infinite:false,
     centerPadding: "50px",
     variableWidth: true,

@@ -10,7 +10,6 @@ type Props = {
 export default function HeaderPage({ title }: Props) {
   return (
     <div
-      className="header-container"
       style={{
         position: "fixed",
         top: 0,
@@ -22,23 +21,25 @@ export default function HeaderPage({ title }: Props) {
       }}
     >
       <div
-        className="header-top m-auto"
+        className="m-auto"
         style={{ height: "80px", padding: "0 26px 0 48px" }}
       >
-        <div className="header d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between align-items-center">
           <NavLink to="/">
             <div
-              className="header_logo d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center"
               style={{ height: "80px" }}
             >
-              <div className="header_logo d-none">
+              <div 
+                className="show-under-768px d-none">
                 <img
                   style={{ height: "33px", cursor: "pointer" }}
                   src="/img/home/logo.png"
                   alt="..."
                 />
               </div>
-              <div className="header_logo-text d-block">
+              <div
+                className="hidden-under-768px">
                 <img
                   style={{ height: "33px", cursor: "pointer" }}
                   src="/img/home/logo-text.png"
@@ -52,7 +53,7 @@ export default function HeaderPage({ title }: Props) {
             <div className="location d-flex justify-content-between align-items-center">
               <div style={{ width: 1, height: 0 }}></div>
               <button
-                className="btn-BAhost-globe btn rounded-pill text-dark"
+                className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-dark"
                 style={{
                   fontSize: "14px",
                   outline: "none",
@@ -63,7 +64,7 @@ export default function HeaderPage({ title }: Props) {
                 Trở thành chủ nhà
               </button>
               <button
-                className="btn-BAhost-globe btn rounded-pill text-dark"
+                className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-dark"
                 style={{ outline: "none", height: "44px", width: "44px" }}
               >
                 <i className="fa-solid fa-globe"></i>
