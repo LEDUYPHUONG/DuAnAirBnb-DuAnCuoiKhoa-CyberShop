@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { AdmintUserModel } from "../../../redux/reducer/adminReducer";
+import ModalUpdateAvatarAdmin from "./ModalUpdateAvatarAdmin";
 
 
 type Props = {
@@ -25,31 +26,54 @@ function ModalInfoAdmin({item} : Props) {
         keyboard={false}
       >
         <Modal.Body>
-          <div className="container my-5">
-            <div className="sign_up" style={{borderRadius:"20px"}}>
-              <div className="sign_up_right w-100 overflow-hidden" style={{borderRadius:"20px"}}>
-                <div className="bg_cover d-flex flex-column align-items-center justify-content-center" style={{borderRadius:"20px"}}>
-                  <h2>THÔNG TIN CỦA ACCOUNT</h2>
-                  <div className="signup_input w-100 px-3">
-                    <p className="text-white">id: {item.id}</p>
-                    <p className="text-white">inamed: {item.name}</p>
-                    <p className="text-white">email: {item.email}</p>
-                    <p className="text-white">phone: {item.phone}</p>
-                    <p className="text-white">birthday: {item.birthday}</p>
-                    <p className="text-white">gender: {item.gender? 'Nam' : 'Nữ'}</p>
-                    <p className="text-white">role: {item.role}</p>
-                    <p className="text-white text-truncate">avatar: {item.avatar}</p>
-                    <p className="text-white">password: {item.password}</p> 
-                  </div>
-                  <div className="footer-modal">                    
-                    <Button variant="secondary mx-1" onClick={handleClose} >
-                      Thoát
-                    </Button>
+            <div className="shadow p-3 m-3 bg-body rounded">
+              <h2>THÔNG TIN CỦA ACCOUNT</h2>
+              <div>
+                <div className="w-100 d-flex justify-content-center align-items-center mb-3">
+                  <div className="shadow rounded-circle overflow-hidden" style={{width: '150px', height: '150px'}}>
+                    <img className="w-100" src={item.avatar === '' ? '/img/avatar/existing-user-default-avatar.png' : item.avatar} alt="avatar" />
                   </div>
                 </div>
+                <ModalUpdateAvatarAdmin />
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">ID</span>
+                  <input type="text" className="form-control" defaultValue={item.id} disabled/>
+                </div>
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">Name</span>
+                  <input type="text" className="form-control" defaultValue={item.name} disabled/>
+                </div>
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">Email</span>
+                  <input type="text" className="form-control" defaultValue={item.email} disabled/>
+                </div>
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">Phone</span>
+                  <input type="text" className="form-control" defaultValue={item.phone} disabled/>
+                </div>
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">Birthday</span>
+                  <input type="text" className="form-control" defaultValue={item.birthday} disabled/>
+                </div>
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">Gender</span>
+                  <input type="text" className="form-control" defaultValue={item.gender? 'Nam' : 'Nữ'}disabled/>
+                </div>
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">Role</span>
+                  <input type="text" className="form-control" defaultValue={item.role} disabled/>
+                </div>
+                <div className="input-group mb-3">
+                  <span className="input-group-text" id="basic-addon2">Password</span>
+                  <input type="text" className="form-control" defaultValue={item.password} disabled/>
+                </div>
+              </div>
+              <div className="footer-modal d-flex justify-content-center">                    
+                <Button variant="secondary mx-1" onClick={handleClose} >
+                  Thoát
+                </Button>
               </div>
             </div>
-          </div>
         </Modal.Body>
       </Modal>
     </>

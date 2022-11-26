@@ -97,7 +97,9 @@ export default function UserManage() {
                         <td> {item.id} </td>
                         <td>{item.name}</td>
                         <td>
-                            <img style={{width:'50px', height:'50px'}} src={item.avatar} alt="..." />
+                            <div className="shadow rounded-circle overflow-hidden" style={{width: '50px', height: '50px'}}>
+                            <img className="w-100" src={item.avatar === '' ? '/img/avatar/existing-user-default-avatar.png' : item.avatar} alt="..." />
+                            </div>
                         </td>
                         <td>{item.phone}</td>
                         <td>{item.gender? 'Nam' : 'Nữ'}</td>
@@ -113,7 +115,7 @@ export default function UserManage() {
                                 } else {
                                   text = "You canceled!";
                                 }
-                            }}>Sửa</button>
+                            }}>Sửa Role</button>
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
                                 let text = "Press a button!\nEither OK or Cancel.";
