@@ -59,9 +59,9 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path='' element={<ResponsiveItem Component={HomeTemplate} ComponentMobile={HomeTemplateMobile}/>}>
-          <Route index element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
-          <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
+        <Route path='' element={<HomeTemplate/>}>
+          <Route index element={<Home/>}></Route>
+          <Route path='home' element={<Home/>}></Route>
           <Route path='map' element={<MapHome/>}></Route>
           <Route path='detailroom'>
             <Route path=':id' element = {<RoomDetail />}></Route>
