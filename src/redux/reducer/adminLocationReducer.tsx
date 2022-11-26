@@ -92,3 +92,17 @@ export const deleteLocationAdminApi = (id :number) => {
     }
   };
 };
+
+export const postEditImageLocationAdminApi = (id: number , formFile : FormData) => {
+  return async () => {
+    try {
+      const result = await http.post(`/vi-tri/upload-hinh-vitri?maViTri=${id}`, formFile);
+        console.log('Update thành công', result);
+        alert('Update hình của vị trí thành công')
+        history.push('/admin/locationinfomanage')
+        window.location.reload()
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};

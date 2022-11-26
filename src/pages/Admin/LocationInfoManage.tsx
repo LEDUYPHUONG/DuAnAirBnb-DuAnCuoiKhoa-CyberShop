@@ -5,6 +5,7 @@ import { deleteLocationAdminApi, getLocationAdminApi, LocationModel, setArrLocat
 import { useSearchParams } from 'react-router-dom'
 import { http } from '../../util/setting'
 import ModalEditLocation from '../../component/Modal/ModalAdmin/ModalEditLocation'
+import ModalUpdateImageLocationAdmin from '../../component/Modal/ModalAdmin/ModalUpdateImageLocationAdmin'
 
 export default function LocationInfoManage() {
   const { arrLocationAdmin, numberPageAdmin } = useAppSelector((state) => state.adminLocationReducer)
@@ -80,7 +81,8 @@ export default function LocationInfoManage() {
                       <td>{item.tinhThanh}</td>
                       <td>{item.quocGia}</td>
                       <td>
-                          <img style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
+                          <img className='shadow-sm' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
+                          <ModalUpdateImageLocationAdmin id={item.id}/>
                       </td>
                       <td>
                             <ModalEditLocation item={item} />
