@@ -92,7 +92,7 @@ export default function RoomInfoManage() {
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
                                 let text = "Press a button!\nEither OK or Cancel.";
-                                if (window.confirm(text) == true) {
+                                if (window.confirm(text) === true) {
                                   text = "You pressed OK!";
                                   dispatch(deleteRoomAdminApi(item.id))
                                 } else {

@@ -109,7 +109,7 @@ export default function UserManage() {
                             <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
                                 let text = "Press a button!\nEither OK or Cancel.";
-                                if (window.confirm(text) == true) {
+                                if (window.confirm(text) === true) {
                                   text = "You pressed OK!";
                                   handleClickSetUserRole(item)
                                 } else {
@@ -119,7 +119,7 @@ export default function UserManage() {
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
                                 let text = "Press a button!\nEither OK or Cancel.";
-                                if (window.confirm(text) == true) {
+                                if (window.confirm(text) === true) {
                                   text = "You pressed OK!";
                                   handleClickDeleteAccount(item)
                                 } else {

@@ -84,6 +84,7 @@ export const deleteLocationAdminApi = (id :number) => {
   return async () => {
     try {
       const response = await http.delete(`/vi-tri/${id}`);
+      console.log(response);
       alert('Xóa vị trí thành công!')
       history.push('/admin/locationinfomanage')
       window.location.reload()

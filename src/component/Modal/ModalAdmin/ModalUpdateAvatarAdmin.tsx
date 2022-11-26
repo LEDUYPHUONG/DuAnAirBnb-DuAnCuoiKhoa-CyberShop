@@ -3,14 +3,11 @@ import React, { useState, ChangeEvent } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import * as Yup from 'yup';
-import { useAppDispatch } from "../../../redux/example/hooks";
-import { postAvatarImageApi } from "../../../redux/reducer/profileReducer";
 
 function ModalUpdateAvatarAdmin() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const dispatch = useAppDispatch();
   const formik = useFormik({
     // enableReinitialize: true,
     initialValues: {
