@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../redux/example/hooks'
 import { deleteRoomAdminApi, getRoomInfoAdminApi, RoomInfoModel, setArrRoomInfoAdminApi, setNumberPageRoomInfoAdmin } from '../../redux/reducer/adminRoomInfoManageReducer'
 import { http } from '../../util/setting'
+import ModalUpdateImageRoomAdmin from '../../component/Modal/ModalAdmin/ModalUpdateImageRoomAdmin'
 
 export default function RoomInfoManage() {
   const { arrRoomInfoAdmin, numberPageRoomInfoAdmin } = useAppSelector((state) => state.adminRoomInfoManageReducer)
@@ -80,9 +81,11 @@ export default function RoomInfoManage() {
           return <tr key={index}>
                       <td> {item.id} </td>
                       <td>{item.tenPhong}</td>
-                      <td>{item.khach}</td>
-                      <td>{item.phongNgu}</td>
-                      <td>{item.giuong}</td>
+                      <td>
+                      <img className='shadow-sm' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
+                        <ModalUpdateImageRoomAdmin id={item.id} />
+                      </td>
+
                       <td>
                             <ModalInfoRoom item={item}/>
                             <ModalEditRoom item={item}/>
@@ -124,9 +127,7 @@ return (
                           <tr>
                               <th>ID</th>
                               <th>Tên phòng</th>
-                              <th>Khách</th>
-                              <th>Phòng ngủ</th>
-                              <th>Giường</th>
+                              <th>Hình ảnh</th>
                               <th></th>
                           </tr>
                       </thead>

@@ -103,3 +103,18 @@ export const deleteRoomAdminApi = (id: number) => {
     }
   };
 };
+
+
+export const postEditImageRoomAdminApi = (id: number , formFile : FormData) => {
+  return async () => {
+    try {
+      const result = await http.post(`/phong-thue/upload-hinh-phong?maPhong=${id}`, formFile);
+        console.log('Update thành công', result);
+        alert('Update hình của phòng thành công')
+        history.push('/admin/roominfomanage')
+        window.location.reload()
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
