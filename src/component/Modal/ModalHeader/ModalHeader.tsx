@@ -19,13 +19,14 @@ import useDebounce from "../../Debounce/Debounce";
 
 function ModalHeader() {
   const [show, setShow] = useState(false);
+  const [showModalLocationList, setShowModalLocationList] = useState(true);
   const { productSearch } = useSelector(
     (state: RootState) => state.productReducer
   );
   const arrSearchLocation: ProductModel[] = arrLocationSearch;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
+  
   const [searchParams, setSearchParams] = useSearchParams();
   const [arrSearch, setArrSearch] = useState([]);
   const [valueInputSearch, setValueInputSearch] = useState(
@@ -53,6 +54,7 @@ function ModalHeader() {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValueInputSearch(event.target.value);
     setSearchParams({ keyword: event.target.value });
+    setShowModalLocationList(true);
   };
 
   const handelClickMoveToRoomListPage = () => {
@@ -77,9 +79,7 @@ function ModalHeader() {
             className="btn btn-outline-light py-1 px-5 my-1 text-start d-flex flex-nowrap justify-content-start align-items-center w-100"
             onClick={() => {
               handleClickSetKeySearchLocation(location);
-              handelClickMoveToRoomListPage();
-              setShow(false)
-              setValueInputSearch('')
+              setShowModalLocationList(false)
             }}
           >
             <div
@@ -398,6 +398,11 @@ function ModalHeader() {
                         width: "300px",
                         padding: "7px 7px 7px 25px",
                       }}
+                      onClick={() =>{
+                        handelClickMoveToRoomListPage();
+                        setShow(false)
+                        setValueInputSearch('')
+                      }}
                     >
                       <span
                         className="text-dark d-flex flex-column align-items-start "
@@ -456,7 +461,7 @@ function ModalHeader() {
             </div>
           </div>
           <div
-            className="modal-content modal-lg  rounded-5 overflow-hidden"
+            className={showModalLocationList? 'modal-content modal-lg rounded-5 overflow-hidden' : 'modal-content modal-lg rounded-5 overflow-hidden d-none'}
             style={{
               width: "600px",
               zIndex: 10,
