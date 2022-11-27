@@ -82,7 +82,7 @@ export default function RoomInfoManage() {
                       <td>{item.id} </td>
                       <td>{item.maViTri}</td>
                       <td>
-                      <img className='shadow-sm text-nowrap' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
+                      <img className='shadow-sm text-nowrap hidden-under-576px' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
                         <ModalUpdateImageRoomAdmin id={item.id} />
                       </td>
 
@@ -105,14 +105,14 @@ export default function RoomInfoManage() {
       })
   }
 return (
-                <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
+                <div className='border-start px-5 paddingX1rem-under-576px' style={{height: 'calc(100vh - 50px)'}}>
                   <ModalAddRoom />
                   <form className='pb-3' style={{width:'100%'}}  onSubmit={(event) =>{
                         handleSubmit(event)
                     }}>
                       <input 
                       className='border-bottom' 
-                      style={{border:'none', outline:'none', width:'400px'}} 
+                      style={{border:'none', outline:'none', width:'200px'}} 
                       type="text" 
                       placeholder='Enter ID room' 
                       id="keywordRef"

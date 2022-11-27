@@ -78,9 +78,9 @@ export default function LocationInfoManage() {
       return arrLocationAdmin.map((item,index) =>{
           return <tr key={index}>
                       <td> {item.id} </td>
-                      <td>{item.tenViTri}</td>
+                      <td className='hidden-under-576px'>{item.tenViTri}</td>
                       <td>
-                          <img className='shadow-sm' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
+                          <img className='shadow-sm hidden-under-576px' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
                           <ModalUpdateImageLocationAdmin id={item.id}/>
                       </td>
                       <td>
@@ -101,14 +101,14 @@ export default function LocationInfoManage() {
           
       })
   }
-return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
+return <div className='border-start px-5 paddingX1rem-under-576px' style={{height: 'calc(100vh - 50px)'}}>
                   <ModalAddLocation />
                   <form className='pb-3' style={{width:'100%'}} onSubmit={(event) =>{
                         handleSubmit(event)
                     }}>
                       <input 
                       className='border-bottom' 
-                      style={{border:'none', outline:'none', width:'400px'}} 
+                      style={{border:'none', outline:'none', width:'200px'}} 
                       type="text" 
                       placeholder='Enter ID Location' 
                       id="keywordRef"
@@ -122,7 +122,7 @@ return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}
                       <thead>
                           <tr>
                               <th>ID</th>
-                              <th>Tên Vị trí</th>
+                              <th className='hidden-under-576px'>Tên Vị trí</th>
                               <th>Hình ảnh</th>
                               <th></th>
                           </tr>

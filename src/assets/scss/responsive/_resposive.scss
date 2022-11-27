@@ -3,7 +3,17 @@
     .d-block-under-991px{
      display: block !important;
     }
-
+    
+    //admin
+    .d-none-under-991px{
+        display: none !important;
+    }
+    .width100-under-991px{
+        width: 100px !important;
+    }
+    .text-center-under-991px{
+       text-align: center !important; 
+    }
  }
  
  @media (max-width: 768px) {

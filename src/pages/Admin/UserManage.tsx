@@ -95,8 +95,8 @@ export default function UserManage() {
         return arrAdminUser.map((item,index) =>{
             return <tr key={index}>
                         <td> {item.id} </td>
-                        <td>{item.name}</td>
-                        <td>
+                        <td className='hidden-under-576px'>{item.name}</td>
+                        <td className='hidden-under-576px'>
                             <div className="shadow rounded-circle overflow-hidden m-auto" style={{width: '50px', height: '50px'}}>
                                 <img className="w-100" src={item.avatar === '' ? '/img/avatar/existing-user-default-avatar.png' : item.avatar} alt="..." />
                             </div>
@@ -130,14 +130,14 @@ export default function UserManage() {
             
         })
     }
-  return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
+  return <div className='border-start px-5 paddingX1rem-under-576px' style={{height: 'calc(100vh - 50px)'}}>
                     <ModalAddAdmin />
                     <form className='pb-3' style={{width:'100%'}} onSubmit={(event) =>{
                         handleSubmit(event)
                     }}>
                         <input 
                         className='border-bottom' 
-                        style={{border:'none', outline:'none', width:'400px'}} 
+                        style={{border:'none', outline:'none', width:'200px'}} 
                         type="text" 
                         placeholder='Enter name of account' 
                         id="keywordRef" 
@@ -150,8 +150,8 @@ export default function UserManage() {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
+                                <th className='hidden-under-576px'>Name</th>
+                                <th className='hidden-under-576px'>Image</th>
                                 <th>Role</th>
                                 <th></th>
                             </tr>

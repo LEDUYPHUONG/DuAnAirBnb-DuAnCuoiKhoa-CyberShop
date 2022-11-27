@@ -61,7 +61,7 @@ export default function ReservationManage() {
           return <tr key={index}>
                       <td>{item.id}</td>
                       <td>{item.maPhong}</td>
-                      <td>{item.maNguoiDung}</td>
+                      <td className='hidden-under-576px'>{item.maNguoiDung}</td>
                       <td>  
                             <ModalInfoBookedRoom item={item}/>
                             <ModalEditBookedRoom item={item}/>
@@ -80,14 +80,14 @@ export default function ReservationManage() {
           
       })
   }
-  return (<div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
+  return (<div className='border-start px-5 paddingX1rem-under-576px' style={{height: 'calc(100vh - 50px)'}}>
             <ModalBookRoom />
             <form className='pb-3' style={{width:'100%'}}  onSubmit={(event) =>{
                   handleSubmit(event)
               }}>
                 <input 
                 className='border-bottom' 
-                style={{border:'none', outline:'none', width:'400px'}} 
+                style={{border:'none', outline:'none', width:'200px'}} 
                 type="text" 
                 placeholder='Enter ID room' 
                 id="keywordRef"
@@ -102,7 +102,7 @@ export default function ReservationManage() {
                     <tr>
                         <th>ID</th>
                         <th>Mã phòng</th>
-                        <th>Mã người dùng</th>
+                        <th className='hidden-under-576px'>Mã người dùng</th>
                         <th></th>
                     </tr>
                 </thead>
