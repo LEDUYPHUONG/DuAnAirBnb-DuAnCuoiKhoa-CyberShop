@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { http } from '../../util/setting';
+import { history, http } from '../../util/setting';
 import { AppDispatch } from '../configStore';
 
 export interface AdmintUserModel {
@@ -45,9 +45,7 @@ export default adminReducer.reducer
 export const getArrAdminUserApi = (numberPage:number) => {
     return async (dispatch: AppDispatch) => {
       try {
-        const response = await http.get(`/users/phan-trang-tim-kiem?pageIndex=${numberPage}&pageSize=5`);
-        console.log(response.data.content.data);
-        
+        const response = await http.get(`/users/phan-trang-tim-kiem?pageIndex=${numberPage}&pageSize=5`);        
         dispatch(setArrAdminUserApi(response.data.content.data))
       } catch (error) {
         console.log(error);
@@ -59,8 +57,8 @@ export const changeRoleUserToAdmin = (id: number, newInfo: AdmintUserModel) => {
   return async () => {
     try {
       const response = await http.put(`/users/${id}`, newInfo);
-      console.log(response);
       alert('Cập nhật Role thành công!')
+      history.push('/admin/usermanage')
       window.location.reload()
     } catch (error) {
       console.log(error);
@@ -72,8 +70,8 @@ export const deleteAccount = (id: number) => {
   return async () => {
     try {
       const response = await http.delete(`/users?id=${id}`);
-      console.log(response);
       alert('Delete thành công!')
+      history.push('/admin/usermanage')
       window.location.reload()
     } catch (error) {
       console.log(error);

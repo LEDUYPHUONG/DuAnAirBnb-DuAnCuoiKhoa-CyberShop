@@ -91,15 +91,29 @@ export const postProfileUserApi = (
   idUser: number,
   valueSubmit: UserSignUpModel,
 ) => {
-  return async (dispacth: AppDispatch) => {
+  return async () => {
     try {
       const result = await http.put(`/users/${idUser}`, valueSubmit);
       console.log(result);
-
+      alert('Cập nhật thông tin cá nhân thành công')
       if (result && result.data.content) {
         console.log('Update thành công', result.data.content);
         setStoreJson(USER_INFO, result.data.content);
       }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+
+export const postAvatarImageApi = (formFile : FormData) => {
+  return async () => {
+    try {
+      const result = await http.post('/users/upload-avatar', formFile);
+        console.log('Update thành công', result);
+        alert('Update avatar thành công')
+        window.location.reload()
     } catch (err) {
       console.log(err);
     }

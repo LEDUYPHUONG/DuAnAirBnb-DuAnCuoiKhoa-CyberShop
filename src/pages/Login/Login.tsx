@@ -36,27 +36,27 @@ export default function Login() {
     <>
       <HeaderPage />
       <form className="container" onSubmit={frm.handleSubmit}>
-        <div className="sign_in d-flex">
+        <div className="responsive-signin-right sign_in d-flex">
           <div className="sign_in_left"></div>
           <div className="sign_in_right">
             <div className="bg_cover d-flex flex-column align-items-center justify-content-center">
               <h2>HELLO, WE'RE LOGIN</h2>
-              <div className="login_input d-flex flex-column  align-items-center">
+              <div className="responsive-input-signin-991px login_input d-flex flex-column  align-items-center">
                 <input
                   type="text"
                   id="email"
                   placeholder="Email đăng nhập"
-                  className="email_inp"
+                  className="email_inp w-100"
                   onChange={frm.handleChange}
                   onBlur={frm.handleBlur}
                 />
                 <span className="text-danger">{frm.errors.email}</span>
-                <div className="d-flex">
+                <div className="d-flex w-100">
                   <input
                     type={type}
                     id="password"
                     placeholder="Mật khẩu"
-                    className="password_inp"
+                    className="password_inp w-100"
                     maxLength={35}
                     onChange={frm.handleChange}
                     onBlur={frm.handleBlur}

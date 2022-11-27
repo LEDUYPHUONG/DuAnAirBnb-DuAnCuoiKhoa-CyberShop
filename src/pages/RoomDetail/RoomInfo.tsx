@@ -110,7 +110,7 @@ export default function RoomInfo() {
   return (
     <>
       <HeaderPage />
-      <div className="container">
+      <div className="container responsive-detailroom-container">
         <h4 className="roomName">{objectRoomDetail.tenPhong}</h4>
         <div className="review d-flex justify-content-between">
           <div className="d-flex ">
@@ -175,7 +175,7 @@ export default function RoomInfo() {
         <div className="roomDes d-flex">
           <div className="desLeft">
             <div className="infoRoom">
-              <div className="infoRoomName d-flex justify-content-between">
+              <div className="infoRoomName d-flex justify-content-between align-items-center">
                 <div>
                   <h4>Toàn bộ căn hộ condotel. Chủ nhà Phong</h4>
                   <span>
@@ -264,7 +264,7 @@ export default function RoomInfo() {
                   </div>
                 </div>
               </div>
-              <div className="convenience">
+              <div className="convenience mt-2 pb-0">
                 <ul className="d-flex flex-wrap">
                   <div className="col-6">
                     <li
@@ -417,13 +417,13 @@ export default function RoomInfo() {
                     </li>
                   </div>
                 </ul>
-                <button className="col-5 translate_btn d-flex justify-content-center align-items-center tiennghi_btn">
+                <button className="w-100 col-5 translate_btn d-flex justify-content-center align-items-center tiennghi_btn">
                   <span>Hiển thị tất cả 24 tiện nghi </span>
                 </button>
               </div>
             </div>
           </div>
-          <div className="desRight">
+          <div className="desRight responsive-detailroom-desRight">
             <div className="booking_area">
               <div className="price_and_rating1 d-flex justify-content-between align-items-center">
                 <div className="price">
@@ -504,7 +504,7 @@ export default function RoomInfo() {
             </div>
           </div>
         </div>
-        <div className="commentary">
+        <div className="commentary mt-2">
           <h4 className="h4 mb-4">Đánh giá</h4>
           <div className="comment">{renderComment()}</div>
           <WriteComment />

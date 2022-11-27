@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import { UserSignUpModel } from '../../redux/reducer/userReducer';
 import DatePicker from 'antd/es/date-picker';
 import { Radio } from 'antd';
+import ModalUpdateImage from '../Modal/ModalProfile/ModalUpdateImage';
 
 export default function UserInforItem() {
   const { arrProfileRoom, arrProfileUser } = useAppSelector(
@@ -38,23 +39,17 @@ export default function UserInforItem() {
     },
     onSubmit: (values: UserSignUpModel) => {
       console.log('on submit');
-
-      dispatch(postProfileUserApi(values.id, values));
       // resetForm();
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required('Name required!'),
       phone: Yup.string().required('Phone required!'),
       password: Yup.string().required('Password required'),
-      avatar: Yup.string().required('Avatar required!'),
     }),
   });
 
   useEffect(() => {
     const idUser: string = getStoreJson(USER_ID);
-    console.log(idUser);
-    console.log('arrProfileRoom', arrProfileRoom);
-
     dispatch(getProfileRoomApi(idUser));
     dispatch(getProfileUserApi(idUser));
     // eslint-disable-next-line
@@ -134,16 +129,7 @@ export default function UserInforItem() {
                     className="infor-editimg"
                     style={{ textAlign: 'center' }}
                   >
-                    <button
-                      className="btn btn-primary edit"
-                      style={{ marginTop: 8 }}
-                      onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                        event.preventDefault();
-                        setOpen(!open);
-                      }}
-                    >
-                      Cập nhật ảnh
-                    </button>
+                    <ModalUpdateImage />
                   </div>
                 </div>
                 <div
@@ -239,10 +225,8 @@ export default function UserInforItem() {
             </div>
             <form
               onSubmit={(form) => {
-                console.log({ formInfoUser }); // em có thể console để kiểm tra formInfoUser có nhưng function nào
                 formInfoUser.handleSubmit(form);
                 const { values } = formInfoUser;
-                console.log('submit', values);
                 dispatch(postProfileUserApi(values.id, values));
               }}
             >
@@ -381,61 +365,7 @@ export default function UserInforItem() {
                               <p>{formInfoUser.errors.role}</p>
                             )}
                         </div>
-
-                        <p
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          Tên cá nhân
-                        </p>
-                        <div className="input-group">
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type="text"
-                            id="name"
-                            name="name"
-                            className="form-control"
-                            style={{ borderRadius: 5! }}
-                            value={formInfoUser.values.name}
-                          />
-                        </div>
-                        {formInfoUser.errors.name &&
-                            formInfoUser.touched.name && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.name}</p>
-                            )}
-
-                        <p
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          Số điện thoại
-                        </p>
-                        <div
-                          className="input-group"
-                        >
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type="text"
-                            className="form-control"
-                            id="phone"
-                            name="phone"
-                            style={{ borderRadius: 5! }}
-                            value={formInfoUser.values.phone}
-                          />
-                        </div>
-                        {formInfoUser.errors.phone &&
-                            formInfoUser.touched.phone && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.phone}</p>
-                            )}
-
+                        
                         <p
                           className="d-flex justify-content-between align-items-center "
                           style={{
@@ -469,12 +399,14 @@ export default function UserInforItem() {
                             id="password"
                             style={{ borderRadius: 5! }}
                             value={formInfoUser.values.password}
+                            disabled
                           />
                         </div>
                         {formInfoUser.errors.password &&
                             formInfoUser.touched.password && (
                               <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.password}</p>
                             )}
+
                         <p
                           style={{
                             fontSize: 16,
@@ -482,7 +414,61 @@ export default function UserInforItem() {
                             marginBottom: 10,
                           }}
                         >
-                          Ngày sinh
+                          Name
+                        </p>
+                        <div className="input-group">
+                          <input
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
+                            type="text"
+                            id="name"
+                            name="name"
+                            className="form-control"
+                            style={{ borderRadius: 5! }}
+                            value={formInfoUser.values.name}
+                          />
+                        </div>
+                        {formInfoUser.errors.name &&
+                            formInfoUser.touched.name && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.name}</p>
+                            )}
+
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Phone
+                        </p>
+                        <div
+                          className="input-group"
+                        >
+                          <input
+                            onChange={formInfoUser.handleChange}
+                            onBlur={formInfoUser.handleBlur}
+                            type="text"
+                            className="form-control"
+                            id="phone"
+                            name="phone"
+                            style={{ borderRadius: 5! }}
+                            value={formInfoUser.values.phone}
+                          />
+                        </div>
+                        {formInfoUser.errors.phone &&
+                            formInfoUser.touched.phone && (
+                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.phone}</p>
+                            )}
+
+                        <p
+                          style={{
+                            fontSize: 16,
+                            marginTop: 20,
+                            marginBottom: 10,
+                          }}
+                        >
+                          Birthday
                         </p>
                         <div
                           className="input-group"
@@ -525,32 +511,6 @@ export default function UserInforItem() {
                           </Radio.Group>
                         </div>
 
-                        <p
-                          style={{
-                            fontSize: 16,
-                            marginTop: 20,
-                            marginBottom: 10,
-                          }}
-                        >
-                          Avata
-                        </p>
-                        <div className="input-group">
-                          <input
-                            onChange={formInfoUser.handleChange}
-                            onBlur={formInfoUser.handleBlur}
-                            type="text"
-                            className="form-control"
-                            id="avatar"
-                            name="avatar"
-                            style={{ borderRadius: 5! }}
-                            defaultValue={formInfoUser.values.avatar === '' ? 'https://i.pravatar.cc/' : formInfoUser.values.avatar}
-                          />
-                        </div>
-                        {formInfoUser.errors.avatar &&
-                            formInfoUser.touched.avatar && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.avatar}</p>
-                            )}
-
                         <div
                           className="d-flex justify-content-between mt-3"
                           style={{ marginBottom: 20 }}
@@ -564,14 +524,14 @@ export default function UserInforItem() {
                             className="btn btn-secondary text-decoration-underline"
                             style={{ padding: '10px 20px' }}
                           >
-                            Hủy
+                            Cancel
                           </button>
                           <button
                             type="submit"
                             className="btn btn-dark"
                             style={{ fontSize: 20, padding: '10px 20px' }}
                           >
-                            Lưu
+                            Confirm
                           </button>
                         </div>
                       </div>

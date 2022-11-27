@@ -67,83 +67,104 @@ export default function SignUp() {
   return (
     <>
       <HeaderPage />
-      <form className="container" onSubmit={frm.handleSubmit}>
+      <form className="container responsive-container-signup-768px" onSubmit={frm.handleSubmit}>
         <div className="sign_up d-flex">
           <div className="sign_up_left"></div>
           <div className="sign_up_right">
-            <div className="bg_cover d-flex flex-column align-items-center justify-content-center">
+            <div className="bg_cover">
               <h2>SIGN UP NOW!</h2>
-              <div className="signup_input d-flex flex-column  align-items-center">
-                <input
-                  type="text"
-                  id="email"
-                  placeholder="Email đăng nhập"
-                  className="signup_email_inp"
-                  onChange={frm.handleChange}
-                  onBlur={frm.handleBlur}
-                />
-                <span className="text-danger">{frm.errors.email}</span>
-                <div className="d-flex">
-                  <input
+              <div className="container-form">
+                <div className="input-group w-75 m-auto">
+                  <span className="input-group-text" id="basic-addon1">Email</span>
+                  <input 
+                    type="text"
+                    id="email"
+                    placeholder="Email đăng nhập"
+                    className="form-control"
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
+                  />
+                </div>
+                <p className="text-danger mb-3 text-center">{frm.errors.email}</p>
+                
+                <div className="input-group w-75 m-auto">
+                  <span className="input-group-text" id="basic-addon1">Name</span>
+                  <input 
+                   type="text"
+                   id="name"
+                   placeholder="Tên tài khoản"
+                   className="form-control"
+                   onChange={frm.handleChange}
+                   onBlur={frm.handleBlur}
+                  />
+                </div>
+                <p className="text-danger mb-3 text-center">{frm.errors.name}</p>
+
+                <div className="input-group w-75 m-auto">
+                  <span className="input-group-text" id="basic-addon1">Phone</span>
+                  <input 
+                    type="text"
+                    id="phone"
+                    placeholder="Số điện thoại"
+                    className="form-control"
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
+                  />
+                </div>
+                <p className="text-danger mb-3 text-center">{frm.errors.phone}</p>
+
+                
+                <div className="input-group w-75 m-auto">
+                  <span className="input-group-text" id="basic-addon1">Password</span>
+                  <input 
                     type={typePW}
                     id="password"
                     placeholder="Mật khẩu đăng nhập"
-                    className="signup_password_inp"
+                    className="form-control"
                     maxLength={35}
                     onChange={frm.handleChange}
                     onBlur={frm.handleBlur}
                   />
                   <i
-                    className="bi bi-eye"
+                    className="bi bi-eye input-group-text cursor-pointer"
                     onMouseDown={handle_Password_Icon}
                     onMouseUp={handle_Password_Icon}
                   ></i>
                 </div>
-                <span className="text-danger">{frm.errors.password}</span>
+                <p className="text-danger mb-3 text-center">{frm.errors.password}</p>
 
-                <div className="d-flex">
-                  <input
+                <div className="input-group w-75 m-auto">
+                  <span className="input-group-text" id="basic-addon1">Confirm</span>
+                  <input 
                     type={type_REPW}
                     id="retype_password"
                     placeholder="Nhập lại mật khẩu"
-                    className="signup_password_inp"
+                    className="form-control"
                     maxLength={35}
                     onChange={frm.handleChange}
                     onBlur={frm.handleBlur}
                   />
                   <i
-                    className="bi bi-eye"
+                    className="bi bi-eye input-group-text cursor-pointer"
                     onMouseDown={handle_Retype_Password_Icon}
                     onMouseUp={handle_Retype_Password_Icon}
                   ></i>
                 </div>
-                <span className="text-danger">
-                  {frm.errors.retype_password}
-                </span>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Tên tài khoản"
-                  className="signup_email_inp"
-                  onChange={frm.handleChange}
-                  onBlur={frm.handleBlur}
-                />
-                <span className="text-danger">{frm.errors.name}</span>
-                <input
-                  type="text"
-                  id="phone"
-                  placeholder="Số điện thoại"
-                  className="signup_email_inp"
-                  onChange={frm.handleChange}
-                  onBlur={frm.handleBlur}
-                />
-                <span className="text-danger">{frm.errors.phone}</span>
+                <p className="text-danger mb-3 text-center">{frm.errors.retype_password}</p>
 
-                <DatePicker
+                <div className="input-group mb-3 w-75 m-auto">
+                  <span className="input-group-text" id="basic-addon1">Birthday</span>
+                  <DatePicker
                   bordered={false}
                   placeholder="Sinh nhật"
                   format="DD/MM/YYYY"
-                />
+                  className="form-control"
+                  />
+                  
+                </div>
+                
+
+                
               </div>
               <div className="action_btn d-flex flex-column align-items-center">
                 <button className="signin_btn" type="submit">

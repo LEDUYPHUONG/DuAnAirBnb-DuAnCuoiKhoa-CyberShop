@@ -15,30 +15,18 @@ import {
 } from "../../../redux/reducer/productReducer";
 import { http } from "../../../util/setting";
 import "bootstrap/dist/js/bootstrap.js";
-
-function useDebounce<T>(value: T, delay?: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-}
+import useDebounce from "../../Debounce/Debounce";
 
 function ModalHeader() {
   const [show, setShow] = useState(false);
+  const [showModalLocationList, setShowModalLocationList] = useState(true);
   const { productSearch } = useSelector(
     (state: RootState) => state.productReducer
   );
   const arrSearchLocation: ProductModel[] = arrLocationSearch;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
+  
   const [searchParams, setSearchParams] = useSearchParams();
   const [arrSearch, setArrSearch] = useState([]);
   const [valueInputSearch, setValueInputSearch] = useState(
@@ -66,6 +54,7 @@ function ModalHeader() {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValueInputSearch(event.target.value);
     setSearchParams({ keyword: event.target.value });
+    setShowModalLocationList(true);
   };
 
   const handelClickMoveToRoomListPage = () => {
@@ -87,9 +76,10 @@ function ModalHeader() {
         <div className="location-search" key={index}>
           <button
             id="hover-bg-white"
-            className="btn btn-outline-light py-1 px-5 my-1 text-start d-flex flex-nowrap justify-content-start align-items-center w-100"
+            className="paddingX1rem-under-576px btn btn-outline-light py-1 px-5 my-1 text-start d-flex flex-nowrap justify-content-start align-items-center w-100"
             onClick={() => {
               handleClickSetKeySearchLocation(location);
+              setShowModalLocationList(false)
             }}
           >
             <div
@@ -181,16 +171,16 @@ function ModalHeader() {
           >
             Địa điểm bất kì
           </div>
-          <div style={{ width: 1, height: 24, background: "#cccccc" }}></div>
+          <div className="hidden-under-768px" style={{ width: 1, height: 24, background: "#cccccc" }}></div>
           <div
-            className="btn text-dark"
+            className="hidden-under-768px btn text-dark"
             style={{ fontSize: "14px", outline: "none" }}
           >
             Tuần bất kì
           </div>
-          <div style={{ width: 1, height: 24, background: "#cccccc" }}></div>
+          <div className="hidden-under-768px" style={{ width: 1, height: 24, background: "#cccccc" }}></div>
           <div
-            className="btn text-dark"
+            className="hidden-under-768px btn text-dark"
             style={{
               opacity: 0.5,
               fontFamily: "Roboto-Regular",
@@ -232,17 +222,17 @@ function ModalHeader() {
             <div className="header d-flex justify-content-between align-items-center">
             <NavLink to="/">
             <div
-              className="header_logo d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center"
               style={{ height: "80px" }}
             >
-              <div className="header_logo d-none">
+              <div className="show-under-768px d-none">
                 <img
                   style={{ height: "33px", cursor: "pointer" }}
                   src="/img/home/logo.png"
                   alt="..."
                 />
               </div>
-              <div className="header_logo-text d-block">
+              <div className="hidden-under-768px">
                 <img
                   style={{ height: "33px", cursor: "pointer" }}
                   src="/img/home/logo-text.png"
@@ -258,6 +248,7 @@ function ModalHeader() {
                 >
                   <button className="btn text-dark" type="button">
                     <span
+                      className="hidden-under-768px"
                       style={{
                         fontFamily: "Roboto-Regular",
                         fontSize: "16px",
@@ -280,7 +271,7 @@ function ModalHeader() {
                       Trải nghiệm
                     </span>
                   </button>
-                  <button className="btn text-dark">
+                  <button className="hidden-under-768px btn text-dark">
                     <span
                       style={{
                         fontFamily: "Roboto-Regular",
@@ -299,7 +290,7 @@ function ModalHeader() {
             <div className="location d-flex justify-content-between align-items-center">
               <div style={{ width: 1, height: 0 }}></div>
               <button
-                className="btn-BAhost-globe btn rounded-pill text-dark"
+                className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-red"
                 style={{
                   fontSize: "14px",
                   outline: "none",
@@ -310,7 +301,7 @@ function ModalHeader() {
                 Trở thành chủ nhà
               </button>
               <button
-                className="btn-BAhost-globe btn rounded-pill text-dark"
+                className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-dark"
                 style={{ outline: "none", height: "44px", width: "44px" }}
               >
                 <i className="fa-solid fa-globe"></i>
@@ -333,7 +324,7 @@ function ModalHeader() {
                     style={{ background: "#EBEBEB" }}
                   >
                     <button
-                      className="btn text-dark d-flex flex-column rounded-pill buttonUserActive buttonUserHover"
+                      className="width200-btn-under-768px btn text-dark d-flex flex-column rounded-pill buttonUserActive buttonUserHover"
                       style={{
                         fontSize: "14px",
                         outline: "none",
@@ -367,7 +358,7 @@ function ModalHeader() {
                       }}
                     ></div>
                     <button
-                      className="btn text-dark d-flex flex-column rounded-pill buttonUserHover"
+                      className="d-none btn text-dark d-flex flex-column rounded-pill buttonUserHover"
                       style={{
                         fontSize: "14px",
                         outline: "none",
@@ -403,14 +394,19 @@ function ModalHeader() {
 
                     <button
                       type="button"
-                      className="btn text-dark d-flex flex-row justify-content-between align-items-center rounded-pill buttonUserHover "
+                      className="width200-btn-under-768px width150-btn-under-576px btn text-dark d-flex flex-row justify-content-end align-items-center rounded-pill buttonUserHover "
                       style={{
                         width: "300px",
                         padding: "7px 7px 7px 25px",
                       }}
+                      onClick={() =>{
+                        handelClickMoveToRoomListPage();
+                        setShow(false)
+                        setValueInputSearch('')
+                      }}
                     >
                       <span
-                        className="text-dark d-flex flex-column align-items-start "
+                        className="d-none text-dark d-flex flex-column align-items-start "
                         style={{
                           fontFamily: "Roboto-Regular",
                           fontSize: "14px",
@@ -433,7 +429,7 @@ function ModalHeader() {
                         />
                       </span>
                       <span
-                        className="btn d-flex justify-content-center align-items-center"
+                        className="animal-hover-move-left-5px btn d-flex justify-content-center align-items-center"
                         style={{
                           backgroundImage: bgImgBtnSearch,
                           backgroundSize: "200% 200%",
@@ -445,9 +441,6 @@ function ModalHeader() {
                           lineHeight: "14px",
                           textAlign: "center",
                           outline: "none",
-                        }}
-                        onClick={() => {
-                          handelClickMoveToRoomListPage();
                         }}
                       >
                         <i
@@ -469,7 +462,7 @@ function ModalHeader() {
             </div>
           </div>
           <div
-            className="modal-content modal-lg  rounded-5 overflow-hidden"
+            className={showModalLocationList? 'width350-modal-under-576px modal-content modal-lg rounded-5 overflow-hidden' : 'width350-modal-under-576px modal-content modal-lg rounded-5 overflow-hidden d-none'}
             style={{
               width: "600px",
               zIndex: 10,
@@ -480,17 +473,11 @@ function ModalHeader() {
               transform: "translateX(-50%)",
             }}
           >
-            <div>
-              <div className="location-container">
-                <div className="location-out">
-                  <div
-                    className="location-inner py-5 ps-4 pe-3 overflow-auto"
-                    style={{ height: "500px" }}
-                  >
-                    {renderLocationByKeyword()}
-                  </div>
-                </div>
-              </div>
+            <div
+              className="location-inner py-5 ps-4 pe-3 overflow-auto"
+              style={{ height: "500px" }}
+            >
+              {renderLocationByKeyword()}
             </div>
           </div>
           <div

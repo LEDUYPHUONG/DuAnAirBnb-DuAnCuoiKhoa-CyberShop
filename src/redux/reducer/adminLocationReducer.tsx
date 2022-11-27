@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { http } from "../../util/setting";
+import { history, http } from "../../util/setting";
 import { AppDispatch } from "../configStore";
 
 
@@ -51,4 +51,59 @@ export const getLocationAdminApi = (numberPageAdmin :number) => {
         console.log(error);
       }
     };
+};
+
+export const postLocationAdminApi = (form :LocationModel) => {
+  return async () => {
+    try {
+      const response = await http.post('/vi-tri', form);
+      console.log(response);
+      alert('Tạo vị trí mới thành công!')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const putLocationAdminApi = (id :number,form :LocationModel) => {
+  return async () => {
+    try {
+      const response = await http.put(`/vi-tri/${id}`, form);
+      console.log(response);
+      alert('Sửa vị trí thành công!')
+      history.push('/admin/locationinfomanage')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteLocationAdminApi = (id :number) => {
+  return async () => {
+    try {
+      const response = await http.delete(`/vi-tri/${id}`);
+      console.log(response);
+      alert('Xóa vị trí thành công!')
+      history.push('/admin/locationinfomanage')
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const postEditImageLocationAdminApi = (id: number , formFile : FormData) => {
+  return async () => {
+    try {
+      const result = await http.post(`/vi-tri/upload-hinh-vitri?maViTri=${id}`, formFile);
+        console.log('Update thành công', result);
+        alert('Update hình của vị trí thành công')
+        history.push('/admin/locationinfomanage')
+        window.location.reload()
+    } catch (err) {
+      console.log(err);
+    }
+  };
 };

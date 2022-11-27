@@ -1,3 +1,4 @@
+// @import '../../components/datepicker';
 .container {
   height: 650px;
   margin-top: 50px;
@@ -63,67 +64,7 @@
           margin-bottom: 40px;
           text-align: center;
         }
-        .signup_input {
-          //set up webkit để autofill vào inp không tạo bg màu của trình duyệt
-          input:-webkit-autofill,
-          input:-webkit-autofill:hover,
-          input:-webkit-autofill:focus,
-          input:-webkit-autofill:active {
-            transition: background-color 5000s;
-            -webkit-text-fill-color: #fff !important;
-          }
-
-          .signup_email_inp,
-          .signup_password_inp{
-            width: 370px;
-            border-bottom: 2px solid rgba(243, 232, 232, 0.8);
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            background: transparent;
-            outline: 0;
-            font-size: 20px;
-            color: #ffffff;
-            @media screen and (max-width: 768px) {
-              width: 300px;
-            }
-          }
-          .ant-picker-input {
-            input {
-              width: 370px;
-              background-color: #12b4c0;
-              border-bottom: 2px solid rgba(243, 232, 232, 0.8);
-              border-top: none;
-              border-left: none;
-              border-right: none;
-              background: transparent;
-              outline: 0;
-              font-size: 20px;
-              color: #ffffff;
-              margin-bottom: 20px;
-              @media screen and (max-width: 768px) {
-                width: 300px;
-              }
-            }
-            span {
-              display: none;
-            }
-          }
-
-          i {
-            color: #ffffff;
-            font-size: 20px;
-            font-weight: 300;
-            cursor: pointer;
-            margin-left: -25px;
-          }
-          span {
-            margin-bottom: 15px;
-            text-align: left;
-            display: inline-block;
-            height: 10px;
-          }
-        }
+       
         .action_btn {
           .signin_btn {
             width: 150px;

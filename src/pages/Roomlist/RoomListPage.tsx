@@ -10,6 +10,7 @@ import {
   RoomlistModel,
 } from "../../redux/reducer/roomlistReducer";
 import { useAppDispatch } from "../../redux/example/hooks";
+import FooterPage from "../../component/Footer/FooterPage";
 
 type Props = {
   title?: string;
@@ -27,18 +28,18 @@ export default function RoomListPage({ title }: Props) {
   useEffect(() => {
     dispatch(getRoomlistApi(productSearch.id));
     // eslint-disable-next-line
-  }, []);
+  }, [productSearch]);
 
   return (
     <>
       <HeaderPage />
       <div
         className="roomlist-container"
-        style={{ display: "flex", width: "100%", marginTop: "80px" }}
+        style={{ display: "flex", width: "100%", marginTop: "80px", paddingBottom: '47px'}}
       >
         <div
           className="roomlist-item_"
-          style={{ width: "40%", padding: "0px 15px" }}
+          style={{ width: "50%", padding: "0px 15px" }}
         >
           <div
             className="roomlist-item_title"
@@ -57,7 +58,7 @@ export default function RoomListPage({ title }: Props) {
                 fontSize: "15px",
               }}
             >
-              Hơn 1.000 nhà ở
+              Ở vị trí này có {arrRoomlist.length} nhà ở
             </p>
 
             <div>
@@ -92,9 +93,9 @@ export default function RoomListPage({ title }: Props) {
             </div>
           </div>
           
-            <div className="roomlist-item_content" style={{ display: 'flex', width: "100%", flexWrap: 'wrap' }}>
+          <div className="d-block-under-991px roomlist-item_content d-flex flex-wrap">
             {arrRoomlist.map((prod:RoomlistModel,index:number ) =>
-            <NavLink to={`/detailroom/${prod.id}`} style={{width:"50%", textDecorationLine:'none'}}>
+            <NavLink to={`/detailroom/${prod.id}`} style={{width:"50%", textDecorationLine:'none'}} key={index}>
               <div key={index} style={{ marginTop: 20 }} onClick={() => {
                 dispatch(getRoomidAction(prod))
               }}>
@@ -104,10 +105,8 @@ export default function RoomListPage({ title }: Props) {
               
             )}
           </div>
-          
-          
         </div>
-        <div className="roomlist-map" style={{ width: "60%" }}>
+        <div className="roomlist-map" style={{position: 'fixed', top: 80, right: 0, width: "50%", height: 'calc(100vh - 127px)' }}>
           <iframe
             style={{ width: "100%", height: "100%", border: 0 }}
             title = 'Map demo'
@@ -118,145 +117,7 @@ export default function RoomListPage({ title }: Props) {
           ></iframe>
         </div>
       </div>
-      <div
-        className="d-flex justify-content-between align-items-center"
-        style={{
-          position: "relative",
-          bottom: 0,
-          left: 0,
-          height: "47px",
-          background: "#ffffff",
-          border: "1px solid #cccccc",
-          width: "100%",
-          padding: "16px 48px",
-          fontSize: "16px",
-          lineHeight: "16px",
-          zIndex: 10,
-        }}
-      >
-        <div
-          className="footer-left d-flex"
-          style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}
-        >
-          © 2022 Airbnb, Inc.
-          <div className="px-1">
-            <i
-              style={{
-                fontSize: "2px",
-                lineHeight: "20px",
-                verticalAlign: "top",
-                padding: "0 5px",
-              }}
-              className="fa-solid fa-circle"
-            ></i>
-          </div>
-          <NavLink to="" style={{ textDecoration: "none" }}>
-            <span
-              className="text-dark"
-              style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}
-            >
-              Quyền riêng tư
-            </span>
-          </NavLink>
-          <div className="px-1">
-            <i
-              style={{
-                fontSize: "2px",
-                lineHeight: "20px",
-                verticalAlign: "top",
-                padding: "0 5px",
-              }}
-              className="fa-solid fa-circle"
-            ></i>
-          </div>
-          <NavLink to="" style={{ textDecoration: "none" }}>
-            <span
-              className="text-dark"
-              style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}
-            >
-              Điều khoản
-            </span>
-          </NavLink>
-          <div className="px-1">
-            <i
-              style={{
-                fontSize: "2px",
-                lineHeight: "20px",
-                verticalAlign: "top",
-                padding: "0 5px",
-              }}
-              className="fa-solid fa-circle"
-            ></i>
-          </div>
-          <NavLink to="" style={{ textDecoration: "none" }}>
-            <span
-              className="text-dark"
-              style={{ fontFamily: "Roboto-Regular", fontSize: "14px" }}
-            >
-              Sơ đồ trang web
-            </span>
-          </NavLink>
-        </div>
-        <div className="footer-right d-flex">
-          <i className="fa-solid fa-globe"></i>
-          <div className="px-1">
-            <i
-              style={{
-                fontSize: "2px",
-                lineHeight: "20px",
-                verticalAlign: "top",
-                padding: "0 5px",
-              }}
-            ></i>
-          </div>
-          <NavLink to="" style={{ textDecoration: "none" }}>
-            <span className="text-dark" style={{ fontSize: "14px" }}>
-              Tiếng Việt (VN)
-            </span>
-          </NavLink>
-          <div className="px-1">
-            <i
-              style={{
-                fontSize: "2px",
-                lineHeight: "20px",
-                verticalAlign: "top",
-                padding: "0 5px",
-              }}
-            ></i>
-          </div>
-          <NavLink to="" style={{ textDecoration: "none" }}>
-            <span className="text-dark" style={{ fontSize: "14px" }}>
-              $ USD
-            </span>
-          </NavLink>
-          <div className="px-1">
-            <i
-              style={{
-                fontSize: "2px",
-                lineHeight: "20px",
-                verticalAlign: "top",
-                padding: "0 5px",
-              }}
-            ></i>
-          </div>
-          <NavLink to="" style={{ textDecoration: "none" }}>
-            <span className="text-dark" style={{ fontSize: "14px" }}>
-              Hỗ trợ và tài nguyên
-            </span>
-          </NavLink>
-          <div className="px-1">
-            <i
-              style={{
-                fontSize: "2px",
-                lineHeight: "20px",
-                verticalAlign: "top",
-                padding: "0 5px",
-              }}
-            ></i>
-          </div>
-          <i className="fa-solid fa-chevron-up"></i>
-        </div>
-      </div>
+      <FooterPage />
     </>
   );
 }

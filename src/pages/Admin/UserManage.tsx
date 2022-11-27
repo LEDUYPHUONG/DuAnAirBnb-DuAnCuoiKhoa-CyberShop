@@ -95,52 +95,63 @@ export default function UserManage() {
         return arrAdminUser.map((item,index) =>{
             return <tr key={index}>
                         <td> {item.id} </td>
-                        <td>{item.name}</td>
-                        <td>
-                            <img style={{width:'50px', height:'50px'}} src={item.avatar} alt="..." />
+                        <td className='hidden-under-576px'>{item.name}</td>
+                        <td className='hidden-under-576px'>
+                            <div className="shadow rounded-circle overflow-hidden m-auto" style={{width: '50px', height: '50px'}}>
+                                <img className="w-100" src={item.avatar === '' ? '/img/avatar/existing-user-default-avatar.png' : item.avatar} alt="..." />
+                            </div>
                         </td>
-                        <td>{item.phone}</td>
-                        <td>{item.gender? 'Nam' : 'Nữ'}</td>
                         <td>{item.role}</td>
                         <td>
                             <ModalInfoAdmin item={item}/>
                             <button className='btn btn-warning mx-3 text-dark' onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
-                                handleClickSetUserRole(item)
-                            }}>Sửa</button>
+                                let text = "Press a button!\nEither OK or Cancel.";
+                                if (window.confirm(text) === true) {
+                                  text = "You pressed OK!";
+                                  handleClickSetUserRole(item)
+                                } else {
+                                  text = "You canceled!";
+                                }
+                            }}>Edit Role</button>
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
-                                handleClickDeleteAccount(item)
+                                let text = "Press a button!\nEither OK or Cancel.";
+                                if (window.confirm(text) === true) {
+                                  text = "You pressed OK!";
+                                  handleClickDeleteAccount(item)
+                                } else {
+                                  text = "You canceled!";
+                                }
+                                
                             }}>x</button>
                         </td>
                     </tr>
             
         })
     }
-  return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}>
+  return <div className='border-start px-5 paddingX1rem-under-576px' style={{height: 'calc(100vh - 50px)'}}>
                     <ModalAddAdmin />
                     <form className='pb-3' style={{width:'100%'}} onSubmit={(event) =>{
                         handleSubmit(event)
                     }}>
                         <input 
                         className='border-bottom' 
-                        style={{border:'none', outline:'none', width:'400px'}} 
+                        style={{border:'none', outline:'none', width:'200px'}} 
                         type="text" 
-                        placeholder='Enter account or username' 
+                        placeholder='Enter name of account' 
                         id="keywordRef" 
                         onChange={(event : ChangeEvent<HTMLInputElement>) =>{
                             handleChange(event)
                         }}/>
                         <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
                     </form>
-                    <table className="table">
+                    <table className="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Phone</th>
-                                <th>Gender</th>
+                                <th className='hidden-under-576px'>Name</th>
+                                <th className='hidden-under-576px'>Image</th>
                                 <th>Role</th>
                                 <th></th>
                             </tr>
