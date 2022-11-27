@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { http, USER_INFO, setStoreJson } from '../../util/setting';
-import { AppDispatch } from '../configStore';
-import { UserSignUpModel } from './userReducer';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { http, USER_INFO, setStoreJson } from "../../util/setting";
+import { AppDispatch } from "../configStore";
+import { UserSignUpModel } from "./userReducer";
 
 export interface ProfileRoomModel {
   id: number;
@@ -32,24 +32,24 @@ const initialState: ProfileModel = {
   arrProfileRoom: [],
   arrProfileUser: {
     id: 0,
-    name: '',
-    email: '',
-    password: '',
-    phone: '',
-    birthday: '',
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    birthday: "",
     gender: false,
-    avatar: '',
-    role: '',
+    avatar: "",
+    role: "",
   },
 };
 
 const profileReducer = createSlice({
-  name: 'profileReducer',
+  name: "profileReducer",
   initialState,
   reducers: {
     getProfileRoomAction: (
       state,
-      action: PayloadAction<ProfileRoomModel[]>,
+      action: PayloadAction<ProfileRoomModel[]>
     ) => {
       state.arrProfileRoom = action.payload;
     },
@@ -69,7 +69,7 @@ export default profileReducer.reducer;
 export const getProfileRoomApi = (idUser: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const result = await http.get('dat-phong/lay-theo-nguoi-dung/' + idUser);
+      const result = await http.get("dat-phong/lay-theo-nguoi-dung/" + idUser);
       dispatch(getProfileRoomAction(result.data.content));
     } catch (err) {
       console.log(err);
@@ -89,15 +89,15 @@ export const getProfileUserApi = (idUser: string) => {
 
 export const postProfileUserApi = (
   idUser: number,
-  valueSubmit: UserSignUpModel,
+  valueSubmit: UserSignUpModel
 ) => {
   return async () => {
     try {
       const result = await http.put(`/users/${idUser}`, valueSubmit);
       console.log(result);
-      alert('Cập nhật thông tin cá nhân thành công')
+      alert("Cập nhật thông tin cá nhân thành công");
       if (result && result.data.content) {
-        console.log('Update thành công', result.data.content);
+        console.log("Update thành công", result.data.content);
         setStoreJson(USER_INFO, result.data.content);
       }
     } catch (err) {
@@ -106,14 +106,13 @@ export const postProfileUserApi = (
   };
 };
 
-
-export const postAvatarImageApi = (formFile : FormData) => {
+export const postAvatarImageApi = (formFile: FormData) => {
   return async () => {
     try {
-      const result = await http.post('/users/upload-avatar', formFile);
-        console.log('Update thành công', result);
-        alert('Update avatar thành công')
-        window.location.reload()
+      const result = await http.post("/users/upload-avatar", formFile);
+      console.log("Update thành công", result);
+      alert("Update avatar thành công");
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }

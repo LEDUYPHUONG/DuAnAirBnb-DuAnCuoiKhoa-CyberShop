@@ -1,9 +1,9 @@
-import Dropdown from 'react-bootstrap/Dropdown';
-import { useNavigate } from 'react-router-dom';
-import { logout } from '../../util/setting';
+import Dropdown from "react-bootstrap/Dropdown";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../util/setting";
 
 function HandleClickSignInOrJoin() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <Dropdown className="d-inline mx-2">
@@ -12,15 +12,30 @@ function HandleClickSignInOrJoin() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-            <Dropdown.Item className='text-decoration-none' onClick={() =>{
-              navigate('/signin')
-            }}>Sign In</Dropdown.Item>
-            <Dropdown.Item className='text-decoration-none' onClick={() =>{
-              navigate('/signup')
-            }}>Join</Dropdown.Item>
-            <Dropdown.Item className='text-decoration-none' onClick={() =>{
-              logout()
-            }}>Logout</Dropdown.Item>
+          <Dropdown.Item
+            className="text-decoration-none"
+            onClick={() => {
+              navigate("/signin");
+            }}
+          >
+            Sign In
+          </Dropdown.Item>
+          <Dropdown.Item
+            className="text-decoration-none"
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
+            Join
+          </Dropdown.Item>
+          <Dropdown.Item
+            className="text-decoration-none"
+            onClick={() => {
+              logout();
+            }}
+          >
+            Logout
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>

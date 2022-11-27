@@ -6,9 +6,8 @@ import moment from "moment";
 const { RangePicker } = DatePicker;
 //function lấy ra datestring ngày đến và đi đã chọn, hiện tại mình ko dùng, nhưng nếu muốn console.log ra datastring để xem thì truyền nó vào onChange thay thế hàm countNumberOfDates
 function onChangeDate(date: any, dateString: any) {
-console.log("datestring", dateString);
- console.log(dateString[0]);
- 
+  console.log("datestring", dateString);
+  console.log(dateString[0]);
 }
 // function count số ngày đã chọn
 function countNumberOfDates(dateString: any) {
@@ -26,8 +25,7 @@ const App: React.FC = () => (
     <RangePicker
       placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
       format={["DD-MM-YYYY"]}
-      onChange={(date,dateString) => countNumberOfDates(date)
-      }
+      onChange={(date, dateString) => countNumberOfDates(date)}
       disabledDate={disabledDate}
     />
   </Space>

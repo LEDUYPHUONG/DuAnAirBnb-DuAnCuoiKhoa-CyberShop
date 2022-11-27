@@ -13,8 +13,8 @@ interface LinkHeader {
 const initialState: NavigateState = {
   valueLinkHeader: {
     fromLink: "",
-    toLink: ""
-  }
+    toLink: "",
+  },
 };
 
 export const navigateLinkHeaderSlide = createSlice({
@@ -23,8 +23,8 @@ export const navigateLinkHeaderSlide = createSlice({
   reducers: {
     saveNavigateLinkHeader: (state, action: PayloadAction<LinkHeader>) => {
       state.valueLinkHeader = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { saveNavigateLinkHeader } = navigateLinkHeaderSlide.actions;

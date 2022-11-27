@@ -113,8 +113,12 @@ const roomDetailReducer = createSlice({
   },
 });
 
-export const { getRoomDetailAction, getBookedRoomAction, getCommentAction, setArrNgayOLai } =
-  roomDetailReducer.actions;
+export const {
+  getRoomDetailAction,
+  getBookedRoomAction,
+  getCommentAction,
+  setArrNgayOLai,
+} = roomDetailReducer.actions;
 
 export default roomDetailReducer.reducer;
 

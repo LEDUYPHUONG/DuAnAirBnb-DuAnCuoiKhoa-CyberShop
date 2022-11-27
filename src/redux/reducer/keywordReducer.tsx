@@ -1,19 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
- 
-const initialState:string = 'pageIndex=1&pageSize=20'
+const initialState: string = "pageIndex=1&pageSize=20";
 
 const keywordReducer = createSlice({
-  name: 'keywordReducer',
+  name: "keywordReducer",
   initialState,
   reducers: {
-    setKeyword : (state:string, action) => {
-        state = action.payload;
-        return state
-      },
-  }
+    setKeyword: (state: string, action) => {
+      state = action.payload;
+      return state;
+    },
+  },
 });
 
-export const {setKeyword} = keywordReducer.actions
+export const { setKeyword } = keywordReducer.actions;
 
-export default keywordReducer.reducer
+export default keywordReducer.reducer;

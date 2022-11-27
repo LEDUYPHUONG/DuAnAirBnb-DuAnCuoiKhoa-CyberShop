@@ -2,10 +2,10 @@ import React from "react";
 import { ProfileRoomModel } from "../../redux/reducer/profileReducer";
 
 type Props = {
-  product:ProfileRoomModel;
-}
+  product: ProfileRoomModel;
+};
 
-export default function CarouselInfor ({product}: Props){
+export default function CarouselInfor({ product }: Props) {
   return (
     <div className="d-flex flex-column mb-3">
       <div className="col-md-6" style={{ width: "100%" }}>
@@ -36,18 +36,58 @@ export default function CarouselInfor ({product}: Props){
               <div className="pb-2">
                 Romantic APT for Long-term Living@BEST L...
               </div>
-              <div className="border-bottom" style={{ width: "100%"}}></div>
+              <div className="border-bottom" style={{ width: "100%" }}></div>
               <ul className="infor-listgrouproom list-group list-group-horizontal pt-2">
-                <li className="infor-usernumber"  style={{listStyle:"none", fontSize:14}}>{product.soLuongKhach} Khách</li>
-                <li className="infor-roomtype" style={{marginLeft:20,fontSize:14}}>Phòng Studio</li>
-                <li className="infor-bednumber" style={{marginLeft:20,fontSize:14}}>1 giường</li>
-                <li className="infor-bathnumber" style={{marginLeft:20,fontSize:14}}>1 phòng tắm</li>
+                <li
+                  className="infor-usernumber"
+                  style={{ listStyle: "none", fontSize: 14 }}
+                >
+                  {product.soLuongKhach} Khách
+                </li>
+                <li
+                  className="infor-roomtype"
+                  style={{ marginLeft: 20, fontSize: 14 }}
+                >
+                  Phòng Studio
+                </li>
+                <li
+                  className="infor-bednumber"
+                  style={{ marginLeft: 20, fontSize: 14 }}
+                >
+                  1 giường
+                </li>
+                <li
+                  className="infor-bathnumber"
+                  style={{ marginLeft: 20, fontSize: 14 }}
+                >
+                  1 phòng tắm
+                </li>
               </ul>
               <ul className="infor-machine list-group list-group-horizontal pt-2">
-                <li className="infor-wifi"  style={{listStyle:"none", fontSize:14}}>Wifi</li>
-                <li className="infor-kitchen" style={{marginLeft:20,fontSize:14}}>Bếp</li>
-                <li className="infor-air" style={{marginLeft:20,fontSize:14}}>Điều hòa nhiệt độ</li>
-                <li className="infor-machine" style={{marginLeft:20,fontSize:14}}>Máy giặt</li>
+                <li
+                  className="infor-wifi"
+                  style={{ listStyle: "none", fontSize: 14 }}
+                >
+                  Wifi
+                </li>
+                <li
+                  className="infor-kitchen"
+                  style={{ marginLeft: 20, fontSize: 14 }}
+                >
+                  Bếp
+                </li>
+                <li
+                  className="infor-air"
+                  style={{ marginLeft: 20, fontSize: 14 }}
+                >
+                  Điều hòa nhiệt độ
+                </li>
+                <li
+                  className="infor-machine"
+                  style={{ marginLeft: 20, fontSize: 14 }}
+                >
+                  Máy giặt
+                </li>
               </ul>
             </div>
           </div>
@@ -55,4 +95,4 @@ export default function CarouselInfor ({product}: Props){
       </div>
     </div>
   );
-};
+}

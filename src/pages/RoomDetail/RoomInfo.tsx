@@ -117,7 +117,7 @@ export default function RoomInfo() {
             <div className="textReview">
               <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
               <span className="tinyText">
-                4.8 (<NavLink to='/'>10 đánh giá</NavLink>)
+                4.8 (<NavLink to="/">10 đánh giá</NavLink>)
               </span>
             </div>
             <div className="textReview">
@@ -127,17 +127,19 @@ export default function RoomInfo() {
             <div className="textReview">
               <i className="fa fa-map-marker" style={{ color: "#ec6e6e" }}></i>
               <span className="tinyText">
-                <NavLink to='/'>Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN</NavLink>
+                <NavLink to="/">
+                  Thành phố Vũng Tàu, Bà Rịa-Vũng Tàu, VN
+                </NavLink>
               </span>
             </div>
           </div>
 
           <div className="shareButton d-flex">
-            <NavLink to='/' className="me-3">
+            <NavLink to="/" className="me-3">
               <i className="fa fa-share-alt"></i>
               Chia sẻ
             </NavLink>
-            <NavLink to='/'>
+            <NavLink to="/">
               <i className="fa fa-bookmark"></i>
               Lưu
             </NavLink>
@@ -217,7 +219,8 @@ export default function RoomInfo() {
                         <div className="text_bott">
                           <span>
                             Chủ nhà này đã cam kết thực hiện 5 bước vệ sinh tăng
-                            cường của Airbnb. <NavLink to='/'>Hiển thị thêm</NavLink>
+                            cường của Airbnb.{" "}
+                            <NavLink to="/">Hiển thị thêm</NavLink>
                           </span>
                         </div>
                       </div>
@@ -260,7 +263,7 @@ export default function RoomInfo() {
                     {objectRoomDetail.moTa}
                     <br />
                     <br />
-                    <NavLink to='/'>Hiển thị thêm</NavLink>
+                    <NavLink to="/">Hiển thị thêm</NavLink>
                   </div>
                 </div>
               </div>
@@ -435,7 +438,7 @@ export default function RoomInfo() {
                 <div className="textReview">
                   <i className="fa fa-star" style={{ color: "#ec6e6e" }}></i>
                   <span className="tinyText">
-                    4.8 <NavLink to='/'>(10 đánh giá)</NavLink>
+                    4.8 <NavLink to="/">(10 đánh giá)</NavLink>
                   </span>
                 </div>
               </div>
@@ -480,7 +483,7 @@ export default function RoomInfo() {
               <div className="cashier">
                 <div className="tien_phong d-flex justify-content-between">
                   <div className="tinh_tien">
-                    <NavLink to='/'>
+                    <NavLink to="/">
                       ${objectRoomDetail.giaTien} x {number_Days} đêm
                     </NavLink>
                   </div>
@@ -488,7 +491,7 @@ export default function RoomInfo() {
                 </div>
                 <div className="tien_dich_vu d-flex justify-content-between">
                   <div className="tinh_tien">
-                    <NavLink to='/'> Phí dịch vụ</NavLink>
+                    <NavLink to="/"> Phí dịch vụ</NavLink>
                   </div>
                   <div className="thanh_tien">$8</div>
                 </div>
