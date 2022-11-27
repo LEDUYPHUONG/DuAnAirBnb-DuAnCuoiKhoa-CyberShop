@@ -31,3 +31,6 @@
   1. **Lê Duy Phương**:   `home (layout, call api)`,   `admin(layout, call api)`
   2. **Đinh Tiến Hưng**:  `detailroom (layout, call api)`,   `Signup (layout, call Api)`,    `Singin (layout, call api)`
   3. **Nguyễn Hoàng Khang**:    `roomlist (layout, call api)`,   `Information (layout, call api)`.
+  #### `IV. Test, Fix, Complete project:`
+  **Lê Duy Phương**:   fix lay out; responsive; test, làm thêm và fix bug chức năng api; hoàn thiện dự án nộp lại cho CyberShop chấm lại.
+  
