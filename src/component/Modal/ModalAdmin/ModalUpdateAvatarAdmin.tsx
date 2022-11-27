@@ -35,7 +35,7 @@ function ModalUpdateAvatarAdmin() {
         className='my-3 w-100'
         disabled
         >
-        Cập nhật ảnh
+        Update avatar
       </Button>
 
       <Modal
@@ -85,10 +85,10 @@ function ModalUpdateAvatarAdmin() {
                               <p className="pb-3">Chưa chọn File kìa bạn</p>
                             )}
                   <div className="footer-modal my-3">
-                    <Button variant="primary mx-1" type="submit">Xác Nhận</Button>
+                    <Button variant="primary mx-1" type="submit">Confirm</Button>
                     
                     <Button variant="secondary mx-1" onClick={handleClose} >
-                      Hủy
+                      Cancel
                     </Button>
                   </div>
                 </div>

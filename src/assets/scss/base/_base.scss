@@ -21,3 +21,14 @@ a{
         text-decoration: underline;
     }
 }
+table{
+    object-fit: fill;
+}
+
+th, td{
+    text-align: center;
+}
+
+tr{
+    vertical-align: middle;
+}

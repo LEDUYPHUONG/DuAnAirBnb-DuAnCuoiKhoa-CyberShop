@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom'
 import { http } from '../../util/setting'
 import ModalEditLocation from '../../component/Modal/ModalAdmin/ModalEditLocation'
 import ModalUpdateImageLocationAdmin from '../../component/Modal/ModalAdmin/ModalUpdateImageLocationAdmin'
+import ModalInfoLocationAdmin from '../../component/Modal/ModalAdmin/ModalInfoLocationAdmin'
 
 export default function LocationInfoManage() {
   const { arrLocationAdmin, numberPageAdmin } = useAppSelector((state) => state.adminLocationReducer)
@@ -85,6 +86,7 @@ export default function LocationInfoManage() {
                           <ModalUpdateImageLocationAdmin id={item.id}/>
                       </td>
                       <td>
+                            <ModalInfoLocationAdmin item={item} />
                             <ModalEditLocation item={item} />
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                               event.preventDefault();

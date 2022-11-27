@@ -53,7 +53,7 @@ function ModalEditLocation({item} : Props) {
   return (
     <>
       <Button variant="warning" onClick={handleShow} className='mx-2'>
-        Sửa
+        Edit
       </Button>
 
       <Modal
@@ -62,78 +62,93 @@ function ModalEditLocation({item} : Props) {
         keyboard={false}
       >
         <Modal.Body>
-          <form className="container my-5" onSubmit={formik.handleSubmit}>
-            <div className="sign_up" style={{borderRadius:"20px"}}>
-              <div className="sign_up_right w-100 overflow-hidden" style={{borderRadius:"20px"}}>
-                <div className="bg_cover d-flex flex-column align-items-center justify-content-center" style={{borderRadius:"20px"}}>
-                  <h2>SỬA VỊ TRÍ</h2>
-                  <div className="signup_input d-flex flex-column  align-items-start">
-                   
-                    
-                    <Popup 
-                        trigger={
-                            <button
-                            className="btn btn-light w-100 text-start"
-                            type="button"
-                            id="id"
-                            >
-                                {formik.values.id}
-                            </button>
-                        } 
-                        position="top center"
-                        >
-                        <div>This field cannot be changed!</div>
-                    </Popup>
-                    <span className="text-danger">{formik.errors.id}</span>
-                    <input
-                      type="text"
-                      id="tenViTri"
-                      placeholder="Tên vị trí"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.tenViTri}
-                    />
-                    <span className="text-danger">{formik.errors.tenViTri}</span>
-                    <input
-                      type="text"
-                      id="tinhThanh"
-                      placeholder="Tỉnh thành"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.tinhThanh}
-                    />
-                    <span className="text-danger">{formik.errors.tinhThanh}</span>
-                    <input
-                      type="text"
-                      id="quocGia"
-                      placeholder="Quốc gia"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.quocGia}
-                    />
-                    <span className="text-danger">{formik.errors.quocGia}</span>
-                    <input
-                      type="text"
-                      id="hinhAnh"
-                      placeholder="Hình ảnh"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.hinhAnh}
-                    />
-                    <span className="text-danger">{formik.errors.hinhAnh}</span>
-                  </div>
-                  <div className="footer-modal">
-                    <Button variant="primary mx-1" type="submit">Sửa</Button>
-                    
-                    <Button variant="secondary mx-1" onClick={handleClose} >
-                      Hủy
-                    </Button>
-                  </div>
+          <form className="p-3"onSubmit={formik.handleSubmit}>
+            <div className="p-3 bg-dark shadow">
+              <h2 className="text-center text-light pb-2">Edit location</h2>
+              <div className="signup_input d-flex flex-column align-items-start">
+                <Popup 
+                    trigger={
+                      <div className="input-group">
+                        <span className="input-group-text" id="basic-addon1">ID</span>
+                        <input 
+                          className="form-control"
+                          type="text"
+                          id="id"
+                          placeholder="Id vị trí"
+                          defaultValue={formik.values.id}
+                          disabled
+                        />
+                      </div>
+                    } 
+                    position="top center"
+                    >
+                    <div>This field cannot be changed!</div>
+                </Popup>
+                <span className="text-danger mb-3">{formik.errors.id}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Location</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="tenViTri"
+                    placeholder="Tên vị trí"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.tenViTri}
+                  />
                 </div>
+                <span className="text-danger mb-3">{formik.errors.tenViTri}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Province</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="tinhThanh"
+                    placeholder="Tỉnh thành"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.tinhThanh}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.tinhThanh}</span>
+                  
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Country</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="quocGia"
+                    placeholder="Quốc gia"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.quocGia}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.quocGia}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Image</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="hinhAnh"
+                    placeholder="Hình ảnh"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.hinhAnh}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.hinhAnh}</span>
+
+              </div>
+              <div className="footer-modal mt-3 text-center">
+                <Button variant="primary mx-1" type="submit">Edit</Button>
+                
+                <Button variant="secondary mx-1" onClick={handleClose} >
+                  Close
+                </Button>
               </div>
             </div>
           </form>

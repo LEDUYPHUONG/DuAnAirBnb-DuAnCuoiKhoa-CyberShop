@@ -17,7 +17,7 @@ function ModalInfoAdmin({item} : Props) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-      Xem thông tin chi tiết
+      Info
       </Button>
 
       <Modal
@@ -27,7 +27,7 @@ function ModalInfoAdmin({item} : Props) {
       >
         <Modal.Body>
             <div className="shadow p-3 m-3 bg-body rounded">
-              <h2>THÔNG TIN CỦA ACCOUNT</h2>
+              <h2 className="text-center">INFO ACCOUNT</h2>
               <div>
                 <div className="w-100 d-flex justify-content-center align-items-center mb-3">
                   <div className="shadow rounded-circle overflow-hidden" style={{width: '150px', height: '150px'}}>
@@ -70,7 +70,7 @@ function ModalInfoAdmin({item} : Props) {
               </div>
               <div className="footer-modal d-flex justify-content-center">                    
                 <Button variant="secondary mx-1" onClick={handleClose} >
-                  Thoát
+                  Cancel
                 </Button>
               </div>
             </div>

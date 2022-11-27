@@ -87,7 +87,7 @@ function ModalAddRoom() {
             <div className="sign_up" style={{borderRadius:"20px"}}>
               <div className="sign_up_right w-100 overflow-hidden bg-dark" style={{borderRadius:"20px"}}>
                 <div className="m-3 p-3 bg-white rounded-3">
-                  <h2 className="text-center">THÊM PHÒNG</h2>
+                  <h2 className="text-center">ADD ROOM</h2>
                   <div className="">
                     <input
                       type="number"
@@ -302,10 +302,10 @@ function ModalAddRoom() {
 
                   </div>
                   <div className="footer-modal text-center pt-3">
-                    <Button variant="primary mx-1" type="submit">Thêm</Button>
+                    <Button variant="primary mx-1" type="submit">Add</Button>
                     
                     <Button variant="secondary mx-1" onClick={handleClose} >
-                      Hủy
+                      Cancel
                     </Button>
                   </div>
                 </div>

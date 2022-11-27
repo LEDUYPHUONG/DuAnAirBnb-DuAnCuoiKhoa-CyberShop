@@ -76,7 +76,7 @@ function ModalEditRoom({item} : Props) {
   return (
     <>
       <Button variant="warning mx-2" onClick={handleShow}>
-      Sửa
+      Edit
       </Button>
 
       <Modal
@@ -97,12 +97,12 @@ function ModalEditRoom({item} : Props) {
                     dispatch(putEditRoomAdminApi(values.id, values));
                   }}
                 >
-                  <h2 className="pt-3 fw-semiBold text-danger" style={{fontSize:'25px'}}>THÔNG TIN CỦA PHÒNG CẦN SỬA</h2>
+                  <h2 className="pt-3 fw-semiBold text-danger" style={{fontSize:'25px'}}>EDIT ROOM</h2>
                   <div className="signup_input w-100 px-3">
                     <Popup 
                         trigger={
                             <div className="input-group mt-3">
-                                <span className="input-group-text">id</span>
+                                <span className="input-group-text">ID</span>
                                 <input 
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
@@ -121,7 +121,7 @@ function ModalEditRoom({item} : Props) {
                         <div>This field cannot be changed!</div>
                     </Popup>
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Tên phòng</span>
+                        <span className="input-group-text">Name room</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -138,7 +138,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.tenPhong}</p>
                             )}
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Khách</span>
+                        <span className="input-group-text">Guest</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -155,7 +155,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.khach}</p>
                             )}
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Phòng ngủ</span>
+                        <span className="input-group-text">Bedroom</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -172,7 +172,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.phongNgu}</p>
                             )}
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Giường</span>
+                        <span className="input-group-text">Bed</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -189,7 +189,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.giuong}</p>
                             )}
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Phòng tắm</span>
+                        <span className="input-group-text">Bathroom</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -206,7 +206,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.phongTam}</p>
                             )}
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Mô tả</span>
+                        <span className="input-group-text">Describe</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -223,7 +223,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.moTa}</p>
                             )}
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Giá tiền</span>
+                        <span className="input-group-text">Price</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -240,7 +240,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.giaTien}</p>
                             )}
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Mã Vị trí</span>
+                        <span className="input-group-text">ID location</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -257,7 +257,7 @@ function ModalEditRoom({item} : Props) {
                               <p className='text-danger' style={{fontSize:'12px'}}>{formik.errors.maViTri}</p>
                             )}
 
-                    <p className="text-center fw-bold">Tiện ích đi kèm</p>
+                    <p className="text-center fw-bold mt-2">Add-ons</p>
 
                     <div className="text-dark input-group-text text-wrap text-start px-5 d-flex justify-content-between align-items-center">
                         <span className="ps-3">Máy giặt:</span>
@@ -385,9 +385,9 @@ function ModalEditRoom({item} : Props) {
                             <Radio value="false">Không</Radio>
                         </Radio.Group>
                     </div>
-                    <p className="text-dark text-center fw-bold">Hình ảnh</p>
+                    <p className="text-dark text-center fw-bold mt-2">Image link</p>
                     <div className="input-group mt-3">
-                        <span className="input-group-text">Hình ảnh</span>
+                        <span className="input-group-text">Link</span>
                         <input 
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -405,10 +405,10 @@ function ModalEditRoom({item} : Props) {
                   </div>
                   <div className="footer-modal my-3">
                     <Button variant="primary mx-1" type="submit" >
-                      Xác nhận
+                        Confirm
                     </Button>                    
                     <Button variant="secondary mx-1" onClick={handleClose} >
-                      Thoát
+                        Cancel
                     </Button>
                   </div>
                 </form>

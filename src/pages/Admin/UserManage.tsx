@@ -97,12 +97,10 @@ export default function UserManage() {
                         <td> {item.id} </td>
                         <td>{item.name}</td>
                         <td>
-                            <div className="shadow rounded-circle overflow-hidden" style={{width: '50px', height: '50px'}}>
-                            <img className="w-100" src={item.avatar === '' ? '/img/avatar/existing-user-default-avatar.png' : item.avatar} alt="..." />
+                            <div className="shadow rounded-circle overflow-hidden m-auto" style={{width: '50px', height: '50px'}}>
+                                <img className="w-100" src={item.avatar === '' ? '/img/avatar/existing-user-default-avatar.png' : item.avatar} alt="..." />
                             </div>
                         </td>
-                        <td>{item.phone}</td>
-                        <td>{item.gender? 'Nam' : 'Nữ'}</td>
                         <td>{item.role}</td>
                         <td>
                             <ModalInfoAdmin item={item}/>
@@ -115,7 +113,7 @@ export default function UserManage() {
                                 } else {
                                   text = "You canceled!";
                                 }
-                            }}>Sửa Role</button>
+                            }}>Edit Role</button>
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
                                 let text = "Press a button!\nEither OK or Cancel.";
@@ -154,8 +152,6 @@ export default function UserManage() {
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Image</th>
-                                <th>Phone</th>
-                                <th>Gender</th>
                                 <th>Role</th>
                                 <th></th>
                             </tr>

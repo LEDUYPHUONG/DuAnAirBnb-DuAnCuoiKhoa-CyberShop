@@ -66,84 +66,96 @@ function ModalAddAdmin() {
         keyboard={false}
       >
         <Modal.Body>
-          <form className="container my-5" onSubmit={formik.handleSubmit}>
-            <div className="sign_up" style={{borderRadius:"20px"}}>
-              <div className="sign_up_right w-100 overflow-hidden" style={{borderRadius:"20px"}}>
-                <div className="bg_cover d-flex flex-column align-items-center justify-content-center" style={{borderRadius:"20px"}}>
-                  <h2>THÊM QUẢN TRỊ VIÊN</h2>
-                  <div className="signup_input d-flex flex-column  align-items-start">
-                    <input
-                      type="text"
-                      id="email"
-                      placeholder="Email đăng nhập"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.email}</span>
-                    <div className="d-flex">
-                      <input
-                        type={typePW}
-                        id="password"
-                        placeholder="Mật khẩu đăng nhập"
-                        className="signup_password_inp"
-                        maxLength={35}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                      <i
-                        className="bi bi-eye"
-                        onMouseDown={handle_Password_Icon}
-                        onMouseUp={handle_Password_Icon}
-                      ></i>
-                    </div>
-                    <span className="text-danger">{formik.errors.password}</span>
-
-                    
-                    <input
-                      type="text"
-                      id="name"
-                      placeholder="Tên tài khoản"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.name}</span>
-                    <input
-                      type="text"
-                      id="phone"
-                      placeholder="Số điện thoại"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.phone}</span>
-
-                    <DatePicker
-                      bordered={false}
-                      className="p-0"
-                      placeholder="Sinh nhật"
-                      format="DD/MM/YYYY"
-                      onChange={(value) => {
-                        const newValue =
-                          moment(value).format('DD/MM/YYYY');
-                          formik.values.birthday = newValue;
-                      }}
-                      defaultValue={moment(
-                        formik.values.birthday,
-                        'DD/MM/YYYY',
-                      )}
-                    />
-                    <span className="text-danger">{formik.errors.birthday}</span>
-                  </div>
-                  <div className="footer-modal">
-                    <Button variant="primary mx-1" type="submit">Thêm</Button>
-                    
-                    <Button variant="secondary mx-1" onClick={handleClose} >
-                      Hủy
-                    </Button>
-                  </div>
+          <form className="p-3" onSubmit={formik.handleSubmit}>
+            <div className="p-3 bg-dark shadow">
+              <h2 className="text-center text-light pb-2">ADD ADMIN</h2>
+              <div className="signup_input d-flex flex-column align-items-start">
+                
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Name</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="name"
+                    placeholder="Tên tài khoản"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
                 </div>
+                <span className="text-danger mb-3">{formik.errors.name}</span>
+                
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Email</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="email"
+                    placeholder="Email đăng nhập"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.email}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Phone</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="phone"
+                    placeholder="Số điện thoại"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.phone}</span>
+                
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Password</span>
+                  <input 
+                    className="form-control"
+                    type={typePW}
+                    id="password"
+                    placeholder="Mật khẩu đăng nhập"
+                    maxLength={35}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                  <i
+                    className="bi bi-eye input-group-text"
+                    onMouseDown={handle_Password_Icon}
+                    onMouseUp={handle_Password_Icon}
+                  ></i>
+                </div>
+                <span className="text-danger mb-3">{formik.errors.password}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Birthday</span>
+                  <DatePicker
+                  bordered={false}
+                  className="form-control"
+                  placeholder="Sinh nhật"
+                  format="DD/MM/YYYY"
+                  onChange={(value) => {
+                    const newValue =
+                      moment(value).format('DD/MM/YYYY');
+                      formik.values.birthday = newValue;
+                  }}
+                  defaultValue={moment(
+                    formik.values.birthday,
+                    'DD/MM/YYYY',
+                  )}
+                />
+                </div>
+
+                <span className="text-danger">{formik.errors.birthday}</span>
+              </div>
+              <div className="footer-modal mt-3 text-center">
+                <Button variant="primary mx-1" type="submit">Add</Button>
+                
+                <Button variant="secondary mx-1" onClick={handleClose} >
+                  Cancel
+                </Button>
               </div>
             </div>
           </form>

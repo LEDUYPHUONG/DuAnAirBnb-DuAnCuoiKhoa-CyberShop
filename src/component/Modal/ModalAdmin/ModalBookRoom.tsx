@@ -83,7 +83,7 @@ function ModalBookRoom() {
             <div className="sign_up mt-0 p-3" style={{borderRadius:"20px"}}>
               <div style={{borderRadius:"20px"}}>
                 <div className="bg_cover d-flex flex-column align-items-center justify-content-center" style={{borderRadius:"20px"}}>
-                  <h2 style={{ fontSize:'28px'}}>ĐẶT PHÒNG</h2>
+                  <h2 style={{ fontSize:'28px'}}>BOOKING ROOM</h2>
                   <div className="signup_input d-flex flex-column  align-items-start">
                     <Popup 
                         trigger={
@@ -109,7 +109,7 @@ function ModalBookRoom() {
 
                     
                     <div className="input-group">
-                        <span className="input-group-text" id="basic-addon1">Mã người dùng</span>
+                        <span className="input-group-text" id="basic-addon1">ID user</span>
                         <input
                         type="number"
                         id="maNguoiDung"
@@ -124,7 +124,7 @@ function ModalBookRoom() {
                     <span className="text-danger mb-3" style={{fontSize: '14px'}}>{formik.errors.maNguoiDung}</span>
 
                     <div className="input-group">
-                        <span className="input-group-text" id="basic-addon1">Mã Phòng</span>
+                        <span className="input-group-text" id="basic-addon1">ID room</span>
                         <input
                         type="number"
                         id="maPhong"
@@ -138,7 +138,7 @@ function ModalBookRoom() {
                     <span className="text-danger mb-3" style={{fontSize: '14px'}}>{formik.errors.maPhong}</span>
 
                     <div className="input-group">
-                        <span className="input-group-text" id="basic-addon1">Số lượng khách</span>
+                        <span className="input-group-text" id="basic-addon1">Guest</span>
                         <input
                         type="number"
                         id="soLuongKhach"
@@ -152,7 +152,7 @@ function ModalBookRoom() {
                     <span className="text-danger mb-3" style={{fontSize: '14px'}}>{formik.errors.soLuongKhach}</span>
 
                     <RangePicker
-                        placeholder={["NHẬN PHÒNG", "TRẢ PHÒNG"]}
+                        placeholder={["Check in", " Check out"]}
                         format={["YYYY-MM-DD"]}
                         onChange={(date, dateString) =>
                             onChangeDate(date, dateString)
@@ -162,10 +162,10 @@ function ModalBookRoom() {
 
                   </div>
                   <div className="footer-modal">
-                    <Button variant="primary mx-1" type="submit">Xác Nhận</Button>
+                    <Button variant="primary mx-1" type="submit">Confirm</Button>
                     
                     <Button variant="secondary mx-1" onClick={handleClose} >
-                      Hủy
+                      Cancel
                     </Button>
                   </div>
                 </div>
