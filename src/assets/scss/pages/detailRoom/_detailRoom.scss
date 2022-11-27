@@ -41,15 +41,17 @@
   }
   .roomPhoto {
     width: 100%;
+    
     .row {
-      &::before {
-        display: none;
-      }
+      margin: 0 auto;
       display: grid;
       width: 100%;
       grid-template-columns: repeat(4, 1fr);
       column-gap: 5px;
       row-gap: 5px;
+      &::before {
+        display: none;
+      }
       @media screen and (max-width: 428px) {
         display: flex;
       }
@@ -66,12 +68,11 @@
         }
       }
       .item1 {
-        padding-right: 0;
+        padding: 0;
         grid-column: 1 / span 3;
         grid-row: 1 / span 2;
         @media screen and (max-width: 428px) {
           display: flex;
-          margin-left: 10px;
         }
 
         Image {
@@ -113,10 +114,10 @@
         width: 100%;
       }
       .infoRoom {
-        width: 85%;
+        margin-right: 10px;
         .infoRoomName {
-          height: 80px;
           border-bottom: 1.5px solid rgba(181, 177, 177, 0.4);
+          padding-bottom: 10px;
           h4 {
             margin-bottom: 0;
           }
@@ -129,7 +130,7 @@
           }
         }
         .infoRoomFromOwner {
-          padding: 20px 0;
+          margin-top: 10px;
           .ownerInfoTop {
             ul {
               padding-left: 0;
@@ -228,13 +229,18 @@
       position: sticky;
       top: 80px;
       margin-bottom: 40px;
+      @media screen and (max-width: 991px) {
+        height: 450px;
+      }
       @media screen and (max-width: 768px) {
         width: 45%;
         margin-bottom: 10px;
+        height: 400px;
       }
       @media screen and (max-width: 428px) {
         width: 100%;
       }
+      
       .booking_area {
         padding: 20px 20px;
         .price_and_rating1 {
@@ -322,13 +328,7 @@
     height: 550px;
     .comment {
       .usercomment {
-        img {
-          border-radius: 100px;
-          width: 50px;
-          height: 50px;
-        }
         .commentInfo {
-          margin-left: 20px;
           .tenNguoiDung {
             font-weight: 700;
             font-size: 20px;
@@ -347,7 +347,7 @@
         height: 50px;
       }
       .commentInfo {
-        margin-left: 20px;
+        margin-left: 10px;
       }
     }
   

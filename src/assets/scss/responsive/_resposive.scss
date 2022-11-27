@@ -1,2 +1,70 @@
-@import './responsivepage/responsivehome';
-//import responsive some page...
+@media (max-width: 991px) {
+    //roomlist
+    .d-block-under-991px{
+     display: block !important;
+    }
+    
+    //admin
+    #d-none-img-profile-under-991px{
+        display: none !important;
+    }
+    .d-none-under-991px{
+        display: none !important;
+    }
+    .width100-under-991px{
+        width: 100px !important;
+    }
+    .text-center-under-991px{
+       text-align: center !important; 
+    }
+    //profile
+  
+ }
+ 
+ @media (max-width: 768px) {
+     //home
+     .show-under-768px{
+         display: block !important;
+     }
+     .hidden-under-768px{
+         display: none !important;
+     }
+     .container-item-home{
+         justify-content: center !important;
+     }
+     .width200-btn-under-768px{
+         width: 200px !important;
+     }
+     //detailroom
+     .responsive-detailroom-container{
+         max-width: 100% !important;
+         padding: 0 15px;
+         margin: 0;
+         overflow: hidden;
+         height: 100%;
+    }
+    .responsive-detailroom-desRight{
+        margin-top: 10px;
+        height: 450px !important;
+    }
+    .responsive-container-signup-768px{
+        max-width: 100%;
+    }
+ }
+ 
+ @media (max-width: 576px) {
+    .hidden-under-576px{
+        display: none !important;
+    }
+    .width150-btn-under-576px{
+        width: 150px !important;
+    }
+    .width350-modal-under-576px{
+        width: 350px !important;
+    }
+    .paddingX1rem-under-576px{
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+ }

@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAppDispatch } from "../../../redux/example/hooks";
-import { getAdminUserInfoApi } from "../../../redux/reducer/manageAdminUserReducer";
+import { postLocationAdminApi } from "../../../redux/reducer/adminLocationReducer";
 
 function ModalAddLocation() {
   const [show, setShow] = useState(false);
@@ -19,19 +19,20 @@ function ModalAddLocation() {
       hinhAnh: "",
     },
     validationSchema: Yup.object().shape({
-      id: Yup.string()
+      id: Yup.number()
+        .min(1,'ID đang trống')
         .required("ID đang trống"),
       tenViTri: Yup.string()
-        .required("tenViTri đang trống"),
+        .required("Tên vị trí đang trống"),
       tinhThanh: Yup.string()
-        .required("tinhThanh đang trống"),
+        .required("Tỉnh thành đang trống"),
       quocGia: Yup.string()
-        .required("quocGia đang trống"),
+        .required("Quốc gia đang trống"),
       hinhAnh: Yup.string()
-        .required("hinhAnh đang trống"),
+        .required("Hình ảnh đang trống"),
     }),
     onSubmit: (values) => {
-      dispatch(getAdminUserInfoApi(values))
+      dispatch(postLocationAdminApi(values))
     },
   });
   const handleClose = () => setShow(false);
@@ -49,66 +50,83 @@ function ModalAddLocation() {
         keyboard={false}
       >
         <Modal.Body>
-          <form className="container my-5" onSubmit={formik.handleSubmit}>
-            <div className="sign_up" style={{borderRadius:"20px"}}>
-              <div className="sign_up_right w-100 overflow-hidden" style={{borderRadius:"20px"}}>
-                <div className="bg_cover d-flex flex-column align-items-center justify-content-center" style={{borderRadius:"20px"}}>
-                  <h2>THÊM VỊ TRÍ</h2>
-                  <div className="signup_input d-flex flex-column  align-items-start">
-                    <input
-                      type="text"
-                      id="id"
-                      placeholder="Id vị trí"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.id}</span>
-                    <input
-                      type="text"
-                      id="tenViTri"
-                      placeholder="Tên vị trí"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.tenViTri}</span>
-                    <input
-                      type="text"
-                      id="tinhThanh"
-                      placeholder="Tỉnh thành"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.tinhThanh}</span>
-                    <input
-                      type="text"
-                      id="quocGia"
-                      placeholder="Quốc gia"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.quocGia}</span>
-                    <input
-                      type="text"
-                      id="id"
-                      placeholder="Hình ảnh"
-                      className="signup_email_inp"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    />
-                    <span className="text-danger">{formik.errors.hinhAnh}</span>
-                  </div>
-                  <div className="footer-modal">
-                    <Button variant="primary mx-1" type="submit">Thêm</Button>
-                    
-                    <Button variant="secondary mx-1" onClick={handleClose} >
-                      Hủy
-                    </Button>
-                  </div>
+          <form className="p-3" onSubmit={formik.handleSubmit}>
+            <div className="p-3 bg-dark shadow">
+              <h2 className="text-center text-light pb-2">Add location</h2>
+              <div className="signup_input d-flex flex-column align-items-start">
+                
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">ID</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="id"
+                    placeholder="Id vị trí"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
                 </div>
+                <span className="text-danger mb-3">{formik.errors.id}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Location</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="tenViTri"
+                    placeholder="Tên vị trí"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.tenViTri}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Province</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="tinhThanh"
+                    placeholder="Tỉnh thành"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.tinhThanh}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Country</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="quocGia"
+                    placeholder="Quốc gia"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.quocGia}</span>
+
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">Image</span>
+                  <input 
+                    className="form-control"
+                    type="text"
+                    id="hinhAnh"
+                    placeholder="Hình ảnh (để dấu cách nếu chưa có link)"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                <span className="text-danger mb-3">{formik.errors.hinhAnh}</span>
+
+              </div>
+              <div className="footer-modal mt-3 text-center">
+                <Button variant="primary mx-1" type="submit">Add</Button>
+                
+                <Button variant="secondary mx-1" onClick={handleClose} >
+                 Cancel
+                </Button>
               </div>
             </div>
           </form>

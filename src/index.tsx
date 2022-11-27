@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./assets/scss/style.scss"
-import { ACCESS_TOKEN, getStoreJson } from './util/setting';
+import { ACCESS_TOKEN, getStoreJson, USER_INFO } from './util/setting';
 import MapHome from './component/MapHome/MapHome';
 import Infor from './pages/Information/Infor';
 import RoomListPage from './pages/Roomlist/RoomListPage';
@@ -26,10 +26,12 @@ import LocationInfoManage from './pages/Admin/LocationInfoManage';
 import ReservationManage from './pages/Admin/ReservationManage';
 import RoomInfoManage from './pages/Admin/RoomInfoManage';
 import Admintemplate from './templates/Admintemplate';
+import { AdmintUserModel } from './redux/reducer/adminReducer';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+//check user logined
 export const isVerification = (): boolean => {
   const token: string | null = isUserLogIn();
   return token != null;
@@ -39,13 +41,27 @@ export const isUserLogIn = () => {
   const result = getStoreJson(ACCESS_TOKEN);
   return result;
 };
+//check is admin?
+export const isAdmin = (): boolean => {
+  const isAdmin: AdmintUserModel | null = isAdminLogIn();
+  if(isAdmin && isAdmin.role === "ADMIN"){
+    return isAdmin != null
+  } else {
+    return isAdmin == null
+  }
+};
+
+export const isAdminLogIn = () => {
+  const result : AdmintUserModel | null = JSON.parse(getStoreJson(USER_INFO))
+    return result
+};
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path='' element={<ResponsiveItem Component={HomeTemplate} ComponentMobile={HomeTemplateMobile}/>}>
-          <Route index element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
-          <Route path='home' element={<ResponsiveItem Component={Home} ComponentMobile={HomeMobile} />}></Route>
+        <Route path='' element={<HomeTemplate/>}>
+          <Route index element={<Home/>}></Route>
+          <Route path='home' element={<Home/>}></Route>
           <Route path='map' element={<MapHome/>}></Route>
           <Route path='detailroom'>
             <Route path=':id' element = {<RoomDetail />}></Route>
@@ -57,7 +73,7 @@ root.render(
             isVerification() ? (<Infor/>) : (<SignUp/>)}></Route>
           <Route  path='profile' element={
             isVerification() ? (<Infor/>) : (<Login/>)}></Route>
-          <Route path='admin' element={isVerification() ? (<Admintemplate />) : (<Login/>)}>
+          <Route path='admin' element={isAdmin() ? (<Admintemplate />) : (<Login/>)}>
               <Route path='/admin' element={<UserManage/>}></Route>
               <Route path='/admin/' element={<UserManage/>}></Route>
               <Route path='/admin/usermanage' element={<UserManage/>}></Route>

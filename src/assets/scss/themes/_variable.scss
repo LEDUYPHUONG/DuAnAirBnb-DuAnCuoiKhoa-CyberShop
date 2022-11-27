@@ -57,6 +57,13 @@
     color: #ffffff;
   }
 };
+.animal-hover-move-left-5px{
+  &:hover{
+    transform: translateX(-5px);
+    transition-delay: 0.2s;
+  }
+}
+
 
 #hover-bg-white{
   &:hover{
@@ -75,6 +82,9 @@
 }
 .ant-picker-dropdown{
   z-index: 2000;
+}
+.popup-content {
+  z-index: 9999 !important;
 }
 //@mixin - @include
     @mixin text(
