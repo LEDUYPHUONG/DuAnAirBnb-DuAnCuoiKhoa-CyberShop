@@ -1,24 +1,24 @@
-import React, { MouseEvent, useEffect, useState } from 'react';
-import moment from 'moment';
-import { useAppDispatch, useAppSelector } from '../../redux/example/hooks';
+import React, { MouseEvent, useEffect, useState } from "react";
+import moment from "moment";
+import { useAppDispatch, useAppSelector } from "../../redux/example/hooks";
 import {
   getProfileRoomApi,
   getProfileUserApi,
   postProfileUserApi,
   ProfileRoomModel,
-} from '../../redux/reducer/profileReducer';
-import { getStoreJson, USER_ID } from '../../util/setting';
-import CarouselInfor from '../UserInfor/CarouselInfor';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { UserSignUpModel } from '../../redux/reducer/userReducer';
-import DatePicker from 'antd/es/date-picker';
-import { Radio } from 'antd';
-import ModalUpdateImage from '../Modal/ModalProfile/ModalUpdateImage';
+} from "../../redux/reducer/profileReducer";
+import { getStoreJson, USER_ID } from "../../util/setting";
+import CarouselInfor from "../UserInfor/CarouselInfor";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { UserSignUpModel } from "../../redux/reducer/userReducer";
+import DatePicker from "antd/es/date-picker";
+import { Radio } from "antd";
+import ModalUpdateImage from "../Modal/ModalProfile/ModalUpdateImage";
 
 export default function UserInforItem() {
   const { arrProfileRoom, arrProfileUser } = useAppSelector(
-    (state) => state.profileReducer,
+    (state) => state.profileReducer
   );
   const { userSignup } = useAppSelector((state) => state.userReducer);
   const [open, setOpen] = useState(false);
@@ -38,13 +38,13 @@ export default function UserInforItem() {
       avatar: userSignup.avatar,
     },
     onSubmit: (values: UserSignUpModel) => {
-      console.log('on submit');
+      console.log("on submit");
       // resetForm();
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Name required!'),
-      phone: Yup.string().required('Phone required!'),
-      password: Yup.string().required('Password required'),
+      name: Yup.string().required("Name required!"),
+      phone: Yup.string().required("Phone required!"),
+      password: Yup.string().required("Password required"),
     }),
   });
 
@@ -72,92 +72,92 @@ export default function UserInforItem() {
   return (
     <div
       className="infor-container"
-      style={{marginTop: '80px', paddingBottom: '20px' }}
+      style={{ marginTop: "80px", paddingBottom: "20px" }}
     >
       <div
         className="justify-content-center mb-3"
-        style={{ margin: '0 auto', padding: '0 16px' }}
+        style={{ margin: "0 auto", padding: "0 16px" }}
       >
         <div className="justify-content-center mb-3">
           <div
             className="d-flex justify-content-center mb-3"
-            style={{ width: '100%', position: 'relative' }}
+            style={{ width: "100%", position: "relative" }}
           >
             <div
               className="p-2"
               style={{
-                paddingLeft: '8px',
-                paddingRight: '8px',
+                paddingLeft: "8px",
+                paddingRight: "8px",
               }}
             >
               <div
                 className="square border border-1"
                 style={{
-                  maxWidth: '308px',
-                  padding: '24px',
-                  borderRadius: '12px',
+                  maxWidth: "308px",
+                  padding: "24px",
+                  borderRadius: "12px",
                 }}
               >
                 <div
                   className="infor-updateimage"
-                  style={{ width: '128px', margin: 'auto auto 32px auto' }}
+                  style={{ width: "128px", margin: "auto auto 32px auto" }}
                 >
                   <div
                     className="infor-img"
                     style={{
-                      width: '128px',
-                      height: '128px',
-                      position: 'relative',
-                      borderRadius: '100%',
+                      width: "128px",
+                      height: "128px",
+                      position: "relative",
+                      borderRadius: "100%",
                     }}
                   >
                     <img
                       src={
                         arrProfileUser.avatar
                           ? arrProfileUser.avatar
-                          : 'https://i.pravatar.cc/'
+                          : "https://i.pravatar.cc/"
                       }
                       alt="..."
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: '100%',
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "100%",
                       }}
                     />
                   </div>
                   <div
                     className="infor-editimg"
-                    style={{ textAlign: 'center' }}
+                    style={{ textAlign: "center" }}
                   >
                     <ModalUpdateImage />
                   </div>
                 </div>
                 <div
                   className="infor-iconservice"
-                  style={{ marginBottom: '16px', textAlign: 'center' }}
+                  style={{ marginBottom: "16px", textAlign: "center" }}
                 >
                   <img
                     src="/img/security.png"
                     alt="..."
                     style={{
-                      height: '40px',
-                      widows: '40px',
-                      fill: 'currentcolor',
+                      height: "40px",
+                      widows: "40px",
+                      fill: "currentcolor",
                     }}
                   />
                 </div>
                 <div
                   className="infor-check1"
-                  style={{ marginBottom: '8px', fontSize: '18px' }}
+                  style={{ marginBottom: "8px", fontSize: "18px" }}
                 >
                   Xác minh danh tính
                 </div>
                 <div
                   className="infor-check2"
                   style={{
-                    lineHeight: '20px',
-                    marginBottom: '16px',
-                    fontSize: '16px',
+                    lineHeight: "20px",
+                    marginBottom: "16px",
+                    fontSize: "16px",
                   }}
                 >
                   Xác thực danh tính của bạn với huy hiệu xác minh danh tính.
@@ -165,25 +165,25 @@ export default function UserInforItem() {
                 <div
                   className="infor-challange square border border-dark m-auto"
                   style={{
-                    padding: '13px 23px',
-                    width: 'fit-content',
-                    textAlign: 'center',
-                    borderRadius: '8px',
-                    border: '1px solid rgba(0,255,0,0.3)',
-                    cursor: 'pointer',
+                    padding: "13px 23px",
+                    width: "fit-content",
+                    textAlign: "center",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(0,255,0,0.3)",
+                    cursor: "pointer",
                   }}
                 >
                   Nhận huy hiệu
                 </div>
                 <div
                   className="infor-line"
-                  style={{ marginTop: '32px', marginBottom: '32px' }}
+                  style={{ marginTop: "32px", marginBottom: "32px" }}
                 >
                   <div
                     className="infor-borderline"
                     style={{
-                      borderBottom: '1px solid rgb(235,235,235',
-                      width: '100%',
+                      borderBottom: "1px solid rgb(235,235,235",
+                      width: "100%",
                     }}
                   ></div>
                 </div>
@@ -191,13 +191,13 @@ export default function UserInforItem() {
                   <div>
                     <div
                       className="infor-comform"
-                      style={{ marginBottom: '24px' }}
+                      style={{ marginBottom: "24px" }}
                     >
                       <h1
                         style={{
-                          fontSize: '22px',
-                          lineHeight: '26px',
-                          margin: '0',
+                          fontSize: "22px",
+                          lineHeight: "26px",
+                          margin: "0",
                         }}
                       >
                         {arrProfileUser.name} đã xác nhận
@@ -205,16 +205,16 @@ export default function UserInforItem() {
                     </div>
                     <div
                       className="infor-email"
-                      style={{ marginBottom: '16px' }}
+                      style={{ marginBottom: "16px" }}
                     >
                       <div className="d-flex align-items-center p-2">
                         <img
                           src="/img/check.png"
                           alt=""
-                          style={{ width: '16px', height: '16px' }}
+                          style={{ width: "16px", height: "16px" }}
                         />
 
-                        <div style={{ paddingLeft: '10px' }}>
+                        <div style={{ paddingLeft: "10px" }}>
                           Địa chỉ email: {arrProfileUser.email}
                         </div>
                       </div>
@@ -233,24 +233,24 @@ export default function UserInforItem() {
               <div
                 className="p-2"
                 style={{
-                  paddingLeft: '8px',
-                  paddingRight: '8px',
+                  paddingLeft: "8px",
+                  paddingRight: "8px",
                 }}
               >
                 <div
                   className="infor-right"
-                  style={{ margin: 'auto', maxWidth: '100%', marginRight: 0 }}
+                  style={{ margin: "auto", maxWidth: "100%", marginRight: 0 }}
                 >
                   <div className="infor-right-welcome">
                     <div
                       className="infor-right-hello"
                       style={{
-                        fontSize: '32px',
-                        lineHeight: '36px',
+                        fontSize: "32px",
+                        lineHeight: "36px",
                         marginBottom: 8,
                       }}
                     >
-                      <h1 style={{ fontSize: '1em', margin: 0 }}>
+                      <h1 style={{ fontSize: "1em", margin: 0 }}>
                         Xin chào {arrProfileUser.name}!
                       </h1>
                     </div>
@@ -258,7 +258,7 @@ export default function UserInforItem() {
                       className="infor-right-status"
                       style={{
                         fontSize: 14,
-                        lineHeight: '18px',
+                        lineHeight: "18px",
                         marginBottom: 8,
                       }}
                     >
@@ -271,8 +271,8 @@ export default function UserInforItem() {
                       <button
                         style={{
                           border: 0,
-                          backgroundColor: 'transparent',
-                          textDecoration: 'underline',
+                          backgroundColor: "transparent",
+                          textDecoration: "underline",
                         }}
                         onClick={(event: MouseEvent<HTMLButtonElement>) => {
                           event.preventDefault();
@@ -365,7 +365,7 @@ export default function UserInforItem() {
                               <p>{formInfoUser.errors.role}</p>
                             )}
                         </div>
-                        
+
                         <p
                           className="d-flex justify-content-between align-items-center "
                           style={{
@@ -383,8 +383,8 @@ export default function UserInforItem() {
                             <i
                               className={
                                 eyeInputPassword
-                                  ? 'fa-solid fa-eye'
-                                  : 'fa-solid fa-eye-slash'
+                                  ? "fa-solid fa-eye"
+                                  : "fa-solid fa-eye-slash"
                               }
                             ></i>
                           </span>
@@ -393,7 +393,7 @@ export default function UserInforItem() {
                           <input
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
-                            type={eyeInputPassword ? 'text' : 'password'}
+                            type={eyeInputPassword ? "text" : "password"}
                             className="form-control"
                             name="password"
                             id="password"
@@ -403,9 +403,14 @@ export default function UserInforItem() {
                           />
                         </div>
                         {formInfoUser.errors.password &&
-                            formInfoUser.touched.password && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.password}</p>
-                            )}
+                          formInfoUser.touched.password && (
+                            <p
+                              className="text-danger"
+                              style={{ fontSize: "14px" }}
+                            >
+                              {formInfoUser.errors.password}
+                            </p>
+                          )}
 
                         <p
                           style={{
@@ -428,10 +433,14 @@ export default function UserInforItem() {
                             value={formInfoUser.values.name}
                           />
                         </div>
-                        {formInfoUser.errors.name &&
-                            formInfoUser.touched.name && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.name}</p>
-                            )}
+                        {formInfoUser.errors.name && formInfoUser.touched.name && (
+                          <p
+                            className="text-danger"
+                            style={{ fontSize: "14px" }}
+                          >
+                            {formInfoUser.errors.name}
+                          </p>
+                        )}
 
                         <p
                           style={{
@@ -442,9 +451,7 @@ export default function UserInforItem() {
                         >
                           Phone
                         </p>
-                        <div
-                          className="input-group"
-                        >
+                        <div className="input-group">
                           <input
                             onChange={formInfoUser.handleChange}
                             onBlur={formInfoUser.handleBlur}
@@ -457,9 +464,14 @@ export default function UserInforItem() {
                           />
                         </div>
                         {formInfoUser.errors.phone &&
-                            formInfoUser.touched.phone && (
-                              <p className="text-danger" style={{fontSize:'14px'}}>{formInfoUser.errors.phone}</p>
-                            )}
+                          formInfoUser.touched.phone && (
+                            <p
+                              className="text-danger"
+                              style={{ fontSize: "14px" }}
+                            >
+                              {formInfoUser.errors.phone}
+                            </p>
+                          )}
 
                         <p
                           style={{
@@ -481,12 +493,12 @@ export default function UserInforItem() {
                             format="DD/MM/YYYY"
                             onChange={(value) => {
                               const newValue =
-                                moment(value).format('DD/MM/YYYY');
+                                moment(value).format("DD/MM/YYYY");
                               formInfoUser.values.birthday = newValue;
                             }}
                             defaultValue={moment(
                               formInfoUser.values.birthday,
-                              'DD/MM/YYYY',
+                              "DD/MM/YYYY"
                             )}
                           />
                         </div>
@@ -522,14 +534,14 @@ export default function UserInforItem() {
                               setOpen(!open);
                             }}
                             className="btn btn-secondary text-decoration-underline"
-                            style={{ padding: '10px 20px' }}
+                            style={{ padding: "10px 20px" }}
                           >
                             Cancel
                           </button>
                           <button
                             type="submit"
                             className="btn btn-dark"
-                            style={{ fontSize: 20, padding: '10px 20px' }}
+                            style={{ fontSize: 20, padding: "10px 20px" }}
                           >
                             Confirm
                           </button>
@@ -540,14 +552,14 @@ export default function UserInforItem() {
                     <div
                       className="infor-myroom"
                       style={{
-                        fontSize: '32px',
-                        lineHeight: '36px',
+                        fontSize: "32px",
+                        lineHeight: "36px",
                         marginBottom: 16,
                         marginTop: 16,
                         fontWeight: 700,
                       }}
                     >
-                      <h1 style={{ fontSize: '1em', margin: 0 }}>
+                      <h1 style={{ fontSize: "1em", margin: 0 }}>
                         Phòng đã thuê
                       </h1>
                     </div>

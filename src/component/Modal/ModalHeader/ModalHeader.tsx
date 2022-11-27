@@ -26,7 +26,7 @@ function ModalHeader() {
   const arrSearchLocation: ProductModel[] = arrLocationSearch;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [arrSearch, setArrSearch] = useState([]);
   const [valueInputSearch, setValueInputSearch] = useState(
@@ -79,7 +79,7 @@ function ModalHeader() {
             className="paddingX1rem-under-576px btn btn-outline-light py-1 px-5 my-1 text-start d-flex flex-nowrap justify-content-start align-items-center w-100"
             onClick={() => {
               handleClickSetKeySearchLocation(location);
-              setShowModalLocationList(false)
+              setShowModalLocationList(false);
             }}
           >
             <div
@@ -164,21 +164,26 @@ function ModalHeader() {
         }}
       >
         <div className="location d-flex justify-content-between align-items-center rounded-pill">
- 
           <div
             className="btn text-dark"
             style={{ fontSize: "14px", outline: "none" }}
           >
             Địa điểm bất kì
           </div>
-          <div className="hidden-under-768px" style={{ width: 1, height: 24, background: "#cccccc" }}></div>
+          <div
+            className="hidden-under-768px"
+            style={{ width: 1, height: 24, background: "#cccccc" }}
+          ></div>
           <div
             className="hidden-under-768px btn text-dark"
             style={{ fontSize: "14px", outline: "none" }}
           >
             Tuần bất kì
           </div>
-          <div className="hidden-under-768px" style={{ width: 1, height: 24, background: "#cccccc" }}></div>
+          <div
+            className="hidden-under-768px"
+            style={{ width: 1, height: 24, background: "#cccccc" }}
+          ></div>
           <div
             className="hidden-under-768px btn text-dark"
             style={{
@@ -200,9 +205,7 @@ function ModalHeader() {
               textAlign: "center",
             }}
           >
-            <i
-              className="fa-solid fa-magnifying-glass p-2"
-            ></i>
+            <i className="fa-solid fa-magnifying-glass p-2"></i>
           </div>
         </div>
       </Button>
@@ -220,27 +223,27 @@ function ModalHeader() {
             style={{ height: "80px", padding: "0 48px" }}
           >
             <div className="header d-flex justify-content-between align-items-center">
-            <NavLink to="/">
-            <div
-              className="d-flex justify-content-center align-items-center"
-              style={{ height: "80px" }}
-            >
-              <div className="show-under-768px d-none">
-                <img
-                  style={{ height: "33px", cursor: "pointer" }}
-                  src="/img/home/logo.png"
-                  alt="..."
-                />
-              </div>
-              <div className="hidden-under-768px">
-                <img
-                  style={{ height: "33px", cursor: "pointer" }}
-                  src="/img/home/logo-text.png"
-                  alt="..."
-                />
-              </div>
-            </div>
-          </NavLink>
+              <NavLink to="/">
+                <div
+                  className="d-flex justify-content-center align-items-center"
+                  style={{ height: "80px" }}
+                >
+                  <div className="show-under-768px d-none">
+                    <img
+                      style={{ height: "33px", cursor: "pointer" }}
+                      src="/img/home/logo.png"
+                      alt="..."
+                    />
+                  </div>
+                  <div className="hidden-under-768px">
+                    <img
+                      style={{ height: "33px", cursor: "pointer" }}
+                      src="/img/home/logo-text.png"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </NavLink>
               <div className="order-bar-modal">
                 <div
                   className="location d-flex justify-content-between align-items-center"
@@ -286,39 +289,37 @@ function ModalHeader() {
                 </div>
               </div>
               <div className="singin-singout">
-              <div className="singin-singout">
-            <div className="location d-flex justify-content-between align-items-center">
-              <div style={{ width: 1, height: 0 }}></div>
-              <button
-                className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-red"
-                style={{
-                  fontSize: "14px",
-                  outline: "none",
-                  height: "44px",
-                  padding: "0 15px",
-                }}
-              >
-                Trở thành chủ nhà
-              </button>
-              <button
-                className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-dark"
-                style={{ outline: "none", height: "44px", width: "44px" }}
-              >
-                <i className="fa-solid fa-globe"></i>
-              </button>
-              <DropdownHeader />
-              <div></div>
-            </div>
-          </div>
-          </div>
+                <div className="singin-singout">
+                  <div className="location d-flex justify-content-between align-items-center">
+                    <div style={{ width: 1, height: 0 }}></div>
+                    <button
+                      className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-red"
+                      style={{
+                        fontSize: "14px",
+                        outline: "none",
+                        height: "44px",
+                        padding: "0 15px",
+                      }}
+                    >
+                      Trở thành chủ nhà
+                    </button>
+                    <button
+                      className="hidden-under-768px btn-BAhost-globe btn rounded-pill text-dark"
+                      style={{ outline: "none", height: "44px", width: "44px" }}
+                    >
+                      <i className="fa-solid fa-globe"></i>
+                    </button>
+                    <DropdownHeader />
+                    <div></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="header-main m-auto">
             <div className="header d-flex justify-content-center align-items-center pb-4">
               <form>
-                <div
-                  className="order-bar-modal rounded-pill"
-                >
+                <div className="order-bar-modal rounded-pill">
                   <div
                     className="location d-flex justify-content-between align-items-center rounded-pill"
                     style={{ background: "#EBEBEB" }}
@@ -365,8 +366,8 @@ function ModalHeader() {
                         padding: "10px 25px",
                         width: "300px",
                       }}
-                      onClick={(event) =>{
-                        event.preventDefault()
+                      onClick={(event) => {
+                        event.preventDefault();
                       }}
                     >
                       <span>Ngày</span>
@@ -399,10 +400,10 @@ function ModalHeader() {
                         width: "300px",
                         padding: "7px 7px 7px 25px",
                       }}
-                      onClick={() =>{
+                      onClick={() => {
                         handelClickMoveToRoomListPage();
-                        setShow(false)
-                        setValueInputSearch('')
+                        setShow(false);
+                        setValueInputSearch("");
                       }}
                     >
                       <span
@@ -424,7 +425,7 @@ function ModalHeader() {
                             fontSize: "14px",
                             outline: "none",
                             borderRadius: "0px",
-                            width: "100px"
+                            width: "100px",
                           }}
                         />
                       </span>
@@ -450,7 +451,7 @@ function ModalHeader() {
                             lineHeight: "14px",
                             width: "14px",
                             height: "14px",
-                            marginRight: "5px"
+                            marginRight: "5px",
                           }}
                         ></i>
                         <span>Tìm kiếm</span>
@@ -462,7 +463,11 @@ function ModalHeader() {
             </div>
           </div>
           <div
-            className={showModalLocationList? 'width350-modal-under-576px modal-content modal-lg rounded-5 overflow-hidden' : 'width350-modal-under-576px modal-content modal-lg rounded-5 overflow-hidden d-none'}
+            className={
+              showModalLocationList
+                ? "width350-modal-under-576px modal-content modal-lg rounded-5 overflow-hidden"
+                : "width350-modal-under-576px modal-content modal-lg rounded-5 overflow-hidden d-none"
+            }
             style={{
               width: "600px",
               zIndex: 10,

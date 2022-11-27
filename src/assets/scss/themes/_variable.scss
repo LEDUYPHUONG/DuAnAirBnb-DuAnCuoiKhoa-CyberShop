@@ -1,144 +1,135 @@
 // font-face
-@import '../fonts/fontsface';
+@import "../fonts/fontsface";
 //back ground
-    $bg-white-primary: #ffffff;
-    $bg-white-dark: #cccccc;
-    $bg-white-light: #ffffff;
-    
-    $bg-black-primary: #000000;
-    $bg-black-light: #2c2c2c;
-    $bg-black-dark: #000000;
-    
-    $bg-red-primary: #fe2c55;
-    $bg-red-dark: #c3002d;
-    $bg-red-light: #ff6b81;
-    
-// color-text 
-    $C-dark: #000000;
-    $C-white: #ffffff;
-    $C-gray: #cccccc;
-    
+$bg-white-primary: #ffffff;
+$bg-white-dark: #cccccc;
+$bg-white-light: #ffffff;
+
+$bg-black-primary: #000000;
+$bg-black-light: #2c2c2c;
+$bg-black-dark: #000000;
+
+$bg-red-primary: #fe2c55;
+$bg-red-dark: #c3002d;
+$bg-red-light: #ff6b81;
+
+// color-text
+$C-dark: #000000;
+$C-white: #ffffff;
+$C-gray: #cccccc;
+
 // font
-    // size 12, 14, 16, 18, 20, 24, 30, 32,  40
-    $fs-m: 12px;
-    $fs-sm: 14px;
-    $fs-ssm: 16px;
-    $fs-sssm: 18px;
-    $fs-b: 20px;
-    $fs-sb: 24px;
-    $fs-ssb: 30px;
-    $fs-sssb: 32px;
-    $fs-lg: 40px;
-    // weight
-    $fw-m: 300;
-    $fw-sm: 400;
-    $fw-sd: 500;
-    $fw-b: 700;
-    $fw-lg: 900;
-    
+// size 12, 14, 16, 18, 20, 24, 30, 32,  40
+$fs-m: 12px;
+$fs-sm: 14px;
+$fs-ssm: 16px;
+$fs-sssm: 18px;
+$fs-b: 20px;
+$fs-sb: 24px;
+$fs-ssb: 30px;
+$fs-sssb: 32px;
+$fs-lg: 40px;
+// weight
+$fw-m: 300;
+$fw-sm: 400;
+$fw-sd: 500;
+$fw-b: 700;
+$fw-lg: 900;
+
 // font-family
-    $ff-p-M: 'Circular-Medium';
-    $ff-p-Bk: 'Circular-Book';
-    $ff-p-Bd: 'Circular-Bold';
-    $ff-p-B: 'Circular-Black';
+$ff-p-M: "Circular-Medium";
+$ff-p-Bk: "Circular-Book";
+$ff-p-Bd: "Circular-Bold";
+$ff-p-B: "Circular-Black";
 
-    $ff-s-M: 'SegoeUI-Medium';
-    $ff-s-B: 'SegoeUI-Bold';
-    $ff-s-BI: 'SegoeUI-BoldItalic';
-    $ff-s-I: 'SegoeUI-Italic';
+$ff-s-M: "SegoeUI-Medium";
+$ff-s-B: "SegoeUI-Bold";
+$ff-s-BI: "SegoeUI-BoldItalic";
+$ff-s-I: "SegoeUI-Italic";
 
-    $ff-t: 'Roboto-Regular';
+$ff-t: "Roboto-Regular";
 //hover
-#hover-color-white{
-  &:hover{
+#hover-color-white {
+  &:hover {
     color: #ffffff;
   }
-  &:focus{
+  &:focus {
     color: #ffffff;
   }
-};
-.animal-hover-move-left-5px{
-  &:hover{
+}
+.animal-hover-move-left-5px {
+  &:hover {
     transform: translateX(-5px);
     transition-delay: 0.2s;
   }
 }
 
-
-#hover-bg-white{
-  &:hover{
+#hover-bg-white {
+  &:hover {
     background: #ffffff;
   }
 }
-#hover-bg-dddddd{
-  &:hover{
+#hover-bg-dddddd {
+  &:hover {
     background: #dddddd;
   }
 }
-#hover-bg-gray{
-  &:hover{
+#hover-bg-gray {
+  &:hover {
     background: rgb(235, 235, 235);
   }
 }
-.ant-picker-dropdown{
+.ant-picker-dropdown {
   z-index: 2000;
 }
 .popup-content {
   z-index: 9999 !important;
 }
 //@mixin - @include
-    @mixin text(
-      $ff: $ff-p-M,
-      $fw: $fw-m,
-      $fs: $fs-m,
-      $c: $C-primary,
-    
-    ) {
-      font-family: $ff;
-      font-weight: $fw;
-      font-size: $fs;
-      color: $c;
-    }
-    
-    @mixin button(
-        $mw: 150px,
-        $mh: 50px,
-        $bg: $bg-white-primary,
-        $br: 5px,
-        $p: 13px 35px,
-        $m: 0px,
-        $hv: $bg-white-light
-      )
-      {
-        min-width: $mw;
-        min-height: $mh;
-        background-color: $bg;
-        border-radius: $br;
-        padding: $p;
-        margin: $m;
-        &:hover 
-        {
-          background-color: $hv;
-        }
-    
-        border: none;
-        user-select: none;
-        cursor: pointer;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-    }
+@mixin text($ff: $ff-p-M, $fw: $fw-m, $fs: $fs-m, $c: $C-primary) {
+  font-family: $ff;
+  font-weight: $fw;
+  font-size: $fs;
+  color: $c;
+}
+
+@mixin button(
+  $mw: 150px,
+  $mh: 50px,
+  $bg: $bg-white-primary,
+  $br: 5px,
+  $p: 13px 35px,
+  $m: 0px,
+  $hv: $bg-white-light
+) {
+  min-width: $mw;
+  min-height: $mh;
+  background-color: $bg;
+  border-radius: $br;
+  padding: $p;
+  margin: $m;
+  &:hover {
+    background-color: $hv;
+  }
+
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

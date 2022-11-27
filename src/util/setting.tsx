@@ -76,13 +76,13 @@ export const config = {
     }
     return null;
   },
-  logout: () =>{
+  logout: () => {
     localStorage.removeItem(ACCESS_TOKEN);
     localStorage.removeItem(USER_LOGIN);
     localStorage.removeItem(USER_ID);
     localStorage.removeItem(USER_INFO);
-    history.push('/signin');
-    window.location.reload()
+    history.push("/signin");
+    window.location.reload();
   },
   ACCESS_TOKEN: "accessToken(token của người dùng)",
   USER_LOGIN: "userLogin",
@@ -101,14 +101,14 @@ export const {
   ACCESS_TOKEN,
   USER_LOGIN,
   USER_ID,
-  USER_INFO
+  USER_INFO,
 } = config;
 
 const DOMAIN = "https://airbnbnew.cybersoft.edu.vn/api";
 const TOKEN_CYBERSOFT =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udGVuZCA3MyIsIkhldEhhblN0cmluZyI6IjIzLzA1LzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY4NDgwMDAwMDAwMCIsIm5iZiI6MTY1OTg5MTYwMCwiZXhwIjoxNjg0OTQ3NjAwfQ.u471oZWr9EMgIb7oeyuaxfi8spgAgUuTkUHYSS9pBWg";
-  //token-cũ còn xài được: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAzMCIsIkhldEhhblN0cmluZyI6IjE3LzAyLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY3NjU5MjAwMDAwMCIsIm5iZiI6MTY0ODIyNzYwMCwiZXhwIjoxNjc2NzM5NjAwfQ.aK-3RvHXQyu6H2-FFiafeSKR4UMCcRmnuDbTT-XIcUU
-  //token-thầy Khải choh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udGVuZCA3MyIsIkhldEhhblN0cmluZyI6IjIzLzA1LzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY4NDgwMDAwMDAwMCIsIm5iZiI6MTY1OTg5MTYwMCwiZXhwIjoxNjg0OTQ3NjAwfQ.u471oZWr9EMgIb7oeyuaxfi8spgAgUuTkUHYSS9pBWg
+//token-cũ còn xài được: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAzMCIsIkhldEhhblN0cmluZyI6IjE3LzAyLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY3NjU5MjAwMDAwMCIsIm5iZiI6MTY0ODIyNzYwMCwiZXhwIjoxNjc2NzM5NjAwfQ.aK-3RvHXQyu6H2-FFiafeSKR4UMCcRmnuDbTT-XIcUU
+//token-thầy Khải choh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udGVuZCA3MyIsIkhldEhhblN0cmluZyI6IjIzLzA1LzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY4NDgwMDAwMDAwMCIsIm5iZiI6MTY1OTg5MTYwMCwiZXhwIjoxNjg0OTQ3NjAwfQ.u471oZWr9EMgIb7oeyuaxfi8spgAgUuTkUHYSS9pBWg
 
 // cấu hình request cho tất cả api - response cho tất cả kết quả từ api trả về
 
@@ -120,31 +120,31 @@ export const http = axios.create({
 // cấu hình request header
 
 http.interceptors.request.use(
-    (config:AxiosRequestConfig)  => {
-
-        const token = getStore(ACCESS_TOKEN);
-        if(config.headers){
-            config.headers  = {
-                'tokenCybersoft' : TOKEN_CYBERSOFT,
-                'token' : token
-            }
-        }
-        return config
-    },
-    error => {
-        Promise.reject(error)
+  (config: AxiosRequestConfig) => {
+    const token = getStore(ACCESS_TOKEN);
+    if (config.headers) {
+      config.headers = {
+        tokenCybersoft: TOKEN_CYBERSOFT,
+        token: token,
+      };
     }
-)
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
+  }
+);
 
 // cấu hình kết quả trả về
-http.interceptors.response.use((response) => {
+http.interceptors.response.use(
+  (response) => {
     return response;
   },
   (err) => {
     console.log(err.response.status);
-    if(err.response.status === 400 || err.response.status === 404){
-        // history.push('/');
-        return Promise.reject(err)
+    if (err.response.status === 400 || err.response.status === 404) {
+      // history.push('/');
+      return Promise.reject(err);
     }
 
     if (err.response.status === 401 || err.response.status === 403) {
@@ -155,8 +155,7 @@ http.interceptors.response.use((response) => {
   }
 );
 
-     
-export const history = createBrowserHistory({})
+export const history = createBrowserHistory({});
 
 /**
  * status code

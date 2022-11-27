@@ -30,16 +30,14 @@ export default function HeaderPage({ title }: Props) {
               className="d-flex justify-content-center align-items-center"
               style={{ height: "80px" }}
             >
-              <div 
-                className="show-under-768px d-none">
+              <div className="show-under-768px d-none">
                 <img
                   style={{ height: "33px", cursor: "pointer" }}
                   src="/img/home/logo.png"
                   alt="..."
                 />
               </div>
-              <div
-                className="hidden-under-768px">
+              <div className="hidden-under-768px">
                 <img
                   style={{ height: "33px", cursor: "pointer" }}
                   src="/img/home/logo-text.png"

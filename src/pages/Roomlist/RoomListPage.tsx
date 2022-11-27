@@ -35,7 +35,12 @@ export default function RoomListPage({ title }: Props) {
       <HeaderPage />
       <div
         className="roomlist-container"
-        style={{ display: "flex", width: "100%", marginTop: "80px", paddingBottom: '47px'}}
+        style={{
+          display: "flex",
+          width: "100%",
+          marginTop: "80px",
+          paddingBottom: "47px",
+        }}
       >
         <div
           className="roomlist-item_"
@@ -92,24 +97,40 @@ export default function RoomListPage({ title }: Props) {
               </div>
             </div>
           </div>
-          
+
           <div className="d-block-under-991px roomlist-item_content d-flex flex-wrap">
-            {arrRoomlist.map((prod:RoomlistModel,index:number ) =>
-            <NavLink to={`/detailroom/${prod.id}`} style={{width:"50%", textDecorationLine:'none'}} key={index}>
-              <div key={index} style={{ marginTop: 20 }} onClick={() => {
-                dispatch(getRoomidAction(prod))
-              }}>
-                {RoomListItem({product:prod})}
-              </div>
-            </NavLink>
-              
-            )}
+            {arrRoomlist.map((prod: RoomlistModel, index: number) => (
+              <NavLink
+                to={`/detailroom/${prod.id}`}
+                style={{ width: "50%", textDecorationLine: "none" }}
+                key={index}
+              >
+                <div
+                  key={index}
+                  style={{ marginTop: 20 }}
+                  onClick={() => {
+                    dispatch(getRoomidAction(prod));
+                  }}
+                >
+                  {RoomListItem({ product: prod })}
+                </div>
+              </NavLink>
+            ))}
           </div>
         </div>
-        <div className="roomlist-map" style={{position: 'fixed', top: 80, right: 0, width: "50%", height: 'calc(100vh - 127px)' }}>
+        <div
+          className="roomlist-map"
+          style={{
+            position: "fixed",
+            top: 80,
+            right: 0,
+            width: "50%",
+            height: "calc(100vh - 127px)",
+          }}
+        >
           <iframe
             style={{ width: "100%", height: "100%", border: 0 }}
-            title = 'Map demo'
+            title="Map demo"
             src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1125985.4022361215!2d106.75118808994623!3d10.894440694941805!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1667536336616!5m2!1svi!2s"
             allowFullScreen={true}
             loading="lazy"

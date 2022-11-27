@@ -1,38 +1,39 @@
-.activeBorderBottom{
-    border-bottom: 2px solid #000000;
-    
+.activeBorderBottom {
+  border-bottom: 2px solid #000000;
 }
-.activeHoverOpacity{
-    opacity: 0.5;
-    border-bottom: 2px solid opacify($color: #000000, $amount: 0.11);
-    padding-bottom: 10px;
+.activeHoverOpacity {
+  opacity: 0.5;
+  border-bottom: 2px solid opacify($color: #000000, $amount: 0.11);
+  padding-bottom: 10px;
 }
-button:hover, button:focus {
-    outline: none !important;
-    box-shadow: none !important;
+button:hover,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.buttonUserActive{
-    background: #ffffff;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+.buttonUserActive {
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
-.buttonUserHover{
-    &:hover{
-        background: #dddddd !important;
+.buttonUserHover {
+  &:hover {
+    background: #dddddd !important;
+  }
+}
+
+input {
+  border: none;
+  background: transparent;
+  .book-day,
+  .book-people {
+    &:focus-visible {
+      user-select: none;
     }
+  }
 }
-
-input{
-    border: none;
+.out-icon-location {
+  &:hover {
     background: transparent;
-    .book-day, .book-people{
-        &:focus-visible{
-            user-select: none;
-        }
-    }
-}
-.out-icon-location{
-    &:hover{
-        background: transparent;
-    }
+  }
 }

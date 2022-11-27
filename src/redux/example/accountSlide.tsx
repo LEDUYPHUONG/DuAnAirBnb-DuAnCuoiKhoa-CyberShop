@@ -9,7 +9,7 @@ export interface UserState {
 
 const initialState: UserState = {
   value: null,
-  status: "idle"
+  status: "idle",
 };
 
 export const accountSlice = createSlice({
@@ -18,8 +18,8 @@ export const accountSlice = createSlice({
   reducers: {
     saveAccount: (state, action: PayloadAction<AccountInfo>) => {
       state.value = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { saveAccount } = accountSlice.actions;

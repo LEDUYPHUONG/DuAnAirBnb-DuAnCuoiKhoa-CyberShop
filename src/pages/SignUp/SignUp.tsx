@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { DatePicker } from "antd";
 import FooterPage from "../../component/Footer/FooterPage";
 import HeaderPage from "../../component/Header/HeaderPage";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/configStore";
 import { signupApi } from "../../redux/reducer/userReducer";
 
@@ -14,13 +14,10 @@ export default function SignUp() {
   const [typePW, setTypePW] = useState("password");
   const [type_REPW, setType_REPW] = useState("password");
   const handle_Password_Icon = () => {
-    typePW === "password" ? setTypePW("text") : setTypePW("password")
+    typePW === "password" ? setTypePW("text") : setTypePW("password");
   };
   const handle_Retype_Password_Icon = () => {
-
-      type_REPW === "password"
-        ? setType_REPW("text")
-        : setType_REPW("password");
+    type_REPW === "password" ? setType_REPW("text") : setType_REPW("password");
   };
   const frm = useFormik({
     initialValues: {
@@ -57,17 +54,18 @@ export default function SignUp() {
         ),
     }),
 
-
-    onSubmit: (values:any) => {
+    onSubmit: (values: any) => {
       dispacth(signupApi(values));
-
     },
   });
 
   return (
     <>
       <HeaderPage />
-      <form className="container responsive-container-signup-768px" onSubmit={frm.handleSubmit}>
+      <form
+        className="container responsive-container-signup-768px"
+        onSubmit={frm.handleSubmit}
+      >
         <div className="sign_up d-flex">
           <div className="sign_up_left"></div>
           <div className="sign_up_right">
@@ -75,8 +73,10 @@ export default function SignUp() {
               <h2>SIGN UP NOW!</h2>
               <div className="container-form">
                 <div className="input-group w-75 m-auto">
-                  <span className="input-group-text" id="basic-addon1">Email</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Email
+                  </span>
+                  <input
                     type="text"
                     id="email"
                     placeholder="Email đăng nhập"
@@ -85,24 +85,32 @@ export default function SignUp() {
                     onBlur={frm.handleBlur}
                   />
                 </div>
-                <p className="text-danger mb-3 text-center">{frm.errors.email}</p>
-                
-                <div className="input-group w-75 m-auto">
-                  <span className="input-group-text" id="basic-addon1">Name</span>
-                  <input 
-                   type="text"
-                   id="name"
-                   placeholder="Tên tài khoản"
-                   className="form-control"
-                   onChange={frm.handleChange}
-                   onBlur={frm.handleBlur}
-                  />
-                </div>
-                <p className="text-danger mb-3 text-center">{frm.errors.name}</p>
+                <p className="text-danger mb-3 text-center">
+                  {frm.errors.email}
+                </p>
 
                 <div className="input-group w-75 m-auto">
-                  <span className="input-group-text" id="basic-addon1">Phone</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Name
+                  </span>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Tên tài khoản"
+                    className="form-control"
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
+                  />
+                </div>
+                <p className="text-danger mb-3 text-center">
+                  {frm.errors.name}
+                </p>
+
+                <div className="input-group w-75 m-auto">
+                  <span className="input-group-text" id="basic-addon1">
+                    Phone
+                  </span>
+                  <input
                     type="text"
                     id="phone"
                     placeholder="Số điện thoại"
@@ -111,12 +119,15 @@ export default function SignUp() {
                     onBlur={frm.handleBlur}
                   />
                 </div>
-                <p className="text-danger mb-3 text-center">{frm.errors.phone}</p>
+                <p className="text-danger mb-3 text-center">
+                  {frm.errors.phone}
+                </p>
 
-                
                 <div className="input-group w-75 m-auto">
-                  <span className="input-group-text" id="basic-addon1">Password</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Password
+                  </span>
+                  <input
                     type={typePW}
                     id="password"
                     placeholder="Mật khẩu đăng nhập"
@@ -131,11 +142,15 @@ export default function SignUp() {
                     onMouseUp={handle_Password_Icon}
                   ></i>
                 </div>
-                <p className="text-danger mb-3 text-center">{frm.errors.password}</p>
+                <p className="text-danger mb-3 text-center">
+                  {frm.errors.password}
+                </p>
 
                 <div className="input-group w-75 m-auto">
-                  <span className="input-group-text" id="basic-addon1">Confirm</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Confirm
+                  </span>
+                  <input
                     type={type_REPW}
                     id="retype_password"
                     placeholder="Nhập lại mật khẩu"
@@ -150,21 +165,21 @@ export default function SignUp() {
                     onMouseUp={handle_Retype_Password_Icon}
                   ></i>
                 </div>
-                <p className="text-danger mb-3 text-center">{frm.errors.retype_password}</p>
+                <p className="text-danger mb-3 text-center">
+                  {frm.errors.retype_password}
+                </p>
 
                 <div className="input-group mb-3 w-75 m-auto">
-                  <span className="input-group-text" id="basic-addon1">Birthday</span>
+                  <span className="input-group-text" id="basic-addon1">
+                    Birthday
+                  </span>
                   <DatePicker
-                  bordered={false}
-                  placeholder="Sinh nhật"
-                  format="DD/MM/YYYY"
-                  className="form-control"
+                    bordered={false}
+                    placeholder="Sinh nhật"
+                    format="DD/MM/YYYY"
+                    className="form-control"
                   />
-                  
                 </div>
-                
-
-                
               </div>
               <div className="action_btn d-flex flex-column align-items-center">
                 <button className="signin_btn" type="submit">

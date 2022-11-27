@@ -24,21 +24,21 @@ export interface RoomlistModel {
   hinhAnh: string;
 }
 
-interface RoomlistStateModel{
-  arrRoomlist: RoomlistModel[],
-  roomId: RoomlistModel,
+interface RoomlistStateModel {
+  arrRoomlist: RoomlistModel[];
+  roomId: RoomlistModel;
 }
 
 const initialState: RoomlistStateModel = {
   arrRoomlist: [],
   roomId: {
     id: 0,
-    tenPhong: '',
+    tenPhong: "",
     khach: 0,
     phongNgu: 0,
     giuong: 0,
     phongTam: 0,
-    moTa: '',
+    moTa: "",
     giaTien: 0,
     mayGiat: false,
     banLa: false,
@@ -50,8 +50,8 @@ const initialState: RoomlistStateModel = {
     hoBoi: false,
     banUi: false,
     maViTri: 0,
-    hinhAnh: '',
-  }
+    hinhAnh: "",
+  },
 };
 
 const roomlistReducer = createSlice({
@@ -73,10 +73,12 @@ export default roomlistReducer.reducer;
 
 // action api
 
-export const getRoomlistApi = (id:number) => {
+export const getRoomlistApi = (id: number) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const result = await http.get(`phong-thue/lay-phong-theo-vi-tri?maViTri=${id}`);
+      const result = await http.get(
+        `phong-thue/lay-phong-theo-vi-tri?maViTri=${id}`
+      );
       let arrRoomlist: RoomlistModel[] = result.data.content;
       const action = getRoomlistAction(arrRoomlist);
       dispatch(action);
