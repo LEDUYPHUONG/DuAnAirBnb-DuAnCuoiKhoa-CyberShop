@@ -5,7 +5,7 @@ $span-out: 0;
 
   // White background layout
   &::after {
-    content: ' ';
+    content: " ";
     position: absolute;
     z-index: 10;
     left: $span-out;

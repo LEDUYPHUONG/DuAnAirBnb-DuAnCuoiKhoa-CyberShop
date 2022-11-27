@@ -1,7 +1,7 @@
-import React from 'react';
-import clsx from 'clsx';
-import { Spinner } from 'react-bootstrap';
-import './BaseLoading.scss';
+import React from "react";
+import clsx from "clsx";
+import { Spinner } from "react-bootstrap";
+import "./BaseLoading.scss";
 
 /**
  * App base loading wrapper
@@ -18,10 +18,10 @@ interface Iprops {
 function BaseLoading(props: Iprops) {
   return (
     <div
-      className={clsx('base-loading', props.className, {
-        'is-loading': props.loading,
-        'is-transparent': props.transparent,
-        'is-locked': props.lockWhileLoading && props.loading,
+      className={clsx("base-loading", props.className, {
+        "is-loading": props.loading,
+        "is-transparent": props.transparent,
+        "is-locked": props.lockWhileLoading && props.loading,
       })}
     >
       <div className="spinner-wrapper">
@@ -35,7 +35,7 @@ function BaseLoading(props: Iprops) {
 BaseLoading.defaultProps = {
   loading: false,
   lockWhileLoading: true,
-  variant: 'secondary',
+  variant: "secondary",
   transparent: false,
 };
 

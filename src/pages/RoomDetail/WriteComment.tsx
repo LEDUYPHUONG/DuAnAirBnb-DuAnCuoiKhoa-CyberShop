@@ -8,7 +8,7 @@ import { getStore, USER_ID } from "../../util/setting";
 function WriteComment() {
   const dispatch: AppDispatch = useDispatch();
   // const infoUser = getStoreJson("User_Info"); => cách này bị lỗi, tìm hiểu thêm lý do nhé!
-  const maNguoiDung = Number(getStore(USER_ID))
+  const maNguoiDung = Number(getStore(USER_ID));
   console.log("manguoidung", maNguoiDung);
   //Hàm Number() :convert string to number;
   //Lấy ngày hiện tại
@@ -39,10 +39,7 @@ function WriteComment() {
   return (
     <div className="inp_binhluan d-flex">
       <div className="">
-        <img
-          src="https://picsum.photos/200/300/?random&t="
-          alt="user_avt"
-        />
+        <img src="https://picsum.photos/200/300/?random&t=" alt="user_avt" />
       </div>
       <div className="commentInfo">
         <textarea
@@ -64,4 +61,4 @@ function WriteComment() {
     </div>
   );
 }
-export default memo (WriteComment)
+export default memo(WriteComment);

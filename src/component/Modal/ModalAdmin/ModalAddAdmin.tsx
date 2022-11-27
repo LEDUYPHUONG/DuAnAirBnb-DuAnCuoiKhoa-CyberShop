@@ -10,7 +10,7 @@ import moment from "moment";
 
 function ModalAddAdmin() {
   const [show, setShow] = useState(false);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const [typePW, setTypePW] = useState("password");
   const handle_Password_Icon = () => {
     typePW === "password" ? setTypePW("text") : setTypePW("password");
@@ -23,10 +23,10 @@ function ModalAddAdmin() {
       email: "",
       password: "",
       phone: "",
-      birthday: moment().format('DD/MM/YYYY'),
+      birthday: moment().format("DD/MM/YYYY"),
       avatar: null,
       gender: true,
-      role: "ADMIN"
+      role: "ADMIN",
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
@@ -48,7 +48,7 @@ function ModalAddAdmin() {
       birthday: Yup.string().required("Sinh nhật của bạn đang trống"),
     }),
     onSubmit: (values) => {
-      dispatch(getAdminUserInfoApi(values))
+      dispatch(getAdminUserInfoApi(values));
     },
   });
   const handleClose = () => setShow(false);
@@ -60,20 +60,17 @@ function ModalAddAdmin() {
         Add admin
       </Button>
 
-      <Modal
-        show={show}
-        onHide={handleClose}
-        keyboard={false}
-      >
+      <Modal show={show} onHide={handleClose} keyboard={false}>
         <Modal.Body>
           <form className="p-3" onSubmit={formik.handleSubmit}>
             <div className="p-3 bg-dark shadow">
               <h2 className="text-center text-light pb-2">ADD ADMIN</h2>
               <div className="signup_input d-flex flex-column align-items-start">
-                
                 <div className="input-group">
-                  <span className="input-group-text" id="basic-addon1">Name</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Name
+                  </span>
+                  <input
                     className="form-control"
                     type="text"
                     id="name"
@@ -83,10 +80,12 @@ function ModalAddAdmin() {
                   />
                 </div>
                 <span className="text-danger mb-3">{formik.errors.name}</span>
-                
+
                 <div className="input-group">
-                  <span className="input-group-text" id="basic-addon1">Email</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Email
+                  </span>
+                  <input
                     className="form-control"
                     type="text"
                     id="email"
@@ -98,8 +97,10 @@ function ModalAddAdmin() {
                 <span className="text-danger mb-3">{formik.errors.email}</span>
 
                 <div className="input-group">
-                  <span className="input-group-text" id="basic-addon1">Phone</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Phone
+                  </span>
+                  <input
                     className="form-control"
                     type="text"
                     id="phone"
@@ -109,10 +110,12 @@ function ModalAddAdmin() {
                   />
                 </div>
                 <span className="text-danger mb-3">{formik.errors.phone}</span>
-                
+
                 <div className="input-group">
-                  <span className="input-group-text" id="basic-addon1">Password</span>
-                  <input 
+                  <span className="input-group-text" id="basic-addon1">
+                    Password
+                  </span>
+                  <input
                     className="form-control"
                     type={typePW}
                     id="password"
@@ -127,33 +130,35 @@ function ModalAddAdmin() {
                     onMouseUp={handle_Password_Icon}
                   ></i>
                 </div>
-                <span className="text-danger mb-3">{formik.errors.password}</span>
+                <span className="text-danger mb-3">
+                  {formik.errors.password}
+                </span>
 
                 <div className="input-group">
-                  <span className="input-group-text" id="basic-addon1">Birthday</span>
+                  <span className="input-group-text" id="basic-addon1">
+                    Birthday
+                  </span>
                   <DatePicker
-                  bordered={false}
-                  className="form-control"
-                  placeholder="Sinh nhật"
-                  format="DD/MM/YYYY"
-                  onChange={(value) => {
-                    const newValue =
-                      moment(value).format('DD/MM/YYYY');
+                    bordered={false}
+                    className="form-control"
+                    placeholder="Sinh nhật"
+                    format="DD/MM/YYYY"
+                    onChange={(value) => {
+                      const newValue = moment(value).format("DD/MM/YYYY");
                       formik.values.birthday = newValue;
-                  }}
-                  defaultValue={moment(
-                    formik.values.birthday,
-                    'DD/MM/YYYY',
-                  )}
-                />
+                    }}
+                    defaultValue={moment(formik.values.birthday, "DD/MM/YYYY")}
+                  />
                 </div>
 
                 <span className="text-danger">{formik.errors.birthday}</span>
               </div>
               <div className="footer-modal mt-3 text-center">
-                <Button variant="primary mx-1" type="submit">Add</Button>
-                
-                <Button variant="secondary mx-1" onClick={handleClose} >
+                <Button variant="primary mx-1" type="submit">
+                  Add
+                </Button>
+
+                <Button variant="secondary mx-1" onClick={handleClose}>
                   Cancel
                 </Button>
               </div>

@@ -2,106 +2,119 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { history, http } from "../../util/setting";
 import { AppDispatch } from "../configStore";
 
-
 export interface LocationModel {
-    id:        number;
-    tenViTri:  string;
-    tinhThanh: string;
-    quocGia:   string;
-    hinhAnh:   string;
+  id: number;
+  tenViTri: string;
+  tinhThanh: string;
+  quocGia: string;
+  hinhAnh: string;
 }
 export interface AdminLocationModel {
-    arrLocationAdmin: LocationModel[],
-    numberPageAdmin: number,
-
+  arrLocationAdmin: LocationModel[];
+  numberPageAdmin: number;
 }
 
 const initialState: AdminLocationModel = {
-    arrLocationAdmin: [],
-    numberPageAdmin: 1
-}
+  arrLocationAdmin: [],
+  numberPageAdmin: 1,
+};
 
 const adminLocationReducer = createSlice({
-    name: 'adminLocationReducer',
-    initialState,
-    reducers: {
-        setArrLocationAdminApi : (state: AdminLocationModel, action: PayloadAction<LocationModel[]>) => {
-          state.arrLocationAdmin = action.payload;
-        },
-        setNumberPageAdmin : (state:AdminLocationModel, action: PayloadAction<number>) => {
-        state.numberPageAdmin = action.payload;
-        },
-    }
+  name: "adminLocationReducer",
+  initialState,
+  reducers: {
+    setArrLocationAdminApi: (
+      state: AdminLocationModel,
+      action: PayloadAction<LocationModel[]>
+    ) => {
+      state.arrLocationAdmin = action.payload;
+    },
+    setNumberPageAdmin: (
+      state: AdminLocationModel,
+      action: PayloadAction<number>
+    ) => {
+      state.numberPageAdmin = action.payload;
+    },
+  },
 });
 
-export const { setArrLocationAdminApi, setNumberPageAdmin  } = adminLocationReducer.actions
+export const { setArrLocationAdminApi, setNumberPageAdmin } =
+  adminLocationReducer.actions;
 
-export default adminLocationReducer.reducer
+export default adminLocationReducer.reducer;
 
 // action API (action thunk)
 
-export const getLocationAdminApi = (numberPageAdmin :number) => {
-    return async (dispatch: AppDispatch) => {
-      try {
-        const response = await http.get(`/vi-tri/phan-trang-tim-kiem?pageIndex=${numberPageAdmin}&pageSize=5`);
-        // console.log(response);
-        
-        dispatch(setArrLocationAdminApi(response.data.content.data))
-      } catch (error) {
-        console.log(error);
-      }
-    };
-};
-
-export const postLocationAdminApi = (form :LocationModel) => {
-  return async () => {
+export const getLocationAdminApi = (numberPageAdmin: number) => {
+  return async (dispatch: AppDispatch) => {
     try {
-      const response = await http.post('/vi-tri', form);
-      console.log(response);
-      alert('Tạo vị trí mới thành công!')
-      window.location.reload()
+      const response = await http.get(
+        `/vi-tri/phan-trang-tim-kiem?pageIndex=${numberPageAdmin}&pageSize=5`
+      );
+      // console.log(response);
+
+      dispatch(setArrLocationAdminApi(response.data.content.data));
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const putLocationAdminApi = (id :number,form :LocationModel) => {
+export const postLocationAdminApi = (form: LocationModel) => {
+  return async () => {
+    try {
+      const response = await http.post("/vi-tri", form);
+      console.log(response);
+      alert("Tạo vị trí mới thành công!");
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const putLocationAdminApi = (id: number, form: LocationModel) => {
   return async () => {
     try {
       const response = await http.put(`/vi-tri/${id}`, form);
       console.log(response);
-      alert('Sửa vị trí thành công!')
-      history.push('/admin/locationinfomanage')
-      window.location.reload()
+      alert("Sửa vị trí thành công!");
+      history.push("/admin/locationinfomanage");
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const deleteLocationAdminApi = (id :number) => {
+export const deleteLocationAdminApi = (id: number) => {
   return async () => {
     try {
       const response = await http.delete(`/vi-tri/${id}`);
       console.log(response);
-      alert('Xóa vị trí thành công!')
-      history.push('/admin/locationinfomanage')
-      window.location.reload()
+      alert("Xóa vị trí thành công!");
+      history.push("/admin/locationinfomanage");
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const postEditImageLocationAdminApi = (id: number , formFile : FormData) => {
+export const postEditImageLocationAdminApi = (
+  id: number,
+  formFile: FormData
+) => {
   return async () => {
     try {
-      const result = await http.post(`/vi-tri/upload-hinh-vitri?maViTri=${id}`, formFile);
-        console.log('Update thành công', result);
-        alert('Update hình của vị trí thành công')
-        history.push('/admin/locationinfomanage')
-        window.location.reload()
+      const result = await http.post(
+        `/vi-tri/upload-hinh-vitri?maViTri=${id}`,
+        formFile
+      );
+      console.log("Update thành công", result);
+      alert("Update hình của vị trí thành công");
+      history.push("/admin/locationinfomanage");
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }

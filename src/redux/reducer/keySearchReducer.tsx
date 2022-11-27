@@ -1,19 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
- 
-const initialState:string = ''
+const initialState: string = "";
 
 const keySearchReducer = createSlice({
-  name: 'keySearchReducer',
+  name: "keySearchReducer",
   initialState,
   reducers: {
-    setKeySearch : (state:string, action) => {
-        state = action.payload;
-        return state
-      },
-  }
+    setKeySearch: (state: string, action) => {
+      state = action.payload;
+      return state;
+    },
+  },
 });
 
-export const {setKeySearch} = keySearchReducer.actions
+export const { setKeySearch } = keySearchReducer.actions;
 
-export default keySearchReducer.reducer
+export default keySearchReducer.reducer;

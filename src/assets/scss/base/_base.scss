@@ -1,34 +1,35 @@
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family:  $ff-t;
-}
-    
-.container{
-    margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $ff-t;
 }
 
-button{
-    &:active{
-        border-color: #ffffff !important;
-    }
+.container {
+  margin: 0 auto;
 }
 
-a{
-    text-decoration: none;
-    &:hover{
-        text-decoration: underline;
-    }
-}
-table{
-    object-fit: fill;
+button {
+  &:active {
+    border-color: #ffffff !important;
+  }
 }
 
-th, td{
-    text-align: center;
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+table {
+  object-fit: fill;
 }
 
-tr{
-    vertical-align: middle;
+th,
+td {
+  text-align: center;
+}
+
+tr {
+  vertical-align: middle;
 }
