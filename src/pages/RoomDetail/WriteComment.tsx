@@ -37,15 +37,16 @@ function WriteComment() {
   };
 
   return (
-    <div className="d-flex inp_binhluan">
-      <img
-        src="https://picsum.photos/200/300/?random&t="
-        alt="user_avt"
-        style={{ width: 50, height: 50, borderRadius: 100 }}
-      />
-      <div className="commentInfo  d-flex flex-column">
+    <div className="inp_binhluan d-flex">
+      <div className="">
+        <img
+          src="https://picsum.photos/200/300/?random&t="
+          alt="user_avt"
+        />
+      </div>
+      <div className="commentInfo">
         <textarea
-          className="form-control mx-3"
+          className="form-control"
           rows={4}
           cols={100}
           id="binhluan"

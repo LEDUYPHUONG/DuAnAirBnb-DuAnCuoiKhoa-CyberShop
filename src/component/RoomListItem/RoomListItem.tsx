@@ -12,9 +12,9 @@ export default function RoomListItem ({product}: Props) {
       className="roomlist-item"
       style={{ margin: "0px 10px", position: "relative" }}
     >
-      <div className="image-out" style={{position:"relative", width:"345px",height:"270px" ,border:"none", borderRadius:"10px", overflow:"hidden", objectFit:"cover", marginBottom:"5px",cursor:"pointer"}}>
+      <div className="image-out" style={{height: '240px', borderRadius:"10px", overflow:"hidden", marginBottom:"5px",cursor:"pointer"}}>
         <img
-          style={{width:"100%",height:"100%"}}
+          className="w-100 h-100"
           src={product.hinhAnh}
           alt="..."
         />
