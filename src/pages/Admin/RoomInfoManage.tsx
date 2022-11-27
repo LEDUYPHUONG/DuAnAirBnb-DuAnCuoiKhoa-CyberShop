@@ -79,10 +79,10 @@ export default function RoomInfoManage() {
   const renderRoomInfo = () => {
       return arrRoomInfoAdmin.map((item,index) =>{
           return <tr key={index}>
-                      <td> {item.id} </td>
-                      <td>{item.tenPhong}</td>
+                      <td>{item.id} </td>
+                      <td>{item.maViTri}</td>
                       <td>
-                      <img className='shadow-sm' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
+                      <img className='shadow-sm text-nowrap' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
                         <ModalUpdateImageRoomAdmin id={item.id} />
                       </td>
 
@@ -122,11 +122,11 @@ return (
                       />
                       <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
                   </form>
-                  <table className="table">
+                  <table className="table table-striped table-hover">
                       <thead>
                           <tr>
                               <th>ID</th>
-                              <th>Tên phòng</th>
+                              <th>Mã vị trí</th>
                               <th>Hình ảnh</th>
                               <th></th>
                           </tr>

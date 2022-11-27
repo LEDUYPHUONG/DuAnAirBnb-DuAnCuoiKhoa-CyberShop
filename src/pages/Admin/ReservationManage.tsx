@@ -5,6 +5,7 @@ import { http } from '../../util/setting'
 import { deleteRoomBookedAdminApi, getRoomBookedAdminApi, RoomBookedModel, setArrRoomBookedAdminApi } from '../../redux/reducer/adminReservatiionManageReducer'
 import ModalBookRoom from '../../component/Modal/ModalAdmin/ModalBookRoom'
 import ModalEditBookedRoom from '../../component/Modal/ModalAdmin/ModalEditBookedRoom'
+import ModalInfoBookedRoom from '../../component/Modal/ModalAdmin/ModalInfoBookedRoom'
 
 export default function ReservationManage() {
   const { arrRoomBookedAdmin } = useAppSelector((state) => state.adminReservationManageReducer)
@@ -60,11 +61,9 @@ export default function ReservationManage() {
           return <tr key={index}>
                       <td>{item.id}</td>
                       <td>{item.maPhong}</td>
-                      <td>{item.ngayDen}</td>
-                      <td>{item.ngayDi}</td>
-                      <td>{item.soLuongKhach}</td>
                       <td>{item.maNguoiDung}</td>
-                      <td>
+                      <td>  
+                            <ModalInfoBookedRoom item={item}/>
                             <ModalEditBookedRoom item={item}/>
                             <button className='btn btn-danger'  onClick={(event :MouseEvent<HTMLButtonElement>) => {
                                 event.preventDefault();
@@ -98,14 +97,11 @@ export default function ReservationManage() {
                 />
                 <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
             </form>
-            <table className="table">
+            <table className="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Mã phòng</th>
-                        <th>Ngày đến</th>
-                        <th>Ngày đi</th>
-                        <th>Số khách</th>
                         <th>Mã người dùng</th>
                         <th></th>
                     </tr>

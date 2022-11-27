@@ -146,7 +146,7 @@ export default function UserManage() {
                         }}/>
                         <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
                     </form>
-                    <table className="table">
+                    <table className="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>

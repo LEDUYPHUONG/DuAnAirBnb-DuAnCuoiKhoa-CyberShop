@@ -79,8 +79,6 @@ export default function LocationInfoManage() {
           return <tr key={index}>
                       <td> {item.id} </td>
                       <td>{item.tenViTri}</td>
-                      <td>{item.tinhThanh}</td>
-                      <td>{item.quocGia}</td>
                       <td>
                           <img className='shadow-sm' style={{width:'50px', height:'50px'}} src={item.hinhAnh.trim() === '' ? '/img/image-null.png' : item.hinhAnh} alt="..." />
                           <ModalUpdateImageLocationAdmin id={item.id}/>
@@ -120,13 +118,11 @@ return <div className='border-start px-5' style={{height: 'calc(100vh - 50px)'}}
                       />
                       <button type="submit" className="btn btn-primary me-5 ms-2"> Find</button>
                   </form>
-                  <table className="table">
+                  <table className="table table-striped table-hover">
                       <thead>
                           <tr>
                               <th>ID</th>
                               <th>Tên Vị trí</th>
-                              <th>Tỉnh Thành</th>
-                              <th>Quốc Gia</th>
                               <th>Hình ảnh</th>
                               <th></th>
                           </tr>
