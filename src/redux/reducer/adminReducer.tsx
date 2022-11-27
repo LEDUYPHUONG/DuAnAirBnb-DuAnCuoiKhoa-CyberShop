@@ -60,6 +60,7 @@ export const changeRoleUserToAdmin = (id: number, newInfo: AdmintUserModel) => {
     try {
       const response = await http.put(`/users/${id}`, newInfo);
       alert("Cập nhật Role thành công!");
+      console.log(response);
       history.push("/admin/usermanage");
       window.location.reload();
     } catch (error) {
@@ -73,6 +74,7 @@ export const deleteAccount = (id: number) => {
     try {
       const response = await http.delete(`/users?id=${id}`);
       alert("Delete thành công!");
+      console.log(response);
       history.push("/admin/usermanage");
       window.location.reload();
     } catch (error) {

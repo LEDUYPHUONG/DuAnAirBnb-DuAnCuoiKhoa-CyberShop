@@ -4,14 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../../redux/example/hooks";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import {
   putEditRoomBookedAdminApi,
   RoomBookedModel,
   setArrNgayOLaiAdmin,
 } from "../../../redux/reducer/adminReservatiionManageReducer";
-import { DatePicker } from "antd";
 import moment from "moment";
 type Props = {
   item: RoomBookedModel;
@@ -22,11 +20,6 @@ function ModalInfoBookedRoom({ item }: Props) {
   );
   const [show, setShow] = useState(false);
   const dispatch = useAppDispatch();
-  const { RangePicker } = DatePicker;
-  const onChangeDate = (date: any, dateString: any) => {
-    console.log("datestring", dateString);
-    dispatch(setArrNgayOLaiAdmin(dateString));
-  };
   const setNgayOLai = () => {
     dispatch(
       setArrNgayOLaiAdmin({
@@ -58,7 +51,7 @@ function ModalInfoBookedRoom({ item }: Props) {
     }),
     onSubmit: (values) => {
       let text = "Press a button!\nEither OK or Cancel.";
-      if (window.confirm(text) == true) {
+      if (window.confirm(text) === true) {
         text = "You pressed OK!";
         dispatch(putEditRoomBookedAdminApi(values.id, values));
       } else {

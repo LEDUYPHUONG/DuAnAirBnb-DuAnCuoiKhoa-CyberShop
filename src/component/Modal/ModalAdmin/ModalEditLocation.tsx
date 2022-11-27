@@ -36,7 +36,7 @@ function ModalEditLocation({ item }: Props) {
     }),
     onSubmit: (values) => {
       let text = "Press a button!\nEither OK or Cancel.";
-      if (window.confirm(text) == true) {
+      if (window.confirm(text) === true) {
         text = "You pressed OK!";
         dispatch(putLocationAdminApi(values.id, values));
       } else {

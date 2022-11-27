@@ -11,7 +11,6 @@ import {
   setNgayDatPhongAdmin,
 } from "../../../redux/reducer/adminReservatiionManageReducer";
 import { DatePicker } from "antd";
-import moment from "moment";
 
 function ModalBookRoom() {
   const { ngayDatPhongAdmin } = useAppSelector(

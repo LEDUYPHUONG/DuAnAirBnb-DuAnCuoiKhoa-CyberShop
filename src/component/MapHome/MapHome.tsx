@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Carousel from "../Carousel/Carousel";
 import HeaderPage from "../Header/HeaderPage";
 
 export default function MapHome() {

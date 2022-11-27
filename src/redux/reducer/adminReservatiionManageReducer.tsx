@@ -86,6 +86,7 @@ export const putEditRoomBookedAdminApi = (id: number, values: any) => {
     try {
       const response = await http.put(`/dat-phong/${id}`, values);
       alert("Sửa thông tin đặt phòng thành công!");
+      console.log(response);
       history.push("/admin/reservationmanage");
       window.location.reload();
     } catch (error) {
@@ -99,6 +100,7 @@ export const deleteRoomBookedAdminApi = (id: number) => {
     try {
       const response = await http.delete(`/dat-phong/${id}`);
       alert("Delete Thành công!");
+      console.log(response);
       history.push("/admin/reservationmanage");
       window.location.reload();
     } catch (error) {
@@ -112,6 +114,7 @@ export const postRoomBookedAdminApi = (values: any) => {
     try {
       const response = await http.post("/dat-phong", values);
       alert("Đặt phòng thành công!");
+      console.log(response);
       history.push("/admin/reservationmanage");
       window.location.reload();
     } catch (error) {

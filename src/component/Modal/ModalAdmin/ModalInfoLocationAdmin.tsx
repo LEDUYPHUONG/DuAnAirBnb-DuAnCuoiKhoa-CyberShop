@@ -8,7 +8,6 @@ import {
   LocationModel,
   putLocationAdminApi,
 } from "../../../redux/reducer/adminLocationReducer";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
 type Props = {
@@ -36,7 +35,7 @@ function ModalInfoLocationAdmin({ item }: Props) {
     }),
     onSubmit: (values) => {
       let text = "Press a button!\nEither OK or Cancel.";
-      if (window.confirm(text) == true) {
+      if (window.confirm(text) === true) {
         text = "You pressed OK!";
         dispatch(putLocationAdminApi(values.id, values));
       } else {

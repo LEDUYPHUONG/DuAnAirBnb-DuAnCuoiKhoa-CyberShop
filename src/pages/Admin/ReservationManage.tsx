@@ -74,7 +74,7 @@ export default function ReservationManage() {
               onClick={(event: MouseEvent<HTMLButtonElement>) => {
                 event.preventDefault();
                 let text = "Press a button!\nEither OK or Cancel.";
-                if (window.confirm(text) == true) {
+                if (window.confirm(text) === true) {
                   text = "You pressed OK!";
                   dispatch(deleteRoomBookedAdminApi(item.id));
                 } else {
