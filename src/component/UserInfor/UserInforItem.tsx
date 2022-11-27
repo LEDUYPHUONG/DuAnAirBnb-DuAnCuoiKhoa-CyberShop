@@ -414,7 +414,7 @@ export default function UserInforItem() {
                             marginBottom: 10,
                           }}
                         >
-                          Tên cá nhân
+                          Name
                         </p>
                         <div className="input-group">
                           <input
@@ -440,7 +440,7 @@ export default function UserInforItem() {
                             marginBottom: 10,
                           }}
                         >
-                          Số điện thoại
+                          Phone
                         </p>
                         <div
                           className="input-group"
@@ -468,7 +468,7 @@ export default function UserInforItem() {
                             marginBottom: 10,
                           }}
                         >
-                          Ngày sinh
+                          Birthday
                         </p>
                         <div
                           className="input-group"
@@ -524,14 +524,14 @@ export default function UserInforItem() {
                             className="btn btn-secondary text-decoration-underline"
                             style={{ padding: '10px 20px' }}
                           >
-                            Hủy
+                            Cancel
                           </button>
                           <button
                             type="submit"
                             className="btn btn-dark"
                             style={{ fontSize: 20, padding: '10px 20px' }}
                           >
-                            Lưu
+                            Confirm
                           </button>
                         </div>
                       </div>

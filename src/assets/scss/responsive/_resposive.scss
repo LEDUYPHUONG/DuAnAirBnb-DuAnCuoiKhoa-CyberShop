@@ -5,6 +5,9 @@
     }
     
     //admin
+    #d-none-img-profile-under-991px{
+        display: none !important;
+    }
     .d-none-under-991px{
         display: none !important;
     }
@@ -14,6 +17,8 @@
     .text-center-under-991px{
        text-align: center !important; 
     }
+    //profile
+  
  }
  
  @media (max-width: 768px) {
