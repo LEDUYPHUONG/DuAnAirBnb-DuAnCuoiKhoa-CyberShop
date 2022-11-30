@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/configStore";
 import { useAppDispatch } from "../../redux/example/hooks";
 import {
   getLocationApi,
   getProductApi,
   ProductModel,
+  setProductSearch,
 } from "../../redux/reducer/productReducer";
 
 export default function ItemProduct() {
   const { arrProduct } = useSelector(
     (state: RootState) => state.productReducer
   );
+  const navigate = useNavigate()
   const keywordRedux = useSelector((state: RootState) => state.keywordReducer);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -29,6 +32,11 @@ export default function ItemProduct() {
             margin: "5px 10px",
             cursor: "pointer",
             marginBottom: "20px",
+          }}
+          onClick={() =>{
+            dispatch(setProductSearch(item))
+            navigate("/roomlist");
+            console.log("productSearch in productReducer", item);
           }}
         >
           <div
