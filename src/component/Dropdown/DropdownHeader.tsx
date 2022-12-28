@@ -1,5 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useNavigate } from "react-router-dom";
+import { isVerification } from "../../index";
 import { logout } from "../../util/setting";
 
 function HandleClickSignInOrJoin() {
@@ -37,7 +38,7 @@ function HandleClickSignInOrJoin() {
 
         <Dropdown.Menu>
           <Dropdown.Item
-            className="text-decoration-none"
+            className={isVerification()? 'd-none' : "text-decoration-none"}
             onClick={() => {
               navigate("/signin");
             }}
@@ -45,7 +46,7 @@ function HandleClickSignInOrJoin() {
             Sign In
           </Dropdown.Item>
           <Dropdown.Item
-            className="text-decoration-none"
+            className={isVerification()? 'd-none' : "text-decoration-none"}
             onClick={() => {
               navigate("/signup");
             }}
@@ -53,7 +54,7 @@ function HandleClickSignInOrJoin() {
             Join
           </Dropdown.Item>
           <Dropdown.Item
-            className="text-decoration-none"
+            className={isVerification()? "text-decoration-none" : 'd-none'}
             onClick={() => {
               navigate("/profile");
             }}
@@ -61,7 +62,7 @@ function HandleClickSignInOrJoin() {
             Profile
           </Dropdown.Item>
           <Dropdown.Item
-            className="text-decoration-none"
+            className={isVerification()? "text-decoration-none" : 'd-none'}
             onClick={() => {
               logout();
             }}

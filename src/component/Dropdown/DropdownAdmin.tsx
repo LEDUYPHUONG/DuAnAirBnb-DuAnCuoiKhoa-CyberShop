@@ -15,18 +15,10 @@ function HandleClickSignInOrJoin() {
           <Dropdown.Item
             className="text-decoration-none"
             onClick={() => {
-              navigate("/signin");
+              navigate("/profile");
             }}
           >
-            Sign In
-          </Dropdown.Item>
-          <Dropdown.Item
-            className="text-decoration-none"
-            onClick={() => {
-              navigate("/signup");
-            }}
-          >
-            Join
+            Profile
           </Dropdown.Item>
           <Dropdown.Item
             className="text-decoration-none"
