@@ -117,4 +117,9 @@
     width: 100% !important;
     max-width: 100% !important;
   }
+  .ant-picker-panel-container .ant-picker-panels {
+    display: flex;
+    flex-wrap: wrap;
+    width: 280px;
+  }
 }
