@@ -53,7 +53,8 @@
   }
   //admin
   .Dashboard{
-    width: 50% !important;
+    width: 30px !important;
+    height: 30px !important;
   }
   .isHidden-admin-navbar-body{
     display: none !important;
@@ -61,7 +62,6 @@
   .admin-navbar-body{
     position: absolute;
     z-index: 12;
-    width: 50% !important ;
   }
   .widthfull-under-991px {
     width: 100% !important;
@@ -122,4 +122,6 @@
     flex-wrap: wrap;
     width: 280px;
   }
+  //admin
+
 }

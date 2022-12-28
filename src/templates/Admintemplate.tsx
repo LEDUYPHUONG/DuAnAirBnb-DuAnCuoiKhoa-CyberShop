@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { isAdminLogIn } from "../index";
 import DropdownAdmin from "../component/Dropdown/DropdownAdmin";
 
 export default function Admintemplate() {
@@ -18,7 +19,7 @@ export default function Admintemplate() {
         >
           <div
             className="Dashboard bg-dark text-white text-end mx-2 py-3 d-flex justify-content-center align-items-center"
-            style={{ height: "50px", width: "250px" }}
+            style={{ height: "50px", width: "248px" }}
             onClick={() =>{
               setShow(!show)
             }}
@@ -29,7 +30,7 @@ export default function Admintemplate() {
             </span>
           </div>
           <div className="d-flex justify-content-between align-items-center">
-            <span className="pe-3">Admin</span>
+            <span className="pe-3">Hello, {isAdminLogIn()?.name}</span>
             <DropdownAdmin />
           </div>
         </div>
@@ -38,14 +39,14 @@ export default function Admintemplate() {
         <div className={show ? 'ms-2 admin-navbar-body' : 'ms-2 admin-navbar-body isHidden-admin-navbar-body'} style={{width: "250px"}}>
           <NavLink to="/admin/usermanage" className="text-decoration-none">
             <button
-              className="btn btn-primary mt-1 w-100 rounded-0 text-start text-center-under-991px"
+              className="btn btn-primary mt-1 w-100 rounded-0 text-start"
               style={{ cursor: "pointer" }}
               onClick={() =>{
                 setShow(!show)
               }}
             >
               <i className="fa-regular fa-user border rounded-circle p-2 bg-transparent"></i>
-              <span className="d-none-under-991px ps-2 bg-transparent">
+              <span className="ps-2 bg-transparent">
                 User
               </span>
             </button>
@@ -55,14 +56,14 @@ export default function Admintemplate() {
             className="text-decoration-none"
           >
             <button
-              className="btn btn-primary mt-1 w-100 rounded-0 text-start text-center-under-991px"
+              className="btn btn-primary mt-1 w-100 rounded-0 text-start"
               style={{ cursor: "pointer" }}
               onClick={() =>{
                 setShow(!show)
               }}
             >
               <i className="fa-solid fa-location-dot border rounded-circle p-2 bg-transparent"></i>
-              <span className="d-none-under-991px ps-2 bg-transparent">
+              <span className="ps-2 bg-transparent">
                 Location information
               </span>
             </button>
@@ -72,14 +73,14 @@ export default function Admintemplate() {
             className="text-decoration-none"
           >
             <button
-              className="btn btn-primary mt-1 w-100 rounded-0 text-start text-center-under-991px"
+              className="btn btn-primary mt-1 w-100 rounded-0 text-start"
               style={{ cursor: "pointer" }}
               onClick={() =>{
                 setShow(!show)
               }}
             >
               <i className="fa-solid fa-house-user border rounded-circle p-2 bg-transparent"></i>
-              <span className="d-none-under-991px ps-2 bg-transparent">
+              <span className="ps-2 bg-transparent">
                 Room information
               </span>
             </button>
@@ -89,14 +90,14 @@ export default function Admintemplate() {
             className="text-decoration-none"
           >
             <button
-              className="btn btn-primary mt-1 w-100 rounded-0 text-start text-center-under-991px"
+              className="btn btn-primary mt-1 w-100 rounded-0 text-start"
               style={{ cursor: "pointer" }}
               onClick={() =>{
                 setShow(!show)
               }}
             >
               <i className="fa-solid fa-address-book border rounded-circle p-2 bg-transparent"></i>
-              <span className="d-none-under-991px ps-2 bg-transparent">
+              <span className="ps-2 bg-transparent">
                 Reservation
               </span>
             </button>
