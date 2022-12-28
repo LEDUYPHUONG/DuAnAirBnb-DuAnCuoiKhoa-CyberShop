@@ -80,7 +80,7 @@ export default function UserInforItem() {
       >
         <div className="justify-content-center mb-3">
           <div
-            className="d-flex justify-content-center mb-3"
+            className="d-flex justify-content-center mb-3 d-block-under-576px"
             style={{ width: "100%", position: "relative" }}
           >
             <div
@@ -91,7 +91,7 @@ export default function UserInforItem() {
               }}
             >
               <div
-                className="square border border-1"
+                className="square border border-1 widthfull-under-576px"
                 style={{
                   maxWidth: "308px",
                   padding: "24px",
@@ -100,7 +100,7 @@ export default function UserInforItem() {
               >
                 <div
                   className="infor-updateimage"
-                  style={{ width: "128px", margin: "auto auto 32px auto" }}
+                  style={{ width: "128px", margin: "auto auto 0 auto" }}
                 >
                   <div
                     className="infor-img"
@@ -115,7 +115,7 @@ export default function UserInforItem() {
                       src={
                         arrProfileUser.avatar
                           ? arrProfileUser.avatar
-                          : "https://i.pravatar.cc/"
+                          : "./img/avatar/existing-user-default-avatar.png"
                       }
                       alt="..."
                       style={{
@@ -162,7 +162,7 @@ export default function UserInforItem() {
                 >
                   Xác thực danh tính của bạn với huy hiệu xác minh danh tính.
                 </div>
-                <div
+                {/* <div
                   className="infor-challange square border border-dark m-auto"
                   style={{
                     padding: "13px 23px",
@@ -174,7 +174,7 @@ export default function UserInforItem() {
                   }}
                 >
                   Nhận huy hiệu
-                </div>
+                </div> */}
                 <div
                   className="infor-line"
                   style={{ marginTop: "32px", marginBottom: "32px" }}
@@ -229,6 +229,7 @@ export default function UserInforItem() {
                 const { values } = formInfoUser;
                 dispatch(postProfileUserApi(values.id, values));
               }}
+              style={{maxWidth: '600px'}}
             >
               <div
                 className="p-2"

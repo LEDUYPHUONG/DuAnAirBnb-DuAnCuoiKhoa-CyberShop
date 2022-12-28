@@ -37,58 +37,27 @@ export default function CarouselInfor({ product }: Props) {
                 Romantic APT for Long-term Living@BEST L...
               </div>
               <div className="border-bottom" style={{ width: "100%" }}></div>
-              <ul className="infor-listgrouproom list-group list-group-horizontal pt-2">
+              <ul className="ps-0 pt-2">
                 <li
-                  className="infor-usernumber"
-                  style={{ listStyle: "none", fontSize: 14 }}
+                  className="infor-usernumber d-block"
+                  style={{fontSize: 14 }}
                 >
-                  {product.soLuongKhach} Khách
+                 ID: {product.id}
                 </li>
                 <li
-                  className="infor-roomtype"
-                  style={{ marginLeft: 20, fontSize: 14 }}
+                  className="infor-usernumber d-block"
+                  style={{fontSize: 14 }}
                 >
-                  Phòng Studio
+                 {product.soLuongKhach} Khách
                 </li>
                 <li
-                  className="infor-bednumber"
-                  style={{ marginLeft: 20, fontSize: 14 }}
+                  className="infor-usernumber d-block"
+                  style={{fontSize: 14 }}
                 >
-                  1 giường
+                 Mã phòng {product.maPhong}
                 </li>
-                <li
-                  className="infor-bathnumber"
-                  style={{ marginLeft: 20, fontSize: 14 }}
-                >
-                  1 phòng tắm
-                </li>
-              </ul>
-              <ul className="infor-machine list-group list-group-horizontal pt-2">
-                <li
-                  className="infor-wifi"
-                  style={{ listStyle: "none", fontSize: 14 }}
-                >
-                  Wifi
-                </li>
-                <li
-                  className="infor-kitchen"
-                  style={{ marginLeft: 20, fontSize: 14 }}
-                >
-                  Bếp
-                </li>
-                <li
-                  className="infor-air"
-                  style={{ marginLeft: 20, fontSize: 14 }}
-                >
-                  Điều hòa nhiệt độ
-                </li>
-                <li
-                  className="infor-machine"
-                  style={{ marginLeft: 20, fontSize: 14 }}
-                >
-                  Máy giặt
-                </li>
-              </ul>
+              </ul> 
+              
             </div>
           </div>
         </div>

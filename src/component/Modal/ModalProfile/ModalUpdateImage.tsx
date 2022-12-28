@@ -37,7 +37,7 @@ function ModalUpdateImage() {
         onClick={() => {
           handleShow();
         }}
-        className="my-5"
+        className="my-3"
       >
         Update avatar
       </Button>
