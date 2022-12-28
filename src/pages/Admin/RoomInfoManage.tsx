@@ -82,7 +82,7 @@ export default function RoomInfoManage() {
       return (
         <tr key={index}>
           <td>{item.id} </td>
-          <td>{item.maViTri}</td>
+          <td className=" hidden-under-576px">{item.maViTri}</td>
           <td>
             <img
               className="shadow-sm text-nowrap hidden-under-576px"
@@ -122,8 +122,8 @@ export default function RoomInfoManage() {
   };
   return (
     <div
-      className="border-start px-5 paddingX1rem-under-576px"
-      style={{ height: "calc(100vh - 50px)" }}
+      className="border-start px-5 paddingX1rem-under-576px widthfull-under-991px"
+      style={{ height: "calc(100vh - 50px)", width: "calc(100% - 250px)" }}
     >
       <ModalAddRoom />
       <form
@@ -152,7 +152,7 @@ export default function RoomInfoManage() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Mã vị trí</th>
+            <th className=" hidden-under-576px">Mã vị trí</th>
             <th>Hình ảnh</th>
             <th></th>
           </tr>

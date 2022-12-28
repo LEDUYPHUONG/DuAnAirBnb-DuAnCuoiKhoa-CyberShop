@@ -49,7 +49,7 @@ export default function RoomListPage({ title }: Props) {
           <div
             className="roomlist-item_title"
             style={{
-              margin: "24px 0px 8px",
+              margin: "0px 8px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -57,7 +57,9 @@ export default function RoomListPage({ title }: Props) {
           >
             <p
               style={{
-                marginLeft: "12px",
+                textAlign: "center",
+                width: '100%',
+                marginTop: "20px",
                 marginBottom: "0",
                 padding: 0,
                 fontSize: "15px",
@@ -66,36 +68,7 @@ export default function RoomListPage({ title }: Props) {
               Ở vị trí này có {arrRoomlist.length} nhà ở
             </p>
 
-            <div>
-              <div style={{ padding: "7px 0", marginRight: 10 }}>
-                <span
-                  className="d-flex border rounded-4"
-                  style={{
-                    padding: "2px 10px",
-                    width: 120,
-                    height: 50,
-                    paddingRight: 3,
-                  }}
-                >
-                  <span
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginRight: 5,
-                    }}
-                  >
-                    <img
-                      src="./img/setting-lines.png"
-                      alt=""
-                      style={{ width: 12, height: 12, marginLeft: 20 }}
-                    />
-                  </span>
-                  <span style={{ display: "flex", alignItems: "center" }}>
-                    Bộ lọc
-                  </span>
-                </span>
-              </div>
-            </div>
+           
           </div>
 
           <div className="d-block-under-991px roomlist-item_content d-flex flex-wrap">

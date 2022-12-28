@@ -70,7 +70,6 @@ function ModalInfoBookedRoom({ item }: Props) {
           handleShow();
           setNgayOLai();
         }}
-        className="mx-2"
       >
         Info
       </Button>

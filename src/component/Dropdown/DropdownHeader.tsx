@@ -6,7 +6,7 @@ function HandleClickSignInOrJoin() {
   const navigate = useNavigate();
   return (
     <>
-      <Dropdown className="d-inline mx-2">
+      <Dropdown className="d-inline">
         <Dropdown.Toggle
           id="dropdown-autoclose-true"
           className="bg-white border-0 d-flex p-0"

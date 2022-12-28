@@ -122,8 +122,8 @@ export default function LocationInfoManage() {
   };
   return (
     <div
-      className="border-start px-5 paddingX1rem-under-576px"
-      style={{ height: "calc(100vh - 50px)" }}
+      className="border-start px-5 paddingX1rem-under-576px widthfull-under-991px"
+      style={{ height: "calc(100vh - 50px)", width: "calc(100% - 250px)" }}
     >
       <ModalAddLocation />
       <form

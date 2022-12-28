@@ -49,7 +49,7 @@ function ModalEditLocation({ item }: Props) {
 
   return (
     <>
-      <Button variant="warning" onClick={handleShow} className="mx-2">
+      <Button variant="warning" onClick={handleShow} className="mx-1">
         Edit
       </Button>
 

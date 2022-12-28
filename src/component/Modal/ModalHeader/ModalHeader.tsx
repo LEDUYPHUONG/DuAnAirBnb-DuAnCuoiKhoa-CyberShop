@@ -351,13 +351,6 @@ function ModalHeader() {
                         onChange={handleChange}
                       />
                     </button>
-                    <div
-                      style={{
-                        width: 1,
-                        height: 24,
-                        background: "#cccccc",
-                      }}
-                    ></div>
                     <button
                       className="d-none btn text-dark d-flex flex-column rounded-pill buttonUserHover"
                       style={{
@@ -385,14 +378,6 @@ function ModalHeader() {
                         }}
                       />
                     </button>
-                    <div
-                      style={{
-                        width: 1,
-                        height: 24,
-                        background: "#cccccc",
-                      }}
-                    ></div>
-
                     <button
                       type="button"
                       className="width200-btn-under-768px width150-btn-under-576px btn text-dark d-flex flex-row justify-content-end align-items-center rounded-pill buttonUserHover "

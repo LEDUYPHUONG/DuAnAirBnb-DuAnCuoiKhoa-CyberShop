@@ -17,7 +17,9 @@
   .text-center-under-991px {
     text-align: center !important;
   }
-  //profile
+  //roomdetail
+
+
 }
 
 @media (max-width: 768px) {
@@ -49,9 +51,37 @@
   .responsive-container-signup-768px {
     max-width: 100%;
   }
+  //admin
+  .Dashboard{
+    width: 50% !important;
+  }
+  .isHidden-admin-navbar-body{
+    display: none !important;
+  }
+  .admin-navbar-body{
+    position: absolute;
+    z-index: 12;
+    width: 50% !important ;
+  }
+  .widthfull-under-991px {
+    width: 100% !important;
+  }
+  .out-admin-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 30px);
+    background-color: #cccccc;
+    opacity: 0.5;
+    z-index: 11;
+  }
 }
 
 @media (max-width: 576px) {
+  .padding-under-576px{
+    padding: 0 20px 0 33.67px!important;
+  }
   .hidden-under-576px {
     display: none !important;
   }
@@ -64,5 +94,19 @@
   .paddingX1rem-under-576px {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
+  }
+  //roomlist
+  .roomlist-container{
+    display: block !important;
+  }
+  .roomlist-item_{
+    width: 100% !important;
+    height: 100%;
+  }
+  .roomlist-map{
+    position: relative !important;
+    width: 100% !important;
+    padding: 0 15px !important;
+    padding-bottom: 50px !important;
   }
 }

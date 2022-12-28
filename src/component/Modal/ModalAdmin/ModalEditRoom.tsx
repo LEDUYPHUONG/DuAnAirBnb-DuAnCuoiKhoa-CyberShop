@@ -75,7 +75,7 @@ function ModalEditRoom({ item }: Props) {
 
   return (
     <>
-      <Button variant="warning mx-2" onClick={handleShow}>
+      <Button variant="warning mx-1" onClick={handleShow}>
         Edit
       </Button>
 

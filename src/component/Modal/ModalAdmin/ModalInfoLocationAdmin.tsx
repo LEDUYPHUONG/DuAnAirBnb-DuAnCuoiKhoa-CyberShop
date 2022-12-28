@@ -48,7 +48,7 @@ function ModalInfoLocationAdmin({ item }: Props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="mx-2">
+      <Button variant="primary" onClick={handleShow}>
         Info
       </Button>
 

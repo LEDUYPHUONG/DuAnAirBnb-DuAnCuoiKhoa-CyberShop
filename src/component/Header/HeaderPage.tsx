@@ -21,7 +21,7 @@ export default function HeaderPage({ title }: Props) {
       }}
     >
       <div
-        className="m-auto"
+        className="m-auto padding-under-576px"
         style={{ height: "80px", padding: "0 26px 0 48px" }}
       >
         <div className="d-flex justify-content-between align-items-center">

@@ -77,7 +77,7 @@ function ModalEditBookedRoom({ item }: Props) {
           handleShow();
           setNgayOLai();
         }}
-        className="mx-2"
+        className="mx-1"
       >
         Edit
       </Button>

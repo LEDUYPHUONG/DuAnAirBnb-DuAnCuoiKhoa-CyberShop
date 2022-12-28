@@ -121,7 +121,7 @@ export default function UserManage() {
           <td>
             <ModalInfoAdmin item={item} />
             <button
-              className="btn btn-warning mx-3 text-dark"
+              className="btn btn-warning mx-1 text-dark"
               onClick={(event: MouseEvent<HTMLButtonElement>) => {
                 event.preventDefault();
                 let text = "Press a button!\nEither OK or Cancel.";
@@ -157,8 +157,8 @@ export default function UserManage() {
   };
   return (
     <div
-      className="border-start px-5 paddingX1rem-under-576px"
-      style={{ height: "calc(100vh - 50px)" }}
+      className="border-start px-5 paddingX1rem-under-576px widthfull-under-991px"
+      style={{ height: "calc(100vh - 50px)", width: "calc(100% - 250px)" }}
     >
       <ModalAddAdmin />
       <form

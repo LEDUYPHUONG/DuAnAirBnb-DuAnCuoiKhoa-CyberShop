@@ -96,7 +96,7 @@ export default function RoomInfo() {
     return arrComment.map((cmt, index) => {
       return (
         <div className="usercomment d-flex mb-4" key={index}>
-          <img src={cmt.avatar} alt={cmt.tenNguoiBinhLuan} />
+          <img className="image-comment-roomdetail" src={cmt.avatar} alt={cmt.tenNguoiBinhLuan} />
           <div className="commentInfo  d-flex flex-column">
             <span className="tenNguoiDung">{cmt.tenNguoiBinhLuan}</span>
             <span className="ngayDang">{cmt.ngayBinhLuan}</span>
