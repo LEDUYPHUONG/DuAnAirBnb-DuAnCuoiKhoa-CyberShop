@@ -17,6 +17,38 @@
   .text-center-under-991px {
     text-align: center !important;
   }
+  .dashboard-menu{
+    border: 0 !important;
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    width: calc(100% - 20px);
+  }
+  .Dashboard{
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .isHidden-admin-navbar-body{
+    display: none !important;
+  }
+  .admin-navbar-body{
+    position: absolute;
+    z-index: 12;
+    top: 38px;
+  }
+  .widthfull-under-991px {
+    width: 100% !important;
+  }
+  .out-admin-page{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    background-color: #cccccc;
+    opacity: 0.5;
+    z-index: 11;
+  }
   //roomdetail
 
 
@@ -52,30 +84,6 @@
     max-width: 100%;
   }
   //admin
-  .Dashboard{
-    width: 30px !important;
-    height: 30px !important;
-  }
-  .isHidden-admin-navbar-body{
-    display: none !important;
-  }
-  .admin-navbar-body{
-    position: absolute;
-    z-index: 12;
-  }
-  .widthfull-under-991px {
-    width: 100% !important;
-  }
-  .out-admin-page{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% + 30px);
-    background-color: #cccccc;
-    opacity: 0.5;
-    z-index: 11;
-  }
 }
 
 @media (max-width: 576px) {

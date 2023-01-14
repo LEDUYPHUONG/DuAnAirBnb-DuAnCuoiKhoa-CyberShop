@@ -157,8 +157,7 @@ export default function UserManage() {
   };
   return (
     <div
-      className="border-start px-5 paddingX1rem-under-576px widthfull-under-991px"
-      style={{ height: "calc(100vh - 50px)", width: "calc(100% - 250px)" }}
+      className="px-5 paddingX1rem-under-576px widthfull-under-991px"
     >
       <ModalAddAdmin />
       <form
@@ -178,27 +177,28 @@ export default function UserManage() {
             handleChange(event);
           }}
         />
-        <button type="submit" className="btn btn-primary me-5 ms-2">
-          {" "}
+        <button type="submit" className="btn btn-primary me-5 ms-2 my-2">
           Find
         </button>
       </form>
-      <table className="table table-striped table-hover table-responsive">
-        <thead>
-          <tr>
-            <th style={{minWidth: '50px'}}>ID</th>
-            <th style={{minWidth: '200px'}}>Name</th>
-            <th style={{minWidth: '50px'}}>Image</th>
-            <th style={{minWidth: '75px'}}>Role</th>
-            <th style={{minWidth: '250px'}}></th>
-          </tr>
-        </thead>
-        <tbody className="w-100">{renderAdminUserAccount()}</tbody>
-      </table>
+      <div className="container table-responsive">
+        <table className="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th style={{minWidth: "50px"}}>ID</th>
+              <th style={{minWidth: "150px"}}>Name</th>
+              <th style={{minWidth: "50px"}}>Image</th>
+              <th style={{minWidth: "100px"}}>Role</th>
+              <th style={{minWidth: "250px"}}></th>
+            </tr>
+          </thead>
+          <tbody>{renderAdminUserAccount()}</tbody>
+        </table>
+      </div>
       <div>
         <div
           className=""
-          style={{ position: "fixed", zIndex: 10, bottom: 50, right: 50 }}
+          style={{ position: "fixed", zIndex: 10, bottom: 50, left: "50%", transform: 'translateX(-50%)' }}
         >
           <button
             className="btn btn-primary mx-2"
@@ -207,7 +207,7 @@ export default function UserManage() {
             }}
           >
             <i className="fa-solid fa-arrow-left me-2 bg-transparent"></i>
-            prev
+            <span className="d-none-under-991px">prev</span>
           </button>
           <button className="btn btn-primary mx-2"> {numberPage} </button>
           <button
@@ -216,7 +216,7 @@ export default function UserManage() {
               handelClickBtnNextSetArrAdminUser();
             }}
           >
-            next
+            <span className="d-none-under-991px">next</span>
             <i className="fa-solid fa-arrow-right ms-2 bg-transparent"></i>
           </button>
         </div>

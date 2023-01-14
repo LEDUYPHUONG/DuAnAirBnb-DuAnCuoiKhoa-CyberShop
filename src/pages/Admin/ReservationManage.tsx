@@ -65,7 +65,7 @@ export default function ReservationManage() {
         <tr key={index}>
           <td>{item.id}</td>
           <td>{item.maPhong}</td>
-          <td className="hidden-under-576px">{item.maNguoiDung}</td>
+          <td>{item.maNguoiDung}</td>
           <td>
             <ModalInfoBookedRoom item={item} />
             <ModalEditBookedRoom item={item} />
@@ -91,8 +91,7 @@ export default function ReservationManage() {
   };
   return (
     <div
-      className="border-start px-5 paddingX1rem-under-576px widthfull-under-991px"
-      style={{ height: "calc(100vh - 50px)", width: "calc(100% - 250px)" }}
+      className="px-5 paddingX1rem-under-576px widthfull-under-991px"
     >
       <ModalBookRoom />
       <form
@@ -112,22 +111,23 @@ export default function ReservationManage() {
             handleChange(event);
           }}
         />
-        <button type="submit" className="btn btn-primary me-5 ms-2">
-          {" "}
+        <button type="submit" className="btn btn-primary me-5 ms-2 my-2">
           Find
         </button>
       </form>
+      <div className="container table-responsive">
       <table className="table table-striped table-hover">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Mã phòng</th>
-            <th className="hidden-under-576px">Mã người dùng</th>
-            <th></th>
+            <th style={{minWidth: "50px"}}>ID</th>
+            <th style={{minWidth: "100px"}}>Mã phòng</th>
+            <th style={{minWidth: "150px"}}>Mã người dùng</th>
+            <th style={{minWidth: "200px"}}></th>
           </tr>
         </thead>
         <tbody className="w-100">{renderRoomBooked()}</tbody>
       </table>
+      </div>
     </div>
   );
 }

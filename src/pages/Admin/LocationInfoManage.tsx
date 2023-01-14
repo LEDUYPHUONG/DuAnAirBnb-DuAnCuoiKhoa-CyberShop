@@ -83,7 +83,7 @@ export default function LocationInfoManage() {
       return (
         <tr key={index}>
           <td> {item.id} </td>
-          <td className="hidden-under-576px">{item.tenViTri}</td>
+          <td>{item.tenViTri}</td>
           <td>
             <img
               className="shadow-sm hidden-under-576px"
@@ -122,8 +122,7 @@ export default function LocationInfoManage() {
   };
   return (
     <div
-      className="border-start px-5 paddingX1rem-under-576px widthfull-under-991px"
-      style={{ height: "calc(100vh - 50px)", width: "calc(100% - 250px)" }}
+      className="px-5 paddingX1rem-under-576px widthfull-under-991px"
     >
       <ModalAddLocation />
       <form
@@ -143,26 +142,27 @@ export default function LocationInfoManage() {
             handleChange(event);
           }}
         />
-        <button type="submit" className="btn btn-primary me-5 ms-2">
-          {" "}
+        <button type="submit" className="btn btn-primary me-5 ms-2 my-2">
           Find
         </button>
       </form>
-      <table className="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th className="hidden-under-576px">Tên Vị trí</th>
-            <th>Hình ảnh</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody className="w-100">{renderLocation()}</tbody>
-      </table>
+      <div className="container table-responsive">
+        <table className="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th style={{minWidth: "50px"}}>ID</th>
+              <th style={{minWidth: "150px"}}>Tên Vị trí</th>
+              <th style={{minWidth: "50px"}}>Hình ảnh</th>
+              <th style={{minWidth: "250px"}}></th>
+            </tr>
+          </thead>
+          <tbody>{renderLocation()}</tbody>
+        </table>
+      </div>
       <div>
         <div
           className=""
-          style={{ position: "fixed", zIndex: 10, bottom: 50, right: 50 }}
+          style={{ position: "fixed", zIndex: 10, bottom: 50, left: "50%", transform: 'translateX(-50%)' }}
         >
           <button
             className="btn btn-primary mx-2"
@@ -171,7 +171,7 @@ export default function LocationInfoManage() {
             }}
           >
             <i className="fa-solid fa-arrow-left me-2 bg-transparent"></i>
-            prev
+            <span className="d-none-under-991px">prev</span>
           </button>
           <button className="btn btn-primary mx-2"> {numberPageAdmin} </button>
           <button
@@ -180,7 +180,7 @@ export default function LocationInfoManage() {
               handelClickBtnNextSetArrLocationAdmin();
             }}
           >
-            next
+            <span className="d-none-under-991px">next</span>
             <i className="fa-solid fa-arrow-right ms-2 bg-transparent"></i>
           </button>
         </div>

@@ -6,14 +6,19 @@ function HandleClickSignInOrJoin() {
   const navigate = useNavigate();
   return (
     <>
-      <Dropdown className="d-inline mx-2">
+      <Dropdown 
+      className="d-inline mx-2"
+      >
         <Dropdown.Toggle id="dropdown-autoclose-true">
           <i className="fa-solid fa-globe me-2 bg-transparent"></i>
         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
+        <Dropdown.Menu
+        align="end"
+        >
           <Dropdown.Item
             className="text-decoration-none"
+            style={{lineHeight: '30px'}}
             onClick={() => {
               navigate("/profile");
             }}
@@ -22,6 +27,7 @@ function HandleClickSignInOrJoin() {
           </Dropdown.Item>
           <Dropdown.Item
             className="text-decoration-none"
+            style={{lineHeight: '30px'}}
             onClick={() => {
               logout();
             }}
