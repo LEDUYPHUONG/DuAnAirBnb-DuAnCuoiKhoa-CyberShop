@@ -35,7 +35,7 @@ export default function Login() {
   return (
     <>
       <HeaderPage />
-      <form className="container" onSubmit={frm.handleSubmit}>
+      <form className="container container-login" onSubmit={frm.handleSubmit}>
         <div className="responsive-signin-right sign_in d-flex">
           <div className="sign_in_left"></div>
           <div className="sign_in_right">

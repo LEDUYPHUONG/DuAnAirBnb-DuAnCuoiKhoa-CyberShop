@@ -63,7 +63,7 @@ export default function SignUp() {
     <>
       <HeaderPage />
       <form
-        className="container responsive-container-signup-768px"
+        className="container container-signup responsive-container-signup-768px"
         onSubmit={frm.handleSubmit}
       >
         <div className="sign_up d-flex">

@@ -100,8 +100,8 @@ export default function UserManage() {
       return (
         <tr key={index}>
           <td> {item.id} </td>
-          <td className="hidden-under-576px">{item.name}</td>
-          <td className="hidden-under-576px">
+          <td>{item.name}</td>
+          <td>
             <div
               className="shadow rounded-circle overflow-hidden m-auto"
               style={{ width: "50px", height: "50px" }}
@@ -183,14 +183,14 @@ export default function UserManage() {
           Find
         </button>
       </form>
-      <table className="table table-striped table-hover">
+      <table className="table table-striped table-hover table-responsive">
         <thead>
           <tr>
-            <th>ID</th>
-            <th className="hidden-under-576px">Name</th>
-            <th className="hidden-under-576px">Image</th>
-            <th>Role</th>
-            <th></th>
+            <th style={{minWidth: '50px'}}>ID</th>
+            <th style={{minWidth: '200px'}}>Name</th>
+            <th style={{minWidth: '50px'}}>Image</th>
+            <th style={{minWidth: '75px'}}>Role</th>
+            <th style={{minWidth: '250px'}}></th>
           </tr>
         </thead>
         <tbody className="w-100">{renderAdminUserAccount()}</tbody>
